@@ -12,20 +12,40 @@ export class HomeComponent implements OnInit {
   productPrice: number;
   isDay: boolean;
   imgWidth: number;
-
+  articles: string[]
+  students: Object[]
   constructor() { }
 
   ngOnInit(): void {
     this.today = new Date()
     this.productPrice = 199
     this.names = ['one', 'two', 'three', 'four', 'five']
+    this.articles = ['interesting article 1', 'interesting article 2', 'interesting article 3', 'interesting article 4', 'interesting article 5',]
     this.imgWidth = 150
+    this.students = [
+      { 'name': 'jeff', 'grade': '80' },
+      { 'name': 'madison', 'grade': '89' },
+      { 'name': 'chad', 'grade': '70' },
+      { 'name': 'jennifer', 'grade': '67' }]
   }
 
   getToday(): Date {
     return this.today
   }
-  randomSize(): void{
-    this.imgWidth = ((Math.random())*300)+200
+  randomSize(): void {
+    this.imgWidth = ((Math.random()) * 300) + 200
+  }
+  changeSize(change: boolean): void {
+    if (change) {
+      this.imgWidth += 20;
+    } else {
+      this.imgWidth -= 20;
+    }
+  }
+  randomPrice(): void {
+    this.productPrice = ((Math.random()) * 180) + 5
+  }
+  randomArticle(): string {
+    return this.articles[Math.round(Math.random() * (this.articles.length - 1))]
   }
 }

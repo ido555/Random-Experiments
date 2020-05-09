@@ -2,9 +2,13 @@
     <!-- interpolation -->
     Today is: {{today | date:'dd/MM/yyyy hh:mm:ss EEEE'}}
     <p>
+        <button (click)="randomPrice()">change product price</button>
+        <br>
         Only today all products cost: {{productPrice | currency:"ILS"}}
+        <br>
+        <span *ngIf="productPrice > 100">😮 thats expensive </span>
     </p>
-    <ul style="list-style: none;">
+    <ul style="list-style: none; padding-right: 40px;">
         <!-- ngFor directive -->
         <li *ngFor="let n of names"> {{n}}</li>
     </ul>
@@ -15,6 +19,21 @@
     <!-- Event Binding -->
     <button (click)="randomSize()">change img size</button>
     <br>
+    <button (click)="changeSize(true)"> + </button>
+    <button (click)="changeSize(false)"> - </button>
+    <br>
     <!-- Property Binding -->
-    <img src="../../../assets/Random_Turtle.jpg" [width]=imgWidth alt="angular image"/>
+    <img src="../../../assets/Random_Turtle.jpg" [width]=imgWidth alt="angular image" />
+    <br>
+    {{randomArticle()}}
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Score</th>
+        </tr>
+        <tr *ngFor="let student of students">
+            <td>{{student.name}}</td>
+            <td>{{student.grade}}</td>
+        </tr>
+    </table>
 </div>
