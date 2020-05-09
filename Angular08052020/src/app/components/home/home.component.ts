@@ -25,4 +25,7 @@ export class HomeComponent implements OnInit {
   getToday(): Date {
     return this.today
   }
+  randomSize(): void{
+    this.imgWidth = ((Math.random())*300)+200
+  }
 }

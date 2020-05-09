@@ -11,6 +11,10 @@
     <!-- ngIf directive -->
     <p *ngIf="!isDay"> is not day</p>
 
+    <!-- add a button - each click changes the image width to a random number between 200 and 400 -->
+    <!-- Event Binding -->
+    <button (click)="randomSize()">change img size</button>
+    <br>
     <!-- Property Binding -->
     <img src="../../../assets/Random_Turtle.jpg" [width]=imgWidth alt="angular image"/>
 </div>
