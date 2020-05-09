@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  /*private - hence need to use public getter*/ today: Date;
+
   constructor() { }
 
   ngOnInit(): void {
+    this.today = new Date()
   }
 
+  getToday(): Date{
+    return this.today
+  }
 }
