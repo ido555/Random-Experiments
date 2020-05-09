@@ -8,14 +8,21 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   /*private - hence need to use public getter*/ today: Date;
+  names: string[];
+  productPrice: number;
+  isDay: boolean;
+  imgWidth: number;
 
   constructor() { }
 
   ngOnInit(): void {
     this.today = new Date()
+    this.productPrice = 199
+    this.names = ['one', 'two', 'three', 'four', 'five']
+    this.imgWidth = 150
   }
 
-  getToday(): Date{
+  getToday(): Date {
     return this.today
   }
 }

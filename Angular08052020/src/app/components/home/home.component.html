@@ -1,4 +1,16 @@
 <div>
     <!-- interpolation -->
-    Today is:  {{today | date:'dd/MM/yyyy'}}
+    Today is: {{today | date:'dd/MM/yyyy hh:mm:ss EEEE'}}
+    <p>
+        Only today all products cost: {{productPrice | currency:"ILS"}}
+    </p>
+    <ul style="list-style: none;">
+        <!-- ngFor directive -->
+        <li *ngFor="let n of names"> {{n}}</li>
+    </ul>
+    <!-- ngIf directive -->
+    <p *ngIf="!isDay"> is not day</p>
+
+    <!-- Property Binding -->
+    <img src="../../../assets/Random_Turtle.jpg" [width]=imgWidth alt="angular image"/>
 </div>
