@@ -3,7 +3,7 @@
     Today is: {{today | date:'dd/MM/yyyy hh:mm:ss EEEE'}}
     <p>
         <button (click)="randomPrice()">change product price</button>
-        <input type="range" m [(ngModel)]="productPrice">
+        <input type="range" max="185" min="5" [(ngModel)]="productPrice">
         <br>
         Only today all products cost: {{productPrice | currency:"ILS"}}
         <br>
