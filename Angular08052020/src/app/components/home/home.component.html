@@ -3,6 +3,7 @@
     Today is: {{today | date:'dd/MM/yyyy hh:mm:ss EEEE'}}
     <p>
         <button (click)="randomPrice()">change product price</button>
+        <input type="range" m [(ngModel)]="productPrice">
         <br>
         Only today all products cost: {{productPrice | currency:"ILS"}}
         <br>
@@ -36,4 +37,10 @@
             <td>{{student.grade}}</td>
         </tr>
     </table>
+    <!-- instead of [value] = "imgWidth" (change)="imgWidth=value" -->
+    <!-- [()]- google calls this - bannana in a box.. for some reason-->
+    <!-- two way binding -->
+    <input type="text" [(ngModel)]="imgWidth" /> <br>
+    <!-- [] - property binding -->
+    <!-- () - event binding -->
 </div>
