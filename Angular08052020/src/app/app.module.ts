@@ -10,6 +10,8 @@ import { FormsModule } from "@angular/forms";
 import { ProductsComponent } from './components/products/products.component';
 import { NewProductComponent } from './components/new-product/new-product.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { ThumbnailComponent } from './components/thumbnail/thumbnail.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { GalleryComponent } from './components/gallery/gallery.component';
     HomeComponent,
     ProductsComponent,
     NewProductComponent,
-    GalleryComponent
+    GalleryComponent,
+    NotFoundComponent,
+    ThumbnailComponent,
   ],
   imports: [
     BrowserModule,

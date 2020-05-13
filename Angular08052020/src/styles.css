@@ -3,3 +3,6 @@ html, body{
     height: 99%;
     margin: 1px;
 }
+div{
+    text-align: center;
+}

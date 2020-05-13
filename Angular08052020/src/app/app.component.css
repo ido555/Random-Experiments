@@ -8,6 +8,9 @@ article{
 article>*{
     border: solid 1px lightgray;
 }
+div{
+    text-align: center;
+}
 /* header{
     grid-column: span 2;
 } */
