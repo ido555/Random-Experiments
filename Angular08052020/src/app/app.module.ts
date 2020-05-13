@@ -8,6 +8,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { FormsModule } from "@angular/forms";
 import { ProductsComponent } from './components/products/products.component';
+import { NewProductComponent } from './components/new-product/new-product.component';
+import { GalleryComponent } from './components/gallery/gallery.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { ProductsComponent } from './components/products/products.component';
     HeaderComponent,
     NavbarComponent,
     HomeComponent,
-    ProductsComponent
+    ProductsComponent,
+    NewProductComponent,
+    GalleryComponent
   ],
   imports: [
     BrowserModule,
