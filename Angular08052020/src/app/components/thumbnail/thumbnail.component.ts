@@ -12,6 +12,8 @@ export class ThumbnailComponent implements OnInit {
   // input() - variable comes from outside this component
   @Input()
   imageSrc:string
+  @Input()
+  imageTitle:string
 
   ngOnInit(): void {
   }
