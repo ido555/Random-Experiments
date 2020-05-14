@@ -1,0 +1,6 @@
+div.grid{
+    /* padding-top: 150px; */
+    display: grid;
+    /* fr - fraction */
+    grid-template-columns: 1fr 1fr 1fr;
+}
