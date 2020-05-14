@@ -9,7 +9,10 @@ export class MainComponent implements OnInit {
 
   constructor() { }
 
+  time: Date;
   ngOnInit(): void {
+    this.time = new Date;
+    setInterval(() => {this.time = new Date;}, 1000);
   }
 
 }
