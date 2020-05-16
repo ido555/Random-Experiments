@@ -12,6 +12,7 @@ export class ProductsComponent implements OnInit {
   constructor(private math: MathService) { }
 
   ngOnInit(): void {
+    alert(this.math.isPrime(11))
   }
 
 }

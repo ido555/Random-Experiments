@@ -9,9 +9,11 @@ export class MathService {
 
   public isPrime(number: number): boolean {
     // using square root is faster
-    for (let i = 0; i < number / 2; i++)
-      if (number % i == 0)
+    for (let i = 2; i < number / 2; i++) {
+      if (number % i == 0) {
         return false;
+      }
+    }
     return true;
   }
 }

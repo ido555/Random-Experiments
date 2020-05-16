@@ -12,6 +12,7 @@ import { NewProductComponent } from './components/new-product/new-product.compon
 import { GalleryComponent } from './components/gallery/gallery.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ThumbnailComponent } from './components/thumbnail/thumbnail.component';
+import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ThumbnailComponent } from './components/thumbnail/thumbnail.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
