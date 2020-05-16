@@ -1,3 +1,6 @@
 <div>
-    <p>products works!</p>
+    <p *ngFor="let post of posts">
+        title : {{post.title}} <br> 
+        body : {{post.body}}
+    </p>
 </div>
