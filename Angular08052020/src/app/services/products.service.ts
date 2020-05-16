@@ -15,11 +15,14 @@ export class ProductsService {
   }
   
   addPost(post: Object) {
-    // jsonholder does not support post requests
+    // jsonplaceholder does not support post requests
     return this.httpClient.post("https://jsonplaceholder.typicode.com/posts", post)
   }
   
   getAllProducts(){
-    return this.httpClient.get<Product[]>("http://localhost:8080/products/getAll")
+    return this.httpClient.get<Product[]>("http://localhost:8080/products")
+  }
+  getProductById(id:number){
+    return this.httpClient.get<Product[]>("http://localhost:8080/products/"+id)
   }
 }
