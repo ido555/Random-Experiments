@@ -4,23 +4,24 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.transaction.Transactional;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+//import org.springframework.context.annotation.Scope;
+//import org.springframework.stereotype.Component;
 
-import org.springframework.context.annotation.Scope;
 
-@Scope("prototype")
-@Entity(name = "cars")
-@Transactional
+@Entity
+@Table(name = "cars")
 public class Car {
+	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	@Column(nullable = false)
 	private String model, color;
 	@Column(nullable = false)
-	@Max(value = 2025)
-	@Min(value = 1900)
 	private int year;
 	
 	// empty ctor for Hibernate
@@ -52,4 +53,9 @@ public class Car {
 	public void setYear(int year) {
 		this.year = year;
 	}
+	@Override
+	public String toString() {
+		return "Car [id=" + id + ", model=" + model + ", color=" + color + ", year=" + year + "]";
+	}
+	
 }
