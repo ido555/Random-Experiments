@@ -28,7 +28,7 @@ public class CarController {
 	public List<Car> getAllCars() {
 		return repo.findAll();
 	}
-	@GetMapping("/getOne/{id}")
+	@GetMapping("/{id}")
 	public ResponseEntity<?> getOne(@PathVariable long id) {
 		// no reposneEntity error checking stuff
 		if(repo.findById(id).orElse(null) != null) {
@@ -39,6 +39,7 @@ public class CarController {
 
 	@PostMapping("/add")
 	public ResponseEntity<String> addCar(@RequestBody Car car) {
+		System.out.println("trying to add car");
 		try {
 			repo.save(car);
 		} catch (Exception e) {
