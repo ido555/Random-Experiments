@@ -23,6 +23,6 @@ export class ProductsService {
     return this.httpClient.get<Product[]>("http://localhost:8080/products")
   }
   getProductById(id:number){
-    return this.httpClient.get<Product[]>("http://localhost:8080/products/"+id)
+    return this.httpClient.get<Product>("http://localhost:8080/products/"+id)
   }
 }

@@ -1,0 +1,28 @@
+<div>
+    <!-- <input type="text">
+    <input type="text">
+    <input type="number"> -->
+    <button (click)="getCars()">show all cars</button>
+    <br>
+    <input type="number" [(ngModel)]="id" (change)="getCar(id)" placeholder="get car by id">
+    <p *ngIf="car == null">no such car found</p>
+    <div *ngIf="car != null">
+        model: {{car.model}} <br>
+        color: {{car.color}} <br>
+        year: {{car.year}} <br>
+    </div>
+    <div *ngIf="cars != null">
+        <table border="1px solid black">
+            <tr>
+                <th>model</th>
+                <th>color</th>
+                <th>year</th>
+            </tr>
+            <tr *ngFor="let c of cars">
+                <td>{{c.model}}</td>
+                <td>{{c.color}}</td>
+                <td>{{c.year}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
