@@ -9,13 +9,13 @@ export class CarService {
 
   constructor(private httpClient: HttpClient) { }
 
-  addCar( car:Car) {
-    this.httpClient.post("http://localhost:8080/cars/add", car)
-    .subscribe(
-      success=>{console.log(success)},
-      err=>{console.log(err)}
-      )
-  }
+  // addCar( car:Car) {
+  //   this.httpClient.post("http://localhost:8080/cars/add", car)
+  //   .subscribe(
+  //     success=>{console.log(success)},
+  //     err=>{console.log(err)}
+  //     )
+  // }
   getAllCars() {
     return this.httpClient.get<Car[]>("http://localhost:8080/cars")
   }
