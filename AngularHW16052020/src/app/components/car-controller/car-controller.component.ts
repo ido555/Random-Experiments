@@ -29,7 +29,7 @@ export class CarControllerComponent implements OnInit {
       success => { this.car = success },
       err => { this.car = null })
   }
-  addCar(car:Car){
-    this.carService.addCar(car)
-  }
+  // addCar(car:Car){
+  //   this.carService.addCar(car)
+  // }
 }
