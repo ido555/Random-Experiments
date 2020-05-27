@@ -1,9 +1,6 @@
 package com.example.beans;
 
-import java.util.ArrayList;
 import java.util.Date;
-
-import com.google.gson.JsonObject;
 
 public class StockDataPoint {
 	private Date dataPointDate;

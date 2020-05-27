@@ -15,5 +15,4 @@ public class Stock {
 	public String toString() {
 		return "Stock [dataPoints=" + dataPoints + "]";
 	}
-	
 }
