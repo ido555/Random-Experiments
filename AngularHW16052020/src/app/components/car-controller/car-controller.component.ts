@@ -16,7 +16,7 @@ export class CarControllerComponent implements OnInit {
   @Input()
   id: number
   ngOnInit(): void {
-    this.addCar(new Car(0,"yellow","porsche",2020))
+    // this.addCar(new Car(0,"yellow","porsche",2020))
 
   }
   getCars() {
