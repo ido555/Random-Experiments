@@ -1,8 +1,9 @@
 package com.example.beans;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class StockDataPoint {
+public class StockDataPoint implements Serializable{
 	private Date dataPointDate;
 	private Double open;
 	private Double high;
