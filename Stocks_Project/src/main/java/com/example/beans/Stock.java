@@ -1,5 +1,8 @@
 package com.example.beans;
 
-public class Stock {
+import java.util.ArrayList;
+import java.util.Date;
 
+public class Stock {
+	
 }
