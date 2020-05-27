@@ -1,5 +1,6 @@
 package com.example;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -10,16 +11,14 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.reactive.function.client.ExchangeStrategies;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import com.example.beans.Stock;
-import com.example.beans.Test;
+import com.example.beans.StockDataPoint;
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-
-import net.minidev.json.JSONObject;
 import reactor.core.publisher.Mono;
 
 @SpringBootApplication
@@ -27,10 +26,14 @@ public class StocksProjectApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(StocksProjectApplication.class, args);
-		WebClient client = WebClient.create("https://www.alphavantage.co");
+		WebClient client = WebClient.builder()
+				.exchangeStrategies(ExchangeStrategies.builder()
+						.codecs(configurer -> configurer.defaultCodecs().maxInMemorySize(16 * 1024 * 1024)).build())
+				.build();
+//		  = WebClient.create("");
 		Gson gson = new Gson();
 		Mono<ResponseEntity<String>> monoJson = client.get()
-				.uri("/query?function=TIME_SERIES_DAILY&symbol=FB&outputsize=compact&apikey=1P1K8X19J70V85OJ")
+				.uri("https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=FB&outputsize=full&apikey=1P1K8X19J70V85OJ")
 				.accept(MediaType.APPLICATION_JSON)
 				.retrieve()
 				.toEntity(String.class);
@@ -38,16 +41,20 @@ public class StocksProjectApplication {
 		// then using getBody unwrap ResponseEntity
 		// whats left is a JSON formatted String
 		// turn that string into a Gson JsonObject
-		JsonObject dataset =
-				(JsonObject) gson.fromJson(monoJson.block().getBody(), JsonObject.class)
+		JsonObject dataset = (JsonObject) gson.fromJson(monoJson.block().getBody(), JsonObject.class)
 				.get("Time Series (Daily)");
 		Set<Entry<String, JsonElement>> set = dataset.entrySet();
+		Stock stock1 = new Stock();
 		for (Entry<String, JsonElement> entry : set) {
 			Date dataPointDate = java.sql.Date.valueOf(entry.getKey());
-			System.out.println( ((JsonObject) entry.getValue()).get("1. open"));
-//			System.out.println(dataPointDate);
+			Double open = ((JsonObject) entry.getValue()).get("1. open").getAsDouble();
+			Double high = ((JsonObject) entry.getValue()).get("2. high").getAsDouble();
+			Double low = ((JsonObject) entry.getValue()).get("3. low").getAsDouble();
+			Double close = ((JsonObject) entry.getValue()).get("4. close").getAsDouble();
+			Long volume = ((JsonObject) entry.getValue()).get("5. volume").getAsLong();
+			stock1.addDataPoint(new StockDataPoint(dataPointDate, open, high, low, close, volume));
 		}
-		System.out.println();
+		System.out.println(stock1);
 	}
 
 //		 System.out.println(json2.has("dataset_data"));
@@ -61,6 +68,6 @@ public class StocksProjectApplication {
 //			System.out.println(data.get(i));
 //		}
 
-//		System.out.println(json2.getAsJsonObject("PhoneData"));
+//		System.out.println(json2.getAsJsonObject("StockDataPoint"));
 //		System.out.println(gson.fromJson(json2, Stock.class));
 }

@@ -8,11 +8,11 @@ public class Test {
 	private String name;
 	private String email;
 	private int age;
-	private PhoneData PhoneData;
+	private StockDataPoint StockDataPoint;
 
 	@Override
 	public String toString() {
-		return "Test [name=" + name + ", email=" + email + ", age=" + age + ", phones=" + PhoneData.getPhones() + "]";
+		return "Test [name=" + name + ", email=" + email + ", age=" + age + ", phones=" + StockDataPoint.getPhones() + "]";
 	}
 
 }
