@@ -9,7 +9,7 @@ var chart = new Chart(ctx, {
 	data: {
 		datasets: [{
 			label: 'CHRT - Chart.js Corporation',
-			data: getRandomData(initialDateStr, barCount)
+			data: [oneBar(Date.now()),oneBar(Date.now()+10000000),oneBar(Date.now()+20000000)]
 		}]
 	},
 	options: {
@@ -47,42 +47,54 @@ var chart = new Chart(ctx, {
 	}
 });
 
-var getRandomInt = function(max) {
-	return Math.floor(Math.random() * Math.floor(max));
-};
+// function getRandomInt(max) {
+// 	return Math.floor(Math.random() * Math.floor(max));
+// };
 
-function randomNumber(min, max) {
-	return Math.random() * (max - min) + min;
+// function randomDouble(min, max) {
+// 	return Math.random() * (max - min) + min;
+// }
+
+function oneBar(date){
+	// Date date = 
+	return {
+		t: date,
+		o: 4.5,
+		h: 5,
+		l: 1.4,
+		c: 1.7
+	};
 }
 
 function randomBar(date, lastClose) {
-	var open = randomNumber(lastClose * 0.95, lastClose * 1.05).toFixed(2);
-	var close = randomNumber(open * 0.95, open * 1.05).toFixed(2);
-	var high = randomNumber(Math.max(open, close), Math.max(open, close) * 1.1).toFixed(2);
-	var low = randomNumber(Math.min(open, close) * 0.9, Math.min(open, close)).toFixed(2);
+	// var open = randomNumber(lastClose * 0.95, lastClose * 1.05).toFixed(2);
+	// var close = randomNumber(open * 0.95, open * 1.05).toFixed(2);
+	// var high = randomNumber(Math.max(open, close), Math.max(open, close) * 1.1).toFixed(2);
+	// var low = randomNumber(Math.min(open, close) * 0.9, Math.min(open, close)).toFixed(2);
 	return {
 		t: date.valueOf(),
-		o: open,
-		h: high,
-		l: low,
-		c: close
+		o: 1.5,
+		h: 2,
+		l: 1.4,
+		c: 1.7
 	};
 
 }
 
-function getRandomData(dateStr, count) {
-	var date = luxon.DateTime.fromRFC2822(dateStr);
-	var data = [randomBar(date, 30)];
-	while (data.length < count) {
-		date = date.plus({days: 1});
-		if (date.weekday <= 5) {
-			data.push(randomBar(date, data[data.length - 1].c));
-		}
-	}
-	return data;
-}
+// function getRandomData(dateStr, count) {
+// 	var date = luxon.DateTime.fromRFC2822(dateStr);
+// 	var data = [randomBar(date, 30),oneBar()];
+// 	while (data.length < count) {
+// 		date = date.plus({days: 1});
+// 		if (date.weekday <= 5) {
+// 			data.push(randomBar(date, data[data.length - 1].c));
+// 		}
+// 	}
+// 	return data;
+// }
 
 var update = function() {
+
 	var dataset = chart.config.data.datasets[0];
 
 	// candlestick vs ohlc
