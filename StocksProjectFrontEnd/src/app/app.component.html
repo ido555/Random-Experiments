@@ -1,0 +1,6 @@
+<app-main></app-main>
+<ejs-chart style='display:block;' id='chart-container' [primaryXAxis]='primaryXAxis' [primaryYAxis]='primaryYAxis' [title]='title' >
+    <e-series-collection>
+        <e-series [dataSource]='data' type='Candle' xName='x'  high='high' low='low' open='open' close='close' name='SHIRPUR-G'> </e-series>
+    </e-series-collection>
+</ejs-chart>
