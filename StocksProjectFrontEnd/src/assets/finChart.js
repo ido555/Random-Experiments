@@ -62,7 +62,7 @@ function oneBar(date){
 		o: 4.5,
 		h: 5,
 		l: 1.4,
-		c: 1.7
+		c: 1.7,
 	};
 }
 
