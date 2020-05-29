@@ -41,22 +41,24 @@ public class WebClientHelper {
 				.retrieve()
 				.toEntity(String.class);
 		Gson gson = new Gson();
+		//TODO handle NullPointer because of api limit exceeded returning i dont even know what... (need an error callback)
 		// synchronously(with block() )(good enough for now) subscribe to monoJson then
 		// unwrap Mono then using getBody unwrap ResponseEntity
 		// whats left is a JSON formatted String
 		// turn that string into a Gson JsonObject
-		JsonObject dataset = (JsonObject) gson.fromJson(monoJson.block().getBody(), JsonObject.class)
+		 JsonObject dataset = (JsonObject) gson.fromJson(monoJson.block().getBody(), JsonObject.class)
 				.get("Time Series (Daily)");
-		Set<Entry<String, JsonElement>> set = dataset.entrySet();
+		
+			Set<Entry<String, JsonElement>> set = dataset.entrySet();
 		Stock stock = new Stock();
 		for (Entry<String, JsonElement> entry : set) {
-			Date dataPointDate = java.sql.Date.valueOf(entry.getKey());
+			Long epochDate = java.sql.Date.valueOf(entry.getKey()).getTime();
 			Double open = ((JsonObject) entry.getValue()).get("1. open").getAsDouble();
 			Double high = ((JsonObject) entry.getValue()).get("2. high").getAsDouble();
 			Double low = ((JsonObject) entry.getValue()).get("3. low").getAsDouble();
 			Double close = ((JsonObject) entry.getValue()).get("4. close").getAsDouble();
 			Long volume = ((JsonObject) entry.getValue()).get("5. volume").getAsLong();
-			stock.addDataPoint(new StockDataPoint(dataPointDate, open, high, low, close, volume));
+			stock.addDataPoint(new StockDataPoint(epochDate, open, high, low, close, volume));
 		}
 		return stock;
 	}

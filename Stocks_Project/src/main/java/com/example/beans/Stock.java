@@ -16,4 +16,13 @@ public class Stock implements Serializable{
 	public String toString() {
 		return "Stock [dataPoints=" + dataPoints + "]";
 	}
+
+	public List<StockDataPoint> getDataPoints() {
+		return dataPoints;
+	}
+
+	public void setDataPoints(List<StockDataPoint> dataPoints) {
+		this.dataPoints = dataPoints;
+	}
+	
 }
