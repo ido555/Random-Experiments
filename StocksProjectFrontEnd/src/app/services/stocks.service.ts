@@ -9,6 +9,6 @@ export class StocksService {
   constructor(private httpClient: HttpClient) { }
 
   public getMSFT() {
-    return this.httpClient.get("http://localhost:8080/getStock/MSFT/compact")
+    return this.httpClient.get("http://localhost:8080/getStock/MSFT/full")
   }
 }
