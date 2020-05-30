@@ -6,7 +6,7 @@ import { MainComponent } from './components/main/main.component';
 import { ChartComponent } from './components/chart/chart.component';
 import { ChartModule } from '@syncfusion/ej2-angular-charts';
 import { CategoryService, CandleSeriesService, TooltipService } from '@syncfusion/ej2-angular-charts';
-import { LegendService, ZoomService } from '@syncfusion/ej2-angular-charts';
+import {ZoomService } from '@syncfusion/ej2-angular-charts';
 import { HttpClientModule } from '@angular/common/http'
 
 
@@ -23,7 +23,7 @@ import { HttpClientModule } from '@angular/common/http'
     HttpClientModule
   ],
 
-  providers: [CategoryService, CandleSeriesService, TooltipService,  LegendService, ZoomService],
+  providers: [CategoryService, CandleSeriesService, TooltipService, ZoomService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

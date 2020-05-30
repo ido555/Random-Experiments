@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataManager, Query } from '@syncfusion/ej2-data';
 import { StocksService } from "../app/services/stocks.service";
+import { Double } from '@syncfusion/ej2-angular-charts';
 
 @Component({
   selector: 'app-root',
@@ -16,10 +17,11 @@ export class AppComponent implements OnInit {
   public primaryYAxis: Object;
   public data;
   public tooltip: Object;
-  public url: string = 'http://localhost:8080/getStock/MSFT/compact'
-  public dataManager: DataManager;
   public hidden: boolean = true;
   public zoom: Object;
+  public max:Double;
+  public min:Double;
+
 
   constructor(private st: StocksService) {
 
@@ -28,36 +30,46 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
 
   }
+  toggleDiv(): void {
+    this.hidden = !this.hidden;
+  }
+
   showGraph(): void {
-    // this.st.getMSFT().subscribe(
-    //   success => { console.log(success), this.data = success },
-    //   fail => { console.log("failed to fetch", fail) })
+    this.st.getMSFT().subscribe(
+      success => { this.processGraph(success)},
+      fail => { console.log("failed to fetch stock info", fail) })
     this.tooltip = {
       enable: true
     }
-    this.dataManager = new DataManager({
-      url: this.url
-    });
+
+
+
+  }
+  private processGraph(success): void {
+    console.log(success); 
+    this.data = success;
     this.zoom = {
       enableSelectionZooming: true,
       toolbarItems: ['Zoom', 'Pan', 'Reset']
     };
-    console.log(this.dataManager)
-    this.data = [
-      { x: '1', open: 120, high: 160, low: 100, close: 140 },
-      { x: '2', open: 150, high: 190, low: 130, close: 170 },
-      { x: '3', open: 130, high: 170, low: 110, close: 150 },
-      { x: '4', open: 160, high: 180, low: 120, close: 140 }
-    ];
+    // this.data = [
+    //   { x: 'May 11, 2020', open: 120, high: 160, low: 100, close: 140 },
+    //   { x: 'May 12, 2020', open: 150, high: 190, low: 130, close: 170 },
+    //   { x: 'May 13, 2020', open: 130, high: 170, low: 110, close: 150 },
+    //   { x: 'May 14, 2020', open: 160, high: 180, low: 120, close: 140 }
+    // ];
     this.primaryXAxis = {
       title: 'Date',
       valueType: 'Category',
     };
     this.primaryYAxis = {
-      title: 'Price in Dollar', minimum: 1, maximum: 400, interval: 20,
+      title: 'Price in Dollar', minimum: this.data[0].minPrice-60, maximum: this.data[0].maxPrice, interval: 20,
     };
-    this.title = 'Financial Analysis';
+
+    this.title = 'MSFT stock';
   }
 
-}
+};
+
+
 

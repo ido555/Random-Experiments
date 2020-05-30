@@ -1,9 +1,12 @@
 <app-main></app-main>
-<button (click)="showGraph()">button</button>
-<ejs-chart [tooltip]='tooltip' style='display:block;' id='chart-container' [primaryXAxis]='primaryXAxis'
+<button (click)="showGraph(); toggleDiv()">button</button>
+<div *ngIf="!hidden">
+    <ejs-chart [tooltip]='tooltip' style='display:block;' id='chart-container' [primaryXAxis]='primaryXAxis'
     [primaryYAxis]='primaryYAxis' [title]='title' [zoomSettings]='zoom'>
     <e-series-collection>
-        <e-series [dataSource]='data' type='Candle' xName='x' open='open' high='high' low='low' close='close'>
+        <e-series [dataSource]='data' type='Candle' xName='date' open='open' high='high' low='low' close='close'
+        bearFillColor= 'red' bullFillColor= 'green'>
         </e-series>
     </e-series-collection>
 </ejs-chart>
+</div>
