@@ -1,26 +1,26 @@
 package com.example.beans;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 
 import com.google.gson.annotations.SerializedName;
 
 public class StockDataPoint implements Serializable{
 //	@SerializedName - when gson turns this object a json object the key will be called whatever value
-	@SerializedName(value = "t")
-	private Long epochDate;
-	@SerializedName(value = "o")
+//	@SerializedName(value = "t")
+	private Date date;
+//	@SerializedName(value = "o")
 	private Double open;
-	@SerializedName(value = "h")
+//	@SerializedName(value = "h")
 	private Double high;
-	@SerializedName(value = "l")
+//	@SerializedName(value = "l")
 	private Double low;
-	@SerializedName(value = "c")
+//	@SerializedName(value = "c")
 	private Double close;
 	private Long volume;
 	
-	public StockDataPoint(Long epochDate, Double open, Double high, Double low, Double close, Long volume) {
-		this.epochDate = epochDate;
+	public StockDataPoint(Date date, Double open, Double high, Double low, Double close, Long volume) {
+		this.date = date;
 		this.open = open;
 		this.high = high;
 		this.low = low;
@@ -30,12 +30,12 @@ public class StockDataPoint implements Serializable{
 
 	@Override
 	public String toString() {
-		return "StockDataPoint [epochDate=" + epochDate + ", open=" + open + ", high=" + high + ", low=" + low
+		return "StockDataPoint [date=" + date + ", open=" + open + ", high=" + high + ", low=" + low
 				+ ", close=" + close + ", volume=" + volume + "]";
 	}
 
-	public Long getDataPointDate() {
-		return epochDate;
+	public Date getDataPointDate() {
+		return date;
 	}
 
 	public Double getOpen() {
@@ -58,8 +58,8 @@ public class StockDataPoint implements Serializable{
 		return volume;
 	}
 
-	public void setDataPointDate(Long dataPointDate) {
-		this.epochDate = dataPointDate;
+	public void setDataPointDate(Date date) {
+		this.date = date;
 	}
 
 	public void setOpen(Double open) {

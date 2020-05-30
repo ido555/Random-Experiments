@@ -1,14 +1,14 @@
 package com.example.services;
 
-import java.util.Date;
 import java.util.Set;
+import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map.Entry;
-
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.reactive.function.client.ExchangeStrategies;
 import org.springframework.web.reactive.function.client.WebClient;
-
 import com.example.beans.Stock;
 import com.example.beans.StockDataPoint;
 import com.google.gson.Gson;
@@ -44,22 +44,38 @@ public class WebClientHelper {
 		//TODO handle NullPointer because of api limit exceeded returning i dont even know what... (need an error callback)
 		// synchronously(with block() )(good enough for now) subscribe to monoJson then
 		// unwrap Mono then using getBody unwrap ResponseEntity
-		// whats left is a JSON formatted String
+		// whats left is a JSON object array in a string
 		// turn that string into a Gson JsonObject
 		 JsonObject dataset = (JsonObject) gson.fromJson(monoJson.block().getBody(), JsonObject.class)
 				.get("Time Series (Daily)");
 		
 			Set<Entry<String, JsonElement>> set = dataset.entrySet();
-		Stock stock = new Stock();
+		
+		Double maxPrice = 0D, minPrice = 0D;
+		int i = 1;
+		List<StockDataPoint> dataPoints = new ArrayList<StockDataPoint>();
 		for (Entry<String, JsonElement> entry : set) {
-			Long epochDate = java.sql.Date.valueOf(entry.getKey()).getTime();
+			Date date = Date.valueOf(entry.getKey());
 			Double open = ((JsonObject) entry.getValue()).get("1. open").getAsDouble();
 			Double high = ((JsonObject) entry.getValue()).get("2. high").getAsDouble();
 			Double low = ((JsonObject) entry.getValue()).get("3. low").getAsDouble();
+			
+			// find out what the highest and lowest prices were
+			if (high > maxPrice) {
+				maxPrice = high;
+			}
+			if (low > minPrice) {
+				minPrice = low;
+			}
+			
 			Double close = ((JsonObject) entry.getValue()).get("4. close").getAsDouble();
 			Long volume = ((JsonObject) entry.getValue()).get("5. volume").getAsLong();
-			stock.addDataPoint(new StockDataPoint(epochDate, open, high, low, close, volume));
+			dataPoints.add((new StockDataPoint(date, open, high, low, close, volume)));
 		}
+		// add 10% to lowest low and highest high ( helps make the graph look better )
+		minPrice = minPrice * 0.9;
+		maxPrice = maxPrice * 1.1;
+		Stock stock = new Stock(dataPoints, maxPrice, minPrice);
 		return stock;
 	}
 }
