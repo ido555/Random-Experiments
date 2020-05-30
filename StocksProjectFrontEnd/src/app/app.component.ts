@@ -63,7 +63,7 @@ export class AppComponent implements OnInit {
       valueType: 'Category',
     };
     this.primaryYAxis = {
-      title: 'Price in Dollar', minimum: 1, maximum: this.data[0].maxPrice, interval: 20,
+      title: 'Price in Dollar', minimum: this.data[0].minPrice/2, maximum: this.data[0].maxPrice, interval: 20,
     };
 
     this.title = 'MSFT stock';
