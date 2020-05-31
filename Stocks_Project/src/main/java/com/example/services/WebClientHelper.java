@@ -51,8 +51,7 @@ public class WebClientHelper {
 		
 			Set<Entry<String, JsonElement>> set = dataset.entrySet();
 		
-		Double maxPrice = 0D, minPrice = 0D;
-		int i = 1;
+		Double maxPrice = 0D, minPrice = 999999999D;
 		List<StockDataPoint> dataPoints = new ArrayList<StockDataPoint>();
 		for (Entry<String, JsonElement> entry : set) {
 			Date date = Date.valueOf(entry.getKey());
@@ -64,7 +63,7 @@ public class WebClientHelper {
 			if (high > maxPrice) {
 				maxPrice = high;
 			}
-			if (low > minPrice) {
+			if (low < minPrice) {
 				minPrice = low;
 			}
 			
