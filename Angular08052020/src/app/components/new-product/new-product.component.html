@@ -1,3 +1,34 @@
 <div>
-    <p>new-product works!</p>
+    <!-- template forms -->
+    <!-- html style of form validation -->
+    <!-- using #IdentiferNameHere because thats how angular template forms work -->
+    <!-- the # thing called a "template variable reference" -->
+
+    <!-- <div> -->
+        <!-- title two way binding. for typescript to use its title variable to perform checks -->
+        <!-- and to enable this entire form to work correctly -->
+        <!-- https://angular.io/guide/form-validation -->
+        <!-- https://angular.io/api/forms/NgForm -->
+        <!-- https://angular.io/api/forms/AbstractControlDirective -->
+        <!-- <form #productForm="ngForm">
+
+            <input #productTitle="ngModel" type="text" name="title" [(ngModel)]="title" placeholder="title" required>
+            <span *ngIf="!productTitle.valid">title is required</span>
+            <br>
+            <input type="text" placeholder="description"> <br>
+            <input type="text" placeholder="price"> <br>
+            <input type="button" value="Add Product" [disabled]="!productForm.valid"> -->
+            <!--(click)="sendProduct"-->
+        <!-- </form> -->
+    <!-- </div> -->
+    
+    <!-- reactive forms -->
+    <div>
+        <form [formGroup]="productForm">
+            <!-- short for [productForm]="productForm.controls['title']" -->
+            <input type="text" placeholder="title" formControlName="title"> <br>
+            <input type="text" placeholder="description" formControlName="description"> <br>
+            <input type="number" placeholder="price" formControlName="price"> <br>
+        </form>
+    </div>
 </div>

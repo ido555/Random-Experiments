@@ -17,7 +17,8 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.today = new Date()
+    this.today = new Date() // show on page load
+    setInterval(() => {this.today = new Date()}, 1000) // update every 1 second
     this.productPrice = 199
     this.names = ['one', 'two', 'three', 'four', 'five']
     this.articles = ['interesting article 1', 'interesting article 2', 'interesting article 3', 'interesting article 4', 'interesting article 5',]
@@ -27,6 +28,9 @@ export class HomeComponent implements OnInit {
       { 'name': 'madison', 'grade': '89' },
       { 'name': 'chad', 'grade': '70' },
       { 'name': 'jennifer', 'grade': '67' }]
+  }
+  ngOnDestroy(): void{
+
   }
 
   getToday(): Date {
