@@ -26,9 +26,11 @@
     <div>
         <form [formGroup]="productForm">
             <!-- short for [productForm]="productForm.controls['title']" -->
+            <span *ngIf="productForm.invalid">Title is required <br></span>
             <input type="text" placeholder="title" formControlName="title"> <br>
             <input type="text" placeholder="description" formControlName="description"> <br>
             <input type="number" placeholder="price" formControlName="price"> <br>
+            <input type="button" value="Send Product" [disabled] = "!productForm.valid">
         </form>
     </div>
 </div>

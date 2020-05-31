@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from "src/app/services/products.service";
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-new-product',
@@ -18,7 +18,7 @@ export class NewProductComponent implements OnInit {
   productForm: FormGroup;
 
   // private productService: ProductsService
-  constructor() { }
+  constructor(private formBuilder:FormBuilder) { }
 
   // prod;
   ngOnInit(): void {
@@ -26,11 +26,22 @@ export class NewProductComponent implements OnInit {
     //   success=>{this.prod = success},
     //   err=>{err}
     // ))
+
+    // reactive forms 
+    /*
     this.productForm = new FormGroup({
-      title: new FormControl("Product 1", Validators.pattern("[A-Z]")),
+      title: new FormControl("Product 1")),
       description: new FormControl("Description 1"),
-      price: new FormControl("111", Validators.pattern("123")),
+      price: new FormControl("111")
     });
+    */
+
+    // same as above but different syntax
+   this.productForm = this.formBuilder.group({
+     title: ["", Validators.required],
+     description: ["description 1"],
+     price : []
+   })
   }
 
 }
