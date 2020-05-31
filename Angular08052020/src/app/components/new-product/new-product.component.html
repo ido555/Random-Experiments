@@ -5,12 +5,12 @@
     <!-- the # thing called a "template variable reference" -->
 
     <!-- <div> -->
-        <!-- title two way binding. for typescript to use its title variable to perform checks -->
-        <!-- and to enable this entire form to work correctly -->
-        <!-- https://angular.io/guide/form-validation -->
-        <!-- https://angular.io/api/forms/NgForm -->
-        <!-- https://angular.io/api/forms/AbstractControlDirective -->
-        <!-- <form #productForm="ngForm">
+    <!-- title two way binding. for typescript to use its title variable to perform checks -->
+    <!-- and to enable this entire form to work correctly -->
+    <!-- https://angular.io/guide/form-validation -->
+    <!-- https://angular.io/api/forms/NgForm -->
+    <!-- https://angular.io/api/forms/AbstractControlDirective -->
+    <!-- <form #productForm="ngForm">
 
             <input #productTitle="ngModel" type="text" name="title" [(ngModel)]="title" placeholder="title" required>
             <span *ngIf="!productTitle.valid">title is required</span>
@@ -18,19 +18,24 @@
             <input type="text" placeholder="description"> <br>
             <input type="text" placeholder="price"> <br>
             <input type="button" value="Add Product" [disabled]="!productForm.valid"> -->
-            <!--(click)="sendProduct"-->
-        <!-- </form> -->
+    <!--(click)="sendProduct"-->
+    <!-- </form> -->
     <!-- </div> -->
-    
+
     <!-- reactive forms -->
     <div>
         <form [formGroup]="productForm">
-            <!-- short for [productForm]="productForm.controls['title']" -->
-            <span *ngIf="productForm.invalid">Title is required <br></span>
+            <!-- short for [productForm]="fc()['title']" -->
+            <!-- use errors? to specify which error occured 
+              instead of .invalid which just means some error occured  -->
+            <span *ngIf="fc()['title'].invalid && fc()['title'].touched ">Title is required <br></span>
             <input type="text" placeholder="title" formControlName="title"> <br>
+            <!-- ? - check if errors is undefined if not skip this line to not run into an error -->
+            <span *ngIf="fc()['description'].errors?.required&& fc()['description'].touched">Description is required<br></span>
+            <span *ngIf="fc()['description'].errors?.pattern && fc()['description'].touched">Description must match regex (1 capital letter)<br></span>
             <input type="text" placeholder="description" formControlName="description"> <br>
             <input type="number" placeholder="price" formControlName="price"> <br>
-            <input type="button" value="Send Product" [disabled] = "!productForm.valid">
+            <input type="button" value="Send Product" [disabled]="!productForm.valid">
         </form>
     </div>
 </div>

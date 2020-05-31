@@ -16,6 +16,7 @@ export class NewProductComponent implements OnInit {
   */
 
   productForm: FormGroup;
+  a?:number;
 
   // private productService: ProductsService
   constructor(private formBuilder:FormBuilder) { }
@@ -39,9 +40,13 @@ export class NewProductComponent implements OnInit {
     // same as above but different syntax
    this.productForm = this.formBuilder.group({
      title: ["", Validators.required],
-     description: ["description 1"],
+     description: ["description 1", [Validators.required, Validators.pattern("[A-Z]")]],
      price : []
    })
+  }
+  // fc - form controls
+  public fc(){
+    return this.productForm.controls;
   }
 
 }
