@@ -35,7 +35,11 @@
             <span *ngIf="fc()['description'].errors?.pattern && fc()['description'].touched">Description must match regex (1 capital letter)<br></span>
             <input type="text" placeholder="description" formControlName="description"> <br>
             <input type="number" placeholder="price" formControlName="price"> <br>
-            <input type="button" value="Send Product" [disabled]="!productForm.valid">
+            <input type="text" placeholder="password" formControlName="password"> <br>
+            <span *ngIf="fc()['password'].errors?.required && fc()['password'].touched">password is required<br></span>
+            <span *ngIf="fc()['password'].errors?.pattern && fc()['password'].touched">regex is ..[A-Z][a-z]..  (any-any-[A-Z]-[A-Z]-any-any)<br></span>
+
+            <input type="button" value="Send Product" [disabled]="!productForm.valid" (click)="sendProduct()">
         </form>
     </div>
 </div>

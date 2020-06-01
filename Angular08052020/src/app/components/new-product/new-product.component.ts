@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from "src/app/services/products.service";
 import { FormGroup, FormControl, Validators, FormBuilder, AbstractControl } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
+import { strict } from 'assert';
 
 @Component({
   selector: 'app-new-product',
@@ -17,6 +19,7 @@ export class NewProductComponent implements OnInit {
 
   productForm: FormGroup;
   a?:number;
+  
 
   // private productService: ProductsService
   constructor(private formBuilder:FormBuilder) { }
@@ -39,9 +42,11 @@ export class NewProductComponent implements OnInit {
 
     // same as above but different syntax
    this.productForm = this.formBuilder.group({
-     title: ["", Validators.required],
-     description: ["description 1", [Validators.required, Validators.pattern("[A-Z]")]],
-     price : ["", this.validateLastName]
+     title: ["aaaaaaa", Validators.required],
+     description: ["A", [Validators.required, Validators.pattern("[A-Z]")]],
+     price : [],
+     password: ['', [Validators.pattern("..[A-Z][a-z].."), Validators.required]]
+    //  this.validateLastName - validator
    })
   }
   // fc - form controls
@@ -55,5 +60,18 @@ export class NewProductComponent implements OnInit {
       // this error will be added to errors.lastNameLength
       return {lastNameLength:true}
     }
+  }
+  // strong password validator at least 8 characters, at least 1 uppercase letter, 1 lowercase letter, and 1 number. can contain special characters
+  // public validatePassword(control:AbstractControl){
+  //   control = this.fc['password']
+  //   if (JSON.stringify(control.value).match()) {
+  //     return {strongPassword:true};
+  //   }
+  // }
+
+  sendProduct(){
+    // alert(this.fc()['title'].value);
+    console.log(this.productForm.value);
+      
   }
 }
