@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from "src/app/services/products.service";
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder, AbstractControl } from '@angular/forms';
 
 @Component({
   selector: 'app-new-product',
@@ -41,7 +41,7 @@ export class NewProductComponent implements OnInit {
    this.productForm = this.formBuilder.group({
      title: ["", Validators.required],
      description: ["description 1", [Validators.required, Validators.pattern("[A-Z]")]],
-     price : []
+     price : ["", this.validateLastName]
    })
   }
   // fc - form controls
@@ -49,4 +49,11 @@ export class NewProductComponent implements OnInit {
     return this.productForm.controls;
   }
 
+  // custom validator
+  public validateLastName(control: AbstractControl){
+    if (control.value.length < 3) {
+      // this error will be added to errors.lastNameLength
+      return {lastNameLength:true}
+    }
+  }
 }
