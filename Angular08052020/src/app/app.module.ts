@@ -1,3 +1,4 @@
+import { IdValidationHWComponent } from './components/id-validation-hw/id-validation-hw.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -11,7 +12,7 @@ import { NewProductComponent } from './components/new-product/new-product.compon
 import { GalleryComponent } from './components/gallery/gallery.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ThumbnailComponent } from './components/thumbnail/thumbnail.component';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { HttpClientModule } from '@angular/common/http'
     GalleryComponent,
     NotFoundComponent,
     ThumbnailComponent,
+    IdValidationHWComponent
   ],
   imports: [
     BrowserModule,
