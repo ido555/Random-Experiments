@@ -5,6 +5,7 @@ import { ProductsComponent } from './components/products/products.component';
 import { NewProductComponent } from './components/new-product/new-product.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { IdValidationHWComponent } from './components/id-validation-hw/id-validation-hw.component';
 
 
 const routes: Routes = [
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path: "products" , component: ProductsComponent},
   {path: "new" , component: NewProductComponent},
   {path: "gallery" , component: GalleryComponent},
+  {path: "IdValidation" , component: IdValidationHWComponent},
   // {path: "" , component: HomeComponent} redirect changes url to the appropiate one 
   // while component will allow localhost:4200/asdasd to appear to be a valid url
   {path: "", redirectTo: "home", pathMatch: "full"},
