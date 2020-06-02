@@ -1,0 +1,21 @@
+<div>
+    <form [formGroup]="courseForm">
+      <input type="text" formControlName="title"/>
+      <br/>
+      <span *ngIf="courseForm.controls['startDate'].errors?.dateError">Date is in the past <br></span>
+      <input type="date" formControlName="startDate" />
+      <br/>
+      <input *ngIf="courseForm.valid" type="button" value="send"/>
+    </form>
+    <br/><br/>
+    <hr/>
+    
+    <form [formGroup]="userForm">
+      <input type="text" placeholder="Name" formControlName="name"/>
+      <br/>
+      <span *ngIf="userForm.controls['id'].errors?.idError && userForm.controls['id'].touched">invalid id<br></span>
+      <input type="number" placeholder="ID" formControlName="id" />
+      <br/>
+      <input type="button" value="GO" (click)="go()" />
+    </form>
+  </div>
