@@ -4,10 +4,20 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AddComputerComponent } from './components/add-computer/add-computer.component';
+import { UpdateComputerComponent } from './components/update-computer/update-computer.component';
+import { AllComputersComponent } from './components/all-computers/all-computers.component';
+import { OneComputersComponent } from './components/one-computers/one-computers.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AddComputerComponent,
+    UpdateComputerComponent,
+    AllComputersComponent,
+    OneComputersComponent,
+    HttpClientModule
   ],
   imports: [
     BrowserModule,
