@@ -1,4 +1,4 @@
-# Angular08052020
+# this is a mini site with some examples 
 this is a mini site with some examples 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.4.
