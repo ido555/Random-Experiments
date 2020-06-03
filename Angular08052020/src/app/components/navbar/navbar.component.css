@@ -1,7 +1,7 @@
 div{
     text-align: center;
-    padding-top: 18px;
-    font-size: x-large;
+    padding-top: 10px;
+    font-size: large;
     display: grid;
     /* fr - fraction */
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
