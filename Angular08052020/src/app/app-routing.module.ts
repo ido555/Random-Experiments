@@ -1,3 +1,4 @@
+import { AngularMaterialComponent } from './components/angular-material/angular-material.component';
 import { IdValidationHWComponent } from './components/id-validation-hw/id-validation-hw.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -14,6 +15,8 @@ const routes: Routes = [
   {path: "new" , component: NewProductComponent},
   {path: "gallery" , component: GalleryComponent},
   {path: "idValidation" , component: IdValidationHWComponent},
+  {path: "material" , component: AngularMaterialComponent},
+  
   // {path: "" , component: HomeComponent} redirect changes url to the appropiate one 
   // while component will allow localhost:4200/asdasd to appear to be a valid url
   {path: "", redirectTo: "home", pathMatch: "full"},
