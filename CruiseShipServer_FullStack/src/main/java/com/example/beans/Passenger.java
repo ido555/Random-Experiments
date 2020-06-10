@@ -25,7 +25,7 @@ public class Passenger {
 	@Column(nullable = false)
 	private String name;
 	
-	@Column(unique = true, nullable = false)
+	@Column(nullable = false)
 	private int roomNumber;
 	
 	@Column(nullable = false)
