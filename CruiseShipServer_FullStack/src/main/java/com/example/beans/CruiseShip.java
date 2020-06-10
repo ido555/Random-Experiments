@@ -9,25 +9,23 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
 import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "cruiseships")
 public class CruiseShip {
-	/*
-	 * • id • name • numOfDecks • numOfPools • numOfRooms • passengers
-	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Getter
 	private long id;
+	
 	@Getter
-	private int numOfDecks, numOfPools;
 	@Column(nullable = false)
-	@Getter
-	private int numOfRooms;
+	private int numOfDecks, numOfPools, numOfRooms;
+	
 	@ManyToOne
+	@Getter @Setter
 	private List<Passenger> passengers;
 
 	public CruiseShip(int numOfDecks, int numOfPools, int numOfRooms) {
