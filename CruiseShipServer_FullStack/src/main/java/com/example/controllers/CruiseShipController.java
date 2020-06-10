@@ -16,5 +16,4 @@ public class CruiseShipController {
 	public ResponseEntity<?> getOne(@PathVariable long id) {
 		return null;
 	}
-
 }
