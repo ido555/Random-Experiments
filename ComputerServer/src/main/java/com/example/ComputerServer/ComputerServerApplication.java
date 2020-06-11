@@ -27,6 +27,11 @@ public class ComputerServerApplication {
 //		System.out.println(c1);
 		
 		ResponseEntity<Computer[]> computers = request.getForEntity("http://localhost:8080/comp", Computer[].class);
+		
+		Computer comp = new Computer("model123", 12, 504.9);
+		
+		// returns ResponseEntity<Computer>
+		request.postForEntity("http://localhost:8080/comp", comp, Computer.class);
 			System.out.println(Arrays.toString(computers.getBody()));
 		} catch (HttpClientErrorException e) {
 			System.out.println(e.getMessage());
