@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,12 +38,12 @@ public class ComputerController {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<?> getOne(@PathVariable long id) {
-		try {
+	public ResponseEntity<?> getOne(@PathVariable long id) throws InvalidComputerException {
+//		try {
 			return ResponseEntity.ok(service.getOneComputer(id));
-		} catch (InvalidComputerException e) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id not found...");
-		}
+//		} catch (InvalidComputerException e) {
+//			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id not found...");
+//		}
 	}
 	
 	@GetMapping("/model/{model}")
@@ -78,6 +79,13 @@ public class ComputerController {
 		} catch (InvalidComputerException e) {
 			return ResponseEntity.badRequest().body(e.getMessage());
 		}
+	}
+	
+	// no need for try catch because if any function throws InvalidComputerException will catch it
+	// this is only good for when many controllers throw the exception in the same controller
+	@ExceptionHandler(InvalidComputerException.class)
+	public ResponseEntity<String> handleInvalidComputer(){
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).body("not found");
 	}
 	
 }
