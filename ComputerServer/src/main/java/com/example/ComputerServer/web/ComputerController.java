@@ -85,10 +85,10 @@ public class ComputerController {
 	// think carefully before deciding to implement this.
 	// no need for try catch because if any function throws InvalidComputerException will catch it
 	// this is only good for when many controllers throw the exception in the same controller
-	@ExceptionHandler(InvalidComputerException.class)
-	public ResponseEntity<String> handleInvalidComputer(){
-		return ResponseEntity.status(HttpStatus.NOT_FOUND).body("not found");
-	}
+//	@ExceptionHandler(InvalidComputerException.class)
+//	public ResponseEntity<String> handleInvalidComputer(){
+//		return ResponseEntity.status(HttpStatus.NOT_FOUND).body("not found");
+//	}
 	
 }
 

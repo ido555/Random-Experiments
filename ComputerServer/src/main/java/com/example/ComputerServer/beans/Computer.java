@@ -49,6 +49,11 @@ public class Computer {
 	public String getModel() {
 		return model;
 	}
+
+	@Override
+	public String toString() {
+		return "Computer [id=" + id + ", model=" + model + ", ram=" + ram + ", price=" + price + "]";
+	}
 	
 	
 }

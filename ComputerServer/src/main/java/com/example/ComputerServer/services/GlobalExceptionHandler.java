@@ -1,7 +1,6 @@
 package com.example.ComputerServer.services;
 
 import java.util.NoSuchElementException;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -18,7 +17,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 	// execute if this exception is thrown
 	@ExceptionHandler(InvalidComputerException.class)
 	public ResponseEntity<String> handleInvalidComputer() {
-		return ResponseEntity.status(HttpStatus.NOT_FOUND).body("not found");
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).body("not found :(");
 	}
 
 //	@ExceptionHandler(NoSuchElementException.class)
