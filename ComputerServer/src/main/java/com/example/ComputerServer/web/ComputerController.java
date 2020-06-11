@@ -38,12 +38,12 @@ public class ComputerController {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<?> getOne(@PathVariable long id) throws InvalidComputerException {
-//		try {
+	public ResponseEntity<?> getOne(@PathVariable long id) {
+		try {
 			return ResponseEntity.ok(service.getOneComputer(id));
-//		} catch (InvalidComputerException e) {
-//			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id not found...");
-//		}
+		} catch (InvalidComputerException e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id not found...");
+		}
 	}
 	
 	@GetMapping("/model/{model}")
@@ -72,15 +72,16 @@ public class ComputerController {
 	}
 	
 	@PutMapping
-	public ResponseEntity<?> updateComputer(@RequestBody Computer comp) {
-		try {
+	public ResponseEntity<?> updateComputer(@RequestBody Computer comp) throws InvalidComputerException {
+//		try {
 			service.updateComputer(comp);
 			return ResponseEntity.ok(comp);
-		} catch (InvalidComputerException e) {
-			return ResponseEntity.badRequest().body(e.getMessage());
-		}
+//		} catch (InvalidComputerException e) {
+//			return ResponseEntity.badRequest().body(e.getMessage());
+//		}
 	}
 	
+	// think carefully before deciding to implement this.
 	// no need for try catch because if any function throws InvalidComputerException will catch it
 	// this is only good for when many controllers throw the exception in the same controller
 	@ExceptionHandler(InvalidComputerException.class)
