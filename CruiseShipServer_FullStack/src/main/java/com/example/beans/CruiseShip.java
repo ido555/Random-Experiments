@@ -25,12 +25,17 @@ public class CruiseShip {
 	
 	@Column(nullable = false)
 	@Setter(value = AccessLevel.NONE)
+	private String name;
+	
+	@Column(nullable = false)
+	@Setter(value = AccessLevel.NONE)
 	private int numOfDecks, numOfPools, numOfRooms;
 	
 	@ManyToOne
 	private List<Passenger> passengers;
 
-	public CruiseShip(int numOfDecks, int numOfPools, int numOfRooms) {
+	public CruiseShip(int numOfDecks, int numOfPools, int numOfRooms, String name) {
+		this.name = name;
 		this.numOfDecks = numOfDecks;
 		this.numOfPools = numOfPools;
 		this.numOfRooms = numOfRooms;
