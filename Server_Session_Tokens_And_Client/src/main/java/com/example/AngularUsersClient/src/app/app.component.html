@@ -1,0 +1,14 @@
+<div>
+  <mat-toolbar>
+      <span>Users Horray!</span>
+      <span>
+        <a routerLink="login">Login</a>
+        <a routerLink="new">New User</a>
+        <a routerLink="info">Info</a>
+        <a (click)="logout()">Logout</a>
+      </span>
+  </mat-toolbar>
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+</div>

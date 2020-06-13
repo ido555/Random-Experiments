@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
@@ -32,7 +34,10 @@ public class ComputerServerApplication {
 		
 		// returns ResponseEntity<Computer>
 		request.postForEntity("http://localhost:8080/comp", comp, Computer.class);
-			System.out.println(Arrays.toString(computers.getBody()));
+		System.out.println(Arrays.toString(computers.getBody()));
+			
+		// for POST the null would be the request body
+		ResponseEntity<Computer[]> response = request.exchange("http://localhost:8080/comp", HttpMethod.GET, null, Computer[].class);
 		} catch (HttpClientErrorException e) {
 			System.out.println(e.getMessage());
 		}

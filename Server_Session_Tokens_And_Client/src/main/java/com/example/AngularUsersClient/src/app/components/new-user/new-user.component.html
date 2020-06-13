@@ -1,0 +1,23 @@
+<div>
+    <form [formGroup]="userForm">
+        <mat-form-field>
+            <mat-label>
+                Username
+            </mat-label>
+            <input type="text" matInput formControlName="username"/>
+        </mat-form-field><br/>
+        <mat-form-field>
+            <mat-label>
+                Password
+            </mat-label>
+            <input type="password" matInput formControlName="password"/>
+        </mat-form-field><br/>
+        <mat-form-field>
+            <mat-label>
+                Info
+            </mat-label>
+            <input type="text" matInput formControlName="info"/>
+        </mat-form-field><br/>
+        <button mat-raised-button (click)="addUser()">Add User</button>
+    </form>
+</div>
