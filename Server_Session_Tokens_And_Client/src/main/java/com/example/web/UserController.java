@@ -22,15 +22,12 @@ public class UserController {
 
 	// I'm using the Repository and not a Service to make this a simple example
 	private UserRepository repo;
-	
 	private Map<String, User> sessions;
 
 	public UserController(UserRepository repo, Map<String, User> sessions) {
-		super();
 		this.repo = repo;
 		this.sessions = sessions;
 	}
-	
 	
 	@PostMapping
 	public User addUser(@RequestBody User user) {
@@ -50,5 +47,4 @@ public class UserController {
 			// if not found send error!
 			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Unauthorized login!");
 	}
-	
 }
