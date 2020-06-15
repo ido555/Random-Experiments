@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.AccessLevel;
@@ -31,9 +32,12 @@ public class CruiseShip {
 	@Setter(value = AccessLevel.NONE)
 	private int numOfDecks, numOfPools, numOfRooms;
 	
-	@ManyToOne
+	@OneToMany
 	private List<Passenger> passengers;
 
+	public CruiseShip() {
+	}
+	
 	public CruiseShip(int numOfDecks, int numOfPools, int numOfRooms, String name) {
 		this.name = name;
 		this.numOfDecks = numOfDecks;
