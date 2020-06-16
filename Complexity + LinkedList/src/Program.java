@@ -13,6 +13,5 @@ public class Program {
 		myList.deleteLast();
 		System.out.println();
 		myList.printList();
-		
 	}
 }
