@@ -20,17 +20,23 @@ public class LinkedList<T> {
 	public void deleteLast() {
 		Node<T> next = null;
 		Node<T> nextNext = null;
-		// goal: iterate nodes until one before last
+		// goal: iterate nodes until one before last and do node.setnext = null
+		
 		// if head is not the only one in LinkedList
 		if (head.getNext() != null) {
 			next = head.getNext();
 			nextNext = next;
+			// while next is not last
 			while (next.getNext() != null) {
+				// make nextNext the last node
 				nextNext = next.getNext();
+				// if last node(nextNext) has no next; make the node before it point at nothing
+				// (GC will collect the referenceless last node)
 				if (nextNext.getNext() == null) {
 					next.setNext(null);
 					return;
 				}
+				// if nextNext isnt last continue iterating the LinkedList
 				next = next.getNext();
 			}
 		}
