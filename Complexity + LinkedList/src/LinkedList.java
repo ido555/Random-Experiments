@@ -69,5 +69,4 @@ public class LinkedList<T> {
 		}
 		System.out.println(temp + "=>");
 	}
-
 }
