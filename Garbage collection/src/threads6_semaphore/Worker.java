@@ -5,7 +5,6 @@ import java.util.concurrent.Semaphore;
 public class Worker extends Thread {
 
 	private Semaphore semaphore;
-	
 
 	public Worker(Semaphore semaphore, String name) {
 		super(name);
@@ -27,7 +26,7 @@ public class Worker extends Thread {
 			}
 		} catch (InterruptedException e1) {
 			e1.printStackTrace();
-		}finally {
+		} finally {
 			semaphore.release();
 		}
 	}
