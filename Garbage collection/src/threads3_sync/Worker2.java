@@ -1,4 +1,4 @@
-package threads3_wait;
+package threads3_sync;
 
 import java.util.List;
 
