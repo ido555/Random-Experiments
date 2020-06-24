@@ -1,4 +1,4 @@
-package threads2;
+package threads2_sleep;
 
 public class Worker1 extends Thread{
 	@Override
@@ -9,6 +9,7 @@ public class Worker1 extends Thread{
 				sleep(500);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
+				break;
 			}
 		}
 	}
