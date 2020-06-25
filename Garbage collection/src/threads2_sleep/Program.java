@@ -6,6 +6,7 @@ public class Program {
 		Worker1 worker1 = new Worker1();
 		worker1.start();
 		worker1.interrupt();
+
 	}
 
 }

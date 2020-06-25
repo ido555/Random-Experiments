@@ -1,3 +1,4 @@
+package old;
 import java.lang.ref.WeakReference;
 
 public class Program {

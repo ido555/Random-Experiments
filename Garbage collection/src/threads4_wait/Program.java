@@ -6,11 +6,25 @@ import java.util.List;
 public class Program {
 
 	public static void main(String[] args) {
-		List<String> items = new ArrayList<String>();
-		WriterWorker worker1 = new WriterWorker(items);
-		ReaderWorker worker2 = new ReaderWorker(items);
+		List<String> data = new ArrayList<String>();
+		WriterWorker worker1 = new WriterWorker(data);
+		ReaderWorker worker2 = new ReaderWorker(data);
+		ReaderWorker worker3 = new ReaderWorker(data);
+
+		//worker3.setPriority(10);
+		
 		worker1.start();
 		worker2.start();
+		worker3.start();
+		
+		try {
+			worker1.join();
+		} catch (InterruptedException e) {}
+		
+		while(data.size() != 0) {
+			data.notifyAll();
+		}
+		
 	}
 
 }

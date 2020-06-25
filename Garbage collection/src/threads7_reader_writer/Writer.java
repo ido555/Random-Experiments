@@ -3,9 +3,9 @@ package threads7_reader_writer;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class Writer extends Thread {
-	
+
 	private ReentrantReadWriteLock lock;
-	
+
 	public Writer(ReentrantReadWriteLock lock) {
 		super();
 		this.lock = lock;
@@ -13,16 +13,15 @@ public class Writer extends Thread {
 
 	@Override
 	public void run() {
-//		lock.readLock();
-		lock.writeLock().lock(); // locks everything but itself
+
+		lock.writeLock().lock(); // lock as writer!
 		System.out.println("writing...");
 		try {
-			sleep(800);
+			sleep(1500);
 		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}finally {
-			lock.writeLock().unlock(); // release
+		} finally {
+			lock.writeLock().unlock(); // release writer lock
 		}
-		
 	}
+
 }
