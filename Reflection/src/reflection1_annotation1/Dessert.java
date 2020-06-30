@@ -1,4 +1,4 @@
-package reflection1;
+package reflection1_annotation1;
 
 import java.util.Arrays;
 
@@ -23,9 +23,11 @@ public class Dessert {
 	public String getName() {
 		return name;
 	}
+	@annotation1(value = "Calories in Joules", isRunnable = false)
 	public int getCalories() {
 		return calories;
 	}
+	@annotation1(value = "Price in USD", isRunnable = true)
 	public double getPrice() {
 		return price;
 	}
