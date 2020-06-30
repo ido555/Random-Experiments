@@ -1,4 +1,4 @@
-package reflection1_annotation1;
+package reflections2;
 
 import java.util.Arrays;
 
@@ -10,6 +10,10 @@ public class Dessert {
 	public int stam;
 	protected long stam2;
 
+	
+	public Dessert() {
+	}
+	
 	public Dessert(String name, int calories) {
 		this.name = name;
 		this.calories = calories;
@@ -23,11 +27,11 @@ public class Dessert {
 	public String getName() {
 		return name;
 	}
-	@annotation1(value = "Calories in Joules", isRunnable = false)
+//	@annotation1(value = "Calories in Joules", isRunnable = false)
 	public int getCalories() {
 		return calories;
 	}
-	@annotation1(value = "Price in USD", isRunnable = true)
+//	@annotation1(value = "Price in USD", isRunnable = true)
 	public double getPrice() {
 		return price;
 	}

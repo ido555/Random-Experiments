@@ -1,4 +1,4 @@
-package reflection1_annotation1;
+package reflection_annotation1;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -8,7 +8,7 @@ public class Program {
 
 	public static void main(String[] args) throws ClassNotFoundException {
 		// 1> use Class.forname()
-//			Class class1 = Class.forName("reflection1_annotation1.Dessert");
+//			Class class1 = Class.forName("reflection_annotation1.Dessert");
 
 		// 2> use obj.getClass()
 		Dessert d1 = new Dessert("cake", 2000);
