@@ -11,8 +11,8 @@ import nir.MyClass;
 public class Program {
 
 	public static void main(String[] args) {
-		Class<MyClass> nir = MyClass.class;
-
+		 Class<MyClass> nir = MyClass.class;
+		String str = "aa";
 		System.out.println("ctors");
 		for (Constructor<?> c : nir.getDeclaredConstructors()) {
 			System.out.println(c);
