@@ -14,7 +14,7 @@ public class Program {
 		Dessert d1 = new Dessert("cake", 2000);
 //		Class class1 = d1.getClass();
 
-		// 1> use ClassName.class
+		// 3> use ClassName.class
 		Class class1 = Dessert.class;
 
 		System.out.println("Dessert Fields:");
