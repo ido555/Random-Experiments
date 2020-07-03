@@ -1,0 +1,7 @@
+1. TextObserver - class+interface - receive string and let an interface handle it in its future implementation (a subscriber using it)
+
+2. TextSubscriber1 - class - calculate length of string
+
+3. TextSubscriber2 - class 
+
+An observable is an object which notifies observers about the changes in its state.

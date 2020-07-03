@@ -5,10 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import com.example.enums.BookingStatus;
-
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,16 +24,17 @@ public class Passenger {
 	@Column(nullable = false)
 	private String name;
 	
-	@Column(nullable = false)
 	private int roomNumber;
 	
 	@Column(nullable = false)
 	private BookingStatus status;
 	
-	@Column(nullable = false)
-	@OneToMany
+	@ManyToOne
 	private CruiseShip ship;
 
+	public Passenger() {
+	}
+	
 	public Passenger(String name, int roomNumber, BookingStatus status, CruiseShip ship) {
 		this.name = name;
 		this.roomNumber = roomNumber;

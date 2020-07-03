@@ -22,7 +22,6 @@ public class LoginController {
 
 	
 	public LoginController(UserRepository repo, Map<String, User> sessions) {
-		super();
 		this.repo = repo;
 		this.sessions = sessions;
 	}
