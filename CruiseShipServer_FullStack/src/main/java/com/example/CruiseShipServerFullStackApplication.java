@@ -21,7 +21,7 @@ public class CruiseShipServerFullStackApplication {
 			s.createShip(1, 2, 3, "jeff2");
 			s.createShip(1, 2, 3, "jeff");
 		} catch (AlreadyBoundException e) {
-			// TODO Auto-generated catch block
+			// 
 			e.printStackTrace();
 		}
 //		CruiseShip ship = new CruiseShip(1, 1, 3);

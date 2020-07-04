@@ -49,6 +49,6 @@ public class StocksProjectApplication {
 //	fin.close();
 //	ois.close();
 //} catch (IOException | ClassNotFoundException e) {
-//	// TODO Auto-generated catch block
+//	// 
 //	e.printStackTrace();
 //}

@@ -17,7 +17,7 @@ public class Program {
 			worker2.join(); // make Main Thread wait for worker2 to finish!
 			worker1.join();
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
+			// 
 			e.printStackTrace();
 		}
 		System.out.println("size: " + data.size());
