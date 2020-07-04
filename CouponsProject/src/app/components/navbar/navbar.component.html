@@ -1,5 +1,43 @@
-<div>
-    <mat-toolbar color="primary">
-        <span >Coupon Project</span>
-    </mat-toolbar>
+<div id="main">
+    <!--Navbar-->
+<mdb-navbar SideClass="navbar navbar-expand navbar-dark indigo">
+
+    <!-- Navbar brand -->
+    <mdb-navbar-brand><a class="navbar-brand" href="#">Coupons Project</a></mdb-navbar-brand>
+
+    <!-- Collapsible content -->
+    <links>
+
+        <!-- Links -->
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link waves-light" mdbWavesEffect>Home<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link waves-light" mdbWavesEffect>User Actions</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link waves-light" mdbWavesEffect>Pricing</a>
+            </li>
+            <li class="nav-item" *ngIf="!isLoggedIn" (click)="flipBool()">
+                <a class="nav-link waves-light" mdbWavesEffect>Login</a>
+            </li>
+            <li class="nav-item" *ngIf="isLoggedIn" (click)="flipBool()">
+                <a class="nav-link waves-light" mdbWavesEffect>Logout</a>
+            </li>
+
+        </ul>
+        <!-- Links -->
+
+<!-- Search form -->
+        <!-- <form class="form-inline waves-light" mdbWavesEffect>
+            <div class="md-form my-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search">
+            </div>
+        </form> -->
+    </links>
+    <!-- Collapsible content -->
+
+</mdb-navbar>
+<!--/.Navbar-->
 </div>
