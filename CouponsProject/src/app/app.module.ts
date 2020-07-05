@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { AppRoutingModule } from './app-routing.module';
@@ -10,6 +11,7 @@ import { LoginBoxComponent } from './components/login-box/login-box.component';
 import { NavbarModule, WavesModule, ButtonsModule } from 'angular-bootstrap-md'
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { CustomerControlsComponent } from './components/admin/customer-controls/customer-controls.component';
 
 @NgModule({
   declarations: [
@@ -17,10 +19,12 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     NavbarComponent,
     HomeComponent,
     LoginBoxComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    CustomerControlsComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
