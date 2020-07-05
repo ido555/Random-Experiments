@@ -9,13 +9,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginBoxComponent } from './components/login-box/login-box.component';
 import { NavbarModule, WavesModule, ButtonsModule } from 'angular-bootstrap-md'
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     HomeComponent,
-    LoginBoxComponent
+    LoginBoxComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

@@ -2,7 +2,7 @@
 <mdb-navbar SideClass="navbar navbar-expand-sm navbar-dark purple" [containerInside]="false">
 
     <!-- Navbar brand -->
-    <mdb-navbar-brand><a class="navbar-brand" href="#">Navbar</a></mdb-navbar-brand>
+    <mdb-navbar-brand><a class="navbar-brand" href="home">Boba Bola</a></mdb-navbar-brand>
   
     <!-- Collapsible content -->
     <links>
@@ -14,13 +14,13 @@
         <li class="nav-item dropdown" dropdown>
           <div>
             <!-- TODO hide if not logged in -->
-            <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect href="#">
+            <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect >
               <mdb-icon fas icon="car-crash"></mdb-icon> Admin Functions <span class="caret"></span>
             </a>
             <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
-              <a class="dropdown-item waves-light" mdbWavesEffect href="#">Customer Controls</a>
+              <a class="dropdown-item waves-light" mdbWavesEffect href="12345">Customer Controls</a>
               <!-- TODO on click route a new page for company controls - add,update,remove etc - using routing -->
-              <a class="dropdown-item waves-light" mdbWavesEffect href="#">Company Controls</a>
+              <a class="dropdown-item waves-light" mdbWavesEffect href="12345">Company Controls</a>
             </div>
           </div>
         </li>
@@ -30,10 +30,10 @@
             <mdb-icon fas icon="user"></mdb-icon> Profile<span class="caret"></span></a>
             <a>
               <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
-                <a class="dropdown-item waves-light" mdbWavesEffect href="#">My account</a>
+                <a class="dropdown-item waves-light" mdbWavesEffect href="">My account</a>
                 <!-- TODO hide if not logged in -->
-                <a class="dropdown-item waves-light" mdbWavesEffect href="#">Log out</a>
-                <a class="dropdown-item waves-light" mdbWavesEffect href="#">Log in</a>
+                <a class="dropdown-item waves-light" mdbWavesEffect href="">Log out</a>
+                <a class="dropdown-item waves-light" mdbWavesEffect href="">Log in</a>
               </div>
           </a>
         </li>
