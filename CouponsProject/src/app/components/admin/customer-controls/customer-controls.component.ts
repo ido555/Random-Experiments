@@ -14,7 +14,7 @@ export class CustomerControlsComponent implements OnInit {
     console.log("test123")
   }
   public getAllCustomers(){
-    this.cont.getAllCustomers("74ff0e68-869f-41f2-af0b-3c8e99b1c0e9").subscribe(
+    this.cont.getAllCustomers("token 123").subscribe(
       s => console.log(s),
       e => console.log(e)
     )

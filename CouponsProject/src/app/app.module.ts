@@ -12,6 +12,9 @@ import { NavbarModule, WavesModule, ButtonsModule } from 'angular-bootstrap-md'
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { CustomerControlsComponent } from './components/admin/customer-controls/customer-controls.component';
+import { MatDialogModule } from "@angular/material/dialog";
+
+
 
 @NgModule({
   declarations: [
@@ -31,7 +34,8 @@ import { CustomerControlsComponent } from './components/admin/customer-controls/
     MDBBootstrapModule.forRoot(),
     NavbarModule,
     WavesModule,
-    ButtonsModule
+    ButtonsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
