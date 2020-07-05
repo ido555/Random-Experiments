@@ -13,7 +13,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { CustomerControlsComponent } from './components/admin/customer-controls/customer-controls.component';
 import { MatDialogModule } from "@angular/material/dialog";
-// import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
 
@@ -36,7 +36,9 @@ import { MatDialogModule } from "@angular/material/dialog";
     NavbarModule,
     WavesModule,
     ButtonsModule,
-    MatDialogModule
+    MatDialogModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]

@@ -12,6 +12,6 @@ export class LoginControllerService {
     // idk why httpParams:HttpParams) didnt work (missing provider or something) so i just skipped it
     // this.httpParams.append("email", email.toString());
     // this.httpParams.append("password", password.toString());
-    return this.httpClient.get("http://localhost:8080/login/" + clientType, { params: {"password":password.toString(), "email":email.toString()} })
+    return this.httpClient.post("http://localhost:8080/login/" + clientType, { params: {"password":password.toString(), "email":email.toString()} })
   }
 }
