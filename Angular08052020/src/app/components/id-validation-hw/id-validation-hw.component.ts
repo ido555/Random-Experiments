@@ -56,14 +56,11 @@ export class IdValidationHWComponent implements OnInit {
           num = num % 10 + Math.floor(num / 10);
         }
       }
-
       sum += num;
-
     } // end of for
 
     if (sum % 10 != 0)
       return { idError: true }
-
   }
 
   public validDate(control: AbstractControl) {
@@ -75,5 +72,4 @@ export class IdValidationHWComponent implements OnInit {
     if (currentDate.getTime() > inputDate.getTime())
       return { dateError: true }
   }
-
 }

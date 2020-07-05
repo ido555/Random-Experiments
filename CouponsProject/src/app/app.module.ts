@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpParams } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { AppRoutingModule } from './app-routing.module';
@@ -13,6 +13,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { CustomerControlsComponent } from './components/admin/customer-controls/customer-controls.component';
 import { MatDialogModule } from "@angular/material/dialog";
+// import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 
 
@@ -37,7 +38,7 @@ import { MatDialogModule } from "@angular/material/dialog";
     ButtonsModule,
     MatDialogModule
   ],
-  providers: [],
+  providers: [HttpClientModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
