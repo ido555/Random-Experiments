@@ -10,3 +10,7 @@
     z-index: 3;
     font-size: 20px;    
 }
+video{
+    height: 100%;
+    width: 100%;
+}

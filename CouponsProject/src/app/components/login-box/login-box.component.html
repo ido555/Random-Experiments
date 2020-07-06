@@ -7,14 +7,14 @@
     
     <div class="dropdown" mdbDropdown>
 
-      <button mdbDropdownToggle mdbBtn color="primary" class="dropdown-toggle waves-light" type="button" mdbWavesEffect>
+      <button  mdbDropdownToggle mdbBtn color="primary" class="dropdown-toggle waves-light" type="button" mdbWavesEffect>
          {{this.clientType}} </button>
     
          <!-- TODO this is a really bad way to do this. fix later -->
       <div class="dropdown-menu dropdown-primary">
-        <button class="dropdown-item" (click)="setClientType('Adminstrator')">Adminstrator</button>
-        <button class="dropdown-item" (click)="setClientType('Company')">Company</button>
-        <button class="dropdown-item" (click)="setClientType('Customer')">Customer</button>
+        <button class="dropdown-item" (click)="setClientType(0); checkClientType()">Adminstrator</button>
+        <button class="dropdown-item" (click)="setClientType(1); checkClientType()">Company</button>
+        <button class="dropdown-item" (click)="setClientType(2); checkClientType()">Customer</button>
       </div>
     </div>
     
@@ -28,7 +28,7 @@
       </div>
     </div>
     <!-- TODO (click) - loading thingy then login-->
-    <button *ngIf="loginForm.valid" mdbBtn color="info" block="true" class="my-4" type="submit" (click)="login()">Sign in</button>
+    <button *ngIf="loginForm.valid && this.typeCheck" mdbBtn color="info" block="true" class="my-4" type="submit" (click)="login()">Sign in</button>
     <p>Not a member?
       <a href="">Contact Adminstrator</a>
     </p>
