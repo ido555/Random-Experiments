@@ -13,15 +13,17 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class LoginBoxComponent implements OnInit {
   // private fb: FormBuilder
   // private dialogRef:MatDialogRef<LoginBoxComponent>
-  //  private logMan:LoginControllerService
+  // private logMan:LoginControllerService
   constructor(private fb: FormBuilder, private dialogRef: MatDialogRef<LoginBoxComponent>, private logMan: LoginControllerService) { }
-  clientType: ClientType;
+
+  clientType;
   password: String;
   email: String;
   loginForm: FormGroup;
 
   ngOnInit(): void {
-    this.loginForm = this.fb.group({
+    this.clientType = "choose a client type"
+      this.loginForm = this.fb.group({
       password: ['', Validators.required],
       email: ['', Validators.required],
       // clientType: ['', Validators.required,
@@ -29,27 +31,30 @@ export class LoginBoxComponent implements OnInit {
       //  Validators.pattern(ClientType.Company.toString()),
       //  Validators.pattern(ClientType.Customer.toString())]
     })
-    this.clientType = ClientType.Customer;
   }
 
   closeDialog() {
     this.dialogRef.close()
   }
   login() {
+    console.log("client type: " + this.clientType,
+      "password: " + this.loginForm.controls["password"].value,
+      "email: " + this.loginForm.controls["email"].value)
     this.logMan.login(this.clientType, this.loginForm.controls["password"].value, this.loginForm.controls["email"].value).subscribe(
       s => { console.log(s); sessionStorage.setItem("token", s.toString()) },
       e => { console.log(e) }
     )
   }
-  setClientType(num: number) {
-    switch (num) {
-      case 0:
+  // TODO this is a really bad way to do this. fix later
+  setClientType(type: String) {
+    switch (type) {
+      case "Adminstrator":
         this.clientType = ClientType.Adminstrator
         break;
-      case 1:
+      case "Company":
         this.clientType = ClientType.Company
         break;
-      case 2:
+      case "Customer":
         this.clientType = ClientType.Customer
         break;
     }

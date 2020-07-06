@@ -10,10 +10,11 @@
       <button mdbDropdownToggle mdbBtn color="primary" class="dropdown-toggle waves-light" type="button" mdbWavesEffect>
          {{this.clientType}} </button>
     
+         <!-- TODO this is a really bad way to do this. fix later -->
       <div class="dropdown-menu dropdown-primary">
-        <button class="dropdown-item" (click)="setClientType(0)">Adminstrator</button>
-        <button class="dropdown-item" (click)="setClientType(1)">Company</button>
-        <button class="dropdown-item" (click)="setClientType(2)">Customer</button>
+        <button class="dropdown-item" (click)="setClientType('Adminstrator')">Adminstrator</button>
+        <button class="dropdown-item" (click)="setClientType('Company')">Company</button>
+        <button class="dropdown-item" (click)="setClientType('Customer')">Customer</button>
       </div>
     </div>
     
