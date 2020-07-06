@@ -1,6 +1,4 @@
 import { CouponCategory } from './../enums/coupon-category.enum';
-import { title } from 'process';
-
 export class Coupon {
     constructor(
         id, amount, price: Number,

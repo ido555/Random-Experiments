@@ -9,12 +9,13 @@ import { Component, OnInit } from '@angular/core';
 export class CustomerControlsComponent implements OnInit {
 
   constructor(private cont:AdminControllerService) { }
-
+  token: String;
   ngOnInit(): void {
     console.log("test123")
+    this.token = sessionStorage.getItem("token");
   }
   public getAllCustomers(){
-    this.cont.getAllCustomers("token 123").subscribe(
+    this.cont.getAllCustomers(this.token).subscribe(
       s => console.log(s),
       e => console.log(e)
     )
