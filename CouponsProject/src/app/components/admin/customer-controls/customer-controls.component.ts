@@ -1,6 +1,8 @@
 import { TableComponent } from '../../table/table.component';
 import { AdminControllerService } from './../../../services/admin-controller.service';
 import { Component, OnInit } from '@angular/core';
+import { ColumnMode } from '@swimlane/ngx-datatable';
+
 
 @Component({
   selector: 'app-customer-controls',
@@ -10,9 +12,11 @@ import { Component, OnInit } from '@angular/core';
 export class CustomerControlsComponent implements OnInit {
 
   constructor(private cont: AdminControllerService, private table: TableComponent) { }
+
+  ColumnMode = ColumnMode;
   token: String;
   rows;
-  columns = [{ prop: 'firstName' }, { name: 'lastName' }, { name: 'email' }, { name: 'password' }];
+  columns = [{ prop: 'firstName' }, { prop: 'lastName' }, { prop: 'email' }, { prop: 'password' }];
 
   ngOnInit(): void {
     console.log("test123")
