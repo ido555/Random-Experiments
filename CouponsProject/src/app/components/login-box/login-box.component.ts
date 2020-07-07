@@ -28,7 +28,7 @@ export class LoginBoxComponent implements OnInit {
   //     Validators.pattern(ClientType[1]) || // 1 - Company
   //     Validators.pattern(ClientType[2])]]   // 2 - Customer
   ngOnInit(): void {
-    this.clientType = "choose a client type"
+    this.clientType = "Adminstrator"
     this.loginForm = this.fb.group({
       password: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]]
@@ -40,24 +40,27 @@ export class LoginBoxComponent implements OnInit {
     this.dialogRef.close()
   }
   // TODO properly show error / success with a little loading thingy and popup
+  // TODO popup at bottom of screen thingy whatever thats called
   login() {
     this.logMan.login(this.clientType, this.password, this.email).subscribe(
-      s => { sessionStorage.setItem("token", s.toString()) },
+      s => { localStorage.setItem("token", s.toString()) },
       e => { console.log(e) }
     )
   }
   // TODO this is a really bad way to do this. fix later
   setClientType(type: number) {
-    this.clientType = ClientType[type];
-    console.log(this.loginForm.controls);
+    this.clientType = ClientType[0];
+    this.checkClientType()
   }
-  checkClientType(){
+  checkClientType() {
     this.password = this.loginForm.controls["password"].value;
     this.email = this.loginForm.controls["email"].value;
-    if (this.clientType == ClientType[0] || ClientType[1] || ClientType[2])
+    if (this.clientType == ClientType || ClientType[1] || ClientType[2])
       this.typeCheck = true;
     else
       this.typeCheck = false
+
+
   }
 }
 

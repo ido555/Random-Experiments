@@ -1,9 +1,14 @@
 <div>
-    <h1 style="text-align: center; padding: 3%;">
+    <h1 class="center" style="padding: 3%">
         Welcome admin.
     </h1>
     TODO button to get all customers in table <br>
     <span>
-        <button mdbBtn type="button" gradient="blue" rounded="true" mdbWavesEffect (click)="getAllCustomers()">Get all customers</button>
+        <button mdbBtn type="button" class="btn-light" rounded="true" mdbWavesEffect
+         (click)="getAllCustomers()">Get all customers</button>
     </span>
+
+    <div class="center ">
+        <ngx-datatable *ngIf="this.rows != null" class="blue-gradient myNgxTable animated rollIn"  [rows]="rows" [columns]="columns"> </ngx-datatable>
+    </div>
 </div>

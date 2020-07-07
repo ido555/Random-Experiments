@@ -1,5 +1,34 @@
 /* You can add global styles to this file, and also import other style files */
+
 body {
-    overflow-y: hidden; /* Hide vertical scrollbar */
-    overflow-x: hidden; /* Hide horizontal scrollbar */
-  }
+  /* Hide vertical scrollbar */
+  overflow-y: hidden;
+  /* Hide horizontal scrollbar */
+  overflow-x: hidden;
+}
+
+.blueGradient {
+  background: #5cc2e8;
+  background: -moz-linear-gradient(-45deg, #5cc2e8 0%, #14a2c9 50%, #5dc7ea 100%);
+  background: -webkit-linear-gradient(-45deg, #5cc2e8 0%, #14a2c9 50%, #5dc7ea 100%);
+  background: linear-gradient(135deg, #5cc2e8 0%, #14a2c9 50%, #5dc7ea 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5cc2e8', endColorstr='#5dc7ea', GradientType=1);
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.myNgxTable {
+  /* soft box shadow */
+  -webkit-box-shadow: -6px 0px 39px 4px rgba(61, 61, 61, 0.75);
+  -moz-box-shadow: -6px 0px 39px 4px rgba(61, 61, 61, 0.75);
+  box-shadow: -6px 0px 39px 4px rgba(61, 61, 61, 0.75);
+  /* round edges */
+  border-radius: 6px 6px 6px 6px;
+  -moz-border-radius: 6px 6px 6px 6px;
+  -webkit-border-radius: 6px 6px 6px 6px;
+
+  background: #e0e0e0;
+}

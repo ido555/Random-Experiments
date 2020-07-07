@@ -14,6 +14,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { CustomerControlsComponent } from './components/admin/customer-controls/customer-controls.component';
 import { MatDialogModule } from "@angular/material/dialog";
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { TableComponent } from './components/table/table.component';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 
 
@@ -24,7 +26,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     HomeComponent,
     LoginBoxComponent,
     NotFoundComponent,
-    CustomerControlsComponent
+    CustomerControlsComponent,
+    TableComponent
   ],
   imports: [
     BrowserModule,
@@ -38,9 +41,11 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     ButtonsModule,
     MatDialogModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    NgxDatatableModule,
+    BrowserModule
   ],
-  providers: [HttpClientModule],
+  providers: [HttpClientModule, TableComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
