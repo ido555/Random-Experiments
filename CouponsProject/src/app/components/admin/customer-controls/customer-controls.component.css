@@ -15,7 +15,8 @@
 
 .table { grid-area: table; }
 
-.heading { grid-area: heading; }
+.heading { grid-area: heading; 
+text-align: center;}
 
 .btn1 { grid-area: btn1; }
 

@@ -21,9 +21,9 @@ body {
   -moz-box-shadow: -6px 0px 39px 4px rgba(61, 61, 61, 0.75);
   box-shadow: -6px 0px 39px 4px rgba(61, 61, 61, 0.75);
   /* round edges */
-  border-radius: 6px 6px 6px 6px;
-  -moz-border-radius: 6px 6px 6px 6px;
-  -webkit-border-radius: 6px 6px 6px 6px;
+  border-radius: 8px 8px 8px 8px;
+  -moz-border-radius: 8px 8px 8px 8px;
+  -webkit-border-radius: 8px 8px 8px 8px;
   position: absolute;
   margin-bottom: 50%;
   background: #e0e0e0;
