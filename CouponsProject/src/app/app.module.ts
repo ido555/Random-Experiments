@@ -19,7 +19,6 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { ErrorBoxComponent } from './components/error-box/error-box.component';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +44,7 @@ import { ErrorBoxComponent } from './components/error-box/error-box.component';
     ReactiveFormsModule,
     FormsModule,
     NgxDatatableModule,
-    BrowserModule
+    BrowserModule,
   ],
   providers: [HttpClientModule, TableComponent],
   bootstrap: [AppComponent]

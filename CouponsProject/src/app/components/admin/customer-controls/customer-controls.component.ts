@@ -3,7 +3,7 @@ import { TableComponent } from '../../table/table.component';
 import { AdminControllerService } from './../../../services/admin-controller.service';
 import { Component, OnInit } from '@angular/core';
 import { ColumnMode } from '@swimlane/ngx-datatable';
-import {MatDialog} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 
 
 @Component({
@@ -13,7 +13,7 @@ import {MatDialog} from '@angular/material/dialog';
 })
 export class CustomerControlsComponent implements OnInit {
 
-  constructor(private cont: AdminControllerService, private table: TableComponent, private dialog:MatDialog) { }
+  constructor(private cont: AdminControllerService, private table: TableComponent, private dialog: MatDialog) { }
 
   ColumnMode = ColumnMode;
   token: String;
@@ -27,7 +27,11 @@ export class CustomerControlsComponent implements OnInit {
     this.token = localStorage.getItem("token");
   }
   openDialog() {
-    this.dialog.open(ErrorBoxComponent, { minHeight: 200, minWidth: 200, disableClose: true })
+    this.dialog.open(ErrorBoxComponent,
+      {
+        minHeight: 200, minWidth: 200, disableClose: false,
+        data: { err: "Error 123 has occured" }
+      })
   }
 
   getAllCustomers() {
