@@ -9,12 +9,11 @@ import { Inject } from '@angular/core';
 })
 export class ErrorBoxComponent implements OnInit {
   err
-  data
 
-  constructor(private dialogRef:MatDialogRef<ErrorBoxComponent>) { }
-  @Inject(MAT_DIALOG_DATA) public data: any;
+  constructor(private dialogRef:MatDialogRef<ErrorBoxComponent>, @Inject(MAT_DIALOG_DATA) public data) { }
+  
   ngOnInit(): void {
-    console.log(this.data)
+    this.err = this.data.err
   }
 
   closeDialog(){

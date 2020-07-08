@@ -14,7 +14,7 @@ import { MatDialog } from '@angular/material/dialog';
 export class CustomerControlsComponent implements OnInit {
 
   constructor(private cont: AdminControllerService, private table: TableComponent, private dialog: MatDialog) { }
-
+  err
   ColumnMode = ColumnMode;
   token: String;
   rows;
@@ -26,11 +26,11 @@ export class CustomerControlsComponent implements OnInit {
     console.log("test123")
     this.token = localStorage.getItem("token");
   }
-  openDialog() {
+  openDialog(err: String) {
     this.dialog.open(ErrorBoxComponent,
       {
         minHeight: 200, minWidth: 200, disableClose: false,
-        data: { err: "Error 123 has occured" }
+        data: { err: err }
       })
   }
 
