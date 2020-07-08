@@ -26,7 +26,7 @@ export class CustomerControlsComponent implements OnInit {
     console.log("test123")
     this.token = localStorage.getItem("token");
   }
-  openDialog(err: String) {
+  errPopup(err: String) {
     this.dialog.open(ErrorBoxComponent,
       {
         minHeight: 200, minWidth: 200, disableClose: false,
@@ -39,14 +39,14 @@ export class CustomerControlsComponent implements OnInit {
     this.cont.getAllCustomers(localStorage.getItem("token")).
       subscribe(
         s => this.updateTable(s),
-        e => console.log(e))
+        e => this.errPopup(e.error))
   }
   getAllCompanies() {
     this.columns = this.compColNames;
     this.cont.getAllCompanies(localStorage.getItem("token")).
       subscribe(
         s => this.updateTable(s),
-        e => console.log(e))
+        e => this.errPopup(e.error))
   }
   updateTable(s: Object) {
     this.rows = s;
