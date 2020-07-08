@@ -1,3 +1,5 @@
+import { Customer } from './../../../models/customer';
+import { Company } from './../../../models/company';
 import { ErrorBoxComponent } from './../../error-box/error-box.component';
 import { TableComponent } from '../../table/table.component';
 import { AdminControllerService } from './../../../services/admin-controller.service';
@@ -48,10 +50,60 @@ export class CustomerControlsComponent implements OnInit {
         s => this.updateTable(s),
         e => this.errPopup(e.error))
   }
+
+  getOneCustomer(cust: Customer) {
+    this.columns = this.custColNames;
+    this.cont.getOneCustomer(localStorage.getItem("token"), cust).
+      subscribe(
+        s => this.updateTable(s),
+        e => this.errPopup(e.error))
+  }
+  getOneCompany(comp: Company) {
+    this.columns = this.compColNames;
+    this.cont.getOneCompany(localStorage.getItem("token"), comp).
+      subscribe(
+        s => this.updateTable(s),
+        e => this.errPopup(e.error))
+  }
+  addCustomer(cust: Customer) {
+    this.cont.addCustomer(localStorage.getItem("token"), cust).
+      subscribe(
+        s => this.updateTable(s),
+        e => this.errPopup(e.error))
+  }
+  addCompany(comp: Company) {
+    this.cont.addCompany(localStorage.getItem("token"), comp).
+      subscribe(
+        s => this.updateTable(s),
+        e => this.errPopup(e.error))
+  }
+  updateCustomer(cust: Customer) {
+    this.cont.updateCustomer(localStorage.getItem("token"), cust).
+      subscribe(
+        s => this.updateTable(s),
+        e => this.errPopup(e.error))
+  }
+  updateCompany(comp: Company) {
+    this.cont.updateCompany(localStorage.getItem("token"), comp).
+      subscribe(
+        s => this.updateTable(s),
+        e => this.errPopup(e.error))
+  }
+  deleteCustomer(cust: Customer) {
+    this.cont.deleteCustomer(localStorage.getItem("token"), cust).
+      subscribe(
+        s => this.updateTable(s),
+        e => this.errPopup(e.error))
+  }
+  deleteCompany(comp: Company) {
+    this.cont.deleteCompany(localStorage.getItem("token"), comp).
+      subscribe(
+        s => this.updateTable(s),
+        e => this.errPopup(e.error))
+  }
   updateTable(s: Object) {
     this.rows = s;
     this.rows = [...this.rows];
-    console.log(s)
   }
 }
 
