@@ -1,46 +1,49 @@
 <div>
-    <h1  style="text-align: center; padding-top: 3%;">
+    <h1 style="text-align: center; padding-top: 3%;">
         Welcome admin.
     </h1>
-    
+
     <div class="grid-container">
         <div class="heading">
         </div>
         <div class="myTable">
-            <ngx-datatable *ngIf="this.rows != null" class="myNgxTable animated rollIn bootstrap"
-            [limit]="10"  [rows]="rows" [columns]="columns" [headerHeight]="50"
-            [footerHeight]="50" rowHeight="auto" [columnMode]="ColumnMode.force"></ngx-datatable>
+            <ngx-datatable *ngIf="this.rows != null" class="myNgxTable animated rollIn bootstrap" [limit]="10"
+                [rows]="rows" [columns]="columns" [headerHeight]="50" [footerHeight]="50" rowHeight="auto"
+                [columnMode]="ColumnMode.force"></ngx-datatable>
         </div>
         <div class="btn1">
-            <button mdbBtn type="button" class="btn-light" mdbWavesEffect
-            (click)="getAllCustomers()">Get all customers</button>
+            <button mdbBtn type="button" class="btn-light" mdbWavesEffect (click)="getAllCompanies()">Get all
+                companies</button>
         </div>
         <div class="btn2">
             <div class="btn1">
-                <button mdbBtn type="button" class="btn-light" mdbWavesEffect
-                (click)="getAllCustomers()">Get all customers</button>
+                <button mdbBtn type="button" class="btn-light" mdbWavesEffect (click)="getAllCustomers()">Get all
+                    customers</button>
             </div>
         </div>
         <div class="btn3">
             <div class="btn1">
-                <button mdbBtn type="button" class="btn-light" mdbWavesEffect
-                (click)="getAllCustomers()">Get all customers</button>
+                <button mdbBtn type="button" class="btn-light" mdbWavesEffect (click)="getAllCustomers()">Get all
+                    customers</button>
             </div>
         </div>
         <div class="btn4">
             <div class="btn1">
-                <button mdbBtn type="button" class="btn-light" mdbWavesEffect
-                (click)="getAllCustomers()">Get all customers</button>
+                <button mdbBtn type="button" class="btn-light" mdbWavesEffect (click)="getAllCustomers()">Get all
+                    customers</button>
             </div>
         </div>
         <div class="btn5">
             <div class="btn1">
-                <button mdbBtn type="button" class="btn-light" mdbWavesEffect
-                (click)="getAllCustomers()">Get all customers</button>
+                <button mdbBtn type="button" class="btn-light" mdbWavesEffect (click)="getAllCustomers()">Get all
+                    customers</button>
             </div>
         </div>
-        <div class="btn6"></div>
+        <div class="btn6">
+            <button mdbBtn type="button" class="btn-light" mdbWavesEffect (click)="openDialog()"> error example</button>
+        </div>
         <div class="btn7"></div>
         <div class="btn8"></div>
-      </div>
+    </div>
+   
 </div>

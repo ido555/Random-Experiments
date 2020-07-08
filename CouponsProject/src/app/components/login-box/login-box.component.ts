@@ -28,6 +28,7 @@ export class LoginBoxComponent implements OnInit {
   //     Validators.pattern(ClientType[1]) || // 1 - Company
   //     Validators.pattern(ClientType[2])]]   // 2 - Customer
   ngOnInit(): void {
+    // TODO fix
     this.clientType = "Adminstrator"
     this.loginForm = this.fb.group({
       password: ['', Validators.required],

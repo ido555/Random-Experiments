@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HttpParams } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { NgModule, ViewChild, ViewContainerRef, ComponentFactoryResolver, ComponentFactory } from '@angular/core';
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +16,7 @@ import { MatDialogModule } from "@angular/material/dialog";
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { TableComponent } from './components/table/table.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { ErrorBoxComponent } from './components/error-box/error-box.component';
 
 
 
@@ -27,7 +28,8 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
     LoginBoxComponent,
     NotFoundComponent,
     CustomerControlsComponent,
-    TableComponent
+    TableComponent,
+    ErrorBoxComponent
   ],
   imports: [
     BrowserModule,
@@ -48,4 +50,10 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
   providers: [HttpClientModule, TableComponent],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  @ViewChild("alertContainer", { read: ViewContainerRef }) container;
+
+  constructor(private resolver: ComponentFactoryResolver) { }
+
+
+}
