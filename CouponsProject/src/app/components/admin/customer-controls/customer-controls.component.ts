@@ -4,7 +4,7 @@ import { ErrorBoxComponent } from './../../error-box/error-box.component';
 import { TableComponent } from '../../table/table.component';
 import { AdminControllerService } from './../../../services/admin-controller.service';
 import { Component, OnInit } from '@angular/core';
-import { ColumnMode } from '@swimlane/ngx-datatable';
+import { ColumnMode, SelectionType } from '@swimlane/ngx-datatable';
 import { MatDialog } from '@angular/material/dialog';
 
 
@@ -17,6 +17,8 @@ export class CustomerControlsComponent implements OnInit {
 
   constructor(private cont: AdminControllerService, private table: TableComponent, private dialog: MatDialog) { }
   err
+  selected = [];
+  SelectionType = SelectionType;
   ColumnMode = ColumnMode;
   token: String;
   rows;
@@ -35,7 +37,18 @@ export class CustomerControlsComponent implements OnInit {
         data: { err: err }
       })
   }
+  onSelect({ selected }) {
+    console.log('Select Event', selected, this.selected);
+  }
 
+  onActivate(event) {
+    console.log('Activate Event', event);
+  }
+  updateTable(s: Object) {
+    this.rows = s;
+    this.rows = [...this.rows];
+    this.selected = [];
+  }
   getAllCustomers() {
     this.columns = this.custColNames;
     this.cont.getAllCustomers(localStorage.getItem("token")).
@@ -101,9 +114,6 @@ export class CustomerControlsComponent implements OnInit {
         s => this.updateTable(s),
         e => this.errPopup(e.error))
   }
-  updateTable(s: Object) {
-    this.rows = s;
-    this.rows = [...this.rows];
-  }
+
 }
 

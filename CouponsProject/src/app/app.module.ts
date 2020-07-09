@@ -44,7 +44,7 @@ import { ErrorBoxComponent } from './components/error-box/error-box.component';
     ReactiveFormsModule,
     FormsModule,
     NgxDatatableModule,
-    BrowserModule,
+    BrowserModule
   ],
   providers: [HttpClientModule, TableComponent],
   bootstrap: [AppComponent]

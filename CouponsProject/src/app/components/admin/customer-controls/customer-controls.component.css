@@ -3,6 +3,12 @@
   left: 29%;
   top: 20%;
 }
+.myTableBtn{
+  position: absolute;
+  padding-top: 2px;
+  left: 29%;
+  top: 55%;
+}
 
 /* https://grid.layoutit.com/ */
 .grid-container {
