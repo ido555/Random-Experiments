@@ -1,3 +1,4 @@
+import { ClientInfoPopupComponent } from './../../client-info-popup/client-info-popup.component';
 import { Customer } from './../../../models/customer';
 import { Company } from './../../../models/company';
 import { ErrorBoxComponent } from './../../error-box/error-box.component';
@@ -35,6 +36,13 @@ export class CustomerControlsComponent implements OnInit {
       {
         minHeight: 200, minWidth: 200, disableClose: false,
         data: { err: err }
+      })
+  }
+  clientPopup() {
+    this.dialog.open(ClientInfoPopupComponent,
+      {
+        minHeight: 200, minWidth: 200, disableClose: false,
+        data: { }
       })
   }
   onSelect({ selected }) {

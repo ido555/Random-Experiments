@@ -19,7 +19,9 @@ export class NavbarComponent implements OnInit {
   }
   public logOut(){
     console.log("tryna logout")
-    localStorage.removeItem('token');
-    this.logMan.logout(localStorage.getItem('token'))
+    this.logMan.logout(localStorage.getItem('token')).subscribe(
+      s => {localStorage.removeItem('token')},
+      e => {}
+    );
   }
 }

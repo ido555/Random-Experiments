@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, OnInit, Inject } from '@angular/core';
 
 @Component({
   selector: 'app-client-info-popup',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClientInfoPopupComponent implements OnInit {
 
-  constructor() { }
+  client;
+
+  constructor(private dialogRef:MatDialogRef<ClientInfoPopupComponent>, @Inject(MAT_DIALOG_DATA) public data) { }
 
   ngOnInit(): void {
+    this.client = this.data.client
+  }
+
+  closeDialog(){
+    this.dialogRef.close()
   }
 
 }

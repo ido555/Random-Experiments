@@ -1,6 +1,6 @@
 import { ClientType } from './../../enums/client-type.enum';
 import { LoginControllerService } from './../../services/login-controller.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -18,12 +18,13 @@ export class LoginBoxComponent implements OnInit {
   constructor(private fb: FormBuilder, private dialogRef: MatDialogRef<LoginBoxComponent>, private logMan: LoginControllerService) { }
 
   clientType;
+  clientChosen: boolean = false;
   password: String;
   email: String;
   loginForm: FormGroup;
   typeCheck: boolean = false;
-  isLoading: boolean = false;
   success = null;
+  error
 
   //   clientType : ['',  [Validators.required,
   //     Validators.pattern(ClientType[0]) || // 0 - Adminstrator
@@ -31,7 +32,7 @@ export class LoginBoxComponent implements OnInit {
   //     Validators.pattern(ClientType[2])]]   // 2 - Customer
   ngOnInit(): void {
     // TODO fix
-    this.clientType = "Adminstrator"
+    // this.clientType = "Adminstrator"
     this.loginForm = this.fb.group({
       password: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]]
@@ -46,24 +47,33 @@ export class LoginBoxComponent implements OnInit {
   // TODO popup at bottom of screen thingy whatever thats called
   login() {
     this.logMan.login(this.clientType, this.password, this.email).subscribe(
-      s => { localStorage.setItem("token", s.toString()) ; this.success = true},
-      e => { console.log(e); this.success = false}
+      s => { localStorage.setItem("token", s.toString()); this.success = true },
+      e => { this.success = false; this.error = e.error; this.tryAgain() }
     )
   }
+  tryAgain() {
+    setTimeout(() => {
+      this.try();
+    }, 2300)
+  }
+  try() {
+    this.success = null;
+  }
+
   // TODO this is a really bad way to do this. fix later
   setClientType(type: number) {
-    this.clientType = ClientType[0];
+    this.clientType = ClientType[type];
     this.checkClientType()
   }
   checkClientType() {
     this.password = this.loginForm.controls["password"].value;
     this.email = this.loginForm.controls["email"].value;
-    if (this.clientType == ClientType || ClientType[1] || ClientType[2])
+    if (this.clientType == ClientType || ClientType[1] || ClientType[2]) {
+      this.clientChosen = true;
       this.typeCheck = true;
+    }
     else
       this.typeCheck = false
-
-
   }
 }
 

@@ -13,7 +13,7 @@
                 (activate)="onActivate($event)" (select)="onSelect($event)">
             </ngx-datatable>
             <div *ngIf="this.rows != null && this.selected.length > 0" class="myTableBtn animated fadeIn"> 
-                <button mdbBtn type="button" class="btn-light" mdbWavesEffect>Update/Edit/delete</button>
+                <button mdbBtn type="button" class="btn-light" (click)="clientPopup()" mdbWavesEffect>Update/Edit/delete</button>
             </div>
             
         </div>

@@ -7,8 +7,10 @@
 
     <div class="dropdown" mdbDropdown>
 
-      <button mdbDropdownToggle mdbBtn color="primary" class="dropdown-toggle waves-light" type="button" mdbWavesEffect>
-        {{this.clientType}} </button>
+      <button *ngIf="typeCheck == false" mdbDropdownToggle mdbBtn color="primary" class="dropdown-toggle waves-light " type="button" mdbWavesEffect>
+        Choose a client type </button>
+      <button *ngIf="typeCheck" mdbDropdownToggle mdbBtn color="primary" class="dropdown-toggle waves-light" type="button" mdbWavesEffect>
+        {{clientType}} </button>
 
       <!-- TODO this is a really bad way to do this. fix later -->
       <div class="dropdown-menu dropdown-primary">
@@ -28,16 +30,14 @@
       </div>
     </div>
     <!-- TODO (click) - loading thingy then login-->
-    <button *ngIf="loginForm.valid && typeCheck && isLoading == false && success == null" mdbBtn color="info"
-      block="true" class="my-4" type="submit" (click)="login(); isLoading = true">Sign in</button>
+    <button *ngIf="loginForm.valid && typeCheck == true && success == null" mdbBtn color="info"
+      block="true" class="my-4 animated fadeIn faster" type="submit" (click)="login()">Sign in</button>
     <span>
-      <button *ngIf="isLoading && success == null" class="btn btn-primary" disabled>
-        <span class="spinner-border spinner-border-sm"></span>
-        Signing you in...
-      </button>
-      <span style="font-size: 50px;">
-        <i *ngIf="success == true" class="fa fa-check text-success animated fadeIn" aria-hidden="true"></i>
-        <i *ngIf="success == false" class="fa fa-window-close text-danger animated fadeIn" aria-hidden="true"></i>
+      <span>
+        <i *ngIf="success == true" class="font50px fa fa-check text-success animated fadeIn" aria-hidden="true"></i>
+        <i *ngIf="success == false" class="font50px fa fa-window-close text-danger animated fadeIn"
+          aria-hidden="true"></i>
+        <p *ngIf="success == false">{{error}}</p>
       </span>
     </span>
     <p>Not a member?
