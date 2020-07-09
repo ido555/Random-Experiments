@@ -1,23 +1,23 @@
 <div class="">
-  <button (click)="closeDialog()" class="close">X</button>
+  <button (click)="closeDialog()" class="close fa fa-window-close"></button>
   <form [formGroup]="loginForm" class="text-center border border-light p-5">
     <p class="h4 mb-4">Sign in</p>
     <input type="email" formControlName="email" class="form-control mb-4" placeholder="E-mail">
-    <input type="password"formControlName="password" class="form-control mb-4" placeholder="Password">
-    
+    <input type="password" formControlName="password" class="form-control mb-4" placeholder="Password">
+
     <div class="dropdown" mdbDropdown>
 
-      <button  mdbDropdownToggle mdbBtn color="primary" class="dropdown-toggle waves-light" type="button" mdbWavesEffect>
-         {{this.clientType}} </button>
-    
-         <!-- TODO this is a really bad way to do this. fix later -->
+      <button mdbDropdownToggle mdbBtn color="primary" class="dropdown-toggle waves-light" type="button" mdbWavesEffect>
+        {{this.clientType}} </button>
+
+      <!-- TODO this is a really bad way to do this. fix later -->
       <div class="dropdown-menu dropdown-primary">
         <button class="dropdown-item" (click)="setClientType(0)">Adminstrator</button>
         <button class="dropdown-item" (click)="setClientType(1)">Company</button>
         <button class="dropdown-item" (click)="setClientType(2)">Customer</button>
       </div>
     </div>
-    
+
     <div class="justify-content-around">
       <div>
         <mdb-checkbox [default]="true">Remember me</mdb-checkbox>
@@ -28,7 +28,18 @@
       </div>
     </div>
     <!-- TODO (click) - loading thingy then login-->
-    <button *ngIf="loginForm.valid && this.typeCheck" mdbBtn color="info" block="true" class="my-4" type="submit" (click)="login()">Sign in</button>
+    <button *ngIf="loginForm.valid && typeCheck && isLoading == false && success == null" mdbBtn color="info"
+      block="true" class="my-4" type="submit" (click)="login(); isLoading = true">Sign in</button>
+    <span>
+      <button *ngIf="isLoading && success == null" class="btn btn-primary" disabled>
+        <span class="spinner-border spinner-border-sm"></span>
+        Signing you in...
+      </button>
+      <span style="font-size: 50px;">
+        <i *ngIf="success == true" class="fa fa-check text-success animated fadeIn" aria-hidden="true"></i>
+        <i *ngIf="success == false" class="fa fa-window-close text-danger animated fadeIn" aria-hidden="true"></i>
+      </span>
+    </span>
     <p>Not a member?
       <a href="">Contact Adminstrator</a>
     </p>

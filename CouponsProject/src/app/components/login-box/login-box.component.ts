@@ -22,6 +22,8 @@ export class LoginBoxComponent implements OnInit {
   email: String;
   loginForm: FormGroup;
   typeCheck: boolean = false;
+  isLoading: boolean = false;
+  success = null;
 
   //   clientType : ['',  [Validators.required,
   //     Validators.pattern(ClientType[0]) || // 0 - Adminstrator
@@ -44,8 +46,8 @@ export class LoginBoxComponent implements OnInit {
   // TODO popup at bottom of screen thingy whatever thats called
   login() {
     this.logMan.login(this.clientType, this.password, this.email).subscribe(
-      s => { localStorage.setItem("token", s.toString()) },
-      e => { console.log(e) }
+      s => { localStorage.setItem("token", s.toString()) ; this.success = true},
+      e => { console.log(e); this.success = false}
     )
   }
   // TODO this is a really bad way to do this. fix later

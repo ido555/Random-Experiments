@@ -14,6 +14,6 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
   showDialog() {
-    this.loginBox.open(LoginBoxComponent, { minHeight: 200, minWidth: 200, disableClose: true });
+    this.loginBox.open(LoginBoxComponent, { minHeight: 200, minWidth: 200, disableClose: false });
   }
 }

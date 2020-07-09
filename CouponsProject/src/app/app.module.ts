@@ -17,6 +17,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { TableComponent } from './components/table/table.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { ErrorBoxComponent } from './components/error-box/error-box.component';
+import { ClientInfoPopupComponent } from './components/client-info-popup/client-info-popup.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { ErrorBoxComponent } from './components/error-box/error-box.component';
     NotFoundComponent,
     CustomerControlsComponent,
     TableComponent,
-    ErrorBoxComponent
+    ErrorBoxComponent,
+    ClientInfoPopupComponent
   ],
   imports: [
     BrowserModule,

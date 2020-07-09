@@ -1,3 +1,4 @@
+import { LoginControllerService } from './../../services/login-controller.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,14 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  isLoggedIn:boolean;
-
-  constructor() { }
+  constructor(private logMan:LoginControllerService) { }
 
   ngOnInit(): void {
-    this.isLoggedIn = true;
   }
-  public flipBool(){
-    this.isLoggedIn = !this.isLoggedIn;
+  public isLogged(){
+    if (localStorage.getItem('token') != null ) 
+      return true
+    return false
+  }
+  public logOut(){
+    console.log("tryna logout")
+    localStorage.removeItem('token');
+    this.logMan.logout(localStorage.getItem('token'))
   }
 }

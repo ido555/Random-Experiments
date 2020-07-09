@@ -2,7 +2,7 @@
 <mdb-navbar SideClass="navbar navbar-expand-sm navbar-dark blue-gradient" [containerInside]="false">
 
     <!-- Navbar brand -->
-    <mdb-navbar-brand><a class="navbar-brand" style="padding-left: 50%;"  href="home">Boba Bola</a></mdb-navbar-brand>
+    <mdb-navbar-brand><a class="navbar-brand" style="margin-left: 20%;"  href="home">Boba Bola</a></mdb-navbar-brand>
   
     <!-- Collapsible content -->
     <links >
@@ -29,11 +29,12 @@
           <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
             <mdb-icon fas icon="user"></mdb-icon> Profile<span class="caret"></span></a>
             <a>
+              <!-- TODO make dropdown open directly under button name -->
               <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
                 <a class="dropdown-item waves-light" mdbWavesEffect href="">My account</a>
                 <!-- TODO hide if not logged in -->
-                <a class="dropdown-item waves-light" mdbWavesEffect href="">Log out</a>
-                <a class="dropdown-item waves-light" mdbWavesEffect href="">Log in</a>
+                <a *ngIf="isLogged() == true"  (click)="logOut()" class="dropdown-item waves-light" mdbWavesEffect href="">Log out</a>
+                <a *ngIf="isLogged() == false"  class="dropdown-item waves-light" mdbWavesEffect href="">Log in</a>
               </div>
           </a>
         </li>
