@@ -5,7 +5,7 @@ import { AdminControllerService } from 'src/app/services/admin-controller.servic
 import { Company } from 'src/app/models/company';
 import { Customer } from 'src/app/models/customer';
 import { ErrorBoxComponent } from '../error-box/error-box.component';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-client-info-popup',
@@ -15,20 +15,32 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class ClientInfoPopupComponent implements OnInit {
   err;
   client;
-  clientForm: FormGroup;
   text;
+  clientForm: FormGroup;
   clientType: ClientType;
+  ClientType = ClientType;
 
-  constructor(private dialogRef: MatDialogRef<ClientInfoPopupComponent>, @Inject(MAT_DIALOG_DATA) public data
-    , private cont: AdminControllerService, private dialog: MatDialog, private fb: FormBuilder) { }
+  constructor(private dialogRef: MatDialogRef<ClientInfoPopupComponent>, @Inject(MAT_DIALOG_DATA) public data,
+    private cont: AdminControllerService, private dialog: MatDialog, private fb: FormBuilder) { }
 
-  ngOnInit(): void {
-    this.client = this.data.client
-    if (this.client.companyId != null)
+    ngOnInit(): void {
+      this.clientForm = this.fb.group({
+        password: ['', Validators.required],
+        email: ['', [Validators.required, Validators.email]],
+        name: [''],
+        firstName: [''],
+        lastName: [''],
+      })
+
+    this.client = this.data.row[0];
+    console.log(this.client.email)
+    if (this.client.companyId != null){
       this.clientType = ClientType.Company
+      var comp:Company = new Company(client.companyId)
+    }
+      if (this.client.customerId != null)
     this.clientType = ClientType.Customer
   }
-
   closeDialog() {
     this.dialogRef.close()
   }
@@ -39,7 +51,6 @@ export class ClientInfoPopupComponent implements OnInit {
         data: { err: err }
       })
   }
-
   updateCustomer(cust: Customer) {
     this.cont.updateCustomer(localStorage.getItem("token"), cust).
       subscribe(

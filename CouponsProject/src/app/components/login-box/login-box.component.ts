@@ -25,7 +25,7 @@ export class LoginBoxComponent implements OnInit {
   typeCheck: boolean = false;
   success = null;
   error
-
+  // TODO implement a way to show if a field isnt valid with validators
   //   clientType : ['',  [Validators.required,
   //     Validators.pattern(ClientType[0]) || // 0 - Administrator
   //     Validators.pattern(ClientType[1]) || // 1 - Company
@@ -51,13 +51,9 @@ export class LoginBoxComponent implements OnInit {
   }
   tryAgain() {
     setTimeout(() => {
-      this.try();
+      this.success = null;
     }, 2300)
   }
-  try() {
-    this.success = null;
-  }
-
   // TODO this is a really bad way to do this. fix later
   setClientType(type: number) {
     this.clientType = ClientType[type];
@@ -74,4 +70,3 @@ export class LoginBoxComponent implements OnInit {
       this.typeCheck = false
   }
 }
-

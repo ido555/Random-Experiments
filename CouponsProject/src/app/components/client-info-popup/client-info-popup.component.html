@@ -1,9 +1,16 @@
-<div >
+<div>
     <form [formGroup]="clientForm">
-
-    
+        <p class="h4 mb-4">Sign in</p>
+        {{client.email}}
+        <input *ngIf="clientType == ClientType.Company" type="text" formControlName="name" class="form-control mb-4" value="{{client.name}}">
+        <span *ngIf="clientType == ClientType.Customer">    
+            <input type="text" formControlName="firstName" class="form-control mb-4" value="{{client.firstName}}">
+            <input type="text" formControlName="lastName" class="form-control mb-4" value="{{client.name}}">
+        </span>
+        <input type="email" formControlName="email" class="form-control mb-4" value="{{client.email}}">
+        <input type="password" formControlName="password" class="form-control mb-4" value="{{client.password}}">
     </form>
 
     <button mdbBtn color="primary" class="waves-light" type="button" mdbWavesEffect
-    (click)="closeDialog()">Close</button>
+        (click)="closeDialog()">Close</button>
 </div>

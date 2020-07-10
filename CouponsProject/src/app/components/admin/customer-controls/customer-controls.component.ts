@@ -19,20 +19,17 @@ export class CustomerControlsComponent implements OnInit {
   @ViewChild(CustomerControlsComponent) filterTable: CustomerControlsComponent;
 
   constructor(private cont: AdminControllerService, private table: TableComponent, private dialog: MatDialog) { }
-  err;
   selectedRow = [];
   SelectionType = SelectionType;
   ColumnMode = ColumnMode;
   token: String;
   rows;
-  beforeSearch = null;
-  columns;
-  queryLength: number = 0;
+  beforeSearch: any;
+  columns: string | any[];
   custColNames = [{ prop: 'customerId' }, { prop: 'firstName' }, { prop: 'lastName' }, { prop: 'email' }, { prop: 'password' }];
   compColNames = [{ prop: 'companyId' }, { prop: 'name' }, { prop: 'email' }, { prop: 'password' }];
 
   ngOnInit(): void {
-    console.log("test123")
     this.token = localStorage.getItem("token");
   }
   errPopup(err: String) {
@@ -43,17 +40,18 @@ export class CustomerControlsComponent implements OnInit {
       })
   }
   clientPopup() {
+    let row = this.selectedRow;
+    
     this.dialog.open(ClientInfoPopupComponent,
       {
         minHeight: 200, minWidth: 200, disableClose: false,
-        data: {}
+        data: {row}
       })
   }
   resetTable(){
     if(this.beforeSearch == null)
       return;
     this.rows = this.beforeSearch;
-    this.rows = [...this.rows];
     this.beforeSearch = null;
     this.selectedRow = [];
   }
@@ -71,11 +69,11 @@ export class CustomerControlsComponent implements OnInit {
     this.rows = this.rows.filter(function (item) {
       // iterate through each row's column data
       for (let i = 0; i < colsAmt; i++) {
+        if (item[keys[i]] == null) 
+        return false;
         // check for a match
-        if (item[keys[i]].toString().toLowerCase().indexOf(val) !== -1 || !val) {
-          console.log(item)
+        if (item[keys[i]].toString().toLowerCase().indexOf(val) !== -1 || !val) 
           return true;
-        }
       }
     });
 
