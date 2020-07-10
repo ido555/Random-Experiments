@@ -45,7 +45,7 @@ export class CustomerControlsComponent implements OnInit {
     this.dialog.open(ClientInfoPopupComponent,
       {
         minHeight: 200, minWidth: 200, disableClose: false,
-        data: {row}
+        data: row[0]
       })
   }
   resetTable(){
