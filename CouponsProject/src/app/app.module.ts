@@ -46,7 +46,8 @@ import { ClientInfoPopupComponent } from './components/client-info-popup/client-
     ReactiveFormsModule,
     FormsModule,
     NgxDatatableModule,
-    BrowserModule
+    BrowserModule,
+    
   ],
   providers: [HttpClientModule, TableComponent],
   bootstrap: [AppComponent]

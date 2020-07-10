@@ -7,15 +7,22 @@
         <div class="heading">
         </div>
         <div class="myTable">
-            <ngx-datatable *ngIf="this.rows != null" class="myNgxTable animated rollIn bootstrap" [limit]="10"
+
+            <input type="text" *ngIf="this.rows != null" class="animated rollIn" style="padding:8px;margin:15px auto;width:30%;"
+                placeholder="Type to search" (keyup)="updateFilter($event)" />
+            <div *ngIf="this.rows != null && this.selectedRow.length > 0" class="myTableBtn animated fadeIn">
+                <button mdbBtn type="button" class="btn-light" (click)="clientPopup()"
+                    mdbWavesEffect>Update/Edit/delete</button>
+            </div>
+            <div  *ngIf="this.rows != null"  class="resetSearch animated rollIn">
+                <button mdbBtn type="button" class="btn-light btn-sm" (click)="resetTable()"
+                    mdbWavesEffect>Reset Search</button>
+            </div>
+            <ngx-datatable #table *ngIf="this.rows != null" class="myNgxTable animated rollIn bootstrap" [limit]="10"
                 [rows]="rows" [columns]="columns" [headerHeight]="50" [footerHeight]="50" rowHeight="auto"
-                [columnMode]="ColumnMode.force" [selected]="selected" [selectionType]="SelectionType.single"
+                [columnMode]="ColumnMode.force" [selected]="selectedRow" [selectionType]="SelectionType.single"
                 (activate)="onActivate($event)" (select)="onSelect($event)">
             </ngx-datatable>
-            <div *ngIf="this.rows != null && this.selected.length > 0" class="myTableBtn animated fadeIn"> 
-                <button mdbBtn type="button" class="btn-light" (click)="clientPopup()" mdbWavesEffect>Update/Edit/delete</button>
-            </div>
-            
         </div>
         <div class="btn1">
             <button mdbBtn type="button" class="btn-light" mdbWavesEffect (click)="getAllCompanies()">Get all

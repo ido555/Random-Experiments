@@ -15,11 +15,11 @@ export class AdminControllerService {
   public getAllCompanies(token: String) {
     return this.httpClient.get("http://localhost:8080/admin/getAll/companies/" + token)
   }
-  public getOneCustomer(token: String, customer: Customer) {
-    return this.httpClient.get("http://localhost:8080/admin/get/customer/" + token)
+  public getOneCustomer(token: String, id: number) {
+    return this.httpClient.get("http://localhost:8080/admin/get/customer/" + token + "/" + id)
   }
-  public getOneCompany(token: String, company: Company) {
-    return this.httpClient.get("http://localhost:8080/admin/get/company/" + token)
+  public getOneCompany(token: String, id: number) {
+    return this.httpClient.get("http://localhost:8080/admin/get/company/" + token + "/" + id)
   }
   public addCustomer(token: String, customer: Customer) {
     return this.httpClient.post("http://localhost:8080/admin/add/customer/" + token, customer)

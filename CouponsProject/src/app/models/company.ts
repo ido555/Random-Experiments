@@ -3,4 +3,5 @@ export class Company {
         companyId: Number,
         password ,name, email: String
     ){ }
+    
 }

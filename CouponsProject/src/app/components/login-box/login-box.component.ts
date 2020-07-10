@@ -27,12 +27,10 @@ export class LoginBoxComponent implements OnInit {
   error
 
   //   clientType : ['',  [Validators.required,
-  //     Validators.pattern(ClientType[0]) || // 0 - Adminstrator
+  //     Validators.pattern(ClientType[0]) || // 0 - Administrator
   //     Validators.pattern(ClientType[1]) || // 1 - Company
   //     Validators.pattern(ClientType[2])]]   // 2 - Customer
   ngOnInit(): void {
-    // TODO fix
-    // this.clientType = "Adminstrator"
     this.loginForm = this.fb.group({
       password: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]]
@@ -48,7 +46,7 @@ export class LoginBoxComponent implements OnInit {
   login() {
     this.logMan.login(this.clientType, this.password, this.email).subscribe(
       s => { localStorage.setItem("token", s.toString()); this.success = true },
-      e => { this.success = false; this.error = e.error; this.tryAgain() }
+      e => { this.success = false; this.error = e.error; ; this.tryAgain() }
     )
   }
   tryAgain() {

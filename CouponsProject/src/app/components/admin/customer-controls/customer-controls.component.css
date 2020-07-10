@@ -1,41 +1,82 @@
-.myTable{
+.myTable {
   position: absolute;
   left: 29%;
   top: 20%;
 }
-.myTableBtn{
-  position: absolute;
-  padding-top: 2px;
-  left: 29%;
-  top: 55%;
-}
 
+.myTableBtn {
+  position: absolute;
+  padding-top: 7px;
+  left: 32%;
+  top: 0%;
+}
+.resetSearch{
+  position: absolute;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 2px;
+  left: 5%;
+  top: -3%;
+  font-size: small;
+}
 /* https://grid.layoutit.com/ */
+
 .grid-container {
   display: grid;
   grid-template-columns: 2fr repeat(4, 1fr);
   grid-template-rows: repeat(15, 1fr);
   gap: 1px 5%;
-  grid-template-areas: ". heading heading heading ." ". heading heading heading ." "btn1 table table table table" "btn2 table table table table" "btn3 table table table table" "btn4 table table table table" "btn5 table table table table" "btn6 . . . ." "btn7 . . . ." "btn8 . . . ." ". . . . ." ". . . . ." ". . . . ." ". . . . ." ". . . . .";
+  grid-template-areas: 
+  ". heading heading heading ."
+   ". heading heading heading ."
+    "btn1 table table table table"
+    "btn2 table table table table"
+    "btn3 table table table table" 
+    "btn4 table table table table"
+    "btn5 table table table table"
+    "btn6 . . . ." "btn7 . . . ."
+    "btn8 . . . ." ". . . . ."
+    ". . . . ." ". . . . ." 
+    ". . . . ." ". . . . .";
 }
 
-.table { grid-area: table; }
+.table {
+  grid-area: table;
+}
 
-.heading { grid-area: heading; 
-text-align: center;}
+.heading {
+  grid-area: heading;
+  text-align: center;
+}
 
-.btn1 { grid-area: btn1; }
+.btn1 {
+  grid-area: btn1;
+}
 
-.btn2 { grid-area: btn2; }
+.btn2 {
+  grid-area: btn2;
+}
 
-.btn3 { grid-area: btn3; }
+.btn3 {
+  grid-area: btn3;
+}
 
-.btn4 { grid-area: btn4; }
+.btn4 {
+  grid-area: btn4;
+}
 
-.btn5 { grid-area: btn5; }
+.btn5 {
+  grid-area: btn5;
+}
 
-.btn6 { grid-area: btn6; }
+.btn6 {
+  grid-area: btn6;
+}
 
-.btn7 { grid-area: btn7; }
+.btn7 {
+  grid-area: btn7;
+}
 
-.btn8 { grid-area: btn8; }
+.btn8 {
+  grid-area: btn8;
+}
