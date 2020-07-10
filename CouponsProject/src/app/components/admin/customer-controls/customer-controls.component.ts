@@ -9,7 +9,7 @@ import { ColumnMode, SelectionType } from '@swimlane/ngx-datatable';
 
 import { MatDialog } from '@angular/material/dialog';
 
-
+// TODO fix and improve this entire component and its html. its poorly written and poorly structered
 @Component({
   selector: 'app-customer-controls',
   templateUrl: './customer-controls.component.html',
@@ -127,30 +127,6 @@ export class CustomerControlsComponent implements OnInit {
   }
   addCompany(comp: Company) {
     this.cont.addCompany(localStorage.getItem("token"), comp).
-      subscribe(
-        s => this.updateTable(s),
-        e => this.errPopup(e.error))
-  }
-  updateCustomer(cust: Customer) {
-    this.cont.updateCustomer(localStorage.getItem("token"), cust).
-      subscribe(
-        s => this.updateTable(s),
-        e => this.errPopup(e.error))
-  }
-  updateCompany(comp: Company) {
-    this.cont.updateCompany(localStorage.getItem("token"), comp).
-      subscribe(
-        s => this.updateTable(s),
-        e => this.errPopup(e.error))
-  }
-  deleteCustomer(cust: Customer) {
-    this.cont.deleteCustomer(localStorage.getItem("token"), cust).
-      subscribe(
-        s => this.updateTable(s),
-        e => this.errPopup(e.error))
-  }
-  deleteCompany(comp: Company) {
-    this.cont.deleteCompany(localStorage.getItem("token"), comp).
       subscribe(
         s => this.updateTable(s),
         e => this.errPopup(e.error))

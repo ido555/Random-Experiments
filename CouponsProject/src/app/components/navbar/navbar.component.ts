@@ -1,6 +1,7 @@
 import { LoginControllerService } from './../../services/login-controller.service';
 import { Component, OnInit } from '@angular/core';
 
+// TODO fix and improve this entire component and its html. its poorly written and poorly structered
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',

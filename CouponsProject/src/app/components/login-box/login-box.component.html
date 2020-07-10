@@ -4,9 +4,7 @@
     <p class="h4 mb-4">Sign in</p>
     <input type="email" formControlName="email" class="form-control mb-4" placeholder="E-mail">
     <input type="password" formControlName="password" class="form-control mb-4" placeholder="Password">
-
     <div class="dropdown" mdbDropdown>
-
       <button *ngIf="typeCheck == false" mdbDropdownToggle mdbBtn color="primary" class="dropdown-toggle waves-light " type="button" mdbWavesEffect>
         Choose a client type </button>
       <button *ngIf="typeCheck" mdbDropdownToggle mdbBtn color="primary" class="dropdown-toggle waves-light" type="button" mdbWavesEffect>
