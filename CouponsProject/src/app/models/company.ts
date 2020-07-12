@@ -1,12 +1,12 @@
 export class Company {
     // credit to TypeScript ToolBox for auto generating 90% of this (lazy = efficent ;) )
-    private companyId: Number;
-    private password: Number;
-    private name: String;
-    private email: String;
+    private companyId: number;
+    private password: number;
+    private name: string;
+    private email: string;
 
 
-	constructor($companyId: Number, $password: Number, $name: String, $email: String) {
+	constructor($companyId: number, $password: number, $name: string, $email: string) {
 		this.companyId = $companyId;
 		this.password = $password;
 		this.name = $name;
@@ -15,65 +15,65 @@ export class Company {
 
     /**
      * Getter $companyId
-     * @return {Number}
+     * @return {number}
      */
-	public get $companyId(): Number {
+	public get $companyId(): number {
 		return this.companyId;
 	}
 
     /**
      * Getter $password
-     * @return {Number}
+     * @return {number}
      */
-	public get $password(): Number {
+	public get $password(): number {
 		return this.password;
 	}
 
     /**
      * Getter $name
-     * @return {String}
+     * @return {string}
      */
-	public get $name(): String {
+	public get $name(): string {
 		return this.name;
 	}
 
     /**
      * Getter $email
-     * @return {String}
+     * @return {string}
      */
-	public get $email(): String {
+	public get $email(): string {
 		return this.email;
 	}
 
     /**
      * Setter $companyId
-     * @param {Number} value
+     * @param {number} value
      */
-	public set $companyId(value: Number) {
+	public set $companyId(value: number) {
 		this.companyId = value;
 	}
 
     /**
      * Setter $password
-     * @param {Number} value
+     * @param {number} value
      */
-	public set $password(value: Number) {
+	public set $password(value: number) {
 		this.password = value;
 	}
 
     /**
      * Setter $name
-     * @param {String} value
+     * @param {string} value
      */
-	public set $name(value: String) {
+	public set $name(value: string) {
 		this.name = value;
 	}
 
     /**
      * Setter $email
-     * @param {String} value
+     * @param {string} value
      */
-	public set $email(value: String) {
+	public set $email(value: string) {
 		this.email = value;
 	}
     

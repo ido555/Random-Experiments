@@ -2,17 +2,17 @@ import { CouponCategory } from './../enums/coupon-category.enum';
 export class Coupon {
     // credit to TypeScript ToolBox for auto generating 90% of this (lazy = efficent ;) )
 
-    private id : Number;
-    private amount : Number;
-    private price : Number;
-    private title : String;
-    private description : String;
-    private image : String;
+    private id : number;
+    private amount : number;
+    private price : number;
+    private title : string;
+    private description : string;
+    private image : string;
     private startDate : Date;
     private endDate : Date;
     private couponCategory : CouponCategory;
 
-	constructor($id: Number, $amount: Number, $price: Number, $title: String, $description: String, $image: String, $startDate: Date, $endDate: Date, $couponCategory: CouponCategory) {
+	constructor($id: number, $amount: number, $price: number, $title: string, $description: string, $image: string, $startDate: Date, $endDate: Date, $couponCategory: CouponCategory) {
 		this.id = $id;
 		this.amount = $amount;
 		this.price = $price;
@@ -26,49 +26,49 @@ export class Coupon {
 
     /**
      * Getter $id
-     * @return {Number}
+     * @return {number}
      */
-	public get $id(): Number {
+	public get $id(): number {
 		return this.id;
 	}
 
     /**
      * Getter $amount
-     * @return {Number}
+     * @return {number}
      */
-	public get $amount(): Number {
+	public get $amount(): number {
 		return this.amount;
 	}
 
     /**
      * Getter $price
-     * @return {Number}
+     * @return {number}
      */
-	public get $price(): Number {
+	public get $price(): number {
 		return this.price;
 	}
 
     /**
      * Getter $title
-     * @return {String}
+     * @return {string}
      */
-	public get $title(): String {
+	public get $title(): string {
 		return this.title;
 	}
 
     /**
      * Getter $description
-     * @return {String}
+     * @return {string}
      */
-	public get $description(): String {
+	public get $description(): string {
 		return this.description;
 	}
 
     /**
      * Getter $image
-     * @return {String}
+     * @return {string}
      */
-	public get $image(): String {
+	public get $image(): string {
 		return this.image;
 	}
 
@@ -98,49 +98,49 @@ export class Coupon {
 
     /**
      * Setter $id
-     * @param {Number} value
+     * @param {number} value
      */
-	public set $id(value: Number) {
+	public set $id(value: number) {
 		this.id = value;
 	}
 
     /**
      * Setter $amount
-     * @param {Number} value
+     * @param {number} value
      */
-	public set $amount(value: Number) {
+	public set $amount(value: number) {
 		this.amount = value;
 	}
 
     /**
      * Setter $price
-     * @param {Number} value
+     * @param {number} value
      */
-	public set $price(value: Number) {
+	public set $price(value: number) {
 		this.price = value;
 	}
 
     /**
      * Setter $title
-     * @param {String} value
+     * @param {string} value
      */
-	public set $title(value: String) {
+	public set $title(value: string) {
 		this.title = value;
 	}
 
     /**
      * Setter $description
-     * @param {String} value
+     * @param {string} value
      */
-	public set $description(value: String) {
+	public set $description(value: string) {
 		this.description = value;
 	}
 
     /**
      * Setter $image
-     * @param {String} value
+     * @param {string} value
      */
-	public set $image(value: String) {
+	public set $image(value: string) {
 		this.image = value;
 	}
 

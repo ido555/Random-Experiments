@@ -44,7 +44,7 @@ export class ClientInfoPopupComponent implements OnInit {
   closeDialog() {
     this.dialogRef.close()
   }
-  errPopup(err: String) {
+  errPopup(err: string) {
     this.dialog.open(ErrorBoxComponent,
       {
         minHeight: 200, minWidth: 200, disableClose: false,

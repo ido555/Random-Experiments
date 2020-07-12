@@ -9,34 +9,34 @@ import { Customer } from "../models/customer";
 export class AdminControllerService {
 
   constructor(private httpClient: HttpClient) { }
-  public getAllCustomers(token: String) {
+  public getAllCustomers(token: string) {
     return this.httpClient.get("http://localhost:8080/admin/getAll/customers/" + token)
   }
-  public getAllCompanies(token: String) {
+  public getAllCompanies(token: string) {
     return this.httpClient.get("http://localhost:8080/admin/getAll/companies/" + token)
   }
-  public getOneCustomer(token: String, id: number) {
+  public getOneCustomer(token: string, id: number) {
     return this.httpClient.get("http://localhost:8080/admin/get/customer/" + token + "/" + id)
   }
-  public getOneCompany(token: String, id: number) {
+  public getOneCompany(token: string, id: number) {
     return this.httpClient.get("http://localhost:8080/admin/get/company/" + token + "/" + id)
   }
-  public addCustomer(token: String, customer: Customer) {
+  public addCustomer(token: string, customer: Customer) {
     return this.httpClient.post("http://localhost:8080/admin/add/customer/" + token, customer)
   }
-  public addCompany(token: String, company: Company) {
+  public addCompany(token: string, company: Company) {
     return this.httpClient.post("http://localhost:8080/admin/add/company/" + token, company)
   }
-  public updateCustomer(token: String, customer: Customer) {
+  public updateCustomer(token: string, customer: Customer) {
     return this.httpClient.put("http://localhost:8080/admin/update/customer/" + token, customer)
   }
-  public updateCompany(token: String, company: Company) {
+  public updateCompany(token: string, company: Company) {
     return this.httpClient.put("http://localhost:8080/admin/update/company/" + token, company)
   }
-  public deleteCustomer(token: String, customer: Customer) {
-    return this.httpClient.delete("http://localhost:8080/admin/delete/customer/" + token, customer)
+  public deleteCustomer(token: string, id: number) {
+    return this.httpClient.delete("http://localhost:8080/admin/delete/customer/" + token + "/" + id)
   }
-  public deleteCompany(token: String, company: Company) {
-    return this.httpClient.delete("http://localhost:8080/admin/delete/company/" + token, company)
+  public deleteCompany(token: string, id: number) {
+    return this.httpClient.delete("http://localhost:8080/admin/delete/company/" + token + "/" + id)
   }
 }

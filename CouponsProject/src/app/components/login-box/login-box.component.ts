@@ -19,8 +19,8 @@ export class LoginBoxComponent implements OnInit {
 
   clientType;
   clientChosen: boolean = false;
-  password: String;
-  email: String;
+  password: string;
+  email: string;
   loginForm: FormGroup;
   typeCheck: boolean = false;
   success = null;

@@ -10,10 +10,10 @@ export class LoginControllerService {
   post:Object;
   constructor(private httpClient: HttpClient ) { }
 
-  public login(clientType: ClientType, password: String, email: String) {
+  public login(clientType: ClientType, password: string, email: string) {
     return this.httpClient.get("http://localhost:8080/login/" + clientType + "/" + email + "/" + password)
   }
-  public logout(token:String) {
+  public logout(token:string) {
     return this.httpClient.delete("http://localhost:8080/logout/" + token)
   }
 }

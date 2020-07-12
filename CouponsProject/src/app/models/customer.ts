@@ -1,14 +1,14 @@
 import { Coupon } from './coupon';
 export class Customer {
     // credit to TypeScript ToolBox for auto generating 90% of this (lazy = efficent ;) )
-    private id: Number;
-    private password: String;
-    private email: String;
-    private firstName: String;
-    private lastName: String;
+    private id: number;
+    private password: string;
+    private email: string;
+    private firstName: string;
+    private lastName: string;
     private coupons: Coupon[];
 
-    constructor($id: Number, $password: String, $email: String, $firstName: String, $lastName: String, $coupons: Coupon[]) {
+    constructor($id: number, $password: string, $email: string, $firstName: string, $lastName: string, $coupons: Coupon[]) {
         this.id = $id;
         this.password = $password;
         this.email = $email;
@@ -19,41 +19,41 @@ export class Customer {
 
     /**
      * Getter $id
-     * @return {Number}
+     * @return {number}
      */
-    public get $id(): Number {
+    public get $id(): number {
         return this.id;
     }
 
     /**
      * Getter $password
-     * @return {String}
+     * @return {string}
      */
-    public get $password(): String {
+    public get $password(): string {
         return this.password;
     }
 
     /**
      * Getter $email
-     * @return {String}
+     * @return {string}
      */
-    public get $email(): String {
+    public get $email(): string {
         return this.email;
     }
 
     /**
      * Getter $firstName
-     * @return {String}
+     * @return {string}
      */
-    public get $firstName(): String {
+    public get $firstName(): string {
         return this.firstName;
     }
 
     /**
      * Getter $lastName
-     * @return {String}
+     * @return {string}
      */
-    public get $lastName(): String {
+    public get $lastName(): string {
         return this.lastName;
     }
 
@@ -67,41 +67,41 @@ export class Customer {
 
     /**
      * Setter $id
-     * @param {Number} value
+     * @param {number} value
      */
-    public set $id(value: Number) {
+    public set $id(value: number) {
         this.id = value;
     }
 
     /**
      * Setter $password
-     * @param {String} value
+     * @param {string} value
      */
-    public set $password(value: String) {
+    public set $password(value: string) {
         this.password = value;
     }
 
     /**
      * Setter $email
-     * @param {String} value
+     * @param {string} value
      */
-    public set $email(value: String) {
+    public set $email(value: string) {
         this.email = value;
     }
 
     /**
      * Setter $firstName
-     * @param {String} value
+     * @param {string} value
      */
-    public set $firstName(value: String) {
+    public set $firstName(value: string) {
         this.firstName = value;
     }
 
     /**
      * Setter $lastName
-     * @param {String} value
+     * @param {string} value
      */
-    public set $lastName(value: String) {
+    public set $lastName(value: string) {
         this.lastName = value;
     }
 

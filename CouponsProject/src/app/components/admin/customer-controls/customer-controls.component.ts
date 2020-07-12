@@ -22,7 +22,7 @@ export class CustomerControlsComponent implements OnInit {
   selectedRow = [];
   SelectionType = SelectionType;
   ColumnMode = ColumnMode;
-  token: String;
+  token: string;
   rows;
   beforeSearch: any;
   columns: string | any[];
@@ -32,7 +32,7 @@ export class CustomerControlsComponent implements OnInit {
   ngOnInit(): void {
     this.token = localStorage.getItem("token");
   }
-  errPopup(err: String) {
+  errPopup(err: string) {
     this.dialog.open(ErrorBoxComponent,
       {
         minHeight: 200, minWidth: 200, disableClose: false,
