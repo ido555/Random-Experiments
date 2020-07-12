@@ -1,3 +1,4 @@
+import { ClientType } from 'src/app/enums/client-type.enum';
 import { ClientInfoPopupComponent } from './../../client-info-popup/client-info-popup.component';
 import { Customer } from './../../../models/customer';
 import { Company } from './../../../models/company';
@@ -26,6 +27,7 @@ export class CustomerControlsComponent implements OnInit {
   rows;
   beforeSearch: any;
   columns: string | any[];
+  lastAction: ClientType;
   custColNames = [{ prop: 'customerId' }, { prop: 'firstName' }, { prop: 'lastName' }, { prop: 'email' }, { prop: 'password' }];
   compColNames = [{ prop: 'companyId' }, { prop: 'name' }, { prop: 'email' }, { prop: 'password' }];
 
@@ -42,15 +44,18 @@ export class CustomerControlsComponent implements OnInit {
   }
   clientPopup() {
     let row = this.selectedRow;
-    
     this.dialog.open(ClientInfoPopupComponent,
       {
         minHeight: 400, minWidth: 400, disableClose: false,
         data: row[0]
       })
+
+      this.dialog.afterAllClosed.subscribe(
+        s => this.lastAction == ClientType.Customer ? this.getAllCustomers() : this.getAllCompanies()
+      )
   }
-  resetTable(){
-    if(this.beforeSearch == null)
+  resetTable() {
+    if (this.beforeSearch == null)
       return;
     this.rows = this.beforeSearch;
     this.beforeSearch = null;
@@ -70,27 +75,28 @@ export class CustomerControlsComponent implements OnInit {
     this.rows = this.rows.filter(function (item) {
       // iterate through each row's column data
       for (let i = 0; i < colsAmt; i++) {
-        if (item[keys[i]] == null) 
-        return false;
+        if (item[keys[i]] == null)
+          return false;
         // check for a match
-        if (item[keys[i]].toString().toLowerCase().indexOf(val) !== -1 || !val) 
+        if (item[keys[i]].toString().toLowerCase().indexOf(val) !== -1 || !val)
           return true;
       }
     });
 
   }
-  onSelect({ selected }) {
-    console.log('Select Event', selected, this.selectedRow);
-  }
-  onActivate(event) {
-    console.log('Activate Event', event);
-  }
+  // onSelect({ selected }) {
+  //   console.log('Select Event', selected, this.selectedRow);
+  // }
+  // onActivate(event) {
+  //   console.log('Activate Event', event);
+  // }
   updateTable(s: Object) {
     this.rows = s;
     this.rows = [...this.rows];
     this.selectedRow = [];
   }
   getAllCustomers() {
+    this.lastAction = ClientType.Customer
     this.columns = this.custColNames;
     this.cont.getAllCustomers(localStorage.getItem("token")).
       subscribe(
@@ -98,22 +104,23 @@ export class CustomerControlsComponent implements OnInit {
         e => this.errPopup(e.error))
   }
   getAllCompanies() {
+    this.lastAction = ClientType.Company
     this.columns = this.compColNames;
     this.cont.getAllCompanies(localStorage.getItem("token")).
       subscribe(
         s => this.updateTable(s),
         e => this.errPopup(e.error))
   }
-  getOneCustomer(id: number) {
+  getOneCustomer(customerId: number) {
     this.columns = this.custColNames;
-    this.cont.getOneCustomer(localStorage.getItem("token"), id).
+    this.cont.getOneCustomer(localStorage.getItem("token"), customerId).
       subscribe(
         s => this.updateTable(s),
         e => this.errPopup(e.error))
   }
-  getOneCompany(id: number) {
+  getOneCompany(customerId: number) {
     this.columns = this.compColNames;
-    this.cont.getOneCompany(localStorage.getItem("token"), id).
+    this.cont.getOneCompany(localStorage.getItem("token"), customerId).
       subscribe(
         s => this.updateTable(s),
         e => this.errPopup(e.error))

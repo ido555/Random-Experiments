@@ -2,7 +2,7 @@ import { CouponCategory } from './../enums/coupon-category.enum';
 export class Coupon {
     // credit to TypeScript ToolBox for auto generating 90% of this (lazy = efficent ;) )
 
-    private id : number;
+    private couponId : number;
     private amount : number;
     private price : number;
     private title : string;
@@ -12,8 +12,8 @@ export class Coupon {
     private endDate : Date;
     private couponCategory : CouponCategory;
 
-	constructor($id: number, $amount: number, $price: number, $title: string, $description: string, $image: string, $startDate: Date, $endDate: Date, $couponCategory: CouponCategory) {
-		this.id = $id;
+	constructor($couponId: number, $amount: number, $price: number, $title: string, $description: string, $image: string, $startDate: Date, $endDate: Date, $couponCategory: CouponCategory) {
+		this.couponId = $couponId;
 		this.amount = $amount;
 		this.price = $price;
 		this.title = $title;
@@ -25,11 +25,11 @@ export class Coupon {
 	}
 
     /**
-     * Getter $id
+     * Getter $couponId
      * @return {number}
      */
-	public get $id(): number {
-		return this.id;
+	public get $couponId(): number {
+		return this.couponId;
 	}
 
     /**
@@ -97,11 +97,11 @@ export class Coupon {
 	}
 
     /**
-     * Setter $id
+     * Setter $couponId
      * @param {number} value
      */
-	public set $id(value: number) {
-		this.id = value;
+	public set $couponId(value: number) {
+		this.couponId = value;
 	}
 
     /**

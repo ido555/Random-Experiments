@@ -14,7 +14,6 @@ export class ErrorBoxComponent implements OnInit {
   
   ngOnInit(): void {
     this.err = this.data.err
-    console.log(this.err)
   }
 
   closeDialog(){

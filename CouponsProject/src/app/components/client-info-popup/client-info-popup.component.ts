@@ -91,26 +91,26 @@ export class ClientInfoPopupComponent implements OnInit {
     console.log(this.cust)
     this.cont.updateCustomer(localStorage.getItem("token"), cust).
       subscribe(
-        s => this.text = s,
+        s => this.closeDialog(),
         e => this.errPopup(e))
   }
   updateCompany(comp: Company) {
     this.cont.updateCompany(localStorage.getItem("token"), comp).
       subscribe(
-        s => this.text = s,
+        s => this.closeDialog(),
         e => this.errPopup(e))
   }
-  deleteCustomer(id: number) {
+  deleteCustomer(customerId: number) {
     console.log(this.custForm)
-    this.cont.deleteCustomer(localStorage.getItem("token"), id).
+    this.cont.deleteCustomer(localStorage.getItem("token"), customerId).
       subscribe(
-        s => this.text = s,
+        s => this.closeDialog(),
         e => this.errPopup(e))
   }
-  deleteCompany(id: number) {
-    this.cont.deleteCompany(localStorage.getItem("token"), id).
+  deleteCompany(companyId: number) {
+    this.cont.deleteCompany(localStorage.getItem("token"), companyId).
       subscribe(
-        s => this.text = s,
+        s => this.closeDialog(),
         e => this.errPopup(e))
   }
 }

@@ -27,7 +27,7 @@ export class CompanyControllerService {
 	public updateCoupon(token: string, coupon: Coupon) {
 		return this.httpClient.put("http://localhost:8080/company/updateCoupon/" + token, coupon)
 	}
-	public deleteCoupon(token: string, id: number) {
-		return this.httpClient.delete("http://localhost:8080/company/deleteCoupon/" + token + "/" + id)
+	public deleteCoupon(token: string, couponId: number) {
+		return this.httpClient.delete("http://localhost:8080/company/deleteCoupon/" + token + "/" + couponId)
 	}
 }

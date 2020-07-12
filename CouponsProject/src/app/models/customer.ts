@@ -1,15 +1,15 @@
 import { Coupon } from './coupon';
 export class Customer {
     // credit to TypeScript ToolBox for auto generating 90% of this (lazy = efficent ;) )
-    private id: number;
+    private customerId: number;
     private password: string;
     private email: string;
     private firstName: string;
     private lastName: string;
     private coupons: Coupon[];
 
-    constructor($id: number, $password: string, $email: string, $firstName: string, $lastName: string, $coupons: Coupon[]) {
-        this.id = $id;
+    constructor($customerId: number, $password: string, $email: string, $firstName: string, $lastName: string, $coupons: Coupon[]) {
+        this.customerId = $customerId;
         this.password = $password;
         this.email = $email;
         this.firstName = $firstName;
@@ -18,11 +18,11 @@ export class Customer {
     }
 
     /**
-     * Getter $id
+     * Getter $customerId
      * @return {number}
      */
-    public get $id(): number {
-        return this.id;
+    public get $customerId(): number {
+        return this.customerId;
     }
 
     /**
@@ -66,11 +66,11 @@ export class Customer {
     }
 
     /**
-     * Setter $id
+     * Setter $customerId
      * @param {number} value
      */
-    public set $id(value: number) {
-        this.id = value;
+    public set $customerId(value: number) {
+        this.customerId = value;
     }
 
     /**
