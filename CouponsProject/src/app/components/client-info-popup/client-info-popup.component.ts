@@ -18,7 +18,7 @@ export class ClientInfoPopupComponent implements OnInit {
   comp: Company = null;
   cust: Customer = null;
   text: Object;
-  // cant have 1 clientForm for some reason - i tried for too long
+  // cant have just 1 clientForm for some reason - i tried for too long
   compForm: FormGroup;
   custForm: FormGroup;
   clientType: ClientType;
@@ -37,8 +37,9 @@ export class ClientInfoPopupComponent implements OnInit {
     if (this.comp != null) {
       this.compForm = this.fb.group({
         password: [this.comp.$password, Validators.required],
+        passwordRetype: [this.comp.$password, Validators.required],
         email: [this.comp.$email, [Validators.required, Validators.email]],
-        name: [this.comp.$name]
+        name: [this.comp.$name, Validators.required], 
       })
     }
     if (this.cust != null) {
@@ -56,9 +57,12 @@ export class ClientInfoPopupComponent implements OnInit {
   errPopup(err: string) {
     this.dialog.open(ErrorBoxComponent,
       {
-        minHeight: 200, minWidth: 200, disableClose: false,
+        minHeight: 400, minWidth: 400, disableClose: false,
         data: { err: err }
       })
+  }
+  log(){
+    console.log(this.compForm);
   }
   updateCustomer(cust: Customer) {
     this.cont.updateCustomer(localStorage.getItem("token"), cust).
