@@ -1,63 +1,66 @@
-<div class=" ">
-
+<div class="">
     <div class="container">
-        <h1>heading</h1>
-        <!-- <span *ngIf="compForm.controls['name'].errors.invalid && compForm.controls['name'].touched"> no </span> -->
+        <h2>Controls:</h2>
         <!-- typescript FormBuilder forced me to build 2 forms... -->
-
         <form *ngIf="this.comp != null" [formGroup]="compForm">
             <div class="input-group-text m-4 py-1 my-1 mr-1 pr-1 pl-1">
                 <span class="input-group-addon"><i class="fas fa-building p-2"></i></span>
                 <input type="text" formControlName="name" class="form-control" placeholder="Company Name">
             </div>
+            <span class="pb-1 pt-0 d-flex justify-content-center" *ngIf="compForm.controls['name'].invalid &&
+                compForm.controls['name'].touched">Company Name Required</span>
             <div class="input-group-text m-4 py-1 my-1 mr-1 pr-1 pl-1">
                 <span class="input-group-addon"><i class="fas fa-envelope p-2"></i></span>
                 <input type="email" formControlName="email" class="form-control" placeholder="E-mail">
             </div>
-            <span *ngIf="compForm.controls['email'].touched"> no </span>
+            <span class="pb-1 pt-0 d-flex justify-content-center" *ngIf="compForm.controls['email'].invalid &&
+            compForm.controls['email'].touched">Valid E-mail Required </span>
             <div class="input-group-text m-4 py-1 my-1 mr-1 pr-1 pl-1">
                 <span class="input-group-addon"><i class="fa fa-key fa-fw p-2 pr-4"></i></span>
                 <input type="password" formControlName="password" class="form-control" placeholder="Password">
             </div>
-            <span *ngIf="compForm.controls['password'].invalid"> password Required </span>
-            <div class="input-group-text m-4 py-1 my-1 mr-1 pr-1 pl-1">
-                <span class="input-group-addon"><i class="fa fa-key fa-fw p-2 pr-4"></i></span>
-                <input type="password" formControlName="passwordRetype" class="form-control" placeholder="Password">
-            </div>
+            <span class="pb-1 pt-0 d-flex justify-content-center" *ngIf="compForm.controls['password'].invalid &&
+             compForm.controls['password'].touched">Password Required </span>
         </form>
         <form *ngIf="this.cust != null" [formGroup]="custForm" class="">
-            <p class="h4 mb-4">Sign in</p>
-
             <div class="input-group-text m-4 py-1 my-1 mr-1 pr-1 pl-1">
                 <span class="input-group-addon"><i class="fa fa-user p-2"></i></span>
                 <input type="text" formControlName="firstName" class="form-control" placeholder="First Name">
             </div>
+            <span class="pb-1 pt-0 d-flex justify-content-center" *ngIf="custForm.controls['firstName'].invalid &&
+            custForm.controls['firstName'].touched">First Name Required </span>
             <div class="input-group-text m-4 py-1 my-1 mr-1 pr-1 pl-1">
                 <span class="input-group-addon"><i class="fa fa-user p-2"></i></span>
                 <input type="text" formControlName="lastName" class="form-control" placeholder="Last Name">
             </div>
+            <span class="pb-1 pt-0 d-flex justify-content-center" *ngIf="custForm.controls['lastName'].invalid &&
+            custForm.controls['lastName'].touched">Last Name Required </span>
             <div class="input-group-text m-4 py-1 my-1 mr-1 pr-1 pl-1">
                 <span class="input-group-addon"><i class="fas fa-envelope p-2"></i></span>
                 <input type="email" formControlName="email" class="form-control" placeholder="E-mail">
             </div>
+            <span class="pb-1 pt-0 d-flex justify-content-center" *ngIf="custForm.controls['email'].invalid &&
+            custForm.controls['email'].touched">Valid E-mail Required </span>
             <div class="input-group-text m-4 py-1 my-1 mr-1 pr-1 pl-1">
                 <span class="input-group-addon"><i class="fa fa-key fa-fw p-2 pr-4"></i></span>
                 <input type="password" formControlName="password" class="form-control" placeholder="Password">
             </div>
-            <div class="input-group-text m-4 py-1 my-1 mr-1 pr-1 pl-1">
-                <span class="input-group-addon"><i class="fa fa-key fa-fw p-2 pr-4"></i></span>
-                <input type="password" formControlName="passwordRetype" class="form-control" placeholder="Password">
-            </div>
-
+            <span class="pb-1 pt-0 d-flex justify-content-center" *ngIf="custForm.controls['password'].invalid &&
+            custForm.controls['password'].touched">Password Required </span>
         </form>
 
     </div>
-    <div class="btn-group btn-group d-flex justify-content-center mb-2">
-        <button type="button" class="btn btn-primary waves-light">Update</button>
-        <button type="button" class="btn btn-danger waves-light" (click)="log()">Delete</button>
+
+    <div *ngIf="comp != null" class="btn-group btn-group d-flex justify-content-center mb-2">
+        <button type="button" class="btn btn-primary waves-light" (click)="update(ClientType.Company)">Update</button>
+        <button type="button" class="btn btn-danger waves-light" (click)="deleteCompany(4444)">Delete</button>
+    </div>
+    <div *ngIf="cust != null" class="btn-group btn-group d-flex justify-content-center mb-2">
+        <button type="button" class="btn btn-primary waves-light" (click)="update(ClientType.Customer)">Update</button>
+        <button type="button" class="btn btn-danger waves-light" (click)="deleteCustomer(this.cust.$id)">Delete</button>
     </div>
     <div class="d-flex justify-content-center">
         <button class="btn btn-secondary waves-light" type="button" mdbWavesEffect
-        (click)="closeDialog()">Cancel</button>
+            (click)="closeDialog()">Cancel</button>
     </div>
 </div>

@@ -36,6 +36,7 @@ export class CustomerControlsComponent implements OnInit {
     this.dialog.open(ErrorBoxComponent,
       {
         minHeight: 200, minWidth: 200, disableClose: false,
+        maxHeight: 400, maxWidth: 600,
         data: { err: err }
       })
   }
