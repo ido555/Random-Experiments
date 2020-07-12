@@ -44,7 +44,7 @@ export class CustomerControlsComponent implements OnInit {
     
     this.dialog.open(ClientInfoPopupComponent,
       {
-        minHeight: 200, minWidth: 200, disableClose: false,
+        minHeight: 400, minWidth: 400, disableClose: false,
         data: row[0]
       })
   }

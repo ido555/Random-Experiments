@@ -8,7 +8,6 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
   constructor(private loginBox:MatDialog) { }
 
   ngOnInit(): void {

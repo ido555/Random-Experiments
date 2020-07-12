@@ -13,33 +13,42 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
   styleUrls: ['./client-info-popup.component.css']
 })
 export class ClientInfoPopupComponent implements OnInit {
-  err;
+  err: any;
   client;
-  text;
-  clientForm: FormGroup;
+  comp: Company = null;
+  cust: Customer = null;
+  text: Object;
+  // cant have 1 clientForm for some reason - i tried for too long
+  compForm: FormGroup;
+  custForm: FormGroup;
   clientType: ClientType;
   ClientType = ClientType;
 
   constructor(private dialogRef: MatDialogRef<ClientInfoPopupComponent>, @Inject(MAT_DIALOG_DATA) public data,
     private cont: AdminControllerService, private dialog: MatDialog, private fb: FormBuilder) { }
 
-    ngOnInit(): void {
-      this.clientForm = this.fb.group({
-        password: ['', Validators.required],
-        email: ['', [Validators.required, Validators.email]],
-        name: [''],
-        firstName: [''],
-        lastName: [''],
-      })
+  ngOnInit(): void {
+    this.client = this.data;
+    if (this.client.companyId != null)
+      this.comp = new Company(this.client.companyId, this.client.password, this.client.name, this.client.email)
+    if (this.client.customerId != null)
+      this.cust = new Customer(this.client.customerId, this.client.password, this.client.email, this.client.firstName, this.client.lastName, [])
 
-    this.client = this.data.row[0];
-    console.log(this.client.email)
-    if (this.client.companyId != null){
-      this.clientType = ClientType.Company
-      var comp:Company = new Company(client.companyId)
+    if (this.comp != null) {
+      this.compForm = this.fb.group({
+        password: [this.comp.$password, Validators.required],
+        email: [this.comp.$email, [Validators.required, Validators.email]],
+        name: [this.comp.$name]
+      })
     }
-      if (this.client.customerId != null)
-    this.clientType = ClientType.Customer
+    if (this.cust != null) {
+      this.custForm = this.fb.group({
+        firstName: [this.cust.$firstName],
+        lastName: [this.cust.$lastName],
+        password: [this.cust.$password, Validators.required],
+        email: [this.cust.$email, [Validators.required, Validators.email]]
+      })
+    }
   }
   closeDialog() {
     this.dialogRef.close()
@@ -63,14 +72,14 @@ export class ClientInfoPopupComponent implements OnInit {
         s => this.text = s,
         e => this.errPopup(e))
   }
-  deleteCustomer(cust: Customer) {
-    this.cont.deleteCustomer(localStorage.getItem("token"), cust).
+  deleteCustomer(id: number) {
+    this.cont.deleteCustomer(localStorage.getItem("token"), id).
       subscribe(
         s => this.text = s,
         e => this.errPopup(e))
   }
-  deleteCompany(comp: Company) {
-    this.cont.deleteCompany(localStorage.getItem("token"), comp).
+  deleteCompany(id: number) {
+    this.cont.deleteCompany(localStorage.getItem("token"), id).
       subscribe(
         s => this.text = s,
         e => this.errPopup(e))

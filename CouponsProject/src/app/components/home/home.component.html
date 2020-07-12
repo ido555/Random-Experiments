@@ -10,8 +10,10 @@
         <h3 style="color: white;" class="animated fadeInDown">Short Explanation / greeting here</h3>
       </span>
   </div>
+  
   <div id="vidWrapper">
-    <video id="strechVid" class="video-fluid z-depth-0" autoplay loop muted>
+    <!-- atleast one of the muted things made this autoplay without being blocked so ill just leave it like that -->
+    <video  id="strechVid" class="video-fluid z-depth-0" oncanplay="this.muted=true" autoplay loop muted [muted]="true">
       <source src="http://localhost:8080/bokeh.mp4" type="video/mp4" />
     </video>
   </div>
