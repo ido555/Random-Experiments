@@ -18,6 +18,7 @@ import { TableComponent } from './components/table/table.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { ErrorBoxComponent } from './components/error-box/error-box.component';
 import { ClientInfoPopupComponent } from './components/client-info-popup/client-info-popup.component';
+import { ParticlesModule } from 'ngx-particle';
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import { ClientInfoPopupComponent } from './components/client-info-popup/client-
     FormsModule,
     NgxDatatableModule,
     BrowserModule,
+    ParticlesModule
     
   ],
   providers: [HttpClientModule, TableComponent],

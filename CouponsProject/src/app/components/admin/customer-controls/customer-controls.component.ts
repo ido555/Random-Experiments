@@ -8,6 +8,7 @@ import { AdminControllerService } from './../../../services/admin-controller.ser
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ColumnMode, SelectionType } from '@swimlane/ngx-datatable';
 
+
 import { MatDialog } from '@angular/material/dialog';
 
 // TODO fix and improve this entire component and its html. its poorly written and poorly structered
@@ -20,19 +21,51 @@ export class CustomerControlsComponent implements OnInit {
   @ViewChild(CustomerControlsComponent) filterTable: CustomerControlsComponent;
 
   constructor(private cont: AdminControllerService, private table: TableComponent, private dialog: MatDialog) { }
-  selectedRow = [];
+  // general logic stuff
+  lastAction: ClientType;
+  beforeSearch: any;
+  token: string;
+
+  // data table stuff
+  columns: string | any[];
   SelectionType = SelectionType;
   ColumnMode = ColumnMode;
-  token: string;
-  rows;
-  beforeSearch: any;
-  columns: string | any[];
-  lastAction: ClientType;
+  selectedRow = [];
   custColNames = [{ prop: 'customerId' }, { prop: 'firstName' }, { prop: 'lastName' }, { prop: 'email' }, { prop: 'password' }];
   compColNames = [{ prop: 'companyId' }, { prop: 'name' }, { prop: 'email' }, { prop: 'password' }];
+  rows;
+  // particles stuff
+  myStyle: object = {};
+  myParams: object = {};
+  width: number = 100;
+  height: number = 100;
 
   ngOnInit(): void {
     this.token = localStorage.getItem("token");
+    this.myStyle = {
+      'position': 'fixed',
+      'width': '100%',
+      'height': '100%',
+      'z-index': -1,
+      'top': 0,
+      'left': 0,
+      'right': 0,
+      'bottom': 0,
+    };
+
+    this.myParams = {
+      particles: {
+        number: {
+          value: 200,
+        },
+        color: {
+          value: '#ff0000'
+        },
+        shape: {
+          type: 'triangle',
+        },
+      }
+    };
   }
   errPopup(err: string) {
     this.dialog.open(ErrorBoxComponent,
@@ -50,9 +83,9 @@ export class CustomerControlsComponent implements OnInit {
         data: row[0]
       })
 
-      this.dialog.afterAllClosed.subscribe(
-        s => this.lastAction == ClientType.Customer ? this.getAllCustomers() : this.getAllCompanies()
-      )
+    this.dialog.afterAllClosed.subscribe(
+      s => this.lastAction == ClientType.Customer ? this.getAllCustomers() : this.getAllCompanies()
+    )
   }
   resetTable() {
     if (this.beforeSearch == null)
@@ -77,19 +110,13 @@ export class CustomerControlsComponent implements OnInit {
       for (let i = 0; i < colsAmt; i++) {
         if (item[keys[i]] == null)
           return false;
-        // check for a match
+        // check for a match - how? magic!
         if (item[keys[i]].toString().toLowerCase().indexOf(val) !== -1 || !val)
           return true;
       }
     });
 
   }
-  // onSelect({ selected }) {
-  //   console.log('Select Event', selected, this.selectedRow);
-  // }
-  // onActivate(event) {
-  //   console.log('Activate Event', event);
-  // }
   updateTable(s: Object) {
     this.rows = s;
     this.rows = [...this.rows];
