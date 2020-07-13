@@ -1,16 +1,18 @@
-<!--Navbar-->
-<mdb-navbar SideClass="navbar navbar-expand-sm navbar-dark blue-gradient" [containerInside]="false">
+<div style="z-index: 9001;">
 
+  <!--Navbar-->
+  <mdb-navbar SideClass="navbar navbar-expand-sm navbar-dark blue-gradient" [containerInside]="false">
+    
     <!-- Navbar brand -->
     <mdb-navbar-brand><a class="navbar-brand" style="margin-left: 20%;"  href="home">Boba Bola</a></mdb-navbar-brand>
-  
+    
     <!-- Collapsible content -->
     <links >
-  
+      
       <!-- Links -->
       <ul class="navbar-nav ml-auto" style="padding-right: 5%;">
         <!-- Dropdown -->
-
+        
         <li class="nav-item dropdown" dropdown>
           <div>
             <!-- TODO hide if not logged in -->
@@ -24,7 +26,7 @@
             </div>
           </div>
         </li>
-
+        
         <li class="nav-item dropdown" dropdown>
           <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
             <mdb-icon fas icon="user"></mdb-icon> Profile<span class="caret"></span></a>
@@ -36,13 +38,14 @@
                 <a *ngIf="isLogged() == true"  (click)="logOut()" class="dropdown-item waves-light" mdbWavesEffect href="">Log out</a>
                 <a *ngIf="isLogged() == false"  class="dropdown-item waves-light" mdbWavesEffect href="">Log in</a>
               </div>
-          </a>
-        </li>
-  
-      </ul>
-      <!-- Links -->
-    </links>
-    <!-- Collapsible content -->
-  
-  </mdb-navbar>
-  <!--/.Navbar-->
+            </a>
+          </li>
+          
+        </ul>
+        <!-- Links -->
+      </links>
+      <!-- Collapsible content -->
+      
+    </mdb-navbar>
+    <!--/.Navbar-->
+  </div>
