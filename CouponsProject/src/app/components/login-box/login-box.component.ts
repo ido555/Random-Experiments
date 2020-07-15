@@ -64,6 +64,7 @@ export class LoginBoxComponent implements OnInit {
     this.clientType = ClientType[type];
     this.checkClientType()
   }
+  // TODO fix this mess too
   checkClientType() {
     this.password = this.loginForm.controls["password"].value;
     this.email = this.loginForm.controls["email"].value;

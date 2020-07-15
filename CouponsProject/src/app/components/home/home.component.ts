@@ -15,7 +15,6 @@ export class HomeComponent implements OnInit {
   }
   showDialog() {
     this.loginBox.open(LoginBoxComponent, { minHeight: 200, minWidth: 200, disableClose: false });
-
     this.loginBox.afterAllClosed.subscribe(s => console.log(s))
   }
 }
