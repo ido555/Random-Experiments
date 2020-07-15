@@ -37,9 +37,11 @@ export class LoginBoxComponent implements OnInit {
     })
 
   }
-
-  closeDialog() {
-    this.dialogRef.close()
+  cancelDialog() {
+    this.dialogRef.close();
+  }
+  closeDialog(ct:ClientType) {
+    this.dialogRef.close(ct);
   }
   // TODO properly show error / success with a little loading thingy and popup
   // TODO popup at bottom of screen thingy whatever thats called
@@ -47,7 +49,7 @@ export class LoginBoxComponent implements OnInit {
     this.logMan.login(this.clientType, this.password, this.email).subscribe(
       s => {
         localStorage.setItem("token", s.toString()); this.success = true;
-        setTimeout(() => { this.closeDialog() }, 2000);
+        setTimeout(() => { this.closeDialog(this.clientType) }, 2000);
       },
       e => { this.success = false; this.error = e.error; this.tryAgain() }
     )
