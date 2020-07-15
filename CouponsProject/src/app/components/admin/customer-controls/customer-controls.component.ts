@@ -7,8 +7,6 @@ import { TableComponent } from '../../table/table.component';
 import { AdminControllerService } from './../../../services/admin-controller.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ColumnMode, SelectionType } from '@swimlane/ngx-datatable';
-
-
 import { MatDialog } from '@angular/material/dialog';
 
 // TODO fix and improve this entire component and its html. its poorly written and poorly structered
@@ -35,24 +33,11 @@ export class CustomerControlsComponent implements OnInit {
   compColNames = [{ prop: 'companyId' }, { prop: 'name' }, { prop: 'email' }, { prop: 'password' }];
   rows;
   // particles stuff
-  myStyle: object = {};
-  myParams: object = {};
-  width: number = 100;
-  height: number = 100;
+
 
   ngOnInit(): void {
     this.token = localStorage.getItem("token");
-    this.myStyle = {
-      'position': 'fixed',
-      'width': '100%',
-      'height': '100%',
-      'z-index': -1,
-      'top': 0,
-      'left': 0,
-      'right': 0,
-      'bottom': 0,
-    };
-    this.myParams = this.reallyLongJson();
+    
   }
   errPopup(err: string) {
     this.dialog.open(ErrorBoxComponent,
@@ -152,68 +137,4 @@ export class CustomerControlsComponent implements OnInit {
         e => this.errPopup(e.error))
   }
 
-  reallyLongJson(){
-    return {
-      "particles": {
-        "number": {
-          "value": 100,
-          "density": {
-            "enable": true,
-            "value_area": 1000
-          }
-        },
-        "color": {
-          "value": "#ffffff"
-        },
-        "shape": {
-          "type": "circle",
-          "stroke": {
-            "width": 0,
-            "color": "#000000"
-          },
-        },
-        "opacity": {
-          "value": 0.5,
-          "random": false,
-          "anim": {
-            "enable": false,
-            "speed": 1,
-            "opacity_min": 0.1,
-            "sync": false
-          }
-        },
-        "size": {
-          "value": 4,
-          "random": true,
-          "anim": {
-            "enable": false,
-            "speed": 40,
-            "size_min": 0.1,
-            "sync": false
-          }
-        },
-        "line_linked": {
-          "enable": true,
-          "distance": 150,
-          "color": "#ffffff",
-          "opacity": 0.4,
-          "width": 1
-        },
-        "move": {
-          "enable": true,
-          "speed": 1.5,
-          "direction": "none",
-          "random": false,
-          "straight": false,
-          "out_mode": "bounce",
-          "bounce": false,
-          "attract": {
-            "enable": false,
-            "rotateX": 600,
-            "rotateY": 1200
-          }
-        }
-      },
-    }
-  }
 }
