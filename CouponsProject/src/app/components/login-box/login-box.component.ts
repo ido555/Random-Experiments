@@ -45,8 +45,11 @@ export class LoginBoxComponent implements OnInit {
   // TODO popup at bottom of screen thingy whatever thats called
   login() {
     this.logMan.login(this.clientType, this.password, this.email).subscribe(
-      s => { localStorage.setItem("token", s.toString()); this.success = true },
-      e => { this.success = false; this.error = e.error; ; this.tryAgain() }
+      s => {
+        localStorage.setItem("token", s.toString()); this.success = true;
+        setTimeout(() => { this.closeDialog() }, 2000);
+      },
+      e => { this.success = false; this.error = e.error; this.tryAgain() }
     )
   }
   tryAgain() {

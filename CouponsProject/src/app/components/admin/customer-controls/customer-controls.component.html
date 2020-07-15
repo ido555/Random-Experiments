@@ -1,22 +1,17 @@
 <div>
+    <app-particles></app-particles>
     <h1 style="text-align: center; padding-top: 3%;">
         Welcome admin.
     </h1>
-
     <div class="grid-container">
-        <div class="heading">
-        </div>
         <div class="myTable">
-
             <input type="text" *ngIf="this.rows != null" class="animated rollIn"
                 style="padding:8px;margin:15px auto;width:30%;" placeholder="Type to search"
                 (keyup)="updateFilter($event)" />
-
             <div *ngIf="this.rows != null && this.selectedRow.length > 0" class="myTableBtn animated fadeIn">
                 <button mdbBtn type="button" class="btn-light" (click)="clientPopup()"
                     mdbWavesEffect>Update/Edit/delete</button>
             </div>
-
             <div *ngIf="this.rows != null" class="resetSearch animated rollIn">
                 <button mdbBtn type="button" class="btn-light btn-sm" (click)="resetTable()" mdbWavesEffect>Reset
                     Search</button>
@@ -38,13 +33,10 @@
             </div>
         </div>
         <div class="btn3">
-
         </div>
         <div class="btn4">
-
         </div>
         <div class="btn5">
-
         </div>
         <div class="btn6">
             <button mdbBtn type="button" class="btn-light" mdbWavesEffect
@@ -54,5 +46,4 @@
         <div class="btn7"></div>
         <div class="btn8"></div>
     </div>
-
 </div>

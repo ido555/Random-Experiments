@@ -11,8 +11,13 @@ export class HomeComponent implements OnInit {
   constructor(private loginBox:MatDialog) { }
 
   ngOnInit(): void {
+    
   }
   showDialog() {
     this.loginBox.open(LoginBoxComponent, { minHeight: 200, minWidth: 200, disableClose: false });
+
+    this.loginBox.afterAllClosed.subscribe(
+      s => this.lastAction == ClientType.Customer ? this.getAllCustomers() : this.getAllCompanies()
+    )
   }
 }

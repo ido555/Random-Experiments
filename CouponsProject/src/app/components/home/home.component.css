@@ -1,15 +1,9 @@
-#abc {
-  padding-bottom: 92vh;
-}
-
-#overlay {
-  padding-left: 100%;
-  padding-right: 100%;
-  /* margin-left: 20%; */
-  /* margin-right: 40%; */
+#lightOverlay {
   position: absolute;
-  z-index: 3;
-  /* font-size: 20px; */
+  padding: 100%;
+  top: 0;
+  left: 0;
+  z-index: -50;
 }
 
 #vidWrapper {
@@ -18,7 +12,7 @@
   left: -50%;
   width: 200%;
   height: 200%;
-  z-index: -100;
+  z-index: -9001;
 }
 
 #vidWrapper video {
@@ -28,22 +22,5 @@
   right: 0;
   bottom: 0;
   margin: auto;
-  min-width: 50%;
-  min-height: 50%;
 }
 
-#welcome {
-  font-size: 3em;
-  line-height: 66px;
-  margin-top: 500px;
-  position: relative;
-  padding-top: 500px;
-  left: 40%;
-}
-
-#welcomeText {
-  line-height: 66px;
-  margin-top: 31%;
-  left: 40%;
-  position: relative;
-}

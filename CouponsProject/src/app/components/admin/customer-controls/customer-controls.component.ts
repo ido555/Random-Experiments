@@ -19,11 +19,10 @@ export class CustomerControlsComponent implements OnInit {
   @ViewChild(CustomerControlsComponent) filterTable: CustomerControlsComponent;
 
   constructor(private cont: AdminControllerService, private table: TableComponent, private dialog: MatDialog) { }
-  // general logic stuff
+  // logic stuff
   lastAction: ClientType;
   beforeSearch: any;
   token: string;
-
   // data table stuff
   columns: string | any[];
   SelectionType = SelectionType;
@@ -32,7 +31,6 @@ export class CustomerControlsComponent implements OnInit {
   custColNames = [{ prop: 'customerId' }, { prop: 'firstName' }, { prop: 'lastName' }, { prop: 'email' }, { prop: 'password' }];
   compColNames = [{ prop: 'companyId' }, { prop: 'name' }, { prop: 'email' }, { prop: 'password' }];
   rows;
-  // particles stuff
 
 
   ngOnInit(): void {

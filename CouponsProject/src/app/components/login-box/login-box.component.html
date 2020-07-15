@@ -32,7 +32,7 @@
       block="true" class="my-4 animated fadeIn faster" type="submit" (click)="login()">Sign in</button>
     <span>
       <span>
-        <i *ngIf="success == true" class="font50px fa fa-check text-success animated fadeIn" aria-hidden="true"></i>
+        <i *ngIf="success == true" ng class="font50px fa fa-check text-success animated fadeIn" aria-hidden="true"></i>
         <i *ngIf="success == false" class="font50px fa fa-window-close text-danger animated fadeIn"
           aria-hidden="true"></i>
         <p *ngIf="success == false">{{error}}</p>
