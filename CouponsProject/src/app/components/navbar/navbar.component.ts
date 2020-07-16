@@ -1,5 +1,5 @@
-import { LoginControllerService } from './../../services/login-controller.service';
-import { Component, OnInit } from '@angular/core';
+import {LoginControllerService} from '../../services/login-controller.service';
+import {Component, OnInit} from '@angular/core';
 
 // TODO fix and improve this entire component and its html. its poorly written and poorly structered
 @Component({
@@ -9,20 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private logMan:LoginControllerService) { }
+  constructor(private logMan: LoginControllerService) { }
 
   ngOnInit(): void {
   }
   public isLogged(){
-    if (localStorage.getItem('token') != null ) 
-      return true
-    return false
+    return localStorage.getItem('token') != null;
+
   }
   public logOut(){
-    console.log("tryna logout")
+    console.log('tryna logout');
     this.logMan.logout(localStorage.getItem('token')).subscribe(
-      s => {localStorage.removeItem('token')},
-      e => {}
+      () => {localStorage.removeItem('token'); },
+      () => {}
     );
   }
 }

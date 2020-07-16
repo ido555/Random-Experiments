@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef ,MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { Inject } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-error-box',
@@ -8,15 +7,15 @@ import { Inject } from '@angular/core';
   styleUrls: ['./error-box.component.css']
 })
 export class ErrorBoxComponent implements OnInit {
-  err
+  err;
 
-  constructor(private dialogRef:MatDialogRef<ErrorBoxComponent>, @Inject(MAT_DIALOG_DATA) public data) { }
-  
+  constructor(private dialogRef: MatDialogRef<ErrorBoxComponent>, @Inject(MAT_DIALOG_DATA) public data) { }
+
   ngOnInit(): void {
-    this.err = this.data.err
+    this.err = this.data.err;
   }
 
   closeDialog(){
-    this.dialogRef.close()
+    this.dialogRef.close();
   }
 }

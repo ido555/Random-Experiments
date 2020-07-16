@@ -1,13 +1,13 @@
-import { ClientType } from 'src/app/enums/client-type.enum';
-import { ClientInfoPopupComponent } from './../../client-info-popup/client-info-popup.component';
-import { Customer } from './../../../models/customer';
-import { Company } from './../../../models/company';
-import { ErrorBoxComponent } from './../../error-box/error-box.component';
-import { TableComponent } from '../../table/table.component';
-import { AdminControllerService } from './../../../services/admin-controller.service';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { ColumnMode, SelectionType } from '@swimlane/ngx-datatable';
-import { MatDialog } from '@angular/material/dialog';
+import {ClientType} from 'src/app/enums/client-type.enum';
+import {ClientInfoPopupComponent} from '../../client-info-popup/client-info-popup.component';
+import {Customer} from '../../../models/customer';
+import {Company} from '../../../models/company';
+import {ErrorBoxComponent} from '../../error-box/error-box.component';
+import {TableComponent} from '../../table/table.component';
+import {AdminControllerService} from '../../../services/admin-controller.service';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {ColumnMode, SelectionType} from '@swimlane/ngx-datatable';
+import {MatDialog} from '@angular/material/dialog';
 
 // TODO fix and improve this entire component and its html. its poorly written and poorly structered
 @Component({
@@ -17,8 +17,6 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class CustomerControlsComponent implements OnInit {
   @ViewChild(CustomerControlsComponent) filterTable: CustomerControlsComponent;
-
-  constructor(private cont: AdminControllerService, private table: TableComponent, private dialog: MatDialog) { }
   // logic stuff
   lastAction: ClientType;
   beforeSearch: any;
@@ -28,111 +26,121 @@ export class CustomerControlsComponent implements OnInit {
   SelectionType = SelectionType;
   ColumnMode = ColumnMode;
   selectedRow = [];
-  custColNames = [{ prop: 'customerId' }, { prop: 'firstName' }, { prop: 'lastName' }, { prop: 'email' }, { prop: 'password' }];
-  compColNames = [{ prop: 'companyId' }, { prop: 'name' }, { prop: 'email' }, { prop: 'password' }];
+  custColNames = [{prop: 'customerId'}, {prop: 'firstName'}, {prop: 'lastName'}, {prop: 'email'}, {prop: 'password'}];
+  compColNames = [{prop: 'companyId'}, {prop: 'name'}, {prop: 'email'}, {prop: 'password'}];
   rows;
 
+  constructor(private cont: AdminControllerService, private table: TableComponent, private dialog: MatDialog) {
+  }
 
   ngOnInit(): void {
-    this.token = localStorage.getItem("token");
-    
+    this.token = localStorage.getItem('token');
+
   }
+
   errPopup(err: string) {
     this.dialog.open(ErrorBoxComponent,
       {
         minHeight: 200, minWidth: 200, disableClose: false,
         maxHeight: 400, maxWidth: 600,
-        data: { err: err }
-      })
+        data: {err}
+      });
   }
+
   clientPopup() {
-    let row = this.selectedRow;
+    const row = this.selectedRow;
     this.dialog.open(ClientInfoPopupComponent,
       {
         minHeight: 400, minWidth: 400, disableClose: false,
         data: row[0]
-      })
+      });
 
     this.dialog.afterAllClosed.subscribe(
-      s => this.lastAction == ClientType.Customer ? this.getAllCustomers() : this.getAllCompanies()
-    )
+      () => this.lastAction === ClientType.Customer ? this.getAllCustomers() : this.getAllCompanies()
+    );
   }
+
   resetTable() {
-    if (this.beforeSearch == null)
+    if (this.beforeSearch == null) {
       return;
+    }
     this.rows = this.beforeSearch;
     this.beforeSearch = null;
     this.selectedRow = [];
   }
+
   updateFilter(event) {
     // get the value of the key pressed and make it lowercase
-    let val = event.target.value.toLowerCase();
+    const val = event.target.value.toLowerCase();
     // get the amount of columns in the table
-    let colsAmt = this.columns.length;
+    const colsAmt = this.columns.length;
     // get the key names of each column in the dataset
-    let keys = Object.keys(this.rows[0]);
+    const keys = Object.keys(this.rows[0]);
     // assign filtered matches to the active datatable
     if (this.beforeSearch == null) {
       this.beforeSearch = this.rows;
     }
-    this.rows = this.rows.filter(function (item) {
+    this.rows = this.rows.filter(item => {
       // iterate through each row's column data
       for (let i = 0; i < colsAmt; i++) {
-        if (item[keys[i]] == null)
+        if (item[keys[i]] == null) {
           return false;
+        }
         // check for a match - how? magic!
-        if (item[keys[i]].toString().toLowerCase().indexOf(val) !== -1 || !val)
+        if (item[keys[i]].toString().toLowerCase().indexOf(val) !== -1 || !val) {
           return true;
+        }
       }
     });
 
   }
-  updateTable(s: Object) {
+
+  updateTable(s: object) {
     this.rows = s;
     this.rows = [...this.rows];
     this.selectedRow = [];
   }
+
   getAllCustomers() {
-    this.lastAction = ClientType.Customer
+    this.lastAction = ClientType.Customer;
     this.columns = this.custColNames;
-    this.cont.getAllCustomers(localStorage.getItem("token")).
-      subscribe(
-        s => this.updateTable(s),
-        e => this.errPopup(e.error))
+    this.cont.getAllCustomers(localStorage.getItem('token')).subscribe(
+      s => this.updateTable(s),
+      e => this.errPopup(e.error));
   }
+
   getAllCompanies() {
-    this.lastAction = ClientType.Company
+    this.lastAction = ClientType.Company;
     this.columns = this.compColNames;
-    this.cont.getAllCompanies(localStorage.getItem("token")).
-      subscribe(
-        s => this.updateTable(s),
-        e => this.errPopup(e.error))
+    this.cont.getAllCompanies(localStorage.getItem('token')).subscribe(
+      s => this.updateTable(s),
+      e => this.errPopup(e.error));
   }
+
   getOneCustomer(customerId: number) {
     this.columns = this.custColNames;
-    this.cont.getOneCustomer(localStorage.getItem("token"), customerId).
-      subscribe(
-        s => this.updateTable(s),
-        e => this.errPopup(e.error))
+    this.cont.getOneCustomer(localStorage.getItem('token'), customerId).subscribe(
+      s => this.updateTable(s),
+      e => this.errPopup(e.error));
   }
+
   getOneCompany(customerId: number) {
     this.columns = this.compColNames;
-    this.cont.getOneCompany(localStorage.getItem("token"), customerId).
-      subscribe(
-        s => this.updateTable(s),
-        e => this.errPopup(e.error))
+    this.cont.getOneCompany(localStorage.getItem('token'), customerId).subscribe(
+      s => this.updateTable(s),
+      e => this.errPopup(e.error));
   }
+
   addCustomer(cust: Customer) {
-    this.cont.addCustomer(localStorage.getItem("token"), cust).
-      subscribe(
-        s => this.updateTable(s),
-        e => this.errPopup(e.error))
+    this.cont.addCustomer(localStorage.getItem('token'), cust).subscribe(
+      s => this.updateTable(s),
+      e => this.errPopup(e.error));
   }
+
   addCompany(comp: Company) {
-    this.cont.addCompany(localStorage.getItem("token"), comp).
-      subscribe(
-        s => this.updateTable(s),
-        e => this.errPopup(e.error))
+    this.cont.addCompany(localStorage.getItem('token'), comp).subscribe(
+      s => this.updateTable(s),
+      e => this.errPopup(e.error));
   }
 
 }
