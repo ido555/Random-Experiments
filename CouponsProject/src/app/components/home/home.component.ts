@@ -8,13 +8,15 @@ import {MatDialog} from '@angular/material/dialog';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  constructor(private loginBox: MatDialog) { }
+  constructor(private loginBox: MatDialog) {
+  }
 
   ngOnInit(): void {
 
   }
+
   showDialog() {
-    this.loginBox.open(LoginBoxComponent, { minHeight: 200, minWidth: 200, disableClose: false });
+    this.loginBox.open(LoginBoxComponent, {minHeight: 200, minWidth: 200, disableClose: false});
     this.loginBox.afterAllClosed.subscribe(s => console.log(s));
   }
 }

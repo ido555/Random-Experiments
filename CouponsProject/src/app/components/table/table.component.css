@@ -1,9 +1,9 @@
-.overlay{
-    padding-left: 43%;
-    padding-right: 43%;
-    /* margin-left: 20%; */
-    /* margin-right: 40%; */
-    position: absolute;
-    z-index: 3;
-    font-size: 20px;    
+.overlay {
+  padding-left: 43%;
+  padding-right: 43%;
+  /* margin-left: 20%; */
+  /* margin-right: 40%; */
+  position: absolute;
+  z-index: 3;
+  font-size: 20px;
 }

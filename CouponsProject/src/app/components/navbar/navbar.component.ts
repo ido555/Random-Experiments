@@ -9,19 +9,25 @@ import {Component, OnInit} from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private logMan: LoginControllerService) { }
+  constructor(private logMan: LoginControllerService) {
+  }
 
   ngOnInit(): void {
   }
-  public isLogged(){
+
+  public isLogged() {
     return localStorage.getItem('token') != null;
 
   }
-  public logOut(){
+
+  public logOut() {
     console.log('tryna logout');
     this.logMan.logout(localStorage.getItem('token')).subscribe(
-      () => {localStorage.removeItem('token'); },
-      () => {}
+      () => {
+        localStorage.removeItem('token');
+      },
+      () => {
+      }
     );
   }
 }

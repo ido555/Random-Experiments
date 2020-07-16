@@ -9,13 +9,14 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 export class ErrorBoxComponent implements OnInit {
   err;
 
-  constructor(private dialogRef: MatDialogRef<ErrorBoxComponent>, @Inject(MAT_DIALOG_DATA) public data) { }
+  constructor(private dialogRef: MatDialogRef<ErrorBoxComponent>, @Inject(MAT_DIALOG_DATA) public data) {
+  }
 
   ngOnInit(): void {
     this.err = this.data.err;
   }
 
-  closeDialog(){
+  closeDialog() {
     this.dialogRef.close();
   }
 }

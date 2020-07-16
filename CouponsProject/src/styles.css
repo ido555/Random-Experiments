@@ -1,4 +1,3 @@
-
 /* You can add global styles to this file, and also import other style files */
 
 body {
@@ -13,8 +12,9 @@ body {
   background: -moz-linear-gradient(-45deg, #5cc2e8 0%, #14a2c9 50%, #5dc7ea 100%);
   background: -webkit-linear-gradient(-45deg, #5cc2e8 0%, #14a2c9 50%, #5dc7ea 100%);
   background: linear-gradient(135deg, #5cc2e8 0%, #14a2c9 50%, #5dc7ea 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5cc2e8', endColorstr='#5dc7ea', GradientType=1);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#5cc2e8', endColorstr='#5dc7ea', GradientType=1);
 }
+
 .myNgxTable {
   /* soft box shadow */
   -webkit-box-shadow: -6px 0px 39px 4px rgba(61, 61, 61, 0.75);

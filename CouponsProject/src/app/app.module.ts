@@ -56,9 +56,10 @@ import {ParticlesComponent} from './components/particles/particles.component';
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  @ViewChild('alertContainer', { read: ViewContainerRef }) container;
+  @ViewChild('alertContainer', {read: ViewContainerRef}) container;
 
-  constructor(private resolver: ComponentFactoryResolver) { }
+  constructor(private resolver: ComponentFactoryResolver) {
+  }
 
 
 }

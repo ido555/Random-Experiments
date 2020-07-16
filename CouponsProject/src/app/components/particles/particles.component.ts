@@ -10,7 +10,9 @@ export class ParticlesComponent implements OnInit {
   myParams: object = {};
   width = 100;
   height = 100;
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit(): void {
     this.myStyle = {

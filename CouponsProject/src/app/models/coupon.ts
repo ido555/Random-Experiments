@@ -13,7 +13,7 @@ export class Coupon {
   private couponCategory: CouponCategory;
 
   constructor($couponId: number, $amount: number, $price: number, $title: string, $description: string, $image: string
-    ,         $startDate: Date, $endDate: Date, $couponCategory: CouponCategory) {
+    , $startDate: Date, $endDate: Date, $couponCategory: CouponCategory) {
     this.couponId = $couponId;
     this.amount = $amount;
     this.price = $price;
