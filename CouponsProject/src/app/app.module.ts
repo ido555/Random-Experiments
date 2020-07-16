@@ -20,6 +20,8 @@ import {ClientInfoPopupComponent} from './components/client-info-popup/client-in
 import {ParticlesModule} from 'ngx-particle';
 import {ParticlesComponent} from './components/particles/particles.component';
 import {ClientType} from './enums/client-type.enum';
+import {GlobalService} from './services/global.service';
+import { CompanyPageComponent } from './components/company-page/company-page.component';
 
 
 @NgModule({
@@ -33,7 +35,8 @@ import {ClientType} from './enums/client-type.enum';
     TableComponent,
     ErrorBoxComponent,
     ClientInfoPopupComponent,
-    ParticlesComponent
+    ParticlesComponent,
+    CompanyPageComponent
   ],
   imports: [
     BrowserModule,
@@ -53,12 +56,12 @@ import {ClientType} from './enums/client-type.enum';
     ParticlesModule
 
   ],
-  providers: [HttpClientModule, TableComponent],
+  providers: [HttpClientModule, TableComponent, GlobalService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  @ViewChild('alertContainer', {read: ViewContainerRef}) container;
-  constructor(private resolver: ComponentFactoryResolver) {
+  // @ViewChild('alertContainer', {read: ViewContainerRef}) container;
+  constructor() {
   }
 
 

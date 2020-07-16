@@ -8,6 +8,7 @@ import {AdminControllerService} from '../../../services/admin-controller.service
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {ColumnMode, SelectionType} from '@swimlane/ngx-datatable';
 import {MatDialog} from '@angular/material/dialog';
+import {GlobalService} from '../../../services/global.service';
 
 // TODO fix and improve this entire component and its html. its poorly written and poorly structered
 @Component({
@@ -30,12 +31,13 @@ export class CustomerControlsComponent implements OnInit {
   compColNames = [{prop: 'companyId'}, {prop: 'name'}, {prop: 'email'}, {prop: 'password'}];
   rows;
 
-  constructor(private cont: AdminControllerService, private table: TableComponent, private dialog: MatDialog) {
+  constructor(private cont: AdminControllerService, private table: TableComponent, private dialog: MatDialog, private glob: GlobalService) {
   }
 
   ngOnInit(): void {
     this.token = localStorage.getItem('token');
-
+    console.log(this.cont)
+    console.log(this.glob)
   }
 
   errPopup(err: string) {

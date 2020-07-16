@@ -16,11 +16,11 @@ export class HomeComponent implements OnInit {
   }
 
   showDialog() {
-    let dialogRef = this.loginBox.open(LoginBoxComponent,
+   this.loginBox.open(LoginBoxComponent,
       {minHeight: 200, minWidth: 200, disableClose: false});
-    dialogRef.afterClosed().subscribe(
-      s => console.log(s)
-    );
+    // dialogRef.afterClosed().subscribe(
+    //   s => console.log(s)
+    // );
 
   }
 }

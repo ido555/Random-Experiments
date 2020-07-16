@@ -1,8 +1,8 @@
-import {ClientType} from '../../enums/client-type.enum';
 import {LoginControllerService} from '../../services/login-controller.service';
 import {Component, OnInit} from '@angular/core';
 import {MatDialogRef} from '@angular/material/dialog';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {GlobalService} from '../../services/global.service';
 
 @Component({
   selector: 'app-login-box',
@@ -23,7 +23,8 @@ export class LoginBoxComponent implements OnInit {
   error;
 
   // private logMan:LoginControllerService
-  constructor(private fb: FormBuilder, private dialogRef: MatDialogRef<LoginBoxComponent>, private logMan: LoginControllerService) {
+  constructor(private fb: FormBuilder, private dialogRef: MatDialogRef<LoginBoxComponent>, private logMan: LoginControllerService,
+              private glob: GlobalService) {
   }
 
   // TODO implement a way to show if a field isnt valid with validators
@@ -35,12 +36,8 @@ export class LoginBoxComponent implements OnInit {
 
   }
 
-  cancelDialog() {
+  closeDialog() {
     this.dialogRef.close();
-  }
-
-  closeDialog(ct: string) {
-    this.dialogRef.close(ct);
   }
 
   login() {
@@ -50,8 +47,9 @@ export class LoginBoxComponent implements OnInit {
       s => {
         localStorage.setItem('token', s.toString());
         this.success = true;
+        this.glob.setClientType(this.clientType);
         setTimeout(() => {
-          this.closeDialog(this.clientType);
+          this.closeDialog();
         }, 2000);
       },
       e => {

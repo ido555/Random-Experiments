@@ -1,18 +1,21 @@
 import {Injectable} from '@angular/core';
-import {ClientType} from '../enums/client-type.enum';
 
+// singleton shared across angular project ?
 @Injectable({
   providedIn: 'root'
 })
 export class GlobalService {
-  private ct:ClientType;
+
+  private ct: string;
+
   constructor() {
   }
 
-  public getClientType(){
+  public getClientType() {
     return this.ct;
   }
-  public setClientType(ct:ClientType){
+
+  public setClientType(ct: string) {
     this.ct = ct;
   }
 }
