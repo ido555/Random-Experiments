@@ -10,16 +10,15 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./login-box.component.css']
 })
 
-// TODO fix and improve this entire component and its html. its poorly written and poorly structered
+// TODO fix and improve this entire component and its html. its poorly written and poorly structured
 export class LoginBoxComponent implements OnInit {
   // private fb: FormBuilder
   // private dialogRef:MatDialogRef<LoginBoxComponent>
-  clientType;
+  clientType: string;
   clientChosen = false;
   password: string;
   email: string;
   loginForm: FormGroup;
-  typeCheck = false;
   success = null;
   error;
 
@@ -28,11 +27,6 @@ export class LoginBoxComponent implements OnInit {
   }
 
   // TODO implement a way to show if a field isnt valid with validators
-  //   clientType : ['',  [Validators.required,
-  //     Validators.pattern(ClientType[0]) || // 0 - Administrator
-  //     Validators.pattern(ClientType[1]) || // 1 - Company
-
-  //     Validators.pattern(ClientType[2])]]   // 2 - Customer
   ngOnInit(): void {
     this.loginForm = this.fb.group({
       password: ['', Validators.required],
@@ -45,13 +39,13 @@ export class LoginBoxComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  closeDialog(ct: ClientType) {
+  closeDialog(ct: string) {
     this.dialogRef.close(ct);
   }
 
-  // TODO properly show error / success with a little loading thingy and popup
-  // TODO popup at bottom of screen thingy whatever thats called
   login() {
+    this.password = this.loginForm.controls.password.value;
+    this.email = this.loginForm.controls.email.value;
     this.logMan.login(this.clientType, this.password, this.email).subscribe(
       s => {
         localStorage.setItem('token', s.toString());
@@ -74,21 +68,8 @@ export class LoginBoxComponent implements OnInit {
     }, 2300);
   }
 
-  // TODO this is a really bad way to do this. fix later
-  setClientType(type: number) {
-    this.clientType = ClientType[type];
-    this.checkClientType();
-  }
-
-  // TODO fix this mess too
-  checkClientType() {
-    this.password = this.loginForm.controls.password.value;
-    this.email = this.loginForm.controls.email.value;
-    if (this.clientType === ClientType || ClientType[1] || ClientType[2]) {
-      this.clientChosen = true;
-      this.typeCheck = true;
-    } else {
-      this.typeCheck = false;
-    }
+  setClientType(type: string) {
+    this.clientType = type;
+    this.clientChosen = true;
   }
 }

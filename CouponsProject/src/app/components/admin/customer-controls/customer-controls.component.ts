@@ -117,19 +117,19 @@ export class CustomerControlsComponent implements OnInit {
       e => this.errPopup(e.error));
   }
 
-  getOneCustomer(customerId: number) {
-    this.columns = this.custColNames;
-    this.cont.getOneCustomer(localStorage.getItem('token'), customerId).subscribe(
-      s => this.updateTable(s),
-      e => this.errPopup(e.error));
-  }
-
-  getOneCompany(customerId: number) {
-    this.columns = this.compColNames;
-    this.cont.getOneCompany(localStorage.getItem('token'), customerId).subscribe(
-      s => this.updateTable(s),
-      e => this.errPopup(e.error));
-  }
+  // getOneCustomer(customerId: number) {
+  //   this.columns = this.custColNames;
+  //   this.cont.getOneCustomer(localStorage.getItem('token'), customerId).subscribe(
+  //     s => this.updateTable(s),
+  //     e => this.errPopup(e.error));
+  // }
+  //
+  // getOneCompany(customerId: number) {
+  //   this.columns = this.compColNames;
+  //   this.cont.getOneCompany(localStorage.getItem('token'), customerId).subscribe(
+  //     s => this.updateTable(s),
+  //     e => this.errPopup(e.error));
+  // }
 
   addCustomer(cust: Customer) {
     this.cont.addCustomer(localStorage.getItem('token'), cust).subscribe(
@@ -137,9 +137,10 @@ export class CustomerControlsComponent implements OnInit {
       e => this.errPopup(e.error));
   }
 
+  // TODO find out what going wrong here
   addCompany(comp: Company) {
     this.cont.addCompany(localStorage.getItem('token'), comp).subscribe(
-      s => this.updateTable(s),
+      s => this.updateTable({s}),
       e => this.errPopup(e.error));
   }
 

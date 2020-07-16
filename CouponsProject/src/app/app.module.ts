@@ -19,6 +19,7 @@ import {ErrorBoxComponent} from './components/error-box/error-box.component';
 import {ClientInfoPopupComponent} from './components/client-info-popup/client-info-popup.component';
 import {ParticlesModule} from 'ngx-particle';
 import {ParticlesComponent} from './components/particles/particles.component';
+import {ClientType} from './enums/client-type.enum';
 
 
 @NgModule({
@@ -57,7 +58,6 @@ import {ParticlesComponent} from './components/particles/particles.component';
 })
 export class AppModule {
   @ViewChild('alertContainer', {read: ViewContainerRef}) container;
-
   constructor(private resolver: ComponentFactoryResolver) {
   }
 

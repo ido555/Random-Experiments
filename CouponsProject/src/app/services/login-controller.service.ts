@@ -12,7 +12,7 @@ export class LoginControllerService {
   constructor(private httpClient: HttpClient) {
   }
 
-  public login(clientType: ClientType, password: string, email: string) {
+  public login(clientType: string, password: string, email: string) {
     return this.httpClient.get('http://localhost:8080/login/' + clientType + '/' + email + '/' + password);
   }
 

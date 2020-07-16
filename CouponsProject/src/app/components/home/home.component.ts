@@ -12,11 +12,15 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    // this.globalClientType
   }
 
   showDialog() {
-    this.loginBox.open(LoginBoxComponent, {minHeight: 200, minWidth: 200, disableClose: false});
-    this.loginBox.afterAllClosed.subscribe(s => console.log(s));
+    let dialogRef = this.loginBox.open(LoginBoxComponent,
+      {minHeight: 200, minWidth: 200, disableClose: false});
+    dialogRef.afterClosed().subscribe(
+      s => console.log(s)
+    );
+
   }
 }

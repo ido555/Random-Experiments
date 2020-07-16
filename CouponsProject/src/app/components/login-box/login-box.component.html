@@ -5,19 +5,18 @@
     <input class="form-control mb-4" formControlName="email" placeholder="E-mail" type="email">
     <input class="form-control mb-4" formControlName="password" placeholder="Password" type="password">
     <div class="dropdown" mdbDropdown>
-      <button *ngIf="typeCheck == false" class="dropdown-toggle waves-light " color="primary" mdbBtn mdbDropdownToggle
+      <button *ngIf="!clientChosen" class="dropdown-toggle waves-light " color="primary" mdbBtn mdbDropdownToggle
               mdbWavesEffect type="button">
         Choose a client type
       </button>
-      <button *ngIf="typeCheck" class="dropdown-toggle waves-light" color="primary" mdbBtn mdbDropdownToggle
+      <button *ngIf="clientChosen" class="dropdown-toggle waves-light" color="primary" mdbBtn mdbDropdownToggle
               mdbWavesEffect type="button">
-        {{clientType}} </button>
+        {{this.clientType}} </button>
 
-      <!-- TODO this is a really bad way to do this. fix later -->
       <div class="dropdown-menu dropdown-primary">
-        <button (click)="setClientType(0)" class="dropdown-item">Administrator</button>
-        <button (click)="setClientType(1)" class="dropdown-item">Company</button>
-        <button (click)="setClientType(2)" class="dropdown-item">Customer</button>
+        <button (click)="setClientType('Administrator')" class="dropdown-item">Administrator</button>
+        <button (click)="setClientType('Company')" class="dropdown-item">Company</button>
+        <button (click)="setClientType('Customer')" class="dropdown-item">Customer</button>
       </div>
     </div>
 
@@ -30,8 +29,7 @@
         <a href="#">Forgot password?</a>
       </div>
     </div>
-    <!-- TODO (click) - loading thingy then login-->
-    <button (click)="login()" *ngIf="loginForm.valid && typeCheck == true && success == null" block="true"
+    <button (click)="login()" *ngIf="loginForm.valid && clientChosen && success == null" block="true"
             class="my-4 animated fadeIn faster" color="info" mdbBtn type="submit">Sign in
     </button>
     <span>
