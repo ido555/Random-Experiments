@@ -13,6 +13,10 @@ export class GlobalService {
     return sessionStorage.getItem('token') != null;
   }
 
+  public getToken() {
+    return sessionStorage.getItem("token");
+  }
+
   public getClientType() {
     return sessionStorage.getItem("ct");
   }

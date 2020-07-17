@@ -2,7 +2,8 @@
   position: absolute;
   top: 40px;
   left: 0;
-  padding-bottom: 35%;
+  padding-bottom: 30%;
   margin: 10px;
-  opacity: 0.9
+  opacity: 0.85;
+  font-weight: bolder;
 }

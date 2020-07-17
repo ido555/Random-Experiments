@@ -1,12 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ClientType} from '../../enums/client-type.enum';
 import {CompanyControllerService} from '../../services/company-controller.service';
 import {MatDialog} from '@angular/material/dialog';
 import {GlobalService} from '../../services/global.service';
 import {ErrorBoxComponent} from '../error-box/error-box.component';
-import {ClientInfoPopupComponent} from '../client-info-popup/client-info-popup.component';
-import {AdminControllerService} from '../../services/admin-controller.service';
 import {ColumnMode, SelectionType} from '@swimlane/ngx-datatable';
+import {CouponCategory} from '../../enums/coupon-category.enum';
 
 @Component({
   selector: 'app-company-page',
@@ -21,20 +20,17 @@ export class CompanyPageComponent implements OnInit {
   beforeSearch: any;
   token: string;
   // data table stuff
-  columns: string | any[];
+  columns = [{prop: 'amount'}, {prop: 'price'}, {prop: 'title'}, {prop: 'description'}, {prop: 'image'}, {prop: 'startDate'}, {prop: 'endDate'}, {prop: 'category'}];
   SelectionType = SelectionType;
   ColumnMode = ColumnMode;
   selectedRow = [];
-  custColNames = [{prop: 'customerId'}, {prop: 'firstName'}, {prop: 'lastName'}, {prop: 'email'}, {prop: 'password'}];
-  compColNames = [{prop: 'companyId'}, {prop: 'name'}, {prop: 'email'}, {prop: 'password'}];
   rows;
 
   constructor(private cont: CompanyControllerService, private dialog: MatDialog, private glob: GlobalService) {
   }
 
   ngOnInit(): void {
-    this.rows = [1]
-
+    this.token = this.glob.getToken();
   }
 
   errPopup(err: string) {
@@ -100,5 +96,16 @@ export class CompanyPageComponent implements OnInit {
     this.selectedRow = [];
   }
 
+  getAll() {
+    console.log()
+    return this.cont.getAllCoupons(this.token).subscribe(
+      s => this.updateTable(s),
+      e => this.errPopup(e.error));
+  };
+
+
+  getCouponsByCategory(c: CouponCategory) {
+    return this.cont.getCouponsByCategory(this.token, c);
+  }
 
 }

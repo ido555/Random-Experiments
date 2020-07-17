@@ -1,14 +1,43 @@
-<div style="position:relative">
-  <p>
-    <button (click)="sidenav.toggle()" mat-raised-button style="background: deepskyblue">show functions</button>
+<div style="position:relative; height: 100%">
+  <app-particles></app-particles>
+  <!--  SIDE NAV  -->
+  <p class="my-3 mx-2">
+    <button (click)="sidenav.toggle()" mat-raised-button style="background: deepskyblue">Show Functions</button>
   </p>
-  <mat-sidenav-container class="example-container" >
-    <mat-sidenav #sidenav [(opened)]="opened" mode="side" class="light-blue">
-      <button class="px-3 my-3 mx-1 " mat-raised-button style="background: deepskyblue;">Basic</button>
-      <button class="px-3 my-3 mx-1 " mat-raised-button style="background: deepskyblue">Basic</button>
-      <button class="px-3 my-3 mx-1 " mat-raised-button style="background: deepskyblue">Basic</button>
-      <button class="px-3 my-3 mx-1 " mat-raised-button style="background: deepskyblue">Basic</button>
-      <button class="px-3 my-3 mx-1 " mat-raised-button style="background: deepskyblue">Basic</button>
+  <mat-sidenav-container class="example-container">
+    <mat-sidenav #sidenav [(opened)]="opened" class="light-blue" mode="side">
+      <button (click)="getAll()" class="px-3 my-3 " mat-raised-button style="background: deepskyblue;">Get all coupons
+      </button>
+      <button class="px-3 my-3 " mat-raised-button style="background: deepskyblue">Basic</button>
+      <button class="px-3 my-3 " mat-raised-button style="background: deepskyblue">Basic</button>
+      <button class="px-3 my-3 " mat-raised-button style="background: deepskyblue ">Basic</button>
+      <button class="px-3 my-3 " mat-raised-button style="background: deepskyblue">Basic</button>
     </mat-sidenav>
   </mat-sidenav-container>
+  <!--  SIDE NAV  -->
+
+  <!-- TABLE  -->
+  <div style="position: absolute; top: 15vh; left: 35%;">
+
+      <input (keyup)="updateFilter($event)" *ngIf="this.rows != null" class="animated rollIn"
+             placeholder="Type to search" style="padding:8px;margin:15px auto;width:30%;"
+             type="text"/>
+      <div *ngIf="this.rows != null && this.selectedRow.length > 0" class="myTableBtn animated fadeIn">
+        <button class="btn-light" mdbBtn mdbWavesEffect
+                type="button">Update/Edit/delete
+        </button>
+      </div>
+      <div *ngIf="this.rows != null" class="resetSearch animated rollIn">
+        <button (click)="resetTable()" class="btn-light btn-sm" mdbBtn mdbWavesEffect type="button">Reset
+          Search
+        </button>
+      <ngx-datatable #table *ngIf="this.rows != null" [columnMode]="ColumnMode.flex" [columns]="columns"
+                     [footerHeight]="50" [headerHeight]="50" [limit]="10" [rows]="rows" [selected]="selectedRow"
+                     [selectionType]="SelectionType.single" class="myNgxTable animated rollIn bootstrap"
+                     rowHeight="auto">
+      </ngx-datatable>
+  </div>
+    <!--  TABLE  -->
+
+  </div>
 </div>
