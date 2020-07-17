@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {LoginControllerService} from '../../services/login-controller.service';
 import {GlobalService} from '../../services/global.service';
-import {AdminControllerService} from '../../services/admin-controller.service';
 
 @Component({
   selector: 'app-navbar',
@@ -14,9 +13,7 @@ export class NavbarComponent implements OnInit {
   constructor(private logMan: LoginControllerService, private glob: GlobalService) { }
 
   ngOnInit(): void {
-    setInterval(() => console.log(this.glob), 1000)
-    console.log(this.glob.getClientType())
-    console.log(this.logMan)
+    setInterval(() => console.log(this.glob.getClientType()), 1000)
   }
 
   public isLogged() {

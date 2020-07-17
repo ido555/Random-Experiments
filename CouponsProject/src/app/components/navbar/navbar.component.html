@@ -15,9 +15,12 @@
 
           <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
             <a class="dropdown-item waves-light" href="customerControls" mdbWavesEffect>Admin controls</a>
-            <!--            <a class="dropdown-item waves-light" href="12345" mdbWavesEffect>something else?</a>-->
           </div>
         </li>
+
+          <span *ngIf="clientType == 'Company' " class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
+            <a class="dropdown-item waves-light" href="companyControls" mdbWavesEffect>Company controls</a>
+          </span>
 
         <li class="nav-item dropdown" dropdown>
           <a class="nav-link dropdown-toggle waves-light" dropdownToggle mdbWavesEffect type="button">
