@@ -19,10 +19,12 @@
   <!-- TABLE  -->
   <div style="position: absolute; top: 20vh; left: 25vh;">
 
-    <input (keyup)="updateFilter($event)" *ngIf="this.rows != null" class="animated rollIn mySearch py-1"
-           style="position: absolute;top: -5vh"
-           placeholder="Type to search"
-           type="text"/>
+    <label>
+      <input (keyup)="updateFilter($event)" *ngIf="this.rows != null" class="animated rollIn mySearch py-1"
+             style="position: absolute;top: -5vh"
+             placeholder="Type to search"
+             type="text"/>
+    </label>
     <div *ngIf="this.rows != null && this.selectedRow.length > 0" class="animated fadeIn"
          style="position: absolute;top: -7vh; left: 15vw">
       <button class="btn-light" mdbBtn mdbWavesEffect
