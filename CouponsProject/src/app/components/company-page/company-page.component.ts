@@ -24,6 +24,7 @@ export class CompanyPageComponent implements OnInit {
   SelectionType = SelectionType;
   ColumnMode = ColumnMode;
   selectedRow = [];
+  flexgrow = 50;
   rows;
 
   constructor(private cont: CompanyControllerService, private dialog: MatDialog, private glob: GlobalService) {
@@ -54,6 +55,7 @@ export class CompanyPageComponent implements OnInit {
   //     () => this.lastAction === ClientType.Customer ? this.getAllCustomers() : this.getAllCompanies()
   //   );
   // }
+
 
   resetTable() {
     if (this.beforeSearch == null) {
