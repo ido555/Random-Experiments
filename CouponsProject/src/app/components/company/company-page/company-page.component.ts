@@ -66,6 +66,7 @@ export class CompanyPageComponent implements OnInit {
     this.beforeSearch = null;
     this.selectedRow = [];
   }
+  // TODO make this work globally with GlobalService so its easier to share across components
 
   updateFilter(event) {
     // get the value of the key pressed and make it lowercase
@@ -99,6 +100,13 @@ export class CompanyPageComponent implements OnInit {
     this.selectedRow = [];
   }
 
+  getDetails() {
+    console.log();
+    this.cont.getAllCoupons(this.token).subscribe(
+      s => s,
+      e => this.errPopup(e.error));
+  };
+
   getAll() {
     console.log();
     this.cont.getAllCoupons(this.token).subscribe(
@@ -119,6 +127,16 @@ export class CompanyPageComponent implements OnInit {
   }
   addCoupon(coup: Coupon) {
     this.cont.addCoupon(this.token, coup).subscribe(
+      s => this.updateTable(s),
+      e => this.errPopup(e.error));
+  }
+  updateCoupon(coup: Coupon) {
+    this.cont.updateCoupon(this.token, coup).subscribe(
+      s => this.updateTable(s),
+      e => this.errPopup(e.error));
+  }
+  deleteCoupon(id: number) {
+    this.cont.deleteCoupon(this.token, id).subscribe(
       s => this.updateTable(s),
       e => this.errPopup(e.error));
   }

@@ -4,7 +4,7 @@ import {ClientType} from 'src/app/enums/client-type.enum';
 import {AdminControllerService} from 'src/app/services/admin-controller.service';
 import {Company} from 'src/app/models/company';
 import {Customer} from 'src/app/models/customer';
-import {ErrorBoxComponent} from '../error-box/error-box.component';
+import {ErrorBoxComponent} from '../../error-box/error-box.component';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({

@@ -1,8 +1,6 @@
 import {ClientType} from 'src/app/enums/client-type.enum';
-import {ClientInfoPopupComponent} from '../client-info-popup/client-info-popup.component';
 import {ErrorBoxComponent} from '../error-box/error-box.component';
-import {AdminControllerService} from '../../services/admin-controller.service';
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ColumnMode, SelectionType} from '@swimlane/ngx-datatable';
 import {MatDialog} from '@angular/material/dialog';
 import {GlobalService} from '../../services/global.service';
@@ -31,7 +29,7 @@ export class TableComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.rows = [1]
+    this.rows = [1];
 
   }
 
@@ -65,6 +63,8 @@ export class TableComponent implements OnInit {
     this.beforeSearch = null;
     this.selectedRow = [];
   }
+
+  // TODO make this work globally with GlobalService so its easier to share across components
 
   updateFilter(event) {
     // get the value of the key pressed and make it lowercase

@@ -1,5 +1,5 @@
 import {ClientType} from 'src/app/enums/client-type.enum';
-import {ClientInfoPopupComponent} from '../../client-info-popup/client-info-popup.component';
+import {ClientInfoPopupComponent} from '../client-info-popup/client-info-popup.component';
 import {Customer} from '../../../models/customer';
 import {Company} from '../../../models/company';
 import {ErrorBoxComponent} from '../../error-box/error-box.component';
@@ -33,7 +33,7 @@ export class CustomerControlsComponent implements OnInit {
 
   constructor(private cont: AdminControllerService, private table: TableComponent, private dialog: MatDialog, private glob: GlobalService) {
   }
-
+// TODO improve and finalize (cust/comp add + success popup / icon)
   ngOnInit(): void {
     this.token = sessionStorage.getItem('token');
     console.log(this.cont)
@@ -70,7 +70,7 @@ export class CustomerControlsComponent implements OnInit {
     this.beforeSearch = null;
     this.selectedRow = [];
   }
-
+  // TODO make this work globally with GlobalService so its easier to share across components
   updateFilter(event) {
     // get the value of the key pressed and make it lowercase
     const val = event.target.value.toLowerCase();

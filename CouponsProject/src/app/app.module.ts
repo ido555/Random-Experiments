@@ -16,7 +16,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TableComponent} from './components/table/table.component';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 import {ErrorBoxComponent} from './components/error-box/error-box.component';
-import {ClientInfoPopupComponent} from './components/client-info-popup/client-info-popup.component';
+import {ClientInfoPopupComponent} from './components/admin/client-info-popup/client-info-popup.component';
 import {ParticlesModule} from 'ngx-particle';
 import {ParticlesComponent} from './components/particles/particles.component';
 import {GlobalService} from './services/global.service';
@@ -26,6 +26,11 @@ import {MatOptionModule} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatButtonModule} from '@angular/material/button';
+import { CouponUpdateDeleteComponent } from './components/company/coupon-update-delete/coupon-update-delete.component';
+import { CouponAddComponent } from './components/company/coupon-add/coupon-add.component';
+import { CustomerAddComponent } from './components/admin/customer-add/customer-add.component';
+import { CustomerUpdateDeleteComponent } from './components/admin/customer-update-delete/customer-update-delete.component';
+import { AdminPageComponent } from './components/admin/admin-page/admin-page.component';
 
 
 @NgModule({
@@ -40,7 +45,12 @@ import {MatButtonModule} from '@angular/material/button';
     ErrorBoxComponent,
     ClientInfoPopupComponent,
     ParticlesComponent,
-    CompanyPageComponent
+    CompanyPageComponent,
+    CouponUpdateDeleteComponent,
+    CouponAddComponent,
+    CustomerAddComponent,
+    CustomerUpdateDeleteComponent,
+    AdminPageComponent
   ],
   imports: [
     BrowserModule,
