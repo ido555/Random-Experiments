@@ -9,7 +9,7 @@ import {GlobalService} from '../../services/global.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  constructor(private loginBox: MatDialog, private glob:GlobalService) {
+  constructor(private loginBox: MatDialog, public glob:GlobalService) {
   }
 
   ngOnInit(): void {

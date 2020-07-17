@@ -36,10 +36,10 @@
           <a>
             <!-- TODO make dropdown open directly under button name -->
             <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
-              <a class="dropdown-item waves-light" href="" mdbWavesEffect>My account</a>
-              <span (click)="logOut()" *ngIf="glob.isLogged()" class="dropdown-item waves-light" href="" mdbWavesEffect>Log
+              <span class="dropdown-item waves-light" mdbWavesEffect>My account</span>
+              <span (click)="logOut()" *ngIf="glob.isLogged()" class="dropdown-item waves-light" mdbWavesEffect>Log
                 out</span>
-              <span *ngIf="!glob.isLogged()" class="dropdown-item waves-light" href="" mdbWavesEffect>Log in</span>
+              <span *ngIf="!glob.isLogged()" class="dropdown-item waves-light" mdbWavesEffect>Log in</span>
             </div>
           </a>
 

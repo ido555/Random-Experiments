@@ -1,6 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
-import {ComponentFactoryResolver, NgModule, ViewChild, ViewContainerRef} from '@angular/core';
+import {NgModule} from '@angular/core';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -19,9 +19,13 @@ import {ErrorBoxComponent} from './components/error-box/error-box.component';
 import {ClientInfoPopupComponent} from './components/client-info-popup/client-info-popup.component';
 import {ParticlesModule} from 'ngx-particle';
 import {ParticlesComponent} from './components/particles/particles.component';
-import {ClientType} from './enums/client-type.enum';
 import {GlobalService} from './services/global.service';
 import { CompanyPageComponent } from './components/company-page/company-page.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatOptionModule} from '@angular/material/core';
+import {MatSelectModule} from '@angular/material/select';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatButtonModule} from '@angular/material/button';
 
 
 @NgModule({
@@ -53,14 +57,18 @@ import { CompanyPageComponent } from './components/company-page/company-page.com
     FormsModule,
     NgxDatatableModule,
     BrowserModule,
-    ParticlesModule
+    ParticlesModule,
+    MatSidenavModule,
+    MatOptionModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    MatButtonModule
 
   ],
   providers: [HttpClientModule, TableComponent, GlobalService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  // @ViewChild('alertContainer', {read: ViewContainerRef}) container;
   constructor() {
   }
 

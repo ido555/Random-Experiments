@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {LoginControllerService} from '../../services/login-controller.service';
 import {GlobalService} from '../../services/global.service';
 
@@ -10,17 +10,18 @@ import {GlobalService} from '../../services/global.service';
 export class NavbarComponent implements OnInit {
   clientType: String;
 
-  constructor(private logMan: LoginControllerService, private glob: GlobalService) {
+  constructor(private logMan: LoginControllerService, public glob: GlobalService, private changeDecRef: ChangeDetectorRef) {
   }
 
   ngOnInit(): void {
-    setInterval(() => console.log(this.glob.getClientType()), 1000);
+    // had to use ChangeDetectorRef here to since some *NgIf conditions weren't updating
+    setInterval(() => {console.log(this.glob.getClientType()); this.changeDecRef.detectChanges()}, 2000);
   }
 
   public logOut() {
     console.log(this.logMan)
     this.logMan.logout(sessionStorage.getItem('token')).subscribe(
-      s => {
+      () => {
         sessionStorage.removeItem('token');
         sessionStorage.removeItem('ct');
       },

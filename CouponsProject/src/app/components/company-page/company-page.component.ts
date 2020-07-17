@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./company-page.component.css']
 })
 export class CompanyPageComponent implements OnInit {
-
+  events: string[] = [];
+  opened: boolean;
   constructor() { }
 
   ngOnInit(): void {

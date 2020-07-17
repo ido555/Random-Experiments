@@ -1,0 +1,8 @@
+.example-container {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  padding-bottom: 35%;
+  margin: 10px;
+  opacity: 0.9
+}
