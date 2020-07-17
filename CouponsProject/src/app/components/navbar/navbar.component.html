@@ -4,10 +4,10 @@
 
     <mdb-navbar-brand><a class="navbar-brand" href="home" style="margin-left: 20%;">Groupon v2</a></mdb-navbar-brand>
 
-    <links *ngIf="isLogged()">
+    <links *ngIf="glob.isLogged()">
       <ul class="navbar-nav ml-auto" style="padding-right: 5%;">
 
-        <li *ngIf="clientType == 'Administrator'" class="nav-item dropdown" dropdown>
+        <li *ngIf="glob.getClientType() == 'Administrator'" class="nav-item dropdown" dropdown>
           <a class="nav-link dropdown-toggle waves-light" dropdownToggle mdbWavesEffect type="button">
             <mdb-icon fas icon="car-crash"></mdb-icon>
             Admin Functions <span class="caret"></span>
@@ -18,9 +18,14 @@
           </div>
         </li>
 
-          <span *ngIf="clientType == 'Company' " class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
-            <a class="dropdown-item waves-light" href="companyControls" mdbWavesEffect>Company controls</a>
+        <li *ngIf="glob.getClientType() == 'Company' ">
+          <span class="nav-item waves-light">
+            <a class="waves-light nav-link" href="companyPage" mdbWavesEffect>
+              <i aria-hidden="true" class="fa fa-building"></i>
+              Company controls
+            </a>
           </span>
+        </li>
 
         <li class="nav-item dropdown" dropdown>
           <a class="nav-link dropdown-toggle waves-light" dropdownToggle mdbWavesEffect type="button">
@@ -32,9 +37,9 @@
             <!-- TODO make dropdown open directly under button name -->
             <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
               <a class="dropdown-item waves-light" href="" mdbWavesEffect>My account</a>
-              <a (click)="logOut()" *ngIf="isLogged()" class="dropdown-item waves-light" href="" mdbWavesEffect>Log
-                out</a>
-              <a *ngIf="!isLogged()" class="dropdown-item waves-light" href="" mdbWavesEffect>Log in</a>
+              <span (click)="logOut()" *ngIf="glob.isLogged()" class="dropdown-item waves-light" href="" mdbWavesEffect>Log
+                out</span>
+              <span *ngIf="!glob.isLogged()" class="dropdown-item waves-light" href="" mdbWavesEffect>Log in</span>
             </div>
           </a>
 

@@ -5,9 +5,7 @@
       Welcome To
       <br> Groupon <small>v2 ™</small>
     </h1>
-    <span>
-      <h3 class="animated fadeInDown text-white">Short Explanation / greeting here</h3>
-    </span>
+      <span class="animated fadeInDown text-white ">Enjoy your stay!</span>
   </div>
 
   <div id="vidWrapper">
@@ -17,7 +15,7 @@
     </video>
   </div>
 
-  <span class="animated fadeInDown carousel-caption">
+  <span *ngIf="!glob.isLogged()" class="animated fadeInDown carousel-caption">
     <button (click)="showDialog()" gradient="blue" mdbBtn mdbWavesEffect type="button">Login</button>
   </span>
 </div>

@@ -45,7 +45,7 @@ export class LoginBoxComponent implements OnInit {
     this.email = this.loginForm.controls.email.value;
     this.logMan.login(this.clientType, this.password, this.email).subscribe(
       s => {
-        localStorage.setItem('token', s.toString());
+        sessionStorage.setItem('token', s.toString());
         this.success = true;
         this.glob.setClientType(this.clientType);
         setTimeout(() => {

@@ -18,7 +18,7 @@ export class TableComponent implements OnInit {
   }
 
   go() {
-    this.adminController.getAllCustomers(localStorage.getItem('token')).subscribe(
+    this.adminController.getAllCustomers(sessionStorage.getItem('token')).subscribe(
       s => this.update(s),
       e => console.log(e));
   }

@@ -35,7 +35,7 @@ export class CustomerControlsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.token = localStorage.getItem('token');
+    this.token = sessionStorage.getItem('token');
     console.log(this.cont)
     console.log(this.glob)
   }
@@ -106,7 +106,7 @@ export class CustomerControlsComponent implements OnInit {
   getAllCustomers() {
     this.lastAction = ClientType.Customer;
     this.columns = this.custColNames;
-    this.cont.getAllCustomers(localStorage.getItem('token')).subscribe(
+    this.cont.getAllCustomers(sessionStorage.getItem('token')).subscribe(
       s => this.updateTable(s),
       e => this.errPopup(e.error));
   }
@@ -114,34 +114,34 @@ export class CustomerControlsComponent implements OnInit {
   getAllCompanies() {
     this.lastAction = ClientType.Company;
     this.columns = this.compColNames;
-    this.cont.getAllCompanies(localStorage.getItem('token')).subscribe(
+    this.cont.getAllCompanies(sessionStorage.getItem('token')).subscribe(
       s => this.updateTable(s),
       e => this.errPopup(e.error));
   }
 
   // getOneCustomer(customerId: number) {
   //   this.columns = this.custColNames;
-  //   this.cont.getOneCustomer(localStorage.getItem('token'), customerId).subscribe(
+  //   this.cont.getOneCustomer(sessionStorage.getItem('token'), customerId).subscribe(
   //     s => this.updateTable(s),
   //     e => this.errPopup(e.error));
   // }
   //
   // getOneCompany(customerId: number) {
   //   this.columns = this.compColNames;
-  //   this.cont.getOneCompany(localStorage.getItem('token'), customerId).subscribe(
+  //   this.cont.getOneCompany(sessionStorage.getItem('token'), customerId).subscribe(
   //     s => this.updateTable(s),
   //     e => this.errPopup(e.error));
   // }
 
   addCustomer(cust: Customer) {
-    this.cont.addCustomer(localStorage.getItem('token'), cust).subscribe(
+    this.cont.addCustomer(sessionStorage.getItem('token'), cust).subscribe(
       s => this.updateTable(s),
       e => this.errPopup(e.error));
   }
 
   // TODO find out what going wrong here
   addCompany(comp: Company) {
-    this.cont.addCompany(localStorage.getItem('token'), comp).subscribe(
+    this.cont.addCompany(sessionStorage.getItem('token'), comp).subscribe(
       s => this.updateTable({s}),
       e => this.errPopup(e.error));
   }

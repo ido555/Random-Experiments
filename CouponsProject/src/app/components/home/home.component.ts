@@ -1,6 +1,7 @@
 import {LoginBoxComponent} from '../login-box/login-box.component';
 import {Component, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
+import {GlobalService} from '../../services/global.service';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +9,7 @@ import {MatDialog} from '@angular/material/dialog';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  constructor(private loginBox: MatDialog) {
+  constructor(private loginBox: MatDialog, private glob:GlobalService) {
   }
 
   ngOnInit(): void {
