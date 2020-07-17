@@ -20,7 +20,7 @@ import {ClientInfoPopupComponent} from './components/client-info-popup/client-in
 import {ParticlesModule} from 'ngx-particle';
 import {ParticlesComponent} from './components/particles/particles.component';
 import {GlobalService} from './services/global.service';
-import { CompanyPageComponent } from './components/company-page/company-page.component';
+import { CompanyPageComponent } from './components/company/company-page/company-page.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatOptionModule} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';

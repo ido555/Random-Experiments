@@ -1,11 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {ClientType} from '../../enums/client-type.enum';
-import {CompanyControllerService} from '../../services/company-controller.service';
+import {ClientType} from '../../../enums/client-type.enum';
+import {CompanyControllerService} from '../../../services/company-controller.service';
 import {MatDialog} from '@angular/material/dialog';
-import {GlobalService} from '../../services/global.service';
-import {ErrorBoxComponent} from '../error-box/error-box.component';
+import {GlobalService} from '../../../services/global.service';
+import {ErrorBoxComponent} from '../../error-box/error-box.component';
 import {ColumnMode, SelectionType} from '@swimlane/ngx-datatable';
-import {CouponCategory} from '../../enums/coupon-category.enum';
+import {CouponCategory} from '../../../enums/coupon-category.enum';
+import {Coupon} from '../../../models/coupon';
 
 @Component({
   selector: 'app-company-page',
@@ -13,6 +14,7 @@ import {CouponCategory} from '../../enums/coupon-category.enum';
   styleUrls: ['./company-page.component.css']
 })
 export class CompanyPageComponent implements OnInit {
+  // sidenav stuff
   events: string[] = [];
   opened: boolean;
   // logic stuff
@@ -24,7 +26,6 @@ export class CompanyPageComponent implements OnInit {
   SelectionType = SelectionType;
   ColumnMode = ColumnMode;
   selectedRow = [];
-  flexgrow = 50;
   rows;
 
   constructor(private cont: CompanyControllerService, private dialog: MatDialog, private glob: GlobalService) {
@@ -99,15 +100,27 @@ export class CompanyPageComponent implements OnInit {
   }
 
   getAll() {
-    console.log()
-    return this.cont.getAllCoupons(this.token).subscribe(
+    console.log();
+    this.cont.getAllCoupons(this.token).subscribe(
       s => this.updateTable(s),
       e => this.errPopup(e.error));
   };
 
+  getCouponsUnderPrice(maxPrice: number) {
+    this.cont.getCouponsUnderPrice(this.token, maxPrice).subscribe(
+      s => this.updateTable(s),
+      e => this.errPopup(e.error));
+  }
 
   getCouponsByCategory(c: CouponCategory) {
-    return this.cont.getCouponsByCategory(this.token, c);
+    this.cont.getCouponsByCategory(this.token, c).subscribe(
+      s => this.updateTable(s),
+      e => this.errPopup(e.error));
+  }
+  addCoupon(coup: Coupon) {
+    this.cont.addCoupon(this.token, coup).subscribe(
+      s => this.updateTable(s),
+      e => this.errPopup(e.error));
   }
 
 }

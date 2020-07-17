@@ -17,25 +17,33 @@
   <!--  SIDE NAV  -->
 
   <!-- TABLE  -->
-  <div style="position: absolute; top: 15vh; left: 25vh;">
+  <div style="position: absolute; top: 20vh; left: 25vh;">
 
-    <input (keyup)="updateFilter($event)" *ngIf="this.rows != null" class="animated rollIn"
-           placeholder="Type to search" style="padding:8px;margin:15px auto;width:30%;"
+    <input (keyup)="updateFilter($event)" *ngIf="this.rows != null" class="animated rollIn mySearch py-1"
+           style="position: absolute;top: -5vh"
+           placeholder="Type to search"
            type="text"/>
-    <div *ngIf="this.rows != null && this.selectedRow.length > 0" class="myTableBtn animated fadeIn">
+    <div *ngIf="this.rows != null && this.selectedRow.length > 0" class="animated fadeIn"
+         style="position: absolute;top: -7vh; left: 15vw">
       <button class="btn-light" mdbBtn mdbWavesEffect
               type="button">Update/Edit/delete
       </button>
     </div>
     <div *ngIf="this.rows != null" class="resetSearch animated rollIn">
-      <button (click)="resetTable()" class="btn-light btn-sm" mdbBtn mdbWavesEffect type="button">Reset
+      <button (click)="resetTable()" class="btn-light btn-sm" mdbBtn mdbWavesEffect type="button"
+              style="position: absolute;top: -10vh">Reset
         Search
       </button>
-<!--      [columns]="columns"-->
+      <!--      [columns]="columns"-->
       <ngx-datatable #table *ngIf="this.rows != null" [columnMode]="ColumnMode.flex"
                      [footerHeight]="50" [headerHeight]="50" [limit]="10" [rows]="rows" [selected]="selectedRow"
                      [selectionType]="SelectionType.single" class="myNgxTable animated rollIn bootstrap"
                      rowHeight="auto">
+        <ngx-datatable-column [flexGrow]="3" minWidth="100" name="couponId">
+          <ng-template let-value="value" ngx-datatable-cell-template>
+            {{ value }}
+          </ng-template>
+        </ngx-datatable-column>
         <ngx-datatable-column [flexGrow]="3" minWidth="100" name="amount">
           <ng-template let-value="value" ngx-datatable-cell-template>
             {{ value }}
@@ -56,7 +64,7 @@
             {{ value }}
           </ng-template>
         </ngx-datatable-column>
-        <ngx-datatable-column [flexGrow]="3" minWidth="100" maxWidth="200" name="description">
+        <ngx-datatable-column [flexGrow]="3" maxWidth="200" minWidth="100" name="description">
           <ng-template let-value="value" ngx-datatable-cell-template>
             {{ value }}
           </ng-template>
