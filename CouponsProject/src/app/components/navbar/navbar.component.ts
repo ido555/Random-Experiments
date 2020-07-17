@@ -19,10 +19,8 @@ export class NavbarComponent implements OnInit {
 
   public logOut() {
     console.log(this.logMan)
-    // TODO figure out why when i use .subscribe() to only clear sessionStorage after the server deletes its token
-    // it doesnt remove items from storage?
     this.logMan.logout(sessionStorage.getItem('token')).subscribe(
-      () => {
+      s => {
         sessionStorage.removeItem('token');
         sessionStorage.removeItem('ct');
       },

@@ -1,4 +1,3 @@
-import {ClientType} from '../enums/client-type.enum';
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 
@@ -17,6 +16,6 @@ export class LoginControllerService {
   }
 
   public logout(token: string) {
-    return this.httpClient.delete('http://localhost:8080/logout/' + token);
+    return this.httpClient.delete('http://localhost:8080/logout/' + token, {responseType: 'text'});
   }
 }
