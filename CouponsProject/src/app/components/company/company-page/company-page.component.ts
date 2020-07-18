@@ -125,16 +125,6 @@ export class CompanyPageComponent implements OnInit {
       s => this.updateTable(s),
       e => this.errPopup(e.error));
   }
-  addCoupon(coup: Coupon) {
-    this.cont.addCoupon(this.token, coup).subscribe(
-      s => this.updateTable(s),
-      e => this.errPopup(e.error));
-  }
-  updateCoupon(coup: Coupon) {
-    this.cont.updateCoupon(this.token, coup).subscribe(
-      s => this.updateTable(s),
-      e => this.errPopup(e.error));
-  }
   deleteCoupon(id: number) {
     this.cont.deleteCoupon(this.token, id).subscribe(
       s => this.updateTable(s),

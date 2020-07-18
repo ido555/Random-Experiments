@@ -1,4 +1,6 @@
 import {Injectable} from '@angular/core';
+import {ErrorBoxComponent} from '../components/error-box/error-box.component';
+import {MatDialog} from '@angular/material/dialog';
 
 // singleton shared across angular project
 @Injectable({
@@ -6,7 +8,7 @@ import {Injectable} from '@angular/core';
 })
 export class GlobalService {
 
-  constructor() {
+  constructor(private dialog: MatDialog) {
   }
 
   public isLogged() {
@@ -23,5 +25,13 @@ export class GlobalService {
 
   public setClientType(ct: string) {
     sessionStorage.setItem("ct" , ct);
+  }
+  errPopup(err: string) {
+    this.dialog.open(ErrorBoxComponent,
+      {
+        minHeight: 200, minWidth: 200, disableClose: false,
+        maxHeight: 400, maxWidth: 600,
+        data: {err}
+      });
   }
 }

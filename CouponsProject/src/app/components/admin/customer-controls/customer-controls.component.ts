@@ -40,13 +40,8 @@ export class CustomerControlsComponent implements OnInit {
     console.log(this.glob)
   }
 
-  errPopup(err: string) {
-    this.dialog.open(ErrorBoxComponent,
-      {
-        minHeight: 200, minWidth: 200, disableClose: false,
-        maxHeight: 400, maxWidth: 600,
-        data: {err}
-      });
+  errPopup(e: string){
+    this.glob.errPopup(e);
   }
 
   clientPopup() {

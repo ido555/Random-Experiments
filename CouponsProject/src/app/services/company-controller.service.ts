@@ -39,3 +39,4 @@ export class CompanyControllerService {
     return this.httpClient.delete('http://localhost:8080/company/deleteCoupon/' + token + '/' + couponId);
   }
 }
+// TODO put err popup into global and use across components
