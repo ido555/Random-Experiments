@@ -15,11 +15,13 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     // had to use ChangeDetectorRef here to since some *NgIf conditions weren't updating
-    setInterval(() => {console.log(this.glob.getClientType()); this.changeDecRef.detectChanges()}, 2000);
+    setInterval(() => {
+      this.changeDecRef.detectChanges();
+    }, 2000);
   }
 
   public logOut() {
-    console.log(this.logMan)
+    console.log(this.logMan);
     this.logMan.logout(sessionStorage.getItem('token')).subscribe(
       () => {
         sessionStorage.removeItem('token');

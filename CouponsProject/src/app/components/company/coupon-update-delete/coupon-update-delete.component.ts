@@ -21,8 +21,10 @@ export class CouponUpdateDeleteComponent implements OnInit {
 
   ngOnInit(): void {
     this.token = sessionStorage.getItem('token');
-    this.coup = new Coupon(this.data.$couponId, this.data.$amount, this.data.$price, this.data.$title, this.data.$description,
-      this.data.$image, this.data.$startDate, this.data.$endDate, this.data.$category);
+    this.coup = new Coupon(this.data.$couponId, this.data.amount, this.data.price, this.data.title, this.data.description,
+      this.data.image, this.data.startDate, this.data.endDate, this.data.category);
+    console.log(this.coup.$amount);
+    console.log(this.coup);
     this.coupForm = this.fb.group({
       amount: [this.coup.$amount, Validators.required],
       price: [this.coup.$price, Validators.required],
@@ -33,6 +35,17 @@ export class CouponUpdateDeleteComponent implements OnInit {
       endDate: [this.coup.$endDate, [Validators.required]],
       couponCategory: [this.coup.$category, Validators.required],
     });
+  }
+
+  refreshCoupon() {
+    this.coup.$amount = this.coupForm.controls.amount.value;
+    this.coup.$price = this.coupForm.controls.price.value;
+    this.coup.$title = this.coupForm.controls.title.value;
+    this.coup.$description = this.coupForm.controls.description.value;
+    this.coup.$image = this.coupForm.controls.image.value;
+    this.coup.$startDate = this.coupForm.controls.startDate.value.toString();
+    this.coup.$endDate = this.coupForm.controls.endDate.value.toString();
+    this.coup.$category = this.coupForm.controls.couponCategory.value;
   }
 
   closeDialog() {
@@ -49,14 +62,15 @@ export class CouponUpdateDeleteComponent implements OnInit {
       e => this.errPopup(e.error));
   }
 
-  deleteCoupon(id: number) {
-    this.cont.deleteCoupon(this.token, id).subscribe(
+  deleteCoupon() {
+    this.cont.deleteCoupon(this.token, this.coup.$couponId).subscribe(
       () => this.closeDialog(),
       e => this.errPopup(e.error));
   }
 
-  updateCoupon(coup: Coupon) {
-    this.cont.updateCoupon(this.token, coup).subscribe(
+  updateCoupon() {
+    this.refreshCoupon();
+    this.cont.updateCoupon(this.token, this.coup).subscribe(
       () => this.closeDialog(),
       e => this.errPopup(e.error));
   }

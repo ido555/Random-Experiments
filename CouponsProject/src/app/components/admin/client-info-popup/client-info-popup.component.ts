@@ -30,11 +30,11 @@ export class ClientInfoPopupComponent implements OnInit {
   ngOnInit(): void {
     this.client = this.data;
     if (this.client.companyId != null) {
-      this.comp = new Company(this.client.companyId, this.client.password, this.client.name, this.client.email);
+      this.comp = new Company(this.client.$companyId, this.client.$password, this.client.$name, this.client.$email);
     }
     if (this.client.customerId != null) {
-      this.cust = new Customer(this.client.customerId, this.client.password, this.client.email,
-        this.client.firstName, this.client.lastName, []);
+      this.cust = new Customer(this.client.$customerId, this.client.$password, this.client.$email,
+        this.client.$firstName, this.client.$lastName, []);
     }
 
     if (this.comp != null) {

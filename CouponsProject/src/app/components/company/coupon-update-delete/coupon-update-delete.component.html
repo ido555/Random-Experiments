@@ -1,3 +1,4 @@
+<!-- TODO show initial values from selectedRow -->
 <div class="container">
   <!--  AMOUNT  -->
   <form [formGroup]="coupForm">
@@ -81,8 +82,8 @@
   </form>
 
   <div *ngIf="coupForm.valid" class="btn-group btn-group d-flex justify-content-center mb-2">
-    <button (click)="updateCoupon(coup)" class="btn btn-primary waves-light" type="button">Update</button>
-    <button (click)="(this.coup.$couponId)" class="btn btn-danger waves-light" type="button">Delete
+    <button (click)="updateCoupon()" class="btn btn-primary waves-light" type="button">Update</button>
+    <button (click)="deleteCoupon()" class="btn btn-danger waves-light" type="button">Delete
     </button>
   </div>
 
