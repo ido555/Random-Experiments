@@ -66,6 +66,7 @@ export class CustomerControlsComponent implements OnInit {
     this.selectedRow = [];
   }
   // TODO make this work globally with GlobalService so its easier to share across components
+  // O(n)
   updateFilter(event) {
     // get the value of the key pressed and make it lowercase
     const val = event.target.value.toLowerCase();

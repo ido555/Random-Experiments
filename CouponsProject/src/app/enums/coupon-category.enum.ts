@@ -1,5 +1,5 @@
 export enum CouponCategory {
-  Spa = 'Spa',
+  Spa = "Spa",
   Food = 'Food',
   Vacation = 'Vacation',
   Electronics = 'Electronics',

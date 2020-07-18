@@ -10,10 +10,10 @@ export class Coupon {
   private image: string;
   private startDate: Date;
   private endDate: Date;
-  private couponCategory: CouponCategory;
+  private category: CouponCategory;
 
   constructor($couponId: number, $amount: number, $price: number, $title: string, $description: string, $image: string
-    , $startDate: Date, $endDate: Date, $couponCategory: CouponCategory) {
+    , $startDate: Date, $endDate: Date, category: CouponCategory) {
     this.couponId = $couponId;
     this.amount = $amount;
     this.price = $price;
@@ -22,7 +22,7 @@ export class Coupon {
     this.image = $image;
     this.startDate = $startDate;
     this.endDate = $endDate;
-    this.couponCategory = $couponCategory;
+    this.category = category;
   }
 
   /**
@@ -157,16 +157,16 @@ export class Coupon {
    * Getter $couponCategory
    * @return {CouponCategory}
    */
-  public get $couponCategory(): CouponCategory {
-    return this.couponCategory;
+  public get $category(): CouponCategory {
+    return this.category;
   }
 
   /**
    * Setter $couponCategory
    * @param {CouponCategory} value
    */
-  public set $couponCategory(value: CouponCategory) {
-    this.couponCategory = value;
+  public set $category(value: CouponCategory) {
+    this.category = value;
   }
 
 }

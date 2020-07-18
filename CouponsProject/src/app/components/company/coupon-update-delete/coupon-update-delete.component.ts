@@ -21,14 +21,18 @@ export class CouponUpdateDeleteComponent implements OnInit {
 
   ngOnInit(): void {
     this.token = sessionStorage.getItem('token');
-    this.coup = new Coupon(this.data.couponId, this.data.amount, this.data.price, this.data.title, this.data.description,
-      this.data.image, this.data.startDate, this.data.endDate, this.data.couponCategory);
-    console.log(this.coup);
-    // this.compForm = this.fb.group({
-    //   password: [this.comp.$password, Validators.required],
-    //   email: [this.comp.$email, [Validators.required, Validators.email]],
-    //   name: [this.comp.$name, Validators.required],
-    // });
+    this.coup = new Coupon(this.data.$couponId, this.data.$amount, this.data.$price, this.data.$title, this.data.$description,
+      this.data.$image, this.data.$startDate, this.data.$endDate, this.data.$category);
+    this.coupForm = this.fb.group({
+      amount: [this.coup.$amount, Validators.required],
+      price: [this.coup.$price, Validators.required],
+      title: [this.coup.$title, Validators.required],
+      description: [this.coup.$description ],
+      image: [this.coup.$image],
+      startDate: [this.coup.$startDate, Validators.required],
+      endDate: [this.coup.$endDate, Validators.required],
+      couponCategory: [this.coup.$category, Validators.required],
+    });
   }
 
   closeDialog() {
@@ -39,15 +43,15 @@ export class CouponUpdateDeleteComponent implements OnInit {
     this.glob.errPopup(e);
   }
 
-  addCoupon(coup: Coupon) {
-    this.cont.addCoupon(this.token, coup).subscribe(
-      s => this.updateTable(s),
-      e => this.errPopup(e.error));
-  }
-
-  updateCoupon(coup: Coupon) {
-    this.cont.updateCoupon(this.token, coup).subscribe(
-      s => this.updateTable(s),
-      e => this.errPopup(e.error));
-  }
+  // addCoupon(coup: Coupon) {
+  //   this.cont.addCoupon(this.token, coup).subscribe(
+  //     s => this.updateTable(s),
+  //     e => this.errPopup(e.error));
+  // }
+  //
+  // updateCoupon(coup: Coupon) {
+  //   this.cont.updateCoupon(this.token, coup).subscribe(
+  //     s => this.updateTable(s),
+  //     e => this.errPopup(e.error));
+  // }
 }
