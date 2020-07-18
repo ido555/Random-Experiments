@@ -29,8 +29,8 @@ export class CouponUpdateDeleteComponent implements OnInit {
       title: [this.coup.$title, Validators.required],
       description: [this.coup.$description],
       image: [this.coup.$image],
-      startDate: [this.coup.$startDate, Validators.required],
-      endDate: [this.coup.$endDate, Validators.required],
+      startDate: [this.coup.$startDate, [Validators.required]],
+      endDate: [this.coup.$endDate, [Validators.required]],
       couponCategory: [this.coup.$category, Validators.required],
     });
   }
@@ -43,15 +43,21 @@ export class CouponUpdateDeleteComponent implements OnInit {
     this.glob.errPopup(e);
   }
 
-  // addCoupon(coup: Coupon) {
-  //   this.cont.addCoupon(this.token, coup).subscribe(
-  //     s => this.updateTable(s),
-  //     e => this.errPopup(e.error));
-  // }
-  //
-  // updateCoupon(coup: Coupon) {
-  //   this.cont.updateCoupon(this.token, coup).subscribe(
-  //     s => this.updateTable(s),
-  //     e => this.errPopup(e.error));
-  // }
+  addCoupon(coup: Coupon) {
+    this.cont.addCoupon(this.token, coup).subscribe(
+      () => this.closeDialog(),
+      e => this.errPopup(e.error));
+  }
+
+  deleteCoupon(id: number) {
+    this.cont.deleteCoupon(this.token, id).subscribe(
+      () => this.closeDialog(),
+      e => this.errPopup(e.error));
+  }
+
+  updateCoupon(coup: Coupon) {
+    this.cont.updateCoupon(this.token, coup).subscribe(
+      () => this.closeDialog(),
+      e => this.errPopup(e.error));
+  }
 }

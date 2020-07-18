@@ -4,8 +4,8 @@ import {ClientType} from 'src/app/enums/client-type.enum';
 import {AdminControllerService} from 'src/app/services/admin-controller.service';
 import {Company} from 'src/app/models/company';
 import {Customer} from 'src/app/models/customer';
-import {ErrorBoxComponent} from '../../error-box/error-box.component';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {GlobalService} from '../../../services/global.service';
 
 @Component({
   selector: 'app-client-info-popup',
@@ -24,7 +24,7 @@ export class ClientInfoPopupComponent implements OnInit {
   ClientType = ClientType;
 
   constructor(private dialogRef: MatDialogRef<ClientInfoPopupComponent>, @Inject(MAT_DIALOG_DATA) public data,
-              private cont: AdminControllerService, private dialog: MatDialog, private fb: FormBuilder) {
+              private cont: AdminControllerService, private dialog: MatDialog, private fb: FormBuilder, public glob: GlobalService) {
   }
 
   ngOnInit(): void {
@@ -58,16 +58,8 @@ export class ClientInfoPopupComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  errPopup(err: string) {
-    this.dialog.open(ErrorBoxComponent,
-      {
-        minHeight: 400, minWidth: 400, disableClose: false,
-        data: {err}
-      });
-  }
-
-  log() {
-    console.log(this.compForm);
+  errPopup(e: string) {
+    this.glob.errPopup(e);
   }
 
   update(type: ClientType) {
