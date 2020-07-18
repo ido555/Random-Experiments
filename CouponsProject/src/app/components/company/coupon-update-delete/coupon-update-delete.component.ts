@@ -21,7 +21,7 @@ export class CouponUpdateDeleteComponent implements OnInit {
 
   ngOnInit(): void {
     this.token = sessionStorage.getItem('token');
-    this.coup = new Coupon(this.data.$couponId, this.data.amount, this.data.price, this.data.title, this.data.description,
+    this.coup = new Coupon(this.data.couponId, this.data.amount, this.data.price, this.data.title, this.data.description,
       this.data.image, this.data.startDate, this.data.endDate, this.data.category);
     console.log(this.coup.$amount);
     console.log(this.coup);
