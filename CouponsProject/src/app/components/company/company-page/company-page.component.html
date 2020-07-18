@@ -6,7 +6,8 @@
   </p>
   <mat-sidenav-container class="example-container">
     <mat-sidenav #sidenav [(opened)]="opened" class="light-blue" mode="side">
-      <button (click)="getAll()" class="px-3 my-3 " mat-raised-button style="background: deepskyblue;">Get all coupons
+      <button (click)="getAllCoupons()" class="px-3 my-3 " mat-raised-button style="background: deepskyblue;">Get all
+        coupons
       </button>
       <button class="px-3 my-3 " mat-raised-button style="background: deepskyblue">Basic</button>
       <button class="px-3 my-3 " mat-raised-button style="background: deepskyblue">Basic</button>
@@ -21,19 +22,19 @@
 
     <label>
       <input (keyup)="updateFilter($event)" *ngIf="this.rows != null" class="animated rollIn mySearch py-1"
-             style="position: absolute;top: -5vh"
              placeholder="Type to search"
+             style="position: absolute;top: -5vh"
              type="text"/>
     </label>
     <div *ngIf="this.rows != null && this.selectedRow.length > 0" class="animated fadeIn"
          style="position: absolute;top: -7vh; left: 15vw">
-      <button class="btn-light" mdbBtn mdbWavesEffect
+      <button (click)="couponPopup()" class="btn-light" mdbBtn mdbWavesEffect
               type="button">Update/Edit/delete
       </button>
     </div>
     <div *ngIf="this.rows != null" class="resetSearch animated rollIn">
-      <button (click)="resetTable()" class="btn-light btn-sm" mdbBtn mdbWavesEffect type="button"
-              style="position: absolute;top: -10vh">Reset
+      <button (click)="resetTable()" class="btn-light btn-sm" mdbBtn mdbWavesEffect style="position: absolute;top: -10vh"
+              type="button">Reset
         Search
       </button>
       <!--      [columns]="columns"-->

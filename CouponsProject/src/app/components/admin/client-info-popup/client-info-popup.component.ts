@@ -18,8 +18,7 @@ export class ClientInfoPopupComponent implements OnInit {
   comp: Company = null;
   cust: Customer = null;
   text: object;
-  // TODO fix? (make seperate classes for comp and cust) cant have just 1 clientForm for some reason - i tried for too long
-  // so i just moved on
+  // TODO fix? (make seperate classes for comp and cust) cant have just 1 clientForm for some reason - i tried for too long so i just moved on
   compForm: FormGroup;
   custForm: FormGroup;
   ClientType = ClientType;

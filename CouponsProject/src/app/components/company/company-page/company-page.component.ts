@@ -6,7 +6,8 @@ import {GlobalService} from '../../../services/global.service';
 import {ErrorBoxComponent} from '../../error-box/error-box.component';
 import {ColumnMode, SelectionType} from '@swimlane/ngx-datatable';
 import {CouponCategory} from '../../../enums/coupon-category.enum';
-import {Coupon} from '../../../models/coupon';
+import {ClientInfoPopupComponent} from '../../admin/client-info-popup/client-info-popup.component';
+import {CouponUpdateDeleteComponent} from '../coupon-update-delete/coupon-update-delete.component';
 
 @Component({
   selector: 'app-company-page',
@@ -66,6 +67,7 @@ export class CompanyPageComponent implements OnInit {
     this.beforeSearch = null;
     this.selectedRow = [];
   }
+
   // TODO make this work globally with GlobalService so its easier to share across components
 
   updateFilter(event) {
@@ -100,6 +102,19 @@ export class CompanyPageComponent implements OnInit {
     this.selectedRow = [];
   }
 
+  couponPopup() {
+    const row = this.selectedRow;
+    this.dialog.open(CouponUpdateDeleteComponent,
+      {
+        minHeight: 400, minWidth: 400, disableClose: false,
+        data: row[0]
+      });
+
+    this.dialog.afterAllClosed.subscribe(
+      () => this.getAllCoupons()
+    )
+  }
+
   getDetails() {
     console.log();
     this.cont.getAllCoupons(this.token).subscribe(
@@ -107,7 +122,7 @@ export class CompanyPageComponent implements OnInit {
       e => this.errPopup(e.error));
   };
 
-  getAll() {
+  getAllCoupons() {
     console.log();
     this.cont.getAllCoupons(this.token).subscribe(
       s => this.updateTable(s),
@@ -125,6 +140,7 @@ export class CompanyPageComponent implements OnInit {
       s => this.updateTable(s),
       e => this.errPopup(e.error));
   }
+
   deleteCoupon(id: number) {
     this.cont.deleteCoupon(this.token, id).subscribe(
       s => this.updateTable(s),
