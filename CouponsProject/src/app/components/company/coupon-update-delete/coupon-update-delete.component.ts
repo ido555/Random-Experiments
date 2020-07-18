@@ -23,8 +23,6 @@ export class CouponUpdateDeleteComponent implements OnInit {
     this.token = sessionStorage.getItem('token');
     this.coup = new Coupon(this.data.couponId, this.data.amount, this.data.price, this.data.title, this.data.description,
       this.data.image, this.data.startDate, this.data.endDate, this.data.category);
-    console.log(this.coup.$amount);
-    console.log(this.coup);
     this.coupForm = this.fb.group({
       amount: [this.coup.$amount, Validators.required],
       price: [this.coup.$price, Validators.required],

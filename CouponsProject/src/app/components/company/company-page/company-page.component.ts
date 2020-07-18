@@ -6,7 +6,6 @@ import {GlobalService} from '../../../services/global.service';
 import {ErrorBoxComponent} from '../../error-box/error-box.component';
 import {ColumnMode, SelectionType} from '@swimlane/ngx-datatable';
 import {CouponCategory} from '../../../enums/coupon-category.enum';
-import {ClientInfoPopupComponent} from '../../admin/client-info-popup/client-info-popup.component';
 import {CouponUpdateDeleteComponent} from '../coupon-update-delete/coupon-update-delete.component';
 
 @Component({
@@ -44,20 +43,6 @@ export class CompanyPageComponent implements OnInit {
         data: {err}
       });
   }
-
-  // clientPopup() {
-  //   const row = this.selectedRow;
-  //   this.dialog.open(ClientInfoPopupComponent,
-  //     {
-  //       minHeight: 400, minWidth: 400, disableClose: false,
-  //       data: row[0]
-  //     });
-  //
-  //   this.dialog.afterAllClosed.subscribe(
-  //     () => this.lastAction === ClientType.Customer ? this.getAllCustomers() : this.getAllCompanies()
-  //   );
-  // }
-
 
   resetTable() {
     if (this.beforeSearch == null) {
@@ -102,6 +87,13 @@ export class CompanyPageComponent implements OnInit {
     this.selectedRow = [];
   }
 
+  couponAdd() {
+    this.dialog.open(CouponUpdateDeleteComponent,
+      {
+        minHeight: 400, minWidth: 400, disableClose: false,
+        data: undefined
+      });
+  }
   couponPopup() {
     const row = this.selectedRow;
     this.dialog.open(CouponUpdateDeleteComponent,
