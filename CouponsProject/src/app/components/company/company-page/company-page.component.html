@@ -1,10 +1,11 @@
-<div style="position:relative; height: 100%">
+<!--style="position:relative; height: 100%"-->
+<div >
   <app-particles></app-particles>
   <!--  SIDE NAV  -->
-  <p class="my-3 mx-2">
+  <p class="my-3 mx-2" >
     <button (click)="sidenav.toggle()" mat-raised-button style="background: deepskyblue">Show Functions</button>
   </p>
-  <mat-sidenav-container class="example-container">
+  <mat-sidenav-container class="example-container" style="margin-top: 90px">
     <mat-sidenav #sidenav [(opened)]="opened" class="light-blue" mode="side">
       <button (click)="getAllCoupons()" class="px-3 my-3 " mat-raised-button style="background: deepskyblue;">Get all
         coupons
@@ -18,7 +19,7 @@
   <!--  SIDE NAV  -->
 
   <!-- TABLE  -->
-  <div style="position: absolute; top: 20vh; left: 25vh;">
+  <div style="position: absolute; top: 25vh; left: 25vh;">
 
     <label>
       <input (keyup)="updateFilter($event)" *ngIf="this.rows != null" class="animated rollIn mySearch py-1"

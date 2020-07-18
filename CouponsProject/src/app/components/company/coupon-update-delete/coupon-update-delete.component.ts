@@ -27,7 +27,7 @@ export class CouponUpdateDeleteComponent implements OnInit {
       amount: [this.coup.$amount, Validators.required],
       price: [this.coup.$price, Validators.required],
       title: [this.coup.$title, Validators.required],
-      description: [this.coup.$description ],
+      description: [this.coup.$description],
       image: [this.coup.$image],
       startDate: [this.coup.$startDate, Validators.required],
       endDate: [this.coup.$endDate, Validators.required],
