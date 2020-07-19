@@ -18,7 +18,6 @@ export class CompanyPageComponent implements OnInit {
   events: string[] = [];
   opened: boolean;
   // logic stuff
-  lastAction: ClientType;
   beforeSearch: any;
   token: string;
   // data table stuff
