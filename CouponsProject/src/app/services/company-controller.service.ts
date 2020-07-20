@@ -28,15 +28,15 @@ export class CompanyControllerService {
   }
 
   public addCoupon(token: string, coupon: Coupon) {
-    return this.httpClient.post('http://localhost:8080/company/addCoupon/' + token, coupon);
+    return this.httpClient.post('http://localhost:8080/company/addCoupon/' + token, coupon, {responseType: 'text'});
   }
 
   public updateCoupon(token: string, coupon: Coupon) {
-    return this.httpClient.put('http://localhost:8080/company/updateCoupon/' + token, coupon , {responseType: 'text'});
+    return this.httpClient.put('http://localhost:8080/company/updateCoupon/' + token, coupon, {responseType: 'text'});
   }
 
   public deleteCoupon(token: string, couponId: number) {
-    return this.httpClient.delete('http://localhost:8080/company/deleteCoupon/' + token + '/' + couponId);
+    return this.httpClient.delete('http://localhost:8080/company/deleteCoupon/' + token + '/' + couponId, {responseType: 'text'});
   }
 }
 // TODO put err popup into global and use across components

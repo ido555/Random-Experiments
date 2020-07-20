@@ -31,7 +31,7 @@
     <!--    DESCRIPTION    -->
     <div class="input-group-text m-4 py-1 my-1 mr-1 pr-1 pl-1">
       <span class="input-group-addon"><i class="fas fa-info p-2"></i></span>
-      <input class="form-control" formControlName="image" placeholder="Description" type="text">
+      <input class="form-control" formControlName="description" placeholder="Description" type="text">
     </div>
     <span *ngIf="coupForm.controls['description'].invalid &&
                 coupForm.controls['description'].touched"
@@ -49,6 +49,7 @@
 
     <!--    START DATE    -->
     <div class="input-group-text m-4 py-1 my-1 mr-1 pr-1 pl-1">
+    <small>Start Date</small>
       <span class="input-group-addon"><i class="far fa-calendar-alt p-2"></i></span>
       <input class="form-control" formControlName="startDate" placeholder="Start Date" type="date">
     </div>
@@ -58,6 +59,7 @@
 
     <!--    End Date    -->
     <div class="input-group-text m-4 py-1 my-1 mr-1 pr-1 pl-1">
+    <small>End Date</small>
       <span class="input-group-addon"><i class="far fa-calendar-alt p-2"></i></span>
       <input class="form-control" formControlName="endDate" placeholder="End Date" type="date">
     </div>
@@ -68,7 +70,7 @@
     <!--    COUPON CATEGORY    -->
     <div class="input-group-text m-4 py-1 my-1 mr-1 pr-1 pl-1">
       <span class="input-group-addon"><i class="fas fa-list-ul p-2"></i></span>
-      <select class="custom-select">
+      <select class="custom-select form-control" formControlName="couponCategory">
         <option value="Spa">Spa</option>
         <option value="Food">Food</option>
         <option value="Vacation">Vacation</option>

@@ -34,6 +34,7 @@ export class CouponUpdateDeleteComponent implements OnInit {
       title: [this.coup.$title, Validators.required],
       description: [this.coup.$description],
       image: [this.coup.$image],
+      // TODO implement custom date validator
       startDate: [this.coup.$startDate, [Validators.required]],
       endDate: [this.coup.$endDate, [Validators.required]],
       couponCategory: [this.coup.$category, Validators.required],
@@ -61,6 +62,8 @@ export class CouponUpdateDeleteComponent implements OnInit {
 
   addCoupon() {
     this.refreshCoupon();
+    console.log(this.coupForm.controls.couponCategory.value)
+    console.log(this.coupForm.controls)
     console.log(this.coupForm)
     console.log(this.coup)
     this.cont.addCoupon(this.token, this.coup).subscribe(
@@ -79,6 +82,8 @@ export class CouponUpdateDeleteComponent implements OnInit {
 
   updateCoupon() {
     this.refreshCoupon();
+    console.log(this.coupForm)
+    console.log(this.coup)
     this.cont.updateCoupon(this.token, this.coup).subscribe(
       () => this.closeDialog(),
       e => this.errPopup(e.error));

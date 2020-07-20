@@ -15,8 +15,11 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     // had to use ChangeDetectorRef here to since some *NgIf conditions weren't updating
+    // TODO changeRef didnt work, stackoverflow says this.ngoninit() will reload entire component
     setInterval(() => {
-      this.changeDecRef.detectChanges();
+      {
+        this.changeDecRef.detectChanges();
+      }
     }, 2000);
   }
 
