@@ -1,5 +1,5 @@
 <!--style="position:relative; height: 100%"-->
-<div >
+<div>
   <app-particles></app-particles>
   <!--  SIDE NAV  -->
   <p class="my-3 mx-2" >
@@ -36,7 +36,6 @@
               type="button">Reset
         Search
       </button>
-      <!--      [columns]="columns"-->
       <ngx-datatable #table *ngIf="this.rows != null" [columnMode]="ColumnMode.flex"
                      [footerHeight]="50" [headerHeight]="50" [limit]="10" [rows]="rows" [selected]="selectedRow"
                      [selectionType]="SelectionType.single" class="myNgxTable animated rollIn bootstrap"

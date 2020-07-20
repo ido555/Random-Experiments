@@ -1,55 +1,51 @@
 <!-- TODO migrate to admin-page and delete admin-control-panel-->
+<app-particles></app-particles>
 <div>
-  <app-particles></app-particles>
-  <h1 style="text-align: center; padding-top: 3%;">
-    Welcome admin.
-  </h1>
-  <div class="grid-container">
-    <div class="myTable">
-      <input (keyup)="updateFilter($event)" *ngIf="this.rows != null" class="animated rollIn"
-             placeholder="Type to search" style="padding:8px;margin:15px auto;width:30%;"
-             type="text"/>
-      <div *ngIf="this.rows != null && this.selectedRow.length > 0" class="myTableBtn animated fadeIn">
-        <button (click)="clientPopup()" class="btn-light" mdbBtn mdbWavesEffect
-                type="button">Update/Edit/delete
-        </button>
-      </div>
-      <div *ngIf="this.rows != null" class="resetSearch animated rollIn">
-        <button (click)="resetTable()" class="btn-light btn-sm" mdbBtn mdbWavesEffect type="button">Reset
-          Search
-        </button>
-      </div>
-      <ngx-datatable #table *ngIf="this.rows != null" [columnMode]="ColumnMode.force" [columns]="columns"
-                     [footerHeight]="50" [headerHeight]="50" [limit]="10" [rows]="rows" [selected]="selectedRow"
-                     [selectionType]="SelectionType.single" class="myNgxTable animated rollIn bootstrap" rowHeight="auto">
-        <!-- (activate)="onActivate($event)" (select)="onSelect($event)" -->
+  <!--  SIDE NAV  -->
+  <p class="my-3 mx-2">
+    <button (click)="sidenav.toggle()" mat-raised-button style="background: deepskyblue">Show Functions</button>
+  </p>
+  <mat-sidenav-container class="example-container rounded" style="margin-top: 90px">
+    <mat-sidenav #sidenav [(opened)]="opened" class="light-blue rounded" mode="side">
+      <button (click)="getAllCompanies()" class="px-3 my-3 " mat-raised-button style="background: deepskyblue;">Get all
+        Companies
+      </button>
+      <button (click)="getAllCustomers()" class="px-3 my-3 " mat-raised-button style="background: deepskyblue">Get all
+        Customers
+      </button>
+    </mat-sidenav>
+  </mat-sidenav-container>
+  <!--  SIDE NAV  -->
+
+  <!-- TABLE  -->
+  <div style="position: absolute; top: 25vh; left: 25vh;">
+
+    <input (keyup)="updateFilter($event)" *ngIf="this.rows != null" class="animated rollIn mySearch py-1"
+           placeholder="Type to search"
+           style="position: absolute;top: -5vh; left: 6vh;"
+           type="text"/>
+
+    <div *ngIf="this.rows != null && this.selectedRow.length > 0" class="animated fadeIn"
+         style="position: absolute;top: -7vh; left: 18vw">
+      <button (click)="clientPopup()" class="btn-light" mdbBtn mdbWavesEffect
+              type="button">Update/Edit/delete
+      </button>
+    </div>
+
+    <!--  TABLE  -->
+    <div *ngIf="this.rows != null" class="resetSearch animated rollIn mx-5">
+      <button (click)="resetTable()" class="btn-light btn-sm" mdbBtn mdbWavesEffect
+              style="position: absolute;top: -10vh"
+              type="button">Reset
+        Search
+      </button>
+      <!--      [columns]="columns"-->
+      <ngx-datatable #table *ngIf="this.rows != null" [columnMode]="ColumnMode.standard"
+                     [footerHeight]="50" [headerHeight]="50" [limit]="10" [rows]="rows" [columns]="columns" [selected]="selectedRow"
+                     [selectionType]="SelectionType.single" class="myNgxTable animated rollIn bootstrap"
+                     rowHeight="auto">
       </ngx-datatable>
     </div>
-    <div class="btn1">
-      <button (click)="getAllCompanies()" class="btn-light" mdbBtn mdbWavesEffect type="button">Get all
-        companies
-      </button>
-    </div>
-    <div class="btn2">
-      <div>
-        <button (click)="getAllCustomers()" class="btn-light" mdbBtn mdbWavesEffect type="button">Get all
-          customers
-        </button>
-      </div>
-    </div>
-    <div class="btn3">
-    </div>
-    <div class="btn4">
-    </div>
-    <div class="btn5">
-    </div>
-    <div class="btn6">
-      <button (click)="errPopup('the server refuses to brew coffee because it is, permanently, a teapot')" class="btn-light" mdbBtn mdbWavesEffect
-              type="button">brew
-        coffee
-      </button>
-    </div>
-    <div class="btn7"></div>
-    <div class="btn8"></div>
+    <!-- TABLE  -->
   </div>
 </div>

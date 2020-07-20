@@ -17,6 +17,9 @@ import {GlobalService} from '../../../services/global.service';
 })
 export class AdminControlPanel implements OnInit {
   @ViewChild(AdminControlPanel) filterTable: AdminControlPanel;
+  // sidenav stuff
+  events: string[] = [];
+  opened: boolean;
   // logic stuff
   lastAction: ClientType;
   beforeSearch: any;
