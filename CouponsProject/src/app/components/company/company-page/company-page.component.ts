@@ -1,12 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {ClientType} from '../../../enums/client-type.enum';
 import {CompanyControllerService} from '../../../services/company-controller.service';
 import {MatDialog} from '@angular/material/dialog';
 import {GlobalService} from '../../../services/global.service';
 import {ErrorBoxComponent} from '../../error-box/error-box.component';
 import {ColumnMode, SelectionType} from '@swimlane/ngx-datatable';
 import {CouponCategory} from '../../../enums/coupon-category.enum';
-import {CouponUpdateDeleteComponent} from '../coupon-update-delete/coupon-update-delete.component';
+import {CouponAddUpdateDeleteComponent} from '../coupon-add-update-delete/coupon-add-update-delete.component';
 
 @Component({
   selector: 'app-company-page',
@@ -87,7 +86,7 @@ export class CompanyPageComponent implements OnInit {
   }
 
   couponAdd() {
-    this.dialog.open(CouponUpdateDeleteComponent,
+    this.dialog.open(CouponAddUpdateDeleteComponent,
       {
         minHeight: 400, minWidth: 400, disableClose: false,
         data: {add: true}
@@ -95,7 +94,7 @@ export class CompanyPageComponent implements OnInit {
   }
   couponPopup() {
     const row = this.selectedRow;
-    this.dialog.open(CouponUpdateDeleteComponent,
+    this.dialog.open(CouponAddUpdateDeleteComponent,
       {
         minHeight: 400, minWidth: 400, disableClose: false,
         data: row[0]

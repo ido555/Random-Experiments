@@ -10,7 +10,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {LoginBoxComponent} from './components/login-box/login-box.component';
 import {ButtonsModule, MDBBootstrapModule, NavbarModule, WavesModule} from 'angular-bootstrap-md';
 import {NotFoundComponent} from './components/not-found/not-found.component';
-import {CustomerControlsComponent} from './components/admin/customer-controls/customer-controls.component';
+import {AdminControlPanel} from './components/admin/admin-control-panel/admin-control-panel.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TableComponent} from './components/table/table.component';
@@ -26,11 +26,7 @@ import {MatOptionModule} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatButtonModule} from '@angular/material/button';
-import { CouponUpdateDeleteComponent } from './components/company/coupon-update-delete/coupon-update-delete.component';
-import { CouponAddComponent } from './components/company/coupon-add/coupon-add.component';
-import { CustomerAddComponent } from './components/admin/customer-add/customer-add.component';
-import { CustomerUpdateDeleteComponent } from './components/admin/customer-update-delete/customer-update-delete.component';
-import { AdminPageComponent } from './components/admin/admin-page/admin-page.component';
+import { CouponAddUpdateDeleteComponent } from './components/company/coupon-add-update-delete/coupon-add-update-delete.component';
 
 
 @NgModule({
@@ -40,17 +36,14 @@ import { AdminPageComponent } from './components/admin/admin-page/admin-page.com
     HomeComponent,
     LoginBoxComponent,
     NotFoundComponent,
-    CustomerControlsComponent,
+    AdminControlPanel,
     TableComponent,
     ErrorBoxComponent,
     ClientInfoPopupComponent,
     ParticlesComponent,
     CompanyPageComponent,
-    CouponUpdateDeleteComponent,
-    CouponAddComponent,
-    CustomerAddComponent,
-    CustomerUpdateDeleteComponent,
-    AdminPageComponent
+    CouponAddUpdateDeleteComponent,
+
   ],
   imports: [
     BrowserModule,

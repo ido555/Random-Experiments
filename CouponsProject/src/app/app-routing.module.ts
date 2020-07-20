@@ -1,4 +1,4 @@
-import {CustomerControlsComponent} from './components/admin/customer-controls/customer-controls.component';
+import {AdminControlPanel} from './components/admin/admin-control-panel/admin-control-panel.component';
 import {HomeComponent} from './components/home/home.component';
 import {NotFoundComponent} from './components/not-found/not-found.component';
 import {NgModule} from '@angular/core';
@@ -9,7 +9,7 @@ import {CompanyPageComponent} from './components/company/company-page/company-pa
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
-  {path: 'customerControls', component: CustomerControlsComponent},
+  {path: 'customerControls', component: AdminControlPanel},
   {path: 'companyPage', component: CompanyPageComponent},
   {path: '**', component: NotFoundComponent}
 ];

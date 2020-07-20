@@ -7,16 +7,16 @@ import {CompanyControllerService} from '../../../services/company-controller.ser
 
 @Component({
   selector: 'app-coupon-update-delete',
-  templateUrl: './coupon-update-delete.component.html',
-  styleUrls: ['./coupon-update-delete.component.css']
+  templateUrl: './coupon-add-update-delete.component.html',
+  styleUrls: ['./coupon-add-update-delete.component.css']
 })
-export class CouponUpdateDeleteComponent implements OnInit {
+export class CouponAddUpdateDeleteComponent implements OnInit {
   token: string;
   coupForm: FormGroup;
   coup: Coupon;
   add: boolean;
 
-  constructor(private dialogRef: MatDialogRef<CouponUpdateDeleteComponent>, @Inject(MAT_DIALOG_DATA) public data,
+  constructor(private dialogRef: MatDialogRef<CouponAddUpdateDeleteComponent>, @Inject(MAT_DIALOG_DATA) public data,
               private cont: CompanyControllerService, private fb: FormBuilder, public glob: GlobalService) {}
 
   ngOnInit(): void {

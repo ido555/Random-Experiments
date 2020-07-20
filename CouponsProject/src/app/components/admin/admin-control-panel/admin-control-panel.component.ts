@@ -2,7 +2,6 @@ import {ClientType} from 'src/app/enums/client-type.enum';
 import {ClientInfoPopupComponent} from '../client-info-popup/client-info-popup.component';
 import {Customer} from '../../../models/customer';
 import {Company} from '../../../models/company';
-import {ErrorBoxComponent} from '../../error-box/error-box.component';
 import {TableComponent} from '../../table/table.component';
 import {AdminControllerService} from '../../../services/admin-controller.service';
 import {Component, OnInit, ViewChild} from '@angular/core';
@@ -13,11 +12,11 @@ import {GlobalService} from '../../../services/global.service';
 // TODO fix and improve this entire component and its html. its poorly written and poorly structered
 @Component({
   selector: 'app-customer-controls',
-  templateUrl: './customer-controls.component.html',
-  styleUrls: ['./customer-controls.component.css']
+  templateUrl: './admin-control-panel.component.html',
+  styleUrls: ['./admin-control-panel.component.css']
 })
-export class CustomerControlsComponent implements OnInit {
-  @ViewChild(CustomerControlsComponent) filterTable: CustomerControlsComponent;
+export class AdminControlPanel implements OnInit {
+  @ViewChild(AdminControlPanel) filterTable: AdminControlPanel;
   // logic stuff
   lastAction: ClientType;
   beforeSearch: any;
