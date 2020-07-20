@@ -22,7 +22,6 @@ export class AdminControlPanel implements OnInit {
   events: string[] = [];
   opened: boolean;
   // logic stuff
-  lastAction: ClientType;
   beforeSearch: any;
   token: string;
   // data table stuff
@@ -39,8 +38,6 @@ export class AdminControlPanel implements OnInit {
 // TODO improve and finalize (cust/comp add + success popup / icon)
   ngOnInit(): void {
     this.token = sessionStorage.getItem('token');
-    console.log(this.cont)
-    console.log(this.glob)
   }
 
   errPopup(e: string){
@@ -48,7 +45,7 @@ export class AdminControlPanel implements OnInit {
   }
 
   customerPopup() {
-    const row = this.selectedRow;
+    var row = this.selectedRow;
     this.dialog.open(CustomerAddUpdateDeleteComponent,
       {
         minHeight: 400, minWidth: 400, disableClose: false,
@@ -56,11 +53,11 @@ export class AdminControlPanel implements OnInit {
       });
 
     this.dialog.afterAllClosed.subscribe(
-      () => this.lastAction === ClientType.Customer ? this.getAllCustomers() : this.getAllCompanies()
+      () => this.getAllCustomers()
     );
   }
   companyPopup() {
-    const row = this.selectedRow;
+    var row = this.selectedRow;
     this.dialog.open(CompanyAddUpdateDeleteComponent,
       {
         minHeight: 400, minWidth: 400, disableClose: false,
@@ -68,7 +65,7 @@ export class AdminControlPanel implements OnInit {
       });
 
     this.dialog.afterAllClosed.subscribe(
-      () => this.lastAction === ClientType.Customer ? this.getAllCustomers() : this.getAllCompanies()
+      () => this.getAllCompanies()
     );
   }
 
@@ -115,7 +112,6 @@ export class AdminControlPanel implements OnInit {
   }
 
   getAllCustomers() {
-    this.lastAction = ClientType.Customer;
     this.columns = this.custColNames;
     this.cont.getAllCustomers(sessionStorage.getItem('token')).subscribe(
       s => this.updateTable(s),
@@ -123,7 +119,6 @@ export class AdminControlPanel implements OnInit {
   }
 
   getAllCompanies() {
-    this.lastAction = ClientType.Company;
     this.columns = this.compColNames;
     this.cont.getAllCompanies(sessionStorage.getItem('token')).subscribe(
       s => this.updateTable(s),

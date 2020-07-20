@@ -13,10 +13,10 @@
       <button (click)="getAllCustomers()" class="px-3 my-3 " mat-raised-button style="background: deepskyblue">Get all
         Customers
       </button>
-      <button (click)="customerPopup(); this.selectedRow.push({add:true})" class="px-3 my-3 " mat-raised-button style="background: deepskyblue">
+      <button (click)="companyPopup(); this.selectedRow.push({add:true}, {companyId:0})" class="px-3 my-3 " mat-raised-button style="background: deepskyblue">
         Add Company
       </button>
-      <button (click)="companyPopup(); this.selectedRow.push({add:true})" class="px-3 my-3 " mat-raised-button style="background: deepskyblue">
+      <button (click)="customerPopup(); this.selectedRow.push({add:true}, {customerId:0});" class="px-3 my-3 " mat-raised-button style="background: deepskyblue">
         Add Customer
       </button>
     </mat-sidenav>
