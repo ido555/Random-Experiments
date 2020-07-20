@@ -5,15 +5,12 @@
   <p class="my-3 mx-2" >
     <button (click)="sidenav.toggle()" mat-raised-button style="background: deepskyblue">Show Functions</button>
   </p>
-  <mat-sidenav-container class="example-container" style="margin-top: 90px">
-    <mat-sidenav #sidenav [(opened)]="opened" class="light-blue" mode="side">
+  <mat-sidenav-container class="example-container rounded" style="margin-top: 90px">
+    <mat-sidenav #sidenav [(opened)]="opened" class="light-blue rounded" mode="side">
       <button (click)="getAllCoupons()" class="px-3 my-3 " mat-raised-button style="background: deepskyblue;">Get all
         coupons
       </button>
       <button class="px-3 my-3 " (click)="couponAdd()" mat-raised-button style="background: deepskyblue">Add Coupon</button>
-      <button class="px-3 my-3 " mat-raised-button style="background: deepskyblue">Basic</button>
-      <button class="px-3 my-3 " mat-raised-button style="background: deepskyblue ">Basic</button>
-      <button class="px-3 my-3 " mat-raised-button style="background: deepskyblue">Basic</button>
     </mat-sidenav>
   </mat-sidenav-container>
   <!--  SIDE NAV  -->
