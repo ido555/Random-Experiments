@@ -43,6 +43,10 @@ export class AdminControlPanel implements OnInit {
   errPopup(e: string) {
     this.glob.errPopup(e);
   }
+  companyAddPopup(){
+    this.selectedRow = [{add:true}];
+    this.customerPopup();
+  }
   customerAddPopup(){
     this.selectedRow = [{add:true}];
     this.customerPopup();

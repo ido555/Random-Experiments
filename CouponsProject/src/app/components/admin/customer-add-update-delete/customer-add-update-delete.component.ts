@@ -21,7 +21,7 @@ export class CustomerAddUpdateDeleteComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.data != undefined) {
+    if (!this.data['add']) {
       this.cust = new Customer(this.data.customerId, this.data.password, this.data.email,
         this.data.firstName, this.data.lastName, []);
       this.custForm = this.fb.group({
@@ -32,14 +32,12 @@ export class CustomerAddUpdateDeleteComponent implements OnInit {
       });
     } else {
       this.custForm = this.fb.group({
-        firstName: [''],
-        lastName: [''],
+        firstName: ['', [Validators.required]],
+        lastName: ['', [Validators.required]],
         password: ['', [Validators.required]],
         email: ['', [Validators.required, Validators.email]]
       });
     }
-
-    console.log(this.data);
   }
 
   closeDialog() {
@@ -51,6 +49,9 @@ export class CustomerAddUpdateDeleteComponent implements OnInit {
   }
 
   refreshCustomer() {
+    for (let custKey in this.cust) {
+      console.log(custKey)
+    }
     this.cust.$firstName = this.custForm.controls.firstName.value;
     this.cust.$lastName = this.custForm.controls.lastName.value;
     this.cust.$email = this.custForm.controls.email.value;

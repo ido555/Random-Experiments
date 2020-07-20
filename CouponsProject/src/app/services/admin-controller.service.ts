@@ -28,7 +28,7 @@ export class AdminControllerService {
   }
 
   public addCustomer(token: string, customer: Customer) {
-    return this.httpClient.post('http://localhost:8080/admin/add/customer/' + token, customer);
+    return this.httpClient.post('http://localhost:8080/admin/add/customer/' + token, customer, {responseType: 'text'});
   }
 
   public addCompany(token: string, company: Company) {
