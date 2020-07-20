@@ -27,6 +27,8 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatButtonModule} from '@angular/material/button';
 import { CouponAddUpdateDeleteComponent } from './components/company/coupon-add-update-delete/coupon-add-update-delete.component';
+import { CustomerAddUpdateDeleteComponent } from './components/admin/customer-add-update-delete/customer-add-update-delete.component';
+import { CompanyAddUpdateDeleteComponent } from './components/admin/company-add-update-delete/company-add-update-delete.component';
 
 
 @NgModule({
@@ -43,6 +45,8 @@ import { CouponAddUpdateDeleteComponent } from './components/company/coupon-add-
     ParticlesComponent,
     CompanyPageComponent,
     CouponAddUpdateDeleteComponent,
+    CustomerAddUpdateDeleteComponent,
+    CompanyAddUpdateDeleteComponent,
 
   ],
   imports: [

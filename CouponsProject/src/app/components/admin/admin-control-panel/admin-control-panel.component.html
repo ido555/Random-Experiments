@@ -13,6 +13,12 @@
       <button (click)="getAllCustomers()" class="px-3 my-3 " mat-raised-button style="background: deepskyblue">Get all
         Customers
       </button>
+      <button (click)="clientPopup(); this.selectedRow['add'] = true; this.selectedRow['comp'] = true" class="px-3 my-3 " mat-raised-button style="background: deepskyblue">
+        Add Company
+      </button>
+      <button (click)="clientPopup(); this.selectedRow['add'] = true; this.selectedRow['cust'] = true" class="px-3 my-3 " mat-raised-button style="background: deepskyblue">
+        Add Customer
+      </button>
     </mat-sidenav>
   </mat-sidenav-container>
   <!--  SIDE NAV  -->
@@ -41,7 +47,8 @@
       </button>
       <!--      [columns]="columns"-->
       <ngx-datatable #table *ngIf="this.rows != null" [columnMode]="ColumnMode.standard"
-                     [footerHeight]="50" [headerHeight]="50" [limit]="10" [rows]="rows" [columns]="columns" [selected]="selectedRow"
+                     [columns]="columns" [footerHeight]="50" [headerHeight]="50" [limit]="10" [rows]="rows"
+                     [selected]="selectedRow"
                      [selectionType]="SelectionType.single" class="myNgxTable animated rollIn bootstrap"
                      rowHeight="auto">
       </ngx-datatable>

@@ -29,6 +29,7 @@ export class ClientInfoPopupComponent implements OnInit {
 
   ngOnInit(): void {
     this.client = this.data;
+    console.log(this.client);
     if (this.client.companyId != null) {
       this.comp = new Company(this.client.companyId, this.client.password, this.client.name, this.client.email);
     }
@@ -114,5 +115,19 @@ export class ClientInfoPopupComponent implements OnInit {
     this.cont.deleteCompany(sessionStorage.getItem('token'), companyId).subscribe(
       () => this.closeDialog(),
       e => this.errPopup(e));
+  }
+
+  addCustomer() {
+    this.updateClients();
+    this.cont.addCustomer(sessionStorage.getItem('token'), this.cust).subscribe(
+      () => this.closeDialog(),
+      e => this.errPopup(e.error));
+  }
+
+  addCompany() {
+    this.updateClients();
+    this.cont.addCompany(sessionStorage.getItem('token'), this.comp).subscribe(
+      () => this.closeDialog(),
+      e => this.errPopup(e.error));
   }
 }

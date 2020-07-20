@@ -131,17 +131,4 @@ export class AdminControlPanel implements OnInit {
   //     e => this.errPopup(e.error));
   // }
 
-  addCustomer(cust: Customer) {
-    this.cont.addCustomer(sessionStorage.getItem('token'), cust).subscribe(
-      s => this.updateTable(s),
-      e => this.errPopup(e.error));
-  }
-
-  // TODO find out what going wrong here
-  addCompany(comp: Company) {
-    this.cont.addCompany(sessionStorage.getItem('token'), comp).subscribe(
-      s => this.updateTable({s}),
-      e => this.errPopup(e.error));
-  }
-
 }
