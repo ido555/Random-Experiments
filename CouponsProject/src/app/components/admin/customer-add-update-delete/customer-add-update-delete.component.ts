@@ -31,9 +31,11 @@ export class CustomerAddUpdateDeleteComponent implements OnInit {
         email: [this.cust.$email, [Validators.required, Validators.email]]
       });
     } else {
+      this.cust = new Customer(0, '', '',
+        '', '', []);
       this.custForm = this.fb.group({
-        firstName: ['', [Validators.required]],
-        lastName: ['', [Validators.required]],
+        firstName: [''],
+        lastName: [''],
         password: ['', [Validators.required]],
         email: ['', [Validators.required, Validators.email]]
       });
@@ -49,9 +51,6 @@ export class CustomerAddUpdateDeleteComponent implements OnInit {
   }
 
   refreshCustomer() {
-    for (let custKey in this.cust) {
-      console.log(custKey)
-    }
     this.cust.$firstName = this.custForm.controls.firstName.value;
     this.cust.$lastName = this.custForm.controls.lastName.value;
     this.cust.$email = this.custForm.controls.email.value;

@@ -32,10 +32,10 @@
         class="pb-1 pt-0 d-flex justify-content-center">Password Required </span>
 </form>
 
-<div *ngIf="custForm.valid" class="btn-group btn-group d-flex justify-content-center mb-2">
+<div *ngIf="custForm.valid && !this.data['add']" class="btn-group btn-group d-flex justify-content-center mb-2">
   <button (click)="updateCustomer()" class="btn btn-primary waves-light" type="button">Update</button>
   <button (click)="deleteCustomer()" class="btn btn-danger waves-light" type="button">Delete</button>
 </div>
-<div *ngIf="custForm.valid && data.add" class="btn-group btn-group d-flex justify-content-center mb-2">
+<div *ngIf="custForm.valid  " class="btn-group btn-group d-flex justify-content-center mb-2">
   <button (click)="addCustomer()" class="btn btn-primary waves-light" type="button">Add</button>
 </div>
