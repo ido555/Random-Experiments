@@ -13,10 +13,10 @@
       <button (click)="getAllCustomers()" class="px-3 my-3 " mat-raised-button style="background: deepskyblue">Get all
         Customers
       </button>
-      <button (click)="clientPopup(); this.selectedRow.push({add:true})" class="px-3 my-3 " mat-raised-button style="background: deepskyblue">
+      <button (click)="customerPopup(); this.selectedRow.push({add:true})" class="px-3 my-3 " mat-raised-button style="background: deepskyblue">
         Add Company
       </button>
-      <button (click)="clientPopup(); this.selectedRow.push({add:true})" class="px-3 my-3 " mat-raised-button style="background: deepskyblue">
+      <button (click)="companyPopup(); this.selectedRow.push({add:true})" class="px-3 my-3 " mat-raised-button style="background: deepskyblue">
         Add Customer
       </button>
     </mat-sidenav>
@@ -33,7 +33,7 @@
 
     <div *ngIf="this.rows != null && this.selectedRow.length > 0" class="animated fadeIn"
          style="position: absolute;top: -7vh; left: 18vw">
-      <button (click)="clientPopup()" class="btn-light" mdbBtn mdbWavesEffect
+      <button  class="btn-light" mdbBtn mdbWavesEffect
               type="button">Update/Edit/delete
       </button>
     </div>

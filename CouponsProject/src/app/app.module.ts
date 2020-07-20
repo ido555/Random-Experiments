@@ -16,7 +16,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TableComponent} from './components/table/table.component';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 import {ErrorBoxComponent} from './components/error-box/error-box.component';
-import {ClientInfoPopupComponent} from './components/admin/client-info-popup/client-info-popup.component';
 import {ParticlesModule} from 'ngx-particle';
 import {ParticlesComponent} from './components/particles/particles.component';
 import {GlobalService} from './services/global.service';
@@ -41,7 +40,6 @@ import { CompanyAddUpdateDeleteComponent } from './components/admin/company-add-
     AdminControlPanel,
     TableComponent,
     ErrorBoxComponent,
-    ClientInfoPopupComponent,
     ParticlesComponent,
     CompanyPageComponent,
     CouponAddUpdateDeleteComponent,

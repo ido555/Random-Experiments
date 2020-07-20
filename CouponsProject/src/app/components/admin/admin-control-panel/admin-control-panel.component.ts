@@ -1,5 +1,4 @@
 import {ClientType} from 'src/app/enums/client-type.enum';
-import {ClientInfoPopupComponent} from '../client-info-popup/client-info-popup.component';
 import {Customer} from '../../../models/customer';
 import {Company} from '../../../models/company';
 import {TableComponent} from '../../table/table.component';
@@ -8,6 +7,8 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {ColumnMode, SelectionType} from '@swimlane/ngx-datatable';
 import {MatDialog} from '@angular/material/dialog';
 import {GlobalService} from '../../../services/global.service';
+import {CustomerAddUpdateDeleteComponent} from '../customer-add-update-delete/customer-add-update-delete.component';
+import {CompanyAddUpdateDeleteComponent} from '../company-add-update-delete/company-add-update-delete.component';
 
 // TODO fix and improve this entire component and its html. its poorly written and poorly structered
 @Component({
@@ -46,9 +47,21 @@ export class AdminControlPanel implements OnInit {
     this.glob.errPopup(e);
   }
 
-  clientPopup() {
+  customerPopup() {
     const row = this.selectedRow;
-    this.dialog.open(ClientInfoPopupComponent,
+    this.dialog.open(CustomerAddUpdateDeleteComponent,
+      {
+        minHeight: 400, minWidth: 400, disableClose: false,
+        data: row[0]
+      });
+
+    this.dialog.afterAllClosed.subscribe(
+      () => this.lastAction === ClientType.Customer ? this.getAllCustomers() : this.getAllCompanies()
+    );
+  }
+  companyPopup() {
+    const row = this.selectedRow;
+    this.dialog.open(CompanyAddUpdateDeleteComponent,
       {
         minHeight: 400, minWidth: 400, disableClose: false,
         data: row[0]

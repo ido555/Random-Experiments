@@ -22,9 +22,9 @@ export class CustomerAddUpdateDeleteComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.cust = new Customer(this.client.customerId, this.client.password, this.client.email,
-      this.client.firstName, this.client.lastName, []);
-
+    this.cust = new Customer(this.data.customerId, this.data.password, this.data.email,
+      this.data.firstName, this.data.lastName, []);
+      console.log(this.data)
     this.custForm = this.fb.group({
       firstName: [this.cust.$firstName],
       lastName: [this.cust.$lastName],
@@ -47,19 +47,21 @@ export class CustomerAddUpdateDeleteComponent implements OnInit {
     this.cust.$email = this.custForm.controls.email.value;
     this.cust.$password = this.custForm.controls.password.value;
   }
+
   addCustomer() {
-    refreshCustomer()
-    this.updateClients();
+    this.refreshCustomer();
     this.cont.addCustomer(sessionStorage.getItem('token'), this.cust).subscribe(
       () => this.closeDialog(),
       e => this.errPopup(e.error));
   }
+
   updateCustomer() {
-    refreshCustomer()
+    this.refreshCustomer();
     this.cont.updateCustomer(sessionStorage.getItem('token'), this.cust).subscribe(
       () => this.closeDialog(),
       e => this.errPopup(e));
   }
+
   deleteCustomer() {
     this.cont.deleteCustomer(sessionStorage.getItem('token'), this.cust.$customerId).subscribe(
       () => this.closeDialog(),
