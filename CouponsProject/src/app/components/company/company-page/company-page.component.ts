@@ -90,7 +90,7 @@ export class CompanyPageComponent implements OnInit {
     this.dialog.open(CouponUpdateDeleteComponent,
       {
         minHeight: 400, minWidth: 400, disableClose: false,
-        data: undefined
+        data: {add: true}
       });
   }
   couponPopup() {

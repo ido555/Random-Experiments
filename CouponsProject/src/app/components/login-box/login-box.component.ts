@@ -1,5 +1,5 @@
 import {LoginControllerService} from '../../services/login-controller.service';
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {MatDialogRef} from '@angular/material/dialog';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {GlobalService} from '../../services/global.service';
@@ -12,8 +12,7 @@ import {GlobalService} from '../../services/global.service';
 
 // TODO fix and improve this entire component and its html. its poorly written and poorly structured
 export class LoginBoxComponent implements OnInit {
-  // private fb: FormBuilder
-  // private dialogRef:MatDialogRef<LoginBoxComponent>
+
   clientType: string;
   clientChosen = false;
   password: string;
@@ -24,7 +23,7 @@ export class LoginBoxComponent implements OnInit {
 
   // private logMan:LoginControllerService
   constructor(private fb: FormBuilder, private dialogRef: MatDialogRef<LoginBoxComponent>, private logMan: LoginControllerService,
-              private glob: GlobalService) {
+              private glob: GlobalService, private changeDecRef: ChangeDetectorRef) {
   }
 
   // TODO implement a way to show if a field isnt valid with validators
@@ -33,10 +32,13 @@ export class LoginBoxComponent implements OnInit {
       password: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]]
     });
-
+    setInterval(() => {
+      this.changeDecRef.detectChanges();
+    }, 2000);
   }
 
   closeDialog() {
+    this.changeDecRef.detectChanges();
     this.dialogRef.close();
   }
 
@@ -53,6 +55,7 @@ export class LoginBoxComponent implements OnInit {
         }, 2000);
       },
       e => {
+        console.log(e)
         this.success = false;
         this.error = e.error;
         this.tryAgain();

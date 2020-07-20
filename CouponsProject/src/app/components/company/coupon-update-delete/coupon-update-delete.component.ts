@@ -14,15 +14,20 @@ export class CouponUpdateDeleteComponent implements OnInit {
   token: string;
   coupForm: FormGroup;
   coup: Coupon;
+  add: boolean;
 
   constructor(private dialogRef: MatDialogRef<CouponUpdateDeleteComponent>, @Inject(MAT_DIALOG_DATA) public data,
-              private cont: CompanyControllerService, private fb: FormBuilder, public glob: GlobalService) {
-  }
+              private cont: CompanyControllerService, private fb: FormBuilder, public glob: GlobalService) {}
 
   ngOnInit(): void {
+    this.add = this.data.add;
     this.token = sessionStorage.getItem('token');
+
+    // create Coupon (undefined values for add operation)
     this.coup = new Coupon(this.data.couponId, this.data.amount, this.data.price, this.data.title, this.data.description,
       this.data.image, this.data.startDate, this.data.endDate, this.data.category);
+
+    // build Form
     this.coupForm = this.fb.group({
       amount: [this.coup.$amount, Validators.required],
       price: [this.coup.$price, Validators.required],
@@ -54,10 +59,16 @@ export class CouponUpdateDeleteComponent implements OnInit {
     this.glob.errPopup(e);
   }
 
-  addCoupon(coup: Coupon) {
-    this.cont.addCoupon(this.token, coup).subscribe(
+  addCoupon() {
+    this.refreshCoupon();
+    console.log(this.coupForm)
+    console.log(this.coup)
+    this.cont.addCoupon(this.token, this.coup).subscribe(
       () => this.closeDialog(),
-      e => this.errPopup(e.error));
+      e => {
+        this.errPopup(e.error);
+        console.log(e)
+      });
   }
 
   deleteCoupon() {

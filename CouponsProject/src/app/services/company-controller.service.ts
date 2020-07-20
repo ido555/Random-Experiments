@@ -32,7 +32,7 @@ export class CompanyControllerService {
   }
 
   public updateCoupon(token: string, coupon: Coupon) {
-    return this.httpClient.put('http://localhost:8080/company/updateCoupon/' + token, coupon);
+    return this.httpClient.put('http://localhost:8080/company/updateCoupon/' + token, coupon , {responseType: 'text'});
   }
 
   public deleteCoupon(token: string, couponId: number) {
