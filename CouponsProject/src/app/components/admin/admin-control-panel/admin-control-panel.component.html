@@ -13,10 +13,10 @@
       <button (click)="getAllCustomers()" class="px-3 my-3 " mat-raised-button style="background: deepskyblue">Get all
         Customers
       </button>
-      <button (click)="companyPopup(); this.selectedRow.push({add:true}, {companyId:0})" class="px-3 my-3 " mat-raised-button style="background: deepskyblue">
+      <button (click)="customerAddPopup()" class="px-3 my-3 " mat-raised-button style="background: deepskyblue">
         Add Company
       </button>
-      <button (click)="customerPopup(); this.selectedRow.push({add:true}, {customerId:0});" class="px-3 my-3 " mat-raised-button style="background: deepskyblue">
+      <button (click)="customerAddPopup()" class="px-3 my-3 " mat-raised-button style="background: deepskyblue">
         Add Customer
       </button>
     </mat-sidenav>
@@ -33,24 +33,18 @@
 
     <div *ngIf="this.rows != null && this.selectedRow.length > 0" class="animated fadeIn"
          style="position: absolute;top: -7vh; left: 18vw">
-      <button  class="btn-light" mdbBtn mdbWavesEffect
-              type="button">Update/Edit/delete
-      </button>
+      <button (click)="isCompany ? companyPopup() : customerPopup()" class="btn-light" mdbBtn mdbWavesEffect
+              type="button">Update/Edit/delete </button>
     </div>
 
     <!--  TABLE  -->
     <div *ngIf="this.rows != null" class="resetSearch animated rollIn mx-5">
       <button (click)="resetTable()" class="btn-light btn-sm" mdbBtn mdbWavesEffect
-              style="position: absolute;top: -10vh"
-              type="button">Reset
-        Search
-      </button>
-      <!--      [columns]="columns"-->
+              style="position: absolute;top: -10vh" type="button">Reset Search </button>
       <ngx-datatable #table *ngIf="this.rows != null" [columnMode]="ColumnMode.standard"
                      [columns]="columns" [footerHeight]="50" [headerHeight]="50" [limit]="10" [rows]="rows"
-                     [selected]="selectedRow"
-                     [selectionType]="SelectionType.single" class="myNgxTable animated rollIn bootstrap"
-                     rowHeight="auto">
+                     [selected]="selectedRow" [selectionType]="SelectionType.single"
+                     class="myNgxTable animated rollIn bootstrap" rowHeight="auto">
       </ngx-datatable>
     </div>
     <!-- TABLE  -->

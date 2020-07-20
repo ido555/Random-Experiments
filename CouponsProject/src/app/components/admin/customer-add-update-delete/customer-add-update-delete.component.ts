@@ -14,7 +14,6 @@ export class CustomerAddUpdateDeleteComponent implements OnInit {
   err: any;
   cust: Customer;
   text: object;
-  // TODO fix? (make seperate classes for comp and cust) cant have just 1 clientForm for some reason - i tried for too long so i just moved on
   custForm: FormGroup;
 
   constructor(private dialogRef: MatDialogRef<CustomerAddUpdateDeleteComponent>, @Inject(MAT_DIALOG_DATA) public data,
@@ -22,15 +21,25 @@ export class CustomerAddUpdateDeleteComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.cust = new Customer(this.data.customerId, this.data.password, this.data.email,
-      this.data.firstName, this.data.lastName, []);
-      console.log(this.data)
-    this.custForm = this.fb.group({
-      firstName: [this.cust.$firstName],
-      lastName: [this.cust.$lastName],
-      password: [this.cust.$password, [Validators.required]],
-      email: [this.cust.$email, [Validators.required, Validators.email]]
-    });
+    if (this.data != undefined) {
+      this.cust = new Customer(this.data.customerId, this.data.password, this.data.email,
+        this.data.firstName, this.data.lastName, []);
+      this.custForm = this.fb.group({
+        firstName: [this.cust.$firstName],
+        lastName: [this.cust.$lastName],
+        password: [this.cust.$password, [Validators.required]],
+        email: [this.cust.$email, [Validators.required, Validators.email]]
+      });
+    } else {
+      this.custForm = this.fb.group({
+        firstName: [''],
+        lastName: [''],
+        password: ['', [Validators.required]],
+        email: ['', [Validators.required, Validators.email]]
+      });
+    }
+
+    console.log(this.data);
   }
 
   closeDialog() {

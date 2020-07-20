@@ -1,6 +1,3 @@
-import {ClientType} from 'src/app/enums/client-type.enum';
-import {Customer} from '../../../models/customer';
-import {Company} from '../../../models/company';
 import {TableComponent} from '../../table/table.component';
 import {AdminControllerService} from '../../../services/admin-controller.service';
 import {Component, OnInit, ViewChild} from '@angular/core';
@@ -24,6 +21,7 @@ export class AdminControlPanel implements OnInit {
   // logic stuff
   beforeSearch: any;
   token: string;
+
   // data table stuff
   columns: string | any[];
   SelectionType = SelectionType;
@@ -31,37 +29,42 @@ export class AdminControlPanel implements OnInit {
   selectedRow = [];
   custColNames = [{prop: 'customerId'}, {prop: 'firstName'}, {prop: 'lastName'}, {prop: 'email'}, {prop: 'password'}];
   compColNames = [{prop: 'companyId'}, {prop: 'name'}, {prop: 'email'}, {prop: 'password'}];
+  isCompany = false;
   rows;
 
   constructor(private cont: AdminControllerService, private table: TableComponent, private dialog: MatDialog, private glob: GlobalService) {
   }
+
 // TODO improve and finalize (cust/comp add + success popup / icon)
   ngOnInit(): void {
     this.token = sessionStorage.getItem('token');
   }
 
-  errPopup(e: string){
+  errPopup(e: string) {
     this.glob.errPopup(e);
   }
-
+  customerAddPopup(){
+    this.selectedRow = [{add:true}];
+    this.customerPopup();
+  }
   customerPopup() {
-    var row = this.selectedRow;
+    console.log(this.selectedRow)
     this.dialog.open(CustomerAddUpdateDeleteComponent,
       {
         minHeight: 400, minWidth: 400, disableClose: false,
-        data: row[0]
+        data: this.selectedRow[0]
       });
 
     this.dialog.afterAllClosed.subscribe(
       () => this.getAllCustomers()
     );
   }
+
   companyPopup() {
-    var row = this.selectedRow;
     this.dialog.open(CompanyAddUpdateDeleteComponent,
       {
         minHeight: 400, minWidth: 400, disableClose: false,
-        data: row[0]
+        data: this.selectedRow[0]
       });
 
     this.dialog.afterAllClosed.subscribe(
@@ -77,7 +80,9 @@ export class AdminControlPanel implements OnInit {
     this.beforeSearch = null;
     this.selectedRow = [];
   }
+
   // TODO make this work globally with GlobalService so its easier to share across components
+  // TODO improve by allowing user to delete chars from query and get previous
   // O(n)
   updateFilter(event) {
     // get the value of the key pressed and make it lowercase
@@ -102,7 +107,6 @@ export class AdminControlPanel implements OnInit {
         }
       }
     });
-
   }
 
   updateTable(s: object) {
@@ -114,14 +118,20 @@ export class AdminControlPanel implements OnInit {
   getAllCustomers() {
     this.columns = this.custColNames;
     this.cont.getAllCustomers(sessionStorage.getItem('token')).subscribe(
-      s => this.updateTable(s),
+      s => {
+        this.updateTable(s);
+        this.isCompany = false;
+      },
       e => this.errPopup(e.error));
   }
 
   getAllCompanies() {
     this.columns = this.compColNames;
     this.cont.getAllCompanies(sessionStorage.getItem('token')).subscribe(
-      s => this.updateTable(s),
+      s => {
+        this.updateTable(s);
+        this.isCompany = true;
+      },
       e => this.errPopup(e.error));
   }
 
@@ -138,5 +148,4 @@ export class AdminControlPanel implements OnInit {
   //     s => this.updateTable(s),
   //     e => this.errPopup(e.error));
   // }
-
 }
