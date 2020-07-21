@@ -14,13 +14,13 @@
           </a>
 
           <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
-            <a class="dropdown-item waves-light" href="customerControls" mdbWavesEffect>Admin controls</a>
+            <a class="dropdown-item waves-light" href="adminControlPanel" mdbWavesEffect>Admin controls</a>
           </div>
         </li>
 
         <li *ngIf="glob.getClientType() == 'Company' ">
           <span class="nav-item waves-light">
-            <a class="waves-light nav-link" href="companyPage" mdbWavesEffect>
+            <a class="waves-light nav-link" href="companyControlPanel" mdbWavesEffect>
               <i aria-hidden="true" class="fa fa-building"></i>
               Company controls
             </a>
@@ -36,7 +36,8 @@
           <a>
             <!-- TODO make dropdown open directly under button name -->
             <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
-              <span class="dropdown-item waves-light" mdbWavesEffect>My account</span>
+              <span *ngIf="glob.getClientType() != 'Administrator'"
+                    class="dropdown-item waves-light" mdbWavesEffect>My account</span>
               <span (click)="logOut()" *ngIf="glob.isLogged()" class="dropdown-item waves-light" mdbWavesEffect>Log
                 out</span>
               <span *ngIf="!glob.isLogged()" class="dropdown-item waves-light" mdbWavesEffect>Log in</span>

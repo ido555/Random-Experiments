@@ -9,7 +9,7 @@ import {CompanyAddUpdateDeleteComponent} from '../company-add-update-delete/comp
 
 // TODO fix and improve this entire component and its html. its poorly written and poorly structered
 @Component({
-  selector: 'app-customer-controls',
+  selector: 'app-admin-control-panel',
   templateUrl: './admin-control-panel.component.html',
   styleUrls: ['./admin-control-panel.component.css']
 })
@@ -45,7 +45,7 @@ export class AdminControlPanel implements OnInit {
   }
   companyAddPopup(){
     this.selectedRow = [{add:true}];
-    this.customerPopup();
+    this.companyPopup();
   }
   customerAddPopup(){
     this.selectedRow = [{add:true}];
@@ -105,7 +105,7 @@ export class AdminControlPanel implements OnInit {
         if (item[keys[i]] == null) {
           return false;
         }
-        // check for a match - how? magic!
+        // check for a match
         if (item[keys[i]].toString().toLowerCase().indexOf(val) !== -1 || !val) {
           return true;
         }

@@ -1,9 +1,9 @@
 <form [formGroup]="compForm
 " class="">
-  <!-- FIRST NAME -->
+  <!-- COMPANY NAME -->
   <div class="input-group-text m-4 py-1 my-1 mr-1 pr-1 pl-1">
     <span class="input-group-addon"><i class="fa fa-user p-2"></i></span>
-    <input class="form-control" formControlName="name" placeholder="First Name" type="text">
+    <input class="form-control" formControlName="name" placeholder="Company Name" type="text">
   </div>
   <span *ngIf="compForm
   .controls['name'].invalid && compForm
@@ -33,11 +33,10 @@
 </form>
 
 <div *ngIf="compForm
-.valid && !this.data['add']" class="btn-group btn-group d-flex justify-content-center mb-2">
-  <button (click)="updateCustomer()" class="btn btn-primary waves-light" type="button">Update</button>
-  <button (click)="deleteCustomer()" class="btn btn-danger waves-light" type="button">Delete</button>
+.valid && !this.data.add" class="btn-group btn-group d-flex justify-content-center mb-2">
+  <button (click)="updateCompany()" class="btn btn-primary waves-light" type="button">Update</button>
+  <button (click)="deleteCompany()" class="btn btn-danger waves-light" type="button">Delete</button>
 </div>
-<div *ngIf="compForm
-.valid  " class="btn-group btn-group d-flex justify-content-center mb-2">
-  <button (click)="addCustomer()" class="btn btn-primary waves-light" type="button">Add</button>
+<div *ngIf="compForm.valid  && this.data.add" class="btn-group btn-group d-flex justify-content-center mb-2">
+  <button (click)="addCompany()" class="btn btn-primary waves-light" type="button">Add</button>
 </div>

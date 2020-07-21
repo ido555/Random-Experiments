@@ -9,8 +9,8 @@ import {CompanyPageComponent} from './components/company/company-page/company-pa
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
-  {path: 'customerControls', component: AdminControlPanel},
-  {path: 'companyPage', component: CompanyPageComponent},
+  {path: 'adminControlPanel', component: AdminControlPanel},
+  {path: 'companyControlPanel', component: CompanyPageComponent},
   {path: '**', component: NotFoundComponent}
 ];
 
