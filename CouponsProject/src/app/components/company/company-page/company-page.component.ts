@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {CompanyControllerService} from '../../../services/company-controller.service';
 import {MatDialog} from '@angular/material/dialog';
 import {GlobalService} from '../../../services/global.service';
@@ -6,6 +6,9 @@ import {ErrorBoxComponent} from '../../error-box/error-box.component';
 import {ColumnMode, SelectionType} from '@swimlane/ngx-datatable';
 import {CouponCategory} from '../../../enums/coupon-category.enum';
 import {CouponAddUpdateDeleteComponent} from '../coupon-add-update-delete/coupon-add-update-delete.component';
+import {fromEvent} from 'rxjs';
+import {debounceTime, map} from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-company-page',
@@ -13,6 +16,7 @@ import {CouponAddUpdateDeleteComponent} from '../coupon-add-update-delete/coupon
   styleUrls: ['./company-page.component.css']
 })
 export class CompanyPageComponent implements OnInit {
+  @ViewChild('search', {static: false}) search;
   // sidenav stuff
   events: string[] = [];
   opened: boolean;
@@ -20,11 +24,12 @@ export class CompanyPageComponent implements OnInit {
   beforeSearch: any;
   token: string;
   // data table stuff
+  rows;
+  temp;
   columns = [{prop: 'amount'}, {prop: 'price'}, {prop: 'title'}, {prop: 'description'}, {prop: 'image'}, {prop: 'startDate'}, {prop: 'endDate'}, {prop: 'category'}];
   SelectionType = SelectionType;
   ColumnMode = ColumnMode;
   selectedRow = [];
-  rows;
 
   constructor(private cont: CompanyControllerService, private dialog: MatDialog, private glob: GlobalService) {
   }
@@ -42,41 +47,47 @@ export class CompanyPageComponent implements OnInit {
       });
   }
 
-  resetTable() {
-    if (this.beforeSearch == null) {
-      return;
-    }
-    this.rows = this.beforeSearch;
-    this.beforeSearch = null;
-    this.selectedRow = [];
+  prepSearch() {
+    setTimeout(() => {
+      console.log(this.search);
+      this.temp = this.rows;
+      fromEvent(this.search.nativeElement, 'keydown')
+        .pipe(
+          debounceTime(200),
+          map(x => x['target']['value'])
+        )
+        .subscribe(value => {
+          this.updateFilter(value);
+        });
+    }, 1000);
+
   }
 
-  // TODO make this work globally with GlobalService so its easier to share across components
-  // O(n)
-  updateFilter(event) {
-    // get the value of the key pressed and make it lowercase
-    const val = event.target.value.toLowerCase();
+  // TODO make this work with GlobalService so its easier to share across components
+  updateFilter(val: any) {
+    const value = val.toString().toLowerCase().trim();
     // get the amount of columns in the table
-    const colsAmt = this.columns.length;
+    const count = this.columns.length;
     // get the key names of each column in the dataset
-    const keys = Object.keys(this.rows[0]);
+    const keys = Object.keys(this.temp[0]);
     // assign filtered matches to the active datatable
-    if (this.beforeSearch == null) {
-      this.beforeSearch = this.rows;
-    }
-    this.rows = this.rows.filter(item => {
+    this.rows = this.temp.filter(item => {
       // iterate through each row's column data
-      for (let i = 0; i < colsAmt; i++) {
-        if (item[keys[i]] == null) {
-          return false;
-        }
-        // check for a match - how? magic!
-        if (item[keys[i]].toString().toLowerCase().indexOf(val) !== -1 || !val) {
+      for (let i = 0; i < count; i++) {
+        // check for a match
+        if (
+          (item[keys[i]] &&
+            item[keys[i]]
+              .toString()
+              .toLowerCase()
+              .indexOf(value) !== -1) ||
+          !value
+        ) {
+          // found match, return true to add to result set
           return true;
         }
       }
     });
-
   }
 
   updateTable(s: object) {
@@ -105,6 +116,7 @@ export class CompanyPageComponent implements OnInit {
     )
   }
 
+  // TODO implement in MyAccount
   getDetails() {
     console.log();
     this.cont.getAllCoupons(this.token).subscribe(
@@ -113,12 +125,12 @@ export class CompanyPageComponent implements OnInit {
   };
 
   getAllCoupons() {
-    console.log();
+    this.prepSearch()
     this.cont.getAllCoupons(this.token).subscribe(
       s => this.updateTable(s),
       e => this.errPopup(e.error));
   };
-
+  // TODO implement these filters
   getCouponsUnderPrice(maxPrice: number) {
     this.cont.getCouponsUnderPrice(this.token, maxPrice).subscribe(
       s => this.updateTable(s),

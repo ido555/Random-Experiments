@@ -25,7 +25,7 @@
   <!-- TABLE  -->
   <div style="position: absolute; top: 25vh; left: 25vh;">
 
-    <input (keyup)="updateFilter($event)" *ngIf="this.rows != null" class="animated rollIn mySearch py-1"
+    <input #search id="search" (keyup)="updateFilter($event)" *ngIf="this.rows != null" class="animated rollIn mySearch py-1"
            placeholder="Type to search" style="position: absolute;top: -5vh; left: 6vh;" type="text"/>
 
     <div *ngIf="this.rows != null && this.selectedRow.length > 0" class="animated fadeIn"
@@ -35,11 +35,6 @@
       </button>
     </div>
 
-    <!--  TABLE  -->
-    <div *ngIf="this.rows != null" class="resetSearch animated rollIn mx-5">
-      <button (click)="resetTable()" class="btn-light btn-sm" mdbBtn mdbWavesEffect
-              style="position: absolute;top: -10vh" type="button">Reset Search
-      </button>
       <ngx-datatable [columnMode]="ColumnMode.standard" [columns]="columns" [footerHeight]="50"
                      [headerHeight]="50" [limit]="10" [rows]="rows" [selected]="selectedRow"
                      [selectionType]="SelectionType.single" class="myNgxTable animated rollIn bootstrap"
@@ -47,5 +42,4 @@
       </ngx-datatable>
     </div>
     <!-- TABLE  -->
-  </div>
 </div>
