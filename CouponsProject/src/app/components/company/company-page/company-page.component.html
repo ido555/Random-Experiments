@@ -22,7 +22,7 @@
     <label>
       <input #search id="search" (keyup)="updateFilter($event)" *ngIf="this.rows != null" class="animated rollIn mySearch py-1"
              placeholder="Type to search"
-             style="position: absolute;top: -5vh"
+             style="position: absolute; top: -15px"
              type="text"/>
     </label>
     <div *ngIf="this.rows != null && this.selectedRow.length > 0" class="animated fadeIn"

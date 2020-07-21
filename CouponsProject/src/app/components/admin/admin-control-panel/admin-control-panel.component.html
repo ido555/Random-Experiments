@@ -26,7 +26,7 @@
   <div style="position: absolute; top: 25vh; left: 25vh;">
 
     <input #search id="search" (keyup)="updateFilter($event)" *ngIf="this.rows != null" class="animated rollIn mySearch py-1"
-           placeholder="Type to search" style="position: absolute;top: -5vh; left: 6vh;" type="text"/>
+           placeholder="Type to search" style="position: absolute;top: -15px; left: 6vh;" type="text"/>
 
     <div *ngIf="this.rows != null && this.selectedRow.length > 0" class="animated fadeIn"
          style="position: absolute;top: -7vh; left: 18vw">
