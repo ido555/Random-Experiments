@@ -1,8 +1,8 @@
 <!-- TODO migrate to admin-page and delete admin-control-panel-->
 <app-particles></app-particles>
-<div>
+<div style="width: min-content">
   <!--  SIDE NAV  -->
-  <p class="my-3 mx-2">
+  <p class="my-3 mx-2 border-0">
     <button (click)="sidenav.toggle()" mat-raised-button style="background: deepskyblue">Show Functions</button>
   </p>
   <mat-sidenav-container class="example-container rounded" style="margin-top: 90px">
@@ -27,24 +27,24 @@
   <div style="position: absolute; top: 25vh; left: 25vh;">
 
     <input (keyup)="updateFilter($event)" *ngIf="this.rows != null" class="animated rollIn mySearch py-1"
-           placeholder="Type to search"
-           style="position: absolute;top: -5vh; left: 6vh;"
-           type="text"/>
+           placeholder="Type to search" style="position: absolute;top: -5vh; left: 6vh;" type="text"/>
 
     <div *ngIf="this.rows != null && this.selectedRow.length > 0" class="animated fadeIn"
          style="position: absolute;top: -7vh; left: 18vw">
       <button (click)="isCompany ? companyPopup() : customerPopup()" class="btn-light" mdbBtn mdbWavesEffect
-              type="button">Update/Edit/delete </button>
+              type="button">Update/Edit/delete
+      </button>
     </div>
 
     <!--  TABLE  -->
     <div *ngIf="this.rows != null" class="resetSearch animated rollIn mx-5">
       <button (click)="resetTable()" class="btn-light btn-sm" mdbBtn mdbWavesEffect
-              style="position: absolute;top: -10vh" type="button">Reset Search </button>
-      <ngx-datatable #table *ngIf="this.rows != null" [columnMode]="ColumnMode.standard"
-                     [columns]="columns" [footerHeight]="50" [headerHeight]="50" [limit]="10" [rows]="rows"
-                     [selected]="selectedRow" [selectionType]="SelectionType.single"
-                     class="myNgxTable animated rollIn bootstrap" rowHeight="auto">
+              style="position: absolute;top: -10vh" type="button">Reset Search
+      </button>
+      <ngx-datatable [columnMode]="ColumnMode.standard" [columns]="columns" [footerHeight]="50"
+                     [headerHeight]="50" [limit]="10" [rows]="rows" [selected]="selectedRow"
+                     [selectionType]="SelectionType.single" class="myNgxTable animated rollIn bootstrap"
+                     rowHeight="auto">
       </ngx-datatable>
     </div>
     <!-- TABLE  -->

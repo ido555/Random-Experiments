@@ -13,7 +13,6 @@ import {Customer} from '../../../models/customer';
 export class CustomerAddUpdateDeleteComponent implements OnInit {
   err: any;
   cust: Customer;
-  text: object;
   custForm: FormGroup;
 
   constructor(private dialogRef: MatDialogRef<CustomerAddUpdateDeleteComponent>, @Inject(MAT_DIALOG_DATA) public data,
@@ -59,20 +58,20 @@ export class CustomerAddUpdateDeleteComponent implements OnInit {
 
   addCustomer() {
     this.refreshCustomer();
-    this.cont.addCustomer(sessionStorage.getItem('token'), this.cust).subscribe(
+    this.cont.addCustomer(this.glob.getToken(), this.cust).subscribe(
       () => this.closeDialog(),
       e => this.errPopup(e.error));
   }
 
   updateCustomer() {
     this.refreshCustomer();
-    this.cont.updateCustomer(sessionStorage.getItem('token'), this.cust).subscribe(
+    this.cont.updateCustomer(this.glob.getToken(), this.cust).subscribe(
       () => this.closeDialog(),
       e => this.errPopup(e));
   }
 
   deleteCustomer() {
-    this.cont.deleteCustomer(sessionStorage.getItem('token'), this.cust.$customerId).subscribe(
+    this.cont.deleteCustomer(this.glob.getToken(), this.cust.$customerId).subscribe(
       () => this.closeDialog(),
       e => this.errPopup(e));
   }

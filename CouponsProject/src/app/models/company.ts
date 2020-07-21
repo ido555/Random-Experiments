@@ -1,12 +1,12 @@
 export class Company {
   // credit to TypeScript ToolBox for auto generating 90% of this (lazy = efficent ;) )
   private companyId: number;
-  private password: number;
+  private password: string;
   private name: string;
   private email: string;
 
 
-  constructor($companyId: number, $password: number, $name: string, $email: string) {
+  constructor($companyId: number, $password: string, $name: string, $email: string) {
     this.companyId = $companyId;
     this.password = $password;
     this.name = $name;
@@ -31,17 +31,17 @@ export class Company {
 
   /**
    * Getter $password
-   * @return {number}
+   * @return {string}
    */
-  public get $password(): number {
+  public get $password(): string {
     return this.password;
   }
 
   /**
    * Setter $password
-   * @param {number} value
+   * @param {string} value
    */
-  public set $password(value: number) {
+  public set $password(value: string) {
     this.password = value;
   }
 
