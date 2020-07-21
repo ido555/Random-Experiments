@@ -7,7 +7,6 @@ import {GlobalService} from '../../../services/global.service';
 import {CustomerAddUpdateDeleteComponent} from '../customer-add-update-delete/customer-add-update-delete.component';
 import {CompanyAddUpdateDeleteComponent} from '../company-add-update-delete/company-add-update-delete.component';
 
-// TODO fix and improve this entire component and its html. its poorly written and poorly structered
 @Component({
   selector: 'app-admin-control-panel',
   templateUrl: './admin-control-panel.component.html',
@@ -35,7 +34,6 @@ export class AdminControlPanel implements OnInit {
   constructor(private cont: AdminControllerService, private table: TableComponent, private dialog: MatDialog, private glob: GlobalService) {
   }
 
-// TODO improve and finalize (cust/comp add + success popup / icon)
   ngOnInit(): void {
     this.token = sessionStorage.getItem('token');
   }

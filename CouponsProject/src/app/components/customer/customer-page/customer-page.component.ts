@@ -13,10 +13,9 @@ export class CustomerPageComponent implements OnInit {
   }
 
   counter(n:number){
-    var nums = new Array(n)
-    for (let i = 0; i < n; i++) {
+    let nums = new Array(n)
+    for (let i = 0; i < n; i++)
       nums[i] = i+1;
-    }
-    return nums
+    return nums;
   }
 }

@@ -8,7 +8,7 @@ import {NavbarComponent} from './components/navbar/navbar.component';
 import {HomeComponent} from './components/home/home.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {LoginBoxComponent} from './components/login-box/login-box.component';
-import {ButtonsModule, MDBBootstrapModule, NavbarModule, WavesModule, CardsModule} from 'angular-bootstrap-md';
+import {ButtonsModule, MDBBootstrapModule, NavbarModule, WavesModule} from 'angular-bootstrap-md';
 import {NotFoundComponent} from './components/not-found/not-found.component';
 import {AdminControlPanel} from './components/admin/admin-control-panel/admin-control-panel.component';
 import {MatDialogModule} from '@angular/material/dialog';
@@ -71,8 +71,6 @@ import { CustomerPageComponent } from './components/customer/customer-page/custo
     MatSelectModule,
     MatCheckboxModule,
     MatButtonModule,
-    CardsModule
-
   ],
   providers: [HttpClientModule, TableComponent, GlobalService],
   bootstrap: [AppComponent]

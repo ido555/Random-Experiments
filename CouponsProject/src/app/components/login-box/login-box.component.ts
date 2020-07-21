@@ -10,7 +10,6 @@ import {GlobalService} from '../../services/global.service';
   styleUrls: ['./login-box.component.css']
 })
 
-// TODO fix and improve this entire component and its html. its poorly written and poorly structured
 export class LoginBoxComponent implements OnInit {
 
   clientType: string;

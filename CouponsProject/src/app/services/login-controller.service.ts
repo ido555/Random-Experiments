@@ -4,7 +4,6 @@ import {HttpClient} from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-// TODO try to make httpParams not throw a provider missing thingy exception
 export class LoginControllerService {
   post: object;
 
