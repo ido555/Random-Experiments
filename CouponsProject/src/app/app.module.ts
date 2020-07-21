@@ -28,6 +28,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { CouponAddUpdateDeleteComponent } from './components/company/coupon-add-update-delete/coupon-add-update-delete.component';
 import { CustomerAddUpdateDeleteComponent } from './components/admin/customer-add-update-delete/customer-add-update-delete.component';
 import { CompanyAddUpdateDeleteComponent } from './components/admin/company-add-update-delete/company-add-update-delete.component';
+import { CustomerPageComponent } from './components/customer/customer-page/customer-page.component';
 
 
 @NgModule({
@@ -45,6 +46,7 @@ import { CompanyAddUpdateDeleteComponent } from './components/admin/company-add-
     CouponAddUpdateDeleteComponent,
     CustomerAddUpdateDeleteComponent,
     CompanyAddUpdateDeleteComponent,
+    CustomerPageComponent,
 
   ],
   imports: [

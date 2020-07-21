@@ -1,8 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 
 body {
+  /* TODO enable ONLY for customer page somehow */
   /* Hide vertical scrollbar */
-  overflow-y: hidden;
+  /*overflow-y: hidden;*/
   /* Hide horizontal scrollbar */
   overflow-x: hidden;
 }

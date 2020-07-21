@@ -4,6 +4,7 @@ import {NotFoundComponent} from './components/not-found/not-found.component';
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {CompanyPageComponent} from './components/company/company-page/company-page.component';
+import {CustomerPageComponent} from './components/customer/customer-page/customer-page.component';
 
 //
 const routes: Routes = [
@@ -11,6 +12,7 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'adminControlPanel', component: AdminControlPanel},
   {path: 'companyControlPanel', component: CompanyPageComponent},
+  {path: 'customerPage', component: CustomerPageComponent},
   {path: '**', component: NotFoundComponent}
 ];
 
