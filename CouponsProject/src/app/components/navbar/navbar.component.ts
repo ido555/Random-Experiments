@@ -9,16 +9,20 @@ import {GlobalService} from '../../services/global.service';
 })
 export class NavbarComponent implements OnInit {
   clientType: String;
+  isLogged : boolean = this.glob.isLogged();
 
   constructor(private logMan: LoginControllerService, public glob: GlobalService, private changeDecRef: ChangeDetectorRef) {
   }
 
   ngOnInit(): void {
-    // had to use ChangeDetectorRef here to since some *NgIf conditions weren't updating
-    // TODO changeRef didnt work, stackoverflow says this.ngoninit() will reload entire component
-
+    // had do this since some *NgIf conditions weren't updating
+    setInterval(this.updateIf , 1000)
   }
-
+  updateIf(){
+    if (this.glob.isLogged())
+      this.isLogged = true;
+    this.isLogged = false;
+  }
   public logOut() {
     console.log(this.logMan);
     this.logMan.logout(sessionStorage.getItem('token')).subscribe(

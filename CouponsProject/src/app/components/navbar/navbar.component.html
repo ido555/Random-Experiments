@@ -4,7 +4,7 @@
 
     <mdb-navbar-brand><a class="navbar-brand" href="home" style="margin-left: 20%;">Groupon v2</a></mdb-navbar-brand>
 
-    <links *ngIf="glob.isLogged()">
+    <links *ngIf="isLogged">
       <ul class="navbar-nav ml-auto" style="padding-right: 5%;">
 
         <li *ngIf="glob.getClientType() == 'Administrator'" class="nav-item dropdown" dropdown>
@@ -38,9 +38,9 @@
             <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
               <span *ngIf="glob.getClientType() != 'Administrator'"
                     class="dropdown-item waves-light" mdbWavesEffect>My account</span>
-              <span (click)="logOut()" *ngIf="glob.isLogged()" class="dropdown-item waves-light" mdbWavesEffect>Log
+              <span (click)="logOut()" *ngIf="isLogged" class="dropdown-item waves-light" mdbWavesEffect>Log
                 out</span>
-              <span *ngIf="!glob.isLogged()" class="dropdown-item waves-light" mdbWavesEffect>Log in</span>
+              <span *ngIf="!isLogged" class="dropdown-item waves-light" mdbWavesEffect>Log in</span>
             </div>
           </a>
 
