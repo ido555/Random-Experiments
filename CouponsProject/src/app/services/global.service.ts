@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {ErrorBoxComponent} from '../components/error-box/error-box.component';
 import {MatDialog} from '@angular/material/dialog';
+import {BehaviorSubject, Observable} from 'rxjs';
 
 // singleton shared across angular project
 @Injectable({
