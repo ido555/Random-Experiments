@@ -10,6 +10,9 @@ export class LoginControllerService {
   constructor(private httpClient: HttpClient) {
   }
 
+  public getAllCoupons(token: string) {
+    return this.httpClient.get('http://localhost:8080/login/' + token, {responseType: 'text'});
+  }
   public login(clientType: string, password: string, email: string) {
     return this.httpClient.get('http://localhost:8080/login/' + clientType + '/' + email + '/' + password, {responseType: 'text'});
   }

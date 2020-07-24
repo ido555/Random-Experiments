@@ -1,5 +1,5 @@
 import {LoginControllerService} from '../../services/login-controller.service';
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MatDialogRef} from '@angular/material/dialog';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {GlobalService} from '../../services/global.service';
@@ -20,9 +20,8 @@ export class LoginBoxComponent implements OnInit {
   success = null;
   error;
 
-  // private logMan:LoginControllerService
   constructor(private fb: FormBuilder, private dialogRef: MatDialogRef<LoginBoxComponent>, private logMan: LoginControllerService,
-              private glob: GlobalService, private changeDecRef: ChangeDetectorRef) {
+              private glob: GlobalService) {
   }
 
   // TODO implement a way to show if a field isnt valid with validators
@@ -31,13 +30,9 @@ export class LoginBoxComponent implements OnInit {
       password: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]]
     });
-    setInterval(() => {
-      this.changeDecRef.detectChanges();
-    }, 2000);
   }
 
   closeDialog() {
-    this.changeDecRef.detectChanges();
     this.dialogRef.close();
   }
 

@@ -9,9 +9,8 @@ import {GlobalService} from '../../services/global.service';
 })
 export class NavbarComponent implements OnInit {
   clientType: String;
-  isLogged : boolean = this.glob.isLogged();
 
-  constructor(private logMan: LoginControllerService, public glob: GlobalService, private cd: ChangeDetectorRef) {
+  constructor(private logMan: LoginControllerService, public glob: GlobalService) {
   }
 
   ngOnInit(): void {

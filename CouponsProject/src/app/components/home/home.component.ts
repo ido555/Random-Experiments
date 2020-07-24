@@ -2,6 +2,7 @@ import {LoginBoxComponent} from '../login-box/login-box.component';
 import {Component, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {GlobalService} from '../../services/global.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -13,15 +14,13 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.globalClientType
+
   }
 
   showDialog() {
    this.loginBox.open(LoginBoxComponent,
       {minHeight: 200, minWidth: 200, disableClose: false});
-    // dialogRef.afterClosed().subscribe(
-    //   s => console.log(s)
-    // );
+    this.loginBox.afterAllClosed.subscribe()
 
   }
 }
