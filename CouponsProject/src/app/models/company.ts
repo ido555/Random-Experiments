@@ -2,7 +2,8 @@ export class Company {
   // credit to TypeScript ToolBox for auto generating 90% of this (lazy = efficent ;) )
   private companyId: number;
   private password: string;
-  private name: string;
+  // had to make name public because it was inaccessible through coupon.$company.$name
+  name: string;
   private email: string;
 
 

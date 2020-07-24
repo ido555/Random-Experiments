@@ -1,5 +1,6 @@
 /* tslint:disable:no-redundant-jsdoc */
 import {CouponCategory} from '../enums/coupon-category.enum';
+import {Company} from './company';
 
 export class Coupon {
   private couponId: number;
@@ -11,9 +12,10 @@ export class Coupon {
   private startDate: Date;
   private endDate: Date;
   private category: CouponCategory;
+  private company: Company;
 
   constructor($couponId: number, $amount: number, $price: number, $title: string, $description: string, $image: string
-    , $startDate: Date, $endDate: Date, category: CouponCategory) {
+    , $startDate: Date, $endDate: Date, category: CouponCategory, company: Company) {
     this.couponId = $couponId;
     this.amount = $amount;
     this.price = $price;
@@ -23,7 +25,9 @@ export class Coupon {
     this.startDate = $startDate;
     this.endDate = $endDate;
     this.category = category;
+    this.company = company;
   }
+
 
   /**
    * Getter $couponId
@@ -167,6 +171,20 @@ export class Coupon {
    */
   public set $category(value: CouponCategory) {
     this.category = value;
+  }  /**
+   * Getter $couponCategory
+   * @return {CouponCategory}
+   */
+  public get $company(): Company {
+    return this.company;
+  }
+
+  /**
+   * Setter $couponCategory
+   * @param {CouponCategory} value
+   */
+  public set $company(value: Company) {
+    this.company = value;
   }
 
 }

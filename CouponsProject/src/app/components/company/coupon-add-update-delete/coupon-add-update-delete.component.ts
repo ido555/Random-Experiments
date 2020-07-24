@@ -25,7 +25,7 @@ export class CouponAddUpdateDeleteComponent implements OnInit {
 
     // create Coupon (undefined values for add operation)
     this.coup = new Coupon(this.data.couponId, this.data.amount, this.data.price, this.data.title, this.data.description,
-      this.data.image, this.data.startDate, this.data.endDate, this.data.category);
+      this.data.image, this.data.startDate, this.data.endDate, this.data.category, undefined);
 
     // build Form
     this.coupForm = this.fb.group({

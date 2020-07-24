@@ -12,7 +12,7 @@ import {newArray} from '@angular/compiler/src/util';
   styleUrls: ['./customer-page.component.css']
 })
 export class CustomerPageComponent implements OnInit {
-  coupons;
+  coupons: Array<Coupon> = new Array<Coupon>();
   temp: any[] = new Array();
 
   constructor(private glob: GlobalService, private logMan: LoginControllerService, private cont: CustomerControllerService) {
@@ -21,7 +21,8 @@ export class CustomerPageComponent implements OnInit {
   ngOnInit(): void {
     var elements = document.getElementsByTagName('BODY') as HTMLCollectionOf<HTMLElement>;
     elements[0].style.overflowY = 'visible';
-    this.coupons = this.getAllCoupons();
+    this.getAllCoupons();
+
   }
 
   getPurchasedCouponsByCategory(cat: CouponCategory) {
@@ -62,34 +63,25 @@ export class CustomerPageComponent implements OnInit {
   initCoupons(s) {
     this.temp = s;
     for (let i = 0; i < this.temp.length; i++) {
-      let ref = this.temp[i];
-      let c:Coupon = new Coupon(ref.couponId, ref.amount, ref.price, ref.title, ref.description,
-        ref.image, ref.startDate, ref.endDate, ref.category);
-      console.log(c)
+      let tempCoup = this.temp[i];
+      let c:Coupon = new Coupon(tempCoup.couponId, tempCoup.amount, tempCoup.price, tempCoup.title, tempCoup.description,
+        tempCoup.image, tempCoup.startDate, tempCoup.endDate, tempCoup.category, tempCoup.company);
+      this.coupons.push(c);
+      console.log(c.$company.name)
     }
+    console.log(this.coupons)
   }
 
   getAllCoupons() {
     this.logMan.getAllCoupons(this.glob.getToken()).subscribe(
-      s => {this.initCoupons(Object.create(s))},
+      s => this.initCoupons(s),
       e => this.glob.errPopup(e.error)
     );
-
-    return null;
   }
 
   getDetails() {
-    console.log();
     this.cont.getDetails(this.glob.getToken()).subscribe(
       s => console.log(s),
       e => this.glob.errPopup(e.error));
   };
-
-  counter(n: number) {
-    let nums = new Array(n);
-    for (let i = 0; i < n; i++) {
-      nums[i] = i + 1;
-    }
-    return nums;
-  }
 }
