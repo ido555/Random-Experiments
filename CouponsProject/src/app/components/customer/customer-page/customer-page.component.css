@@ -1,3 +1,7 @@
-body {
-    background-image: url("http://localhost:8080/wood.jpg");
+ cssIsPain{
+  background-color: black !important;
+  padding-right: 10% !important;
+  padding-left: 10%;
+  margin-left: 10%;
+  margin-right: 10%;
 }

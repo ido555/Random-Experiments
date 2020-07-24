@@ -16,7 +16,9 @@ export class CustomerPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    var elements = document.getElementsByTagName("BODY") as HTMLCollectionOf<HTMLElement>;
+    // elements[0].style.overflow = "auto"
+    elements[0].style.overflowY = "visible"
   }
 
   counter(n: number) {

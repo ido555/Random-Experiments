@@ -15,6 +15,13 @@ body {
   background: linear-gradient(135deg, #5cc2e8 0%, #14a2c9 50%, #5dc7ea 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#5cc2e8', endColorstr='#5dc7ea', GradientType=1);
 }
+.blueGradient2{
+  background: rgb(27,153,182);
+  background: -moz-linear-gradient(90deg, rgba(27,153,182,1) 10%, rgba(13,177,208,1) 50%, rgba(27,153,182,1) 90%);
+  background: -webkit-linear-gradient(90deg, rgba(27,153,182,1) 10%, rgba(13,177,208,1) 50%, rgba(27,153,182,1) 90%);
+  background: linear-gradient(90deg, rgba(27,153,182,1) 10%, rgba(13,177,208,1) 50%, rgba(27,153,182,1) 90%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#1b99b6",endColorstr="#1b99b6",GradientType=1);
+}
 
 .myNgxTable {
   /* soft box shadow */
@@ -58,6 +65,7 @@ body {
   top: -3%;
   font-size: small;
 }
+/* https://grid.layoutit.com/ */
 .grid-container {
   display: grid;
   grid-template-columns: 2fr repeat(4, 1fr);
