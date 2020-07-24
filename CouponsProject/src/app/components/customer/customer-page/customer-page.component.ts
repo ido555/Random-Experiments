@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {GlobalService} from '../../../services/global.service';
+import {LoginControllerService} from '../../../services/login-controller.service';
+import {Coupon} from '../../../models/coupon';
+import {CustomerControllerService} from '../../../services/customer-controller.service';
 
 @Component({
   selector: 'app-customer-page',
@@ -6,16 +10,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./customer-page.component.css']
 })
 export class CustomerPageComponent implements OnInit {
+  coupons: Array<Coupon>;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(glob: GlobalService, private logMan: LoginControllerService, cont: CustomerControllerService) {
   }
 
-  counter(n:number){
-    let nums = new Array(n)
-    for (let i = 0; i < n; i++)
-      nums[i] = i+1;
+  ngOnInit(): void {
+
+  }
+
+  counter(n: number) {
+    let nums = new Array(n);
+    for (let i = 0; i < n; i++) {
+      nums[i] = i + 1;
+    }
     return nums;
   }
 }
