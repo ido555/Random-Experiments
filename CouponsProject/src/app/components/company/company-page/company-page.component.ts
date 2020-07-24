@@ -38,14 +38,6 @@ export class CompanyPageComponent implements OnInit {
     this.token = this.glob.getToken();
   }
 
-  errPopup(err: string) {
-    this.dialog.open(ErrorBoxComponent,
-      {
-        minHeight: 200, minWidth: 200, disableClose: false,
-        maxHeight: 400, maxWidth: 600,
-        data: {err}
-      });
-  }
 
   prepSearch() {
     setTimeout(() => {
@@ -121,25 +113,25 @@ export class CompanyPageComponent implements OnInit {
     console.log();
     this.cont.getAllCoupons(this.token).subscribe(
       s => s,
-      e => this.errPopup(e.error));
+      e => this.glob.errPopup (e.error));
   };
 
   getAllCoupons() {
     this.prepSearch()
     this.cont.getAllCoupons(this.token).subscribe(
       s => this.updateTable(s),
-      e => this.errPopup(e.error));
+      e => this.glob.errPopup(e.error));
   };
   // TODO implement these filters
   getCouponsUnderPrice(maxPrice: number) {
     this.cont.getCouponsUnderPrice(this.token, maxPrice).subscribe(
       s => this.updateTable(s),
-      e => this.errPopup(e.error));
+      e => this.glob.errPopup(e.error));
   }
 
   getCouponsByCategory(c: CouponCategory) {
     this.cont.getCouponsByCategory(this.token, c).subscribe(
       s => this.updateTable(s),
-      e => this.errPopup(e.error));
+      e => this.glob.errPopup(e.error));
   }
 }

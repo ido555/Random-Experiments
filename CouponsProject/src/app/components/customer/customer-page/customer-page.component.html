@@ -5,11 +5,11 @@
   <div class="row  blueGradient2" style=" position: absolute; left: 0;
 padding-left: 10%" >
 
-    <div *ngFor="let num of counter(32)" class="col-md-4 my-5" >
+    <div *ngFor="let coupon of coupons" class="col-md-4 my-5" >
       <div class="card" style="width:254px;">
         <img class="card-img-top" src="http://localhost:8080/placeholder.png" alt="Card image">
         <div class="card-body">
-          <h3 class="card-title">Card title {{num}}</h3>
+          <h3 class="card-title">Card title {{coupon.title}}</h3>
           <h4 class="card-subtitle">Card subtitle</h4>
           <p class="card-text">This is a simple Card example</p>
         </div>

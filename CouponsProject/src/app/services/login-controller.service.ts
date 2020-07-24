@@ -11,7 +11,7 @@ export class LoginControllerService {
   }
 
   public getAllCoupons(token: string) {
-    return this.httpClient.get('http://localhost:8080/login/' + token, {responseType: 'text'});
+    return this.httpClient.get('http://localhost:8080/getAllCoupons/' + token,{responseType: 'json'});
   }
   public login(clientType: string, password: string, email: string) {
     return this.httpClient.get('http://localhost:8080/login/' + clientType + '/' + email + '/' + password, {responseType: 'text'});
