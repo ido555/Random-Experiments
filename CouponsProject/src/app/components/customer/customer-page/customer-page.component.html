@@ -12,7 +12,9 @@ padding-left: 10%" >
           <h3 class="card-title">{{coupon.$title}}</h3>
           <h4 class="card-subtitle"><small style="color: grey">Offered by: {{coupon.$company.name}} </small> </h4>
           <p class="card-text">{{coupon.$description}}</p>
-          <button (click)="purchaseCoupon(coupon)" mat-raised-button class="blueGradient2" style="color: whitesmoke">Purchase Coupon </button>
+          <button [class.opacity-60]="isCouponAlreadyBought(coupon)"   [disabled]="isCouponAlreadyBought(coupon)"
+                  (click)="purchaseCoupon(coupon)" mat-raised-button class="blueGradient2" style="color: whitesmoke">
+                  Purchase Coupon </button>
         </div>
       </div>
     </div>

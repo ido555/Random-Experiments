@@ -20,11 +20,12 @@ export class CustomerPageComponent implements OnInit {
   ngOnInit(): void {
     var elements = document.getElementsByTagName('BODY') as HTMLCollectionOf<HTMLElement>;
     elements[0].style.overflowY = 'visible';
+    this.getAllPurchasedCoupons();
     this.getAllCoupons();
   }
 
   isCouponAlreadyBought(coupToCheck: Coupon) {
-    for (let coupon of this.coupons) {
+    for (let coupon of this.purchasedCoupons) {
         if (coupon.$couponId == coupToCheck.$couponId)
           return true;
     }
@@ -42,23 +43,26 @@ export class CustomerPageComponent implements OnInit {
 
   getPurchasedCouponsByCategory(cat: CouponCategory) {
     this.cont.getCouponsByCategory(this.glob.getToken(), cat).subscribe(
-      s => coupons = s,
+      s => s,
       e => this.glob.errPopup(e.error)
     );
   }
 
   getPurchasedCouponsUnderPrice(maxPrice: number) {
     this.cont.getCouponsUnderPrice(this.glob.getToken(), maxPrice).subscribe(
-      s => coupons = s,
+      s => s,
       e => this.glob.errPopup(e.error)
     );
   }
 
   // TODO snackbar popup confirmation
   purchaseCoupon(coupon: Coupon) {
-    this.purchasedCoupons.push(coupon);
+
     this.cont.purchaseCoupon(this.glob.getToken(), coupon).subscribe(
-      s => console.log(s),
+      s => {
+        console.log(s);
+        this.purchasedCoupons.push(coupon);
+      },
       e => this.glob.errPopup(e.error)
     );
   }
