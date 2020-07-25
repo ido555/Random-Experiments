@@ -16,11 +16,11 @@ body {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#5cc2e8', endColorstr='#5dc7ea', GradientType=1);
 }
 .blueGradient2{
-  background: rgb(27,153,182);
-  background: -moz-linear-gradient(90deg, rgba(27,153,182,1) 10%, rgba(13,177,208,1) 50%, rgba(27,153,182,1) 90%);
-  background: -webkit-linear-gradient(90deg, rgba(27,153,182,1) 10%, rgba(13,177,208,1) 50%, rgba(27,153,182,1) 90%);
-  background: linear-gradient(90deg, rgba(27,153,182,1) 10%, rgba(13,177,208,1) 50%, rgba(27,153,182,1) 90%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#1b99b6",endColorstr="#1b99b6",GradientType=1);
+  background: #207ce5;
+  background: -moz-linear-gradient(left, #207ce5 13%, #2d85e2 25%, #4389cc 50%, #2d85e2 75%, #207ce5 87%);
+  background: -webkit-linear-gradient(left, #207ce5 13%,#2d85e2 25%,#4389cc 50%,#2d85e2 75%,#207ce5 87%);
+  background: linear-gradient(to right, #207ce5 13%,#2d85e2 25%,#4389cc 50%,#2d85e2 75%,#207ce5 87%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#207ce5', endColorstr='#207ce5',GradientType=1 );
 }
 
 .myNgxTable {
