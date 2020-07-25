@@ -2,10 +2,12 @@
 
   <mdb-navbar SideClass="navbar navbar-expand-sm navbar-dark blue-gradient" [containerInside]="false">
 
-    <mdb-navbar-brand (click)="this.glob.navigateClientHome()" style="color: white"><a class="navbar-brand" style="margin-left: 20%;">Groupon v2</a></mdb-navbar-brand>
+    <mdb-navbar-brand mdbWavesEffect matTooltip="Go to your Home Page!" (click)="this.glob.navigateClientHome()"
+                       style="color: white;" class="ml-4">
+                      <a class="navbar-brand">Groupon v2</a></mdb-navbar-brand>
 
-    <links *ngIf="this.glob.isLogged()">
-      <ul class="navbar-nav ml-auto" style="padding-right: 5%;">
+    <links *ngIf="this.glob.isLogged()" class="mr-5">
+      <ul class="navbar-nav ml-auto">
 
         <li *ngIf="glob.getClientType() == 'Administrator'" class="nav-item dropdown" dropdown>
           <a class="nav-link dropdown-toggle waves-light" dropdownToggle mdbWavesEffect type="button">
@@ -20,7 +22,7 @@
 
         <li *ngIf="glob.getClientType() == 'Company' ">
           <span class="nav-item waves-light">
-            <a class="waves-light nav-link text-white" (click)="this.glob.navigateClientHome()"  mdbWavesEffect>
+            <a (click)="this.glob.navigateClientHome()" class="waves-light nav-link text-white" mdbWavesEffect>
               <i aria-hidden="true" class="fa fa-building"></i>
               Company controls
             </a>
@@ -36,11 +38,11 @@
           <a>
             <!-- TODO make dropdown open directly under button name -->
             <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
-              <span *ngIf="glob.getClientType() != 'Administrator' && glob.getClientType() == 'Customer'"
-                   (click)="custDetails()" class="dropdown-item waves-light" mdbWavesEffect>My account</span>
+              <span (click)="custDetails()"
+                    *ngIf="glob.getClientType() != 'Administrator' && glob.getClientType() == 'Customer'" class="dropdown-item waves-light" mdbWavesEffect>My account</span>
 
-              <span *ngIf="glob.getClientType() != 'Administrator' && glob.getClientType() == 'Company'"
-                    (click)="compDetails()" class="dropdown-item waves-light" mdbWavesEffect>My account</span>
+              <span (click)="compDetails()"
+                    *ngIf="glob.getClientType() != 'Administrator' && glob.getClientType() == 'Company'" class="dropdown-item waves-light" mdbWavesEffect>My account</span>
 
               <span (click)="logOut()" *ngIf="this.glob.isLogged()" class="dropdown-item waves-light" mdbWavesEffect>Log
                 out</span>

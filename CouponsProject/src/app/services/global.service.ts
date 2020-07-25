@@ -46,7 +46,7 @@ export class GlobalService {
   errPopup(err: string) {
     this.dialog.open(ErrorBoxComponent,
       {
-        minHeight: 200, minWidth: 200, disableClose: false,
+        minHeight: 400, minWidth: 300, disableClose: false,
         maxHeight: 400, maxWidth: 600,
         data: {err}
       });

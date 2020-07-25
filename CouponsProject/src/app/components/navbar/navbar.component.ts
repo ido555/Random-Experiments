@@ -5,6 +5,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {CustomerDetailsComponent} from '../customer/customer-details/customer-details.component';
 import {CompanyDetailsComponent} from '../company/company-details/company-details.component';
 
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -21,15 +22,15 @@ export class NavbarComponent implements OnInit {
   custDetails() {
     this.clientDetails.open(CustomerDetailsComponent,
       {
-        minHeight: 200, minWidth: 200, disableClose: false,
-        maxHeight: 400, maxWidth: 600,
+        minHeight: 600, minWidth: 480, disableClose: false,
+        maxHeight: 1200, maxWidth: 960,
       });
   }
   compDetails() {
     this.clientDetails.open(CompanyDetailsComponent,
       {
-        minHeight: 200, minWidth: 200, disableClose: false,
-        maxHeight: 400, maxWidth: 600,
+        minHeight: 500, minWidth: 400, disableClose: false,
+        maxHeight: 1200, maxWidth: 960,
       });
   }
 
@@ -39,7 +40,7 @@ export class NavbarComponent implements OnInit {
       () => {
         sessionStorage.removeItem('token');
         sessionStorage.removeItem('ct');
-        setTimeout(() => {this.glob.navigateClientHome()} , 1300)
+        setTimeout(() => {this.glob.navigateClientHome()} , 150)
       },
       e => console.log(e)
     );

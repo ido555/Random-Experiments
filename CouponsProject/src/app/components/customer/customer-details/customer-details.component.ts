@@ -22,8 +22,7 @@ export class CustomerDetailsComponent implements OnInit {
   }
 
   initCust(cust){
-    console.log(cust)
-    // this.cust = new cust;
+    this.cust = new Customer(cust.customerId, cust.password, cust.email, cust.firstName, cust.lastName, cust.coupons);
   }
   getDetails() {
     this.cont.getDetails(this.glob.getToken()).subscribe(

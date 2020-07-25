@@ -19,19 +19,19 @@ import {ErrorBoxComponent} from './components/error-box/error-box.component';
 import {ParticlesModule} from 'ngx-particle';
 import {ParticlesComponent} from './components/particles/particles.component';
 import {GlobalService} from './services/global.service';
-import { CompanyPageComponent } from './components/company/company-page/company-page.component';
+import {CompanyPageComponent} from './components/company/company-page/company-page.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatOptionModule} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatButtonModule} from '@angular/material/button';
-import { CouponAddUpdateDeleteComponent } from './components/company/coupon-add-update-delete/coupon-add-update-delete.component';
-import { CustomerAddUpdateDeleteComponent } from './components/admin/customer-add-update-delete/customer-add-update-delete.component';
-import { CompanyAddUpdateDeleteComponent } from './components/admin/company-add-update-delete/company-add-update-delete.component';
-import { CustomerPageComponent } from './components/customer/customer-page/customer-page.component';
-import { CustomerDetailsComponent } from './components/customer/customer-details/customer-details.component';
-import { CompanyDetailsComponent } from './components/company/company-details/company-details.component';
-
+import {CouponAddUpdateDeleteComponent} from './components/company/coupon-add-update-delete/coupon-add-update-delete.component';
+import {CustomerAddUpdateDeleteComponent} from './components/admin/customer-add-update-delete/customer-add-update-delete.component';
+import {CompanyAddUpdateDeleteComponent} from './components/admin/company-add-update-delete/company-add-update-delete.component';
+import {CustomerPageComponent} from './components/customer/customer-page/customer-page.component';
+import {CustomerDetailsComponent} from './components/customer/customer-details/customer-details.component';
+import {CompanyDetailsComponent} from './components/company/company-details/company-details.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 
 @NgModule({
@@ -75,6 +75,7 @@ import { CompanyDetailsComponent } from './components/company/company-details/co
     MatSelectModule,
     MatCheckboxModule,
     MatButtonModule,
+    MatTooltipModule,
   ],
   providers: [HttpClientModule, TableComponent, GlobalService],
   bootstrap: [AppComponent]

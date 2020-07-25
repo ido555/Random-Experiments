@@ -49,7 +49,7 @@ export class LoginBoxComponent implements OnInit {
         setTimeout(() => {
           this.closeDialog();
           this.glob.navigateClientHome()
-        }, 2000);
+        }, 1200);
       },
       e => {
         console.log(e);
