@@ -28,6 +28,6 @@ export class CustomerControllerService {
   }
 
   public purchaseCoupon(token: string, coupon: Coupon) {
-    return this.httpClient.post('http://localhost:8080/customer/priceCoupons/' + token, coupon, {responseType: 'text'});
+    return this.httpClient.post('http://localhost:8080/customer/buyCoupon/' + token, coupon, {responseType: 'text'});
   }
 }

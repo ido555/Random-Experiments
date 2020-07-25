@@ -1,12 +1,15 @@
 <div>
 
   <h1>Your Details: </h1>
-  <span style="font-size: large; font-family: 'Courier New', Courier, monospace ">
+  <div style="font-size: large; font-family: 'Courier New', Courier, monospace ">
   <p> Id Number:{{cust.$customerId}}</p>
   <p> First Name:{{cust.$firstName}}</p>
   <p> Last Name:{{cust.$lastName}}</p>
   <p> E-mail:{{cust.$email}}</p>
   <p> Password:{{cust.$password}}</p>
   <p> Coupons:{{cust.$coupons}}</p>
-  </span>
+    <div *ngFor="let coup in cust.$coupons">
+      <p>{{coup.name}}</p>
+    </div>
+  </div>
 </div>
