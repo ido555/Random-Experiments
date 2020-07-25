@@ -4,6 +4,8 @@ import {MatDialogRef} from '@angular/material/dialog';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {GlobalService} from '../../services/global.service';
 
+// TODO add global thingy i can change from here to change the Navbars home link
+
 @Component({
   selector: 'app-login-box',
   templateUrl: './login-box.component.html',
@@ -46,10 +48,11 @@ export class LoginBoxComponent implements OnInit {
         this.glob.setClientType(this.clientType);
         setTimeout(() => {
           this.closeDialog();
+          this.glob.navigateClientHome()
         }, 2000);
       },
       e => {
-        console.log(e)
+        console.log(e);
         this.success = false;
         this.error = e.error;
         this.tryAgain();

@@ -2,7 +2,7 @@
 
   <mdb-navbar SideClass="navbar navbar-expand-sm navbar-dark blue-gradient" [containerInside]="false">
 
-    <mdb-navbar-brand><a class="navbar-brand" href="home" style="margin-left: 20%;">Groupon v2</a></mdb-navbar-brand>
+    <mdb-navbar-brand (click)="this.glob.navigateClientHome()" style="color: white"><a class="navbar-brand" style="margin-left: 20%;">Groupon v2</a></mdb-navbar-brand>
 
     <links *ngIf="this.glob.isLogged()">
       <ul class="navbar-nav ml-auto" style="padding-right: 5%;">
@@ -20,7 +20,7 @@
 
         <li *ngIf="glob.getClientType() == 'Company' ">
           <span class="nav-item waves-light">
-            <a class="waves-light nav-link" href="companyControlPanel" mdbWavesEffect>
+            <a class="waves-light nav-link text-white" (click)="this.glob.navigateClientHome()"  mdbWavesEffect>
               <i aria-hidden="true" class="fa fa-building"></i>
               Company controls
             </a>

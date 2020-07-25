@@ -39,6 +39,7 @@ export class NavbarComponent implements OnInit {
       () => {
         sessionStorage.removeItem('token');
         sessionStorage.removeItem('ct');
+        setTimeout(() => {this.glob.navigateClientHome()} , 1300)
       },
       e => console.log(e)
     );

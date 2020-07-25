@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {ErrorBoxComponent} from '../components/error-box/error-box.component';
 import {MatDialog} from '@angular/material/dialog';
-import {BehaviorSubject, Observable} from 'rxjs';
+import {Router} from '@angular/router';
 
 // singleton shared across angular project
 @Injectable({
@@ -9,9 +9,25 @@ import {BehaviorSubject, Observable} from 'rxjs';
 })
 export class GlobalService {
 
-  constructor(private dialog: MatDialog) {
+  constructor(private dialog: MatDialog, private router: Router) {
   }
-
+  navigateClientHome() {
+    let type = this.getClientType();
+    switch (type) {
+      case 'Administrator':
+        this.router.navigateByUrl('/adminControlPanel');
+        break;
+      case 'Company':
+        this.router.navigateByUrl('/companyControlPanel');
+        break;
+      case 'Customer':
+        this.router.navigateByUrl('/customerPage');
+        break;
+      default:
+        this.router.navigateByUrl('/home');
+        break;
+    }
+  }
   public isLogged() {
     return sessionStorage.getItem('token') != null;
   }
