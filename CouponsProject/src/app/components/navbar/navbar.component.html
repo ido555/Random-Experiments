@@ -36,8 +36,12 @@
           <a>
             <!-- TODO make dropdown open directly under button name -->
             <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
-              <span *ngIf="glob.getClientType() != 'Administrator'"
-                    class="dropdown-item waves-light" mdbWavesEffect>My account</span>
+              <span *ngIf="glob.getClientType() != 'Administrator' && glob.getClientType() == 'Customer'"
+                   (click)="custDetails()" class="dropdown-item waves-light" mdbWavesEffect>My account</span>
+
+              <span *ngIf="glob.getClientType() != 'Administrator' && glob.getClientType() == 'Company'"
+                    (click)="compDetails()" class="dropdown-item waves-light" mdbWavesEffect>My account</span>
+
               <span (click)="logOut()" *ngIf="this.glob.isLogged()" class="dropdown-item waves-light" mdbWavesEffect>Log
                 out</span>
               <span *ngIf="!this.glob.isLogged()" class="dropdown-item waves-light" mdbWavesEffect>Log in</span>

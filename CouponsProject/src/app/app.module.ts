@@ -30,6 +30,7 @@ import { CustomerAddUpdateDeleteComponent } from './components/admin/customer-ad
 import { CompanyAddUpdateDeleteComponent } from './components/admin/company-add-update-delete/company-add-update-delete.component';
 import { CustomerPageComponent } from './components/customer/customer-page/customer-page.component';
 import { CustomerDetailsComponent } from './components/customer/customer-details/customer-details.component';
+import { CompanyDetailsComponent } from './components/company/company-details/company-details.component';
 
 
 
@@ -50,6 +51,7 @@ import { CustomerDetailsComponent } from './components/customer/customer-details
     CompanyAddUpdateDeleteComponent,
     CustomerPageComponent,
     CustomerDetailsComponent,
+    CompanyDetailsComponent,
 
   ],
   imports: [

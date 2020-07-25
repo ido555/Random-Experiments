@@ -4,7 +4,6 @@ import {LoginControllerService} from '../../../services/login-controller.service
 import {Coupon} from '../../../models/coupon';
 import {CustomerControllerService} from '../../../services/customer-controller.service';
 import {CouponCategory} from '../../../enums/coupon-category.enum';
-import {newArray} from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-customer-page',
@@ -13,7 +12,7 @@ import {newArray} from '@angular/compiler/src/util';
 })
 export class CustomerPageComponent implements OnInit {
   coupons: Array<Coupon> = new Array<Coupon>();
-  temp: any[] = new Array();
+  temp: any[] = [];
 
   constructor(private glob: GlobalService, private logMan: LoginControllerService, private cont: CustomerControllerService) {
   }
@@ -79,9 +78,4 @@ export class CustomerPageComponent implements OnInit {
     );
   }
 
-  getDetails() {
-    this.cont.getDetails(this.glob.getToken()).subscribe(
-      s => console.log(s),
-      e => this.glob.errPopup(e.error));
-  };
 }
