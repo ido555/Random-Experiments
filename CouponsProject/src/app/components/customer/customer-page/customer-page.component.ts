@@ -12,7 +12,7 @@ import {CouponCategory} from '../../../enums/coupon-category.enum';
 })
 export class CustomerPageComponent implements OnInit {
   coupons: Array<Coupon> = new Array<Coupon>();
-  purchasedCoupons: Array<Coupon> = new Array<Coupon>();
+  public purchasedCoupons: Array<Coupon> = new Array<Coupon>();
 
   constructor(private glob: GlobalService, private logMan: LoginControllerService, private cont: CustomerControllerService) {
   }

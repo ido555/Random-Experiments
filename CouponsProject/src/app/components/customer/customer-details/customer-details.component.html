@@ -9,7 +9,16 @@
   <p> Password:{{cust.$password}}</p>
   <p> Coupons:{{cust.$coupons}}</p>
     <div *ngFor="let coup in cust.$coupons">
-      <p>{{coup.name}}</p>
+        <div class="card" style="width:54px;">
+          <img class="card-img-top" src="http://localhost:8080/placeholder550x50.png" alt="Card image">
+          <div class="card-body">
+            <h4 class="card-title">{{coup.title}}</h4>
+            <h5 class="card-subtitle"><small style="color: grey">Offered by: {{coup.company.name}} </small> </h5>
+            <p class="card-text">{{coup.description}}</p>
+            <p>{{coup.name}}</p>
+          </div>
+      </div>
     </div>
   </div>
 </div>
+RF
