@@ -3,7 +3,7 @@
   <!-- COMPANY NAME -->
   <div class="input-group-text m-4 py-1 my-1 mr-1 pr-1 pl-1">
     <span class="input-group-addon"><i class="fa fa-user p-2"></i></span>
-    <input class="form-control" formControlName="name" placeholder="Company Name" type="text">
+    <input maxlength="255"  class="form-control" formControlName="name" placeholder="Company Name" type="text">
   </div>
   <span *ngIf="compForm
   .controls['name'].invalid && compForm
@@ -14,7 +14,7 @@
   <!-- EMAIL -->
   <div class="input-group-text m-4 py-1 my-1 mr-1 pr-1 pl-1">
     <span class="input-group-addon"><i class="fas fa-envelope p-2"></i></span>
-    <input class="form-control" formControlName="email" placeholder="E-mail" type="email">
+    <input maxlength="255"  class="form-control" formControlName="email" placeholder="E-mail" type="email">
   </div>
   <span *ngIf="compForm
   .controls['email'].invalid && compForm
@@ -24,7 +24,7 @@
   <!-- PASSWORD -->
   <div class="input-group-text m-4 py-1 my-1 mr-1 pr-1 pl-1">
     <span class="input-group-addon"><i class="fa fa-key fa-fw p-2 pr-4"></i></span>
-    <input class="form-control" formControlName="password" placeholder="Password" type="password">
+    <input maxlength="255"  class="form-control" formControlName="password" placeholder="Password" type="password">
   </div>
   <span *ngIf="compForm
   .controls['password'].invalid && compForm

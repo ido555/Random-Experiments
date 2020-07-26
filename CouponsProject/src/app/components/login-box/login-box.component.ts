@@ -50,6 +50,10 @@ export class LoginBoxComponent implements OnInit {
           this.closeDialog();
           this.glob.navigateClientHome()
         }, 1200);
+        setTimeout(() => {
+        //  force ngif conditions to update by reloading entire page
+        location.reload();
+        }, 1450);
       },
       e => {
         console.log(e);

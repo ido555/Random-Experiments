@@ -20,7 +20,7 @@
   <div style="position: absolute; top: 25vh; left: 25vh;">
 
     <label>
-      <input #search id="search" (keyup)="updateFilter($event)" *ngIf="this.rows != null" class="animated rollIn mySearch py-1"
+      <input maxlength="255"  #search id="search" (keyup)="updateFilter($event)" *ngIf="this.rows != null" class="animated rollIn mySearch py-1"
              placeholder="Type to search"
              style="position: absolute; top: -15px"
              type="text"/>

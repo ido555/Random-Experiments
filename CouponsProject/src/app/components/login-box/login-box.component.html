@@ -2,8 +2,8 @@
   <button (click)="closeDialog()" class="close fa fa-window-close"></button>
   <form [formGroup]="loginForm" class="text-center border border-light p-5">
     <p class="h4 mb-4">Sign in</p>
-    <input class="form-control mb-4" formControlName="email" placeholder="E-mail" type="email">
-    <input class="form-control mb-4" formControlName="password" placeholder="Password" type="password">
+    <input maxlength="255"  class="form-control mb-4" formControlName="email" placeholder="E-mail" type="email">
+    <input maxlength="255"  class="form-control mb-4" formControlName="password" placeholder="Password" type="password">
     <div class="dropdown" mdbDropdown>
       <button *ngIf="!clientChosen" class="dropdown-toggle waves-light " color="primary" mdbBtn mdbDropdownToggle
               mdbWavesEffect type="button">
@@ -34,7 +34,7 @@
     </button>
     <span>
       <span>
-        <i *ngIf="success == true" aria-hidden="true" class="font50px fa fa-check text-success animated fadeIn" ng></i>
+        <i *ngIf="success == true" aria-hidden="true" class="font50px fa fa-check text-success animated fadeIn"></i>
         <i *ngIf="success == false" aria-hidden="true"
            class="font50px fa fa-window-close text-danger animated fadeIn"></i>
         <p *ngIf="success == false">{{error}}</p>
