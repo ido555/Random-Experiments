@@ -22,8 +22,8 @@ export class NavbarComponent implements OnInit {
   custDetails() {
     this.clientDetails.open(CustomerDetailsComponent,
       {
-        minHeight: 600, minWidth: 480, disableClose: false,
-        maxHeight: 1200, maxWidth: 960,
+        minHeight: 600, minWidth: 600, disableClose: false,
+        maxHeight: 800, maxWidth: 680,
       });
   }
   compDetails() {

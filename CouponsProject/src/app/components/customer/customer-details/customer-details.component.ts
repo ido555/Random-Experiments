@@ -40,7 +40,10 @@ export class CustomerDetailsComponent implements OnInit {
 
   getDetails() {
     this.cont.getDetails(this.glob.getToken()).subscribe(
-      s => this.initCust(s),
+      s => {
+        this.initCust(s);
+        this.getAllPurchasedCoupons();
+      },
       e => this.glob.errPopup(e.error));
   };
 }
