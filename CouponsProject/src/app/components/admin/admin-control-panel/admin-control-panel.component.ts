@@ -1,4 +1,3 @@
-import {TableComponent} from '../../table/table.component';
 import {AdminControllerService} from '../../../services/admin-controller.service';
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {ColumnMode, SelectionType} from '@swimlane/ngx-datatable';
@@ -33,7 +32,7 @@ export class AdminControlPanel implements OnInit {
   compColNames = [{prop: 'companyId'}, {prop: 'name'}, {prop: 'email'}, {prop: 'password'}];
   isCompany = false;
 
-  constructor(private cont: AdminControllerService, private table: TableComponent, private dialog: MatDialog, private glob: GlobalService) {
+  constructor(private cont: AdminControllerService, private dialog: MatDialog, private glob: GlobalService) {
   }
 
   ngOnInit(): void {
