@@ -55,7 +55,6 @@ export class AdminControlPanel implements OnInit {
 
   }
 
-  // TODO make this work with GlobalService so its easier to share across components
   updateFilter(val: any) {
     const value = val.toString().toLowerCase().trim();
     // get the amount of columns in the table

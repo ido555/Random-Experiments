@@ -10,6 +10,8 @@ import {CouponCategory} from '../../../enums/coupon-category.enum';
   templateUrl: './customer-page.component.html',
   styleUrls: ['./customer-page.component.css']
 })
+// TODO get by price / category for customer but not for company
+
 export class CustomerPageComponent implements OnInit {
   coupons: Array<Coupon> = new Array<Coupon>();
   public purchasedCoupons: Array<Coupon> = new Array<Coupon>();
@@ -55,7 +57,6 @@ export class CustomerPageComponent implements OnInit {
     );
   }
 
-  // TODO snackbar popup confirmation
   purchaseCoupon(coupon: Coupon) {
 
     this.cont.purchaseCoupon(this.glob.getToken(), coupon).subscribe(

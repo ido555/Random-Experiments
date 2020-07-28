@@ -34,7 +34,6 @@ export class CouponAddUpdateDeleteComponent implements OnInit {
       title: [this.coup.$title, Validators.required],
       description: [this.coup.$description],
       image: [this.coup.$image],
-      // TODO implement custom date validator
       startDate: [this.coup.$startDate, [Validators.required]],
       endDate: [this.coup.$endDate, [Validators.required]],
       couponCategory: [this.coup.$category, Validators.required],

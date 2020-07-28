@@ -55,7 +55,6 @@ export class CompanyPageComponent implements OnInit {
 
   }
 
-  // TODO make this work with GlobalService so its easier to share across components
   updateFilter(val: any) {
     const value = val.toString().toLowerCase().trim();
     // get the amount of columns in the table
@@ -108,21 +107,12 @@ export class CompanyPageComponent implements OnInit {
     )
   }
 
-  // TODO implement in MyAccount
-  getDetails() {
-    console.log();
-    this.cont.getAllCoupons(this.token).subscribe(
-      s => s,
-      e => this.glob.errPopup (e.error));
-  };
-
   getAllCoupons() {
     this.prepSearch()
     this.cont.getAllCoupons(this.token).subscribe(
       s => this.updateTable(s),
       e => this.glob.errPopup(e.error));
   };
-  // TODO implement these filters
   getCouponsUnderPrice(maxPrice: number) {
     this.cont.getCouponsUnderPrice(this.token, maxPrice).subscribe(
       s => this.updateTable(s),

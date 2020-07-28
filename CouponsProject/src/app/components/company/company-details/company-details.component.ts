@@ -20,6 +20,7 @@ export class CompanyDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getDetails();
   }
 
   initComp(comp) {

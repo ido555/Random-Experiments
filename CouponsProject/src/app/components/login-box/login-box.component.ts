@@ -4,7 +4,6 @@ import {MatDialogRef} from '@angular/material/dialog';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {GlobalService} from '../../services/global.service';
 
-// TODO add global thingy i can change from here to change the Navbars home link
 
 @Component({
   selector: 'app-login-box',
@@ -26,7 +25,6 @@ export class LoginBoxComponent implements OnInit {
               private glob: GlobalService) {
   }
 
-  // TODO implement a way to show if a field isnt valid with validators
   ngOnInit(): void {
     this.loginForm = this.fb.group({
       password: ['', Validators.required],

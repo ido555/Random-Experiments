@@ -13,7 +13,6 @@ import {NotFoundComponent} from './components/not-found/not-found.component';
 import {AdminControlPanel} from './components/admin/admin-control-panel/admin-control-panel.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {TableComponent} from './components/table/table.component';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 import {ErrorBoxComponent} from './components/error-box/error-box.component';
 import {ParticlesModule} from 'ngx-particle';
@@ -42,7 +41,6 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     LoginBoxComponent,
     NotFoundComponent,
     AdminControlPanel,
-    TableComponent,
     ErrorBoxComponent,
     ParticlesComponent,
     CompanyPageComponent,
@@ -77,7 +75,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatButtonModule,
     MatTooltipModule,
   ],
-  providers: [HttpClientModule, TableComponent, GlobalService],
+  providers: [HttpClientModule, GlobalService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
