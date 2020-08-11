@@ -1,0 +1,45 @@
+<app-particles></app-particles>
+<div style="width: min-content">
+  <!--  SIDE NAV  -->
+  <p class="my-3 mx-2 border-0">
+    <button (click)="sidenav.toggle()" mat-raised-button style="background: deepskyblue">Show Functions</button>
+  </p>
+  <mat-sidenav-container class="example-container rounded" style="margin-top: 90px">
+    <mat-sidenav #sidenav [(opened)]="opened" class="light-blue rounded" mode="side">
+      <button (click)="getAllCompanies()" class="px-3 my-3 " mat-raised-button style="background: deepskyblue;">Get all
+        Companies
+      </button>
+      <button (click)="getAllCustomers()" class="px-3 my-3 " mat-raised-button style="background: deepskyblue">Get all
+        Customers
+      </button>
+      <button (click)="companyAddPopup()" class="px-3 my-3 " mat-raised-button style="background: deepskyblue">
+        Add Company
+      </button>
+      <button (click)="customerAddPopup()" class="px-3 my-3 " mat-raised-button style="background: deepskyblue">
+        Add Customer
+      </button>
+    </mat-sidenav>
+  </mat-sidenav-container>
+  <!--  SIDE NAV  -->
+
+  <!-- TABLE  -->
+  <div style="position: absolute; top: 25vh; left: 25vh;">
+
+    <input maxlength="255" #search id="search" (keyup)="updateFilter($event)" *ngIf="this.rows != null" class="animated rollIn mySearch py-1"
+                                       placeholder="Type to search" style="position: absolute;top: -40px; left: 3vh;" type="text"/>
+
+    <div *ngIf="this.rows != null && this.selectedRow.length > 0" class="animated fadeIn"
+         style="position: absolute;top: -7vh; left: 18vw">
+      <button (click)="isCompany ? companyPopup() : customerPopup()" class="btn-light" mdbBtn mdbWavesEffect
+              type="button">Update/Edit/delete
+      </button>
+    </div>
+
+      <ngx-datatable [columnMode]="ColumnMode.standard" [columns]="columns" [footerHeight]="50"
+                     [headerHeight]="50" [limit]="10" [rows]="rows" [selected]="selectedRow"
+                     [selectionType]="SelectionType.single" class="myNgxTable animated rollIn bootstrap"
+                     rowHeight="auto">
+      </ngx-datatable>
+    </div>
+    <!-- TABLE  -->
+</div>

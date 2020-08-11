@@ -1,0 +1,41 @@
+<form [formGroup]="custForm" class="">
+  <!-- FIRST NAME -->
+  <div class="input-group-text m-4 py-1 my-1 mr-1 pr-1 pl-1">
+    <span class="input-group-addon"><i class="fa fa-user p-2"></i></span>
+    <input maxlength="255" class="form-control" formControlName="firstName" placeholder="First Name" type="text">
+  </div>
+  <span *ngIf="custForm.controls['firstName'].invalid && custForm.controls['firstName'].touched"
+        class="pb-1 pt-0 d-flex justify-content-center">First Name Required </span>
+
+  <!-- LAST NAME -->
+  <div class="input-group-text m-4 py-1 my-1 mr-1 pr-1 pl-1">
+    <span class="input-group-addon"><i class="fa fa-user p-2"></i></span>
+    <input maxlength="255" class="form-control" formControlName="lastName" placeholder="Last Name" type="text">
+  </div>
+  <span *ngIf="custForm.controls['lastName'].invalid && custForm.controls['lastName'].touched"
+        class="pb-1 pt-0 d-flex justify-content-center">Last Name Required </span>
+
+  <!-- EMAIL -->
+  <div class="input-group-text m-4 py-1 my-1 mr-1 pr-1 pl-1">
+    <span class="input-group-addon"><i class="fas fa-envelope p-2"></i></span>
+    <input maxlength="255" class="form-control" formControlName="email" placeholder="E-mail" type="email">
+  </div>
+  <span *ngIf="custForm.controls['email'].invalid && custForm.controls['email'].touched"
+        class="pb-1 pt-0 d-flex justify-content-center">Valid E-mail Required </span>
+
+  <!-- PASSWORD -->
+  <div class="input-group-text m-4 py-1 my-1 mr-1 pr-1 pl-1">
+    <span class="input-group-addon"><i class="fa fa-key fa-fw p-2 pr-4"></i></span>
+    <input maxlength="255" class="form-control" formControlName="password" placeholder="Password" type="password">
+  </div>
+  <span *ngIf="custForm.controls['password'].invalid && custForm.controls['password'].touched"
+        class="pb-1 pt-0 d-flex justify-content-center">Password Required </span>
+</form>
+
+<div *ngIf="custForm.valid && !this.data.add" class="btn-group btn-group d-flex justify-content-center mb-2">
+  <button (click)="updateCustomer()" class="btn btn-primary waves-light" type="button">Update</button>
+  <button (click)="deleteCustomer()" class="btn btn-danger waves-light" type="button">Delete</button>
+</div>
+<div *ngIf="custForm.valid  && this.data.add" class="btn-group btn-group d-flex justify-content-center mb-2">
+  <button (click)="addCustomer()" class="btn btn-primary waves-light" type="button">Add</button>
+</div>

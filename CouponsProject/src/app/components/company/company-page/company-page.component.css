@@ -1,0 +1,9 @@
+.example-container {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  padding-bottom: 20%;
+  margin: 10px;
+  opacity: 0.85;
+  font-weight: bolder;
+}

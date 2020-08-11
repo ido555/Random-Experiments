@@ -1,36 +1,56 @@
 <div style="z-index: 9001;">
 
   <mdb-navbar SideClass="navbar navbar-expand-sm navbar-dark blue-gradient" [containerInside]="false">
-    <mdb-navbar-brand><a class="navbar-brand" style="margin-left: 20%;"  href="home">Boba Bola</a></mdb-navbar-brand>
-    <links >
-      <ul class="navbar-nav ml-auto" style="padding-right: 5%;">
+
+    <mdb-navbar-brand mdbWavesEffect matTooltip="Go to your Home Page!" (click)="this.glob.navigateClientHome()"
+                       style="color: white;" class="ml-4">
+                      <a class="navbar-brand">Groupon v2</a></mdb-navbar-brand>
+
+    <links *ngIf="this.glob.isLogged()" class="mr-5">
+      <ul class="navbar-nav ml-auto">
+
+<!--        <li *ngIf="glob.getClientType() == 'Administrator'" class="nav-item dropdown" dropdown>-->
+<!--          <a class="nav-link dropdown-toggle waves-light" dropdownToggle mdbWavesEffect type="button">-->
+<!--            <mdb-icon fas icon="car-crash"></mdb-icon>-->
+<!--            Admin Functions <span class="caret"></span>-->
+<!--          </a>-->
+
+<!--          <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">-->
+<!--            <a class="dropdown-item waves-light" href="adminControlPanel" mdbWavesEffect>Admin controls</a>-->
+<!--          </div>-->
+<!--        </li>-->
+
+<!--        <li *ngIf="glob.getClientType() == 'Company' ">-->
+<!--          <span class="nav-item waves-light">-->
+<!--            <a (click)="this.glob.navigateClientHome()" class="waves-light nav-link text-white" mdbWavesEffect>-->
+<!--              <i aria-hidden="true" class="fa fa-building"></i>-->
+<!--              Company controls-->
+<!--            </a>-->
+<!--          </span>-->
+<!--        </li>-->
+
         <li class="nav-item dropdown" dropdown>
-          <div>
-            <!-- TODO hide if not logged in -->
-            <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect >
-              <mdb-icon fas icon="car-crash"></mdb-icon> Admin Functions <span class="caret"></span>
-            </a>
+          <a class="nav-link dropdown-toggle waves-light" dropdownToggle mdbWavesEffect type="button">
+            <mdb-icon fas icon="user"></mdb-icon>
+            Profile<span class="caret"></span>
+          </a>
+
+          <a>
             <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
-              <a class="dropdown-item waves-light" mdbWavesEffect href="customerControls">Admin controls</a>
-              <!-- TODO on click route a new page for company controls - add,update,remove etc - using routing -->
-              <a class="dropdown-item waves-light" mdbWavesEffect href="12345">something else?</a>
+              <span (click)="custDetails()"
+                    *ngIf="glob.getClientType() != 'Administrator' && glob.getClientType() == 'Customer'" class="dropdown-item waves-light" mdbWavesEffect>My account</span>
+
+              <span (click)="compDetails()"
+                    *ngIf="glob.getClientType() != 'Administrator' && glob.getClientType() == 'Company'" class="dropdown-item waves-light" mdbWavesEffect>My account</span>
+
+              <span (click)="logOut()" *ngIf="this.glob.isLogged()" class="dropdown-item waves-light" mdbWavesEffect>Log
+                out</span>
+              <span *ngIf="!this.glob.isLogged()" class="dropdown-item waves-light" mdbWavesEffect>Log in</span>
             </div>
-          </div>
+          </a>
+
         </li>
-        <li class="nav-item dropdown" dropdown>
-          <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
-            <mdb-icon fas icon="user"></mdb-icon> Profile<span class="caret"></span></a>
-            <a>
-              <!-- TODO make dropdown open directly under button name -->
-              <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
-                <a class="dropdown-item waves-light" mdbWavesEffect href="">My account</a>
-                <!-- TODO hide if not logged in -->
-                <a *ngIf="isLogged() == true"  (click)="logOut()" class="dropdown-item waves-light" mdbWavesEffect href="">Log out</a>
-                <a *ngIf="isLogged() == false"  class="dropdown-item waves-light" mdbWavesEffect href="">Log in</a>
-              </div>
-            </a>
-          </li>
-        </ul>
-      </links>
-    </mdb-navbar>
+      </ul>
+    </links>
+  </mdb-navbar>
 </div>

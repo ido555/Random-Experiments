@@ -1,19 +1,23 @@
-import { ClientType } from './../enums/client-type.enum';
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
-// TODO try to make httpParams not throw a provider missing thingy exception
 export class LoginControllerService {
-  post:Object;
-  constructor(private httpClient: HttpClient ) { }
+  post: object;
 
-  public login(clientType: ClientType, password: string, email: string) {
-    return this.httpClient.get("http://localhost:8080/login/" + clientType + "/" + email + "/" + password)
+  constructor(private httpClient: HttpClient) {
   }
-  public logout(token:string) {
-    return this.httpClient.delete("http://localhost:8080/logout/" + token)
+
+  public getAllCoupons(token: string) {
+    return this.httpClient.get('http://localhost:8080/getAllCoupons/' + token,{responseType: 'json'});
+  }
+  public login(clientType: string, password: string, email: string) {
+    return this.httpClient.get('http://localhost:8080/login/' + clientType + '/' + email + '/' + password, {responseType: 'text'});
+  }
+
+  public logout(token: string) {
+    return this.httpClient.delete('http://localhost:8080/logout/' + token, {responseType: 'text'});
   }
 }

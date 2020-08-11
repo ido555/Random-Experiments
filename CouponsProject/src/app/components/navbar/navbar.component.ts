@@ -1,7 +1,11 @@
-import { LoginControllerService } from './../../services/login-controller.service';
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {LoginControllerService} from '../../services/login-controller.service';
+import {GlobalService} from '../../services/global.service';
+import {MatDialog} from '@angular/material/dialog';
+import {CustomerDetailsComponent} from '../customer/customer-details/customer-details.component';
+import {CompanyDetailsComponent} from '../company/company-details/company-details.component';
 
-// TODO fix and improve this entire component and its html. its poorly written and poorly structered
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -9,20 +13,36 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private logMan:LoginControllerService) { }
+  constructor(private logMan: LoginControllerService, public glob: GlobalService, private clientDetails: MatDialog) {
+  }
 
   ngOnInit(): void {
+
   }
-  public isLogged(){
-    if (localStorage.getItem('token') != null ) 
-      return true
-    return false
+  custDetails() {
+    this.clientDetails.open(CustomerDetailsComponent,
+      {
+        minHeight: 600, minWidth: 600, disableClose: false,
+        maxHeight: 800, maxWidth: 680,
+      });
   }
-  public logOut(){
-    console.log("tryna logout")
-    this.logMan.logout(localStorage.getItem('token')).subscribe(
-      s => {localStorage.removeItem('token')},
-      e => {}
+  compDetails() {
+    this.clientDetails.open(CompanyDetailsComponent,
+      {
+        minHeight: 500, minWidth: 400, disableClose: false,
+        maxHeight: 1200, maxWidth: 960,
+      });
+  }
+
+  public logOut() {
+    console.log(this.logMan);
+    this.logMan.logout(sessionStorage.getItem('token')).subscribe(
+      () => {
+        sessionStorage.removeItem('token');
+        sessionStorage.removeItem('ct');
+        setTimeout(() => {this.glob.navigateClientHome()} , 150)
+      },
+      e => console.log(e)
     );
   }
 }

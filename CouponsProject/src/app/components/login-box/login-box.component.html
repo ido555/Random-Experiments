@@ -1,20 +1,22 @@
 <div class="">
-  <button (click)="cancelDialog()" class="close fa fa-window-close"></button>
+  <button (click)="closeDialog()" class="close fa fa-window-close"></button>
   <form [formGroup]="loginForm" class="text-center border border-light p-5">
     <p class="h4 mb-4">Sign in</p>
-    <input type="email" formControlName="email" class="form-control mb-4" placeholder="E-mail">
-    <input type="password" formControlName="password" class="form-control mb-4" placeholder="Password">
+    <input maxlength="255"  class="form-control mb-4" formControlName="email" placeholder="E-mail" type="email">
+    <input maxlength="255"  class="form-control mb-4" formControlName="password" placeholder="Password" type="password">
     <div class="dropdown" mdbDropdown>
-      <button *ngIf="typeCheck == false" mdbDropdownToggle mdbBtn color="primary" class="dropdown-toggle waves-light " type="button" mdbWavesEffect>
-        Choose a client type </button>
-      <button *ngIf="typeCheck" mdbDropdownToggle mdbBtn color="primary" class="dropdown-toggle waves-light" type="button" mdbWavesEffect>
-        {{clientType}} </button>
+      <button *ngIf="!clientChosen" class="dropdown-toggle waves-light " color="primary" mdbBtn mdbDropdownToggle
+              mdbWavesEffect type="button">
+        Choose a client type
+      </button>
+      <button *ngIf="clientChosen" class="dropdown-toggle waves-light" color="primary" mdbBtn mdbDropdownToggle
+              mdbWavesEffect type="button">
+        {{this.clientType}} </button>
 
-      <!-- TODO this is a really bad way to do this. fix later -->
       <div class="dropdown-menu dropdown-primary">
-        <button class="dropdown-item" (click)="setClientType(0)">Administrator</button>
-        <button class="dropdown-item" (click)="setClientType(1)">Company</button>
-        <button class="dropdown-item" (click)="setClientType(2)">Customer</button>
+        <button (click)="setClientType('Administrator')" class="dropdown-item">Administrator</button>
+        <button (click)="setClientType('Company')" class="dropdown-item">Company</button>
+        <button (click)="setClientType('Customer')" class="dropdown-item">Customer</button>
       </div>
     </div>
 
@@ -27,14 +29,14 @@
         <a href="#">Forgot password?</a>
       </div>
     </div>
-    <!-- TODO (click) - loading thingy then login-->
-    <button *ngIf="loginForm.valid && typeCheck == true && success == null" mdbBtn color="info"
-      block="true" class="my-4 animated fadeIn faster" type="submit" (click)="login()">Sign in</button>
+    <button (click)="login()" *ngIf="loginForm.valid && clientChosen && success == null" block="true"
+            class="my-4 animated fadeIn faster" color="info" mdbBtn type="submit">Sign in
+    </button>
     <span>
       <span>
-        <i *ngIf="success == true" ng class="font50px fa fa-check text-success animated fadeIn" aria-hidden="true"></i>
-        <i *ngIf="success == false" class="font50px fa fa-window-close text-danger animated fadeIn"
-          aria-hidden="true"></i>
+        <i *ngIf="success == true" aria-hidden="true" class="font50px fa fa-check text-success animated fadeIn"></i>
+        <i *ngIf="success == false" aria-hidden="true"
+           class="font50px fa fa-window-close text-danger animated fadeIn"></i>
         <p *ngIf="success == false">{{error}}</p>
       </span>
     </span>
@@ -42,16 +44,16 @@
       <a href="">Contact Administrator</a>
     </p>
     <p>or sign in with (unimplemented...):</p>
-    <a type="button" class="light-blue-text mx-2">
+    <a class="light-blue-text mx-2" type="button">
       <mdb-icon fab icon="facebook"></mdb-icon>
     </a>
-    <a type="button" class="light-blue-text mx-2">
+    <a class="light-blue-text mx-2" type="button">
       <mdb-icon fab icon="twitter"></mdb-icon>
     </a>
-    <a type="button" class="light-blue-text mx-2">
+    <a class="light-blue-text mx-2" type="button">
       <mdb-icon fab icon="linkedin"></mdb-icon>
     </a>
-    <a type="button" class="light-blue-text mx-2">
+    <a class="light-blue-text mx-2" type="button">
       <mdb-icon fab icon="github"></mdb-icon>
     </a>
   </form>

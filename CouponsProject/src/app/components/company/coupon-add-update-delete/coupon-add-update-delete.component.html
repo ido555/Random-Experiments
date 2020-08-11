@@ -1,0 +1,93 @@
+<div class="container">
+  <!--  AMOUNT  -->
+  <form [formGroup]="coupForm">
+    <div class="input-group-text m-4 py-1 my-1 mr-1 pr-1 pl-1">
+      <span class="input-group-addon"><i class="fas fa-sort-numeric-up p-2"></i></span>
+      <input maxlength="255"  class="form-control" formControlName="amount" placeholder="Amount" type="number">
+      <small *ngIf="coupForm.controls['amount'].invalid"
+             class="pb-1 pt-0 d-flex justify-content-center">Amount Required</small>
+    </div>
+
+    <!--    PRICE    -->
+    <div class="input-group-text m-4 py-1 my-1 mr-1 pr-1 pl-1">
+      <span class="input-group-addon"><i class="fas fa-dollar-sign p-2"></i></span>
+      <input maxlength="255"  class="form-control" formControlName="price" placeholder="Price" type="number">
+      <small *ngIf="coupForm.controls['price'].invalid "
+             class="pb-1 pt-0 d-flex justify-content-center">Price Required</small>
+    </div>
+
+    <!--    TITLE    -->
+    <div class="input-group-text m-4 py-1 my-1 mr-1 pr-1 pl-1">
+      <span class="input-group-addon"><i class="fas fa-heading p-1"></i></span>
+      <input maxlength="255"  class="form-control" formControlName="title" placeholder="Title" type="text">
+      <small *ngIf="coupForm.controls['title'].invalid"
+             class="pb-1 pt-0 d-flex justify-content-center help-block">Title Required</small>
+    </div>
+
+    <!--    DESCRIPTION    -->
+    <div class="input-group-text m-4 py-1 my-1 mr-1 pr-1 pl-1">
+      <span class="input-group-addon"><i class="fas fa-info p-2"></i></span>
+      <input maxlength="255"  class="form-control" formControlName="description" placeholder="Description" type="text">
+      <small *ngIf="coupForm.controls['description'].invalid"
+             class="pb-1 pt-0 d-flex justify-content-center">Description Required</small>
+    </div>
+
+    <!--    IMAGE    -->
+    <div class="input-group-text m-4 py-1 my-1 mr-1 pr-1 pl-1">
+      <span class="input-group-addon"><i class="fas fa-image p-2"></i></span>
+      <input maxlength="255"  class="form-control" formControlName="image" placeholder="Image" type="text">
+      <small *ngIf="coupForm.controls['image'].invalid"
+             class="pb-1 pt-0 d-flex justify-content-center">Image Required</small>
+    </div>
+
+    <!--    START DATE    -->
+    <div class="input-group-text m-4 py-1 my-1 mr-1 pr-1 pl-1">
+      <small>Start Date</small>
+      <span class="input-group-addon"><i class="far fa-calendar-alt p-2"></i></span>
+      <input maxlength="255"  class="form-control" formControlName="startDate" placeholder="Start Date" type="date">
+      <small *ngIf="coupForm.controls['startDate'].invalid"
+             class="pb-1 pt-0 d-flex justify-content-center">Start Date Required</small>
+    </div>
+
+    <!--    End Date    -->
+    <div class="input-group-text m-4 py-1 my-1 mr-1 pr-1 pl-1">
+      <small>End Date</small>
+      <span class="input-group-addon"><i class="far fa-calendar-alt p-2"></i></span>
+      <input maxlength="255"  class="form-control" formControlName="endDate" placeholder="End Date" type="date">
+      <small *ngIf="coupForm.controls['endDate'].invalid"
+             class="pb-1 pt-0 d-flex justify-content-center ">End Date Required</small>
+    </div>
+
+    <!--    COUPON CATEGORY    -->
+    <div class="input-group-text m-4 py-1 my-1 mr-1 pr-1 pl-1">
+      <span class="input-group-addon"><i class="fas fa-list-ul p-2"></i></span>
+      <select class="custom-select form-control" formControlName="couponCategory">
+        <option value="Spa">Spa</option>
+        <option value="Food">Food</option>
+        <option value="Vacation">Vacation</option>
+        <option value="Electronics">Electronics</option>
+        <option value="Clothes">Clothes</option>
+        <option value="Shoes">Shoes</option>
+      </select>
+      <small *ngIf="coupForm.controls['couponCategory'].invalid"
+             class="pb-1 pt-0 d-flex justify-content-center ">Category Required</small>
+    </div>
+
+  </form>
+
+  <div *ngIf="coupForm.valid && !this.add" class="btn-group btn-group d-flex justify-content-center mb-2">
+    <button (click)="updateCoupon()" class="btn btn-primary waves-light" type="button">Update</button>
+    <button (click)="deleteCoupon()" class="btn btn-danger waves-light" type="button">Delete
+    </button>
+  </div>
+  <div *ngIf="coupForm.valid && this.add" class="btn-group btn-group d-flex justify-content-center mb-2">
+    <button (click)="addCoupon()" class="btn btn-primary waves-light" type="button">Add</button>
+  </div>
+
+  <div class="d-flex justify-content-center">
+    <button (click)="closeDialog()" class="btn btn-secondary waves-light" mdbWavesEffect
+            type="button">Cancel
+    </button>
+  </div>
+
+</div>

@@ -1,0 +1,25 @@
+<div style="top: 300px">
+
+  <h1>Your Details: </h1>
+  <div style="font-size: large; font-family: 'Courier New', Courier, monospace ">
+    <p> Id Number:{{cust.$customerId}}</p>
+    <p> First Name:{{cust.$firstName}}</p>
+    <p> Last Name:{{cust.$lastName}}</p>
+    <p> E-mail:{{cust.$email}}</p>
+    <p> Password:{{cust.$password}}</p>
+    <p> Your Coupons: </p>
+  </div>
+  <div class="row">
+    <div *ngFor="let coup of this.coupons" class="row px-4 py-3" >
+      <div class="card col-12 pt-1" style="width:190px;">
+        <img alt="Card image" class="card-img-top" src="http://localhost:8080/placeholder120x120.png">
+        <div class="card-body">
+          <h4 class="card-title">{{coup.$title}}</h4>
+          <h5 class="card-subtitle"><small style="color: grey">Offered by: {{coup.$company.name}} </small></h5>
+          <p class="card-text">{{coup.$description}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

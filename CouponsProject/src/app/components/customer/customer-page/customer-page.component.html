@@ -1,0 +1,21 @@
+
+<div class="container">
+
+  <div class="row  blueGradient2" style=" position: absolute; left: 0; padding-left: 10%" >
+
+    <div *ngFor="let coupon of coupons" class="col-md-4 my-5" >
+      <div class="card" style="width:254px;">
+        <img class="card-img-top" src="http://localhost:8080/placeholder250x250.png" alt="Card image">
+        <div class="card-body">
+          <h3 class="card-title">{{coupon.$title}}</h3>
+          <h4 class="card-subtitle"><small style="color: grey">Offered by: {{coupon.$company.name}} </small> </h4>
+          <p class="card-text">{{coupon.$description}}</p>
+          <button [class.opacity-60]="isCouponAlreadyBought(coupon)"   [disabled]="isCouponAlreadyBought(coupon)"
+                  (click)="purchaseCoupon(coupon)" mat-raised-button class="blueGradient2" style="color: whitesmoke">
+                  Purchase Coupon </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,171 +1,190 @@
-import { CouponCategory } from './../enums/coupon-category.enum';
+/* tslint:disable:no-redundant-jsdoc */
+import {CouponCategory} from '../enums/coupon-category.enum';
+import {Company} from './company';
+
 export class Coupon {
-    // credit to TypeScript ToolBox for auto generating 90% of this (lazy = efficent ;) )
+  private couponId: number;
+  private amount: number;
+  private price: number;
+  private title: string;
+  private description: string;
+  private image: string;
+  private startDate: Date;
+  private endDate: Date;
+  private category: CouponCategory;
+  private company: Company;
 
-    private couponId : number;
-    private amount : number;
-    private price : number;
-    private title : string;
-    private description : string;
-    private image : string;
-    private startDate : Date;
-    private endDate : Date;
-    private couponCategory : CouponCategory;
+  constructor($couponId: number, $amount: number, $price: number, $title: string, $description: string, $image: string
+    , $startDate: Date, $endDate: Date, category: CouponCategory, company: Company) {
+    this.couponId = $couponId;
+    this.amount = $amount;
+    this.price = $price;
+    this.title = $title;
+    this.description = $description;
+    this.image = $image;
+    this.startDate = $startDate;
+    this.endDate = $endDate;
+    this.category = category;
+    this.company = company;
+  }
 
-	constructor($couponId: number, $amount: number, $price: number, $title: string, $description: string, $image: string, $startDate: Date, $endDate: Date, $couponCategory: CouponCategory) {
-		this.couponId = $couponId;
-		this.amount = $amount;
-		this.price = $price;
-		this.title = $title;
-		this.description = $description;
-		this.image = $image;
-		this.startDate = $startDate;
-		this.endDate = $endDate;
-		this.couponCategory = $couponCategory;
-	}
 
-    /**
-     * Getter $couponId
-     * @return {number}
-     */
-	public get $couponId(): number {
-		return this.couponId;
-	}
+  /**
+   * Getter $couponId
+   * @return {number}
+   */
+  public get $couponId(): number {
+    return this.couponId;
+  }
 
-    /**
-     * Getter $amount
-     * @return {number}
-     */
-	public get $amount(): number {
-		return this.amount;
-	}
+  /**
+   * Setter $couponId
+   * @param {number} value
+   */
+  public set $couponId(value: number) {
+    this.couponId = value;
+  }
 
-    /**
-     * Getter $price
-     * @return {number}
-     */
-	public get $price(): number {
-		return this.price;
-	}
+  /**
+   * Getter $amount
+   * @return {number}
+   */
+  public get $amount(): number {
+    return this.amount;
+  }
 
-    /**
-     * Getter $title
-     * @return {string}
-     */
-	public get $title(): string {
-		return this.title;
-	}
+  /**
+   * Setter $amount
+   * @param {number} value
+   */
+  public set $amount(value: number) {
+    this.amount = value;
+  }
 
-    /**
-     * Getter $description
-     * @return {string}
-     */
-	public get $description(): string {
-		return this.description;
-	}
+  /**
+   * Getter $price
+   * @return {number}
+   */
+  public get $price(): number {
+    return this.price;
+  }
 
-    /**
-     * Getter $image
-     * @return {string}
-     */
-	public get $image(): string {
-		return this.image;
-	}
+  /**
+   * Setter $price
+   * @param {number} value
+   */
+  public set $price(value: number) {
+    this.price = value;
+  }
 
-    /**
-     * Getter $startDate
-     * @return {Date}
-     */
-	public get $startDate(): Date {
-		return this.startDate;
-	}
+  /**
+   * Getter $title
+   * @return {string}
+   */
+  public get $title(): string {
+    return this.title;
+  }
 
-    /**
-     * Getter $endDate
-     * @return {Date}
-     */
-	public get $endDate(): Date {
-		return this.endDate;
-	}
+  /**
+   * Setter $title
+   * @param {string} value
+   */
+  public set $title(value: string) {
+    this.title = value;
+  }
 
-    /**
-     * Getter $couponCategory
-     * @return {CouponCategory}
-     */
-	public get $couponCategory(): CouponCategory {
-		return this.couponCategory;
-	}
+  /**
+   * Getter $description
+   * @return {string}
+   */
+  public get $description(): string {
+    return this.description;
+  }
 
-    /**
-     * Setter $couponId
-     * @param {number} value
-     */
-	public set $couponId(value: number) {
-		this.couponId = value;
-	}
+  /**
+   * Setter $description
+   * @param {string} value
+   */
+  public set $description(value: string) {
+    this.description = value;
+  }
 
-    /**
-     * Setter $amount
-     * @param {number} value
-     */
-	public set $amount(value: number) {
-		this.amount = value;
-	}
+  /**
+   * Getter $image
+   * @return {string}
+   */
+  public get $image(): string {
+    return this.image;
+  }
 
-    /**
-     * Setter $price
-     * @param {number} value
-     */
-	public set $price(value: number) {
-		this.price = value;
-	}
+  /**
+   * Setter $image
+   * @param {string} value
+   */
+  public set $image(value: string) {
+    this.image = value;
+  }
 
-    /**
-     * Setter $title
-     * @param {string} value
-     */
-	public set $title(value: string) {
-		this.title = value;
-	}
+  /**
+   * Getter $startDate
+   * @return {Date}
+   */
+  public get $startDate(): Date {
+    return this.startDate;
+  }
 
-    /**
-     * Setter $description
-     * @param {string} value
-     */
-	public set $description(value: string) {
-		this.description = value;
-	}
+  /**
+   * Setter $startDate
+   * @param {Date} value
+   */
+  public set $startDate(value: Date) {
+    this.startDate = value;
+  }
 
-    /**
-     * Setter $image
-     * @param {string} value
-     */
-	public set $image(value: string) {
-		this.image = value;
-	}
+  /**
+   * Getter $endDate
+   * @return {Date}
+   */
+  public get $endDate(): Date {
+    return this.endDate;
+  }
 
-    /**
-     * Setter $startDate
-     * @param {Date} value
-     */
-	public set $startDate(value: Date) {
-		this.startDate = value;
-	}
+  /**
+   * Setter $endDate
+   * @param {Date} value
+   */
+  public set $endDate(value: Date) {
+    this.endDate = value;
+  }
 
-    /**
-     * Setter $endDate
-     * @param {Date} value
-     */
-	public set $endDate(value: Date) {
-		this.endDate = value;
-	}
+  /**
+   * Getter $couponCategory
+   * @return {CouponCategory}
+   */
+  public get $category(): CouponCategory {
+    return this.category;
+  }
 
-    /**
-     * Setter $couponCategory
-     * @param {CouponCategory} value
-     */
-	public set $couponCategory(value: CouponCategory) {
-		this.couponCategory = value;
-	}
+  /**
+   * Setter $couponCategory
+   * @param {CouponCategory} value
+   */
+  public set $category(value: CouponCategory) {
+    this.category = value;
+  }  /**
+   * Getter $couponCategory
+   * @return {CouponCategory}
+   */
+  public get $company(): Company {
+    return this.company;
+  }
+
+  /**
+   * Setter $couponCategory
+   * @param {CouponCategory} value
+   */
+  public set $company(value: Company) {
+    this.company = value;
+  }
 
 }

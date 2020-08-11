@@ -1,80 +1,81 @@
 export class Company {
-    // credit to TypeScript ToolBox for auto generating 90% of this (lazy = efficent ;) )
-    private companyId: number;
-    private password: number;
-    private name: string;
-    private email: string;
+  // credit to TypeScript ToolBox for auto generating 90% of this (lazy = efficent ;) )
+  private companyId: number;
+  private password: string;
+  // had to make name public because it was inaccessible through coupon.$company.$name
+  name: string;
+  private email: string;
 
 
-	constructor($companyId: number, $password: number, $name: string, $email: string) {
-		this.companyId = $companyId;
-		this.password = $password;
-		this.name = $name;
-		this.email = $email;
-	}
+  constructor($companyId: number, $password: string, $name: string, $email: string) {
+    this.companyId = $companyId;
+    this.password = $password;
+    this.name = $name;
+    this.email = $email;
+  }
 
-    /**
-     * Getter $companyId
-     * @return {number}
-     */
-	public get $companyId(): number {
-		return this.companyId;
-	}
+  /**
+   * Getter $companyId
+   * @return {number}
+   */
+  public get $companyId(): number {
+    return this.companyId;
+  }
 
-    /**
-     * Getter $password
-     * @return {number}
-     */
-	public get $password(): number {
-		return this.password;
-	}
+  /**
+   * Setter $companyId
+   * @param {number} value
+   */
+  public set $companyId(value: number) {
+    this.companyId = value;
+  }
 
-    /**
-     * Getter $name
-     * @return {string}
-     */
-	public get $name(): string {
-		return this.name;
-	}
+  /**
+   * Getter $password
+   * @return {string}
+   */
+  public get $password(): string {
+    return this.password;
+  }
 
-    /**
-     * Getter $email
-     * @return {string}
-     */
-	public get $email(): string {
-		return this.email;
-	}
+  /**
+   * Setter $password
+   * @param {string} value
+   */
+  public set $password(value: string) {
+    this.password = value;
+  }
 
-    /**
-     * Setter $companyId
-     * @param {number} value
-     */
-	public set $companyId(value: number) {
-		this.companyId = value;
-	}
+  /**
+   * Getter $name
+   * @return {string}
+   */
+  public get $name(): string {
+    return this.name;
+  }
 
-    /**
-     * Setter $password
-     * @param {number} value
-     */
-	public set $password(value: number) {
-		this.password = value;
-	}
+  /**
+   * Setter $name
+   * @param {string} value
+   */
+  public set $name(value: string) {
+    this.name = value;
+  }
 
-    /**
-     * Setter $name
-     * @param {string} value
-     */
-	public set $name(value: string) {
-		this.name = value;
-	}
+  /**
+   * Getter $email
+   * @return {string}
+   */
+  public get $email(): string {
+    return this.email;
+  }
 
-    /**
-     * Setter $email
-     * @param {string} value
-     */
-	public set $email(value: string) {
-		this.email = value;
-	}
-    
+  /**
+   * Setter $email
+   * @param {string} value
+   */
+  public set $email(value: string) {
+    this.email = value;
+  }
+
 }

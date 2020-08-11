@@ -1,23 +1,21 @@
 <div class="container">
-  <span id="lightOverlay" class="mask flex-center rgba-black-light"></span>
+  <span class="mask flex-center rgba-black-light" id="lightOverlay"></span>
   <div class="animated fadeInDown mx-auto col-3 text-center" style="padding-top: 30%;">
     <h1 class="text-white">
       Welcome To
       <br> Groupon <small>v2 ™</small>
     </h1>
-    <span>
-      <h3 class="animated fadeInDown text-white">Short Explanation / greeting here</h3>
-    </span>
+      <span class="animated fadeInDown text-white ">Enjoy your stay!</span>
   </div>
 
   <div id="vidWrapper">
     <!-- atleast one of these "muted" things made this autoplay without being blocked so ill just leave it like that -->
-    <video id="strechVid" class="video-fluid z-depth-0" oncanplay="this.muted=true" autoplay loop muted [muted]="true">
-      <source src="http://localhost:8080/bokeh.mp4" type="video/mp4" />
+    <video [muted]="true" autoplay class="video-fluid z-depth-0" id="strechVid" loop muted oncanplay="this.muted=true">
+      <source src="http://localhost:8080/bokeh.mp4" type="video/mp4"/>
     </video>
   </div>
 
-  <span class="animated fadeInDown carousel-caption">
-    <button mdbBtn type="button" gradient="blue" mdbWavesEffect (click)="showDialog()">Login</button>
+  <span *ngIf="!glob.isLogged()" class="animated fadeInDown carousel-caption">
+    <button (click)="showDialog()" gradient="blue" mdbBtn mdbWavesEffect type="button">Login</button>
   </span>
 </div>
