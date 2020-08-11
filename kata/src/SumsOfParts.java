@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class SumsOfParts {
     //    https://www.codewars.com/kata/5ce399e0047a45001c853c2b/train/java
@@ -12,10 +13,10 @@ public class SumsOfParts {
             sums.add(calcSum(ls));
             ls[i] = 0;
         }
-        System.out.println(sums.stream().mapToInt(i->i).toArray());
-        return sums.stream().mapToInt(i->i).toArray();
+        sums.add(0); // requested junit code wasn't great...
+        return sums.stream().parallel().mapToInt(i->i).toArray();
     }
-    public static int calcSum(int[] list){
+    private static int calcSum(int[] list){
         int sum = 0;
         for (int num : list) {
             sum+= num;

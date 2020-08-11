@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Streams_JUnit_kata.iml" filepath="$PROJECT_DIR$/Streams_JUnit_kata.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Streams_JUnit_MultiThreading_kata.iml" filepath="$PROJECT_DIR$/Streams_JUnit_MultiThreading_kata.iml" />
     </modules>
   </component>
 </project>
