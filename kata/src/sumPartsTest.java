@@ -5,7 +5,7 @@ import org.junit.Test;
 public class sumPartsTest {
 
     private static void dotest(int[] ls, int[] expect) {
-        int[] actual = SumParts.sumParts(ls);
+        int[] actual = SumsOfParts.sumParts(ls);
         assertArrayEquals(expect, actual);
     }
 
