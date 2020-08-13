@@ -7,7 +7,7 @@ import OpenGL.GL
 # GLU is the OpenGL Utility Library.
 # This is a set of functions to create texture mipmaps from a base image,
 # map coordinates between screen and object space,
-# and draw quadric surfaces and NURBs (Non-uniform rational B-spline) (not gonna pretend i know what this means...)
+# and draw quadric surfaces and NURBs (Non-uniform rational B-spline) (not gonna pretend i know what that means...)
 # (Non-uniform rational basis spline is a mathematical model commonly
 # used in computer graphics for generating and representing curves and surfaces)
 
