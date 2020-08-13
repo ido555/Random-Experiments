@@ -1,4 +1,7 @@
 import pygame
+import random
+
+# movment with W A S D Q E
 
 # OpenGL.GL, the core GL library and extensions to it
 
@@ -86,7 +89,9 @@ edges = (
 quads = (
     # right bottom far vertex -- left bottom far vertex -- left bottom close vertex -- right bottom close vertex
     (0, 3, 6, 4),
-    (0, 1, 5, 4))
+    (0, 1, 5, 4),
+    (7, 5, 4, 6)
+)
 
 
 def cube():
@@ -106,7 +111,7 @@ def cube():
     gl.glEnd()
 
 
-def someQuadsOnCube():
+def someQuads():
     gl = OpenGL.GL
     gl.glBegin(gl.GL_QUADS)
 
@@ -140,7 +145,7 @@ def main():
     # move the view 5 units back on the z axis
     # otherwise the view would be in the middle of the cube
     gl.glTranslatef(0.0, 0.0, -5)
-
+    first = True
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -164,14 +169,16 @@ def main():
         # rotate view ( not the cube )
         # gl.glRotatef(1, 3, 1, 1)
 
-        # clear color and depth masks (otherwise the program would draw until theres a mess)
+        # clear color and depth masks (otherwise the cube would smear)
         # TODO find out what depth_buffer is
         gl.glClear(gl.GL_COLOR_BUFFER_BIT | gl.GL_DEPTH_BUFFER_BIT)
 
         # render the cube again
         cube()
-        someQuadsOnCube()
-
+        someQuads()
+        if first:
+            gl.glRotatef(60, 0, 1, 0)
+            first = False
         # update the contents of the entire display
         pygame.display.flip()
 
