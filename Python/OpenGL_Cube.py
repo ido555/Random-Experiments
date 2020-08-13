@@ -81,7 +81,7 @@ def Cube():
     gl = OpenGL.GL
     # glBegin - announce that this code will determine the limits or boundaries of some 1d/2d/3d object
     # Begin GL geometry-definition mode, disable automatic error checking
-    # ( define new shape )
+    # and handle this code as line-drawing code
     gl.glBegin(gl.GL_LINES)
 
     # for each pair of vertices
@@ -104,11 +104,21 @@ def main():
     # initialize all imported pygame modules
     p.init()
     display = (800, 600)
-    # TODO why use bitwise OR here? why does regular addition works as well?
-    # p.FULLSCREEN
+    # | - OR bitwise operator -- used to separate constants
+    # double buffering provides two complete color buffers for use in drawing. One buffer is displayed
+    # while the other buffer is being drawn into. When the drawing is complete, the two buffers are swapped
+    # so that the one that was being viewed is now used for drawing
     pygame.display.set_mode(display, p.DOUBLEBUF | p.OPENGL)
 
+    # set perspective  with  glu.gluPerspective(fovDegrees, aspectRatio, near, far)
+    # fovDegrees - field of view in degrees
+    # aspectRatio - ratio between planes (1.333)
+    # near -  distance from the viewer to the near clipping plane - see attached images
+    # far -  distance from the viewer to the far clipping plane - see attached images
     glu.gluPerspective(45, (display[0] / display[1]), 0.1, 50.0)
+
+    # move the view 5 units back on the z axis
+    # otherwise the view would be in the middle of the cube
     gl.glTranslatef(0.0, 0.0, -5)
 
     while True:
@@ -116,12 +126,29 @@ def main():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 quit()
+        pressed = pygame.key.get_pressed()
+        # movement speed is bound to fps right now....
+        if pressed[pygame.K_w]:
+            gl.glTranslatef(0.0, 0.0, -0.2)
+        if pressed[pygame.K_s]:
+            gl.glTranslatef(0.0, 0.0, 0.2)
+        if pressed[pygame.K_a]:
+            gl.glTranslatef(0.2, 0.0, 0)
+        if pressed[pygame.K_d]:
+             gl.glTranslatef(-0.2, 0.0, 0)
 
+
+        # rotate view ( not the cube )
         gl.glRotatef(1, 3, 1, 1)
         gl.glClear(gl.GL_COLOR_BUFFER_BIT | gl.GL_DEPTH_BUFFER_BIT)
+
+        # render the cube again
         Cube()
+        # update the contents of the entire display
         pygame.display.flip()
-        pygame.time.wait(10)
+
+        # wait 16 ms between each frame is rendered - around 60 fps
+        pygame.time.wait(16)
 
 
 main()
