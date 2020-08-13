@@ -1,8 +1,9 @@
 import pygame
-from pygame.locals import *
-
-from OpenGL.GL import *
-from OpenGL.GLU import *
+# from pygame.locals import *
+import OpenGL.GL
+import OpenGL.GLU
+# from OpenGL.GL import *
+# from OpenGL.GLU import *
 
 verticies = (
     (1, -1, -1),
@@ -42,7 +43,7 @@ def Cube():
 def main():
     pygame.init()
     display = (800,600)
-    pygame.display.set_mode(display, DOUBLEBUF|OPENGL)
+    pygame.display.set_mode(display, pygame.DOUBLEBUF|pygame.OPENGL)
 
     gluPerspective(45, (display[0]/display[1]), 0.1, 50.0)
 
