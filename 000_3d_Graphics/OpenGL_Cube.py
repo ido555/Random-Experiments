@@ -13,6 +13,13 @@ import OpenGL.GL
 
 import OpenGL.GLU
 
+# 1 vertx - dot
+# 2 vertices - line
+# 3 vertices - triangle
+# 4 vertices - quadrilateral
+# 5 vertices - polygon
+# etc etc...
+
 # (x,y,z) coordinates of each vertex
 # edges will be drawn between 2 vertices
 # OpenGL uses a right-handed coordinate system system
@@ -76,23 +83,36 @@ edges = (
     (5, 7)
 )
 
+quads = (
+    # right bottom far vertex -- left bottom far vertex -- left bottom close vertex -- right bottom close vertex
+    (0, 3, 6, 4),
+    (0, 1, 5, 4))
 
-def Cube():
+
+def cube():
     gl = OpenGL.GL
-    # glBegin - announce that this code will determine the limits or boundaries of some 1d/2d/3d object
+    # glBegin - announce that this is a "line-drawing code"
     # Begin GL geometry-definition mode, disable automatic error checking
-    # and handle this code as line-drawing code
     gl.glBegin(gl.GL_LINES)
 
     # for each pair of vertices
     for edge in edges:
         # for each vertex in pair
         for vertex in edge:
-            print("calling glVertex3fv")
             # TODO need to understand glVertex3fv much better
             gl.glVertex3fv(vertices[vertex])
 
     # Finish GL geometry-definition mode, re-enable automatic error checking
+    gl.glEnd()
+
+
+def someQuadsOnCube():
+    gl = OpenGL.GL
+    gl.glBegin(gl.GL_QUADS)
+
+    for quad in quads:
+        for vertex in quad:
+            gl.glVertex3fv(vertices[vertex])
     gl.glEnd()
 
 
@@ -129,25 +149,33 @@ def main():
         pressed = pygame.key.get_pressed()
         # movement speed is bound to fps right now....
         if pressed[pygame.K_w]:
-            gl.glTranslatef(0.0, 0.0, -0.2)
-        if pressed[pygame.K_s]:
             gl.glTranslatef(0.0, 0.0, 0.2)
+        if pressed[pygame.K_s]:
+            gl.glTranslatef(0.0, 0.0, -0.2)
         if pressed[pygame.K_a]:
             gl.glTranslatef(0.2, 0.0, 0)
         if pressed[pygame.K_d]:
-             gl.glTranslatef(-0.2, 0.0, 0)
-
+            gl.glTranslatef(-0.2, 0.0, 0)
+        if pressed[pygame.K_e]:
+            gl.glRotatef(1, 0, 0.2, 0)
+        if pressed[pygame.K_q]:
+            gl.glRotatef(1, 0, -0.2, 0)
 
         # rotate view ( not the cube )
-        gl.glRotatef(1, 3, 1, 1)
+        # gl.glRotatef(1, 3, 1, 1)
+
+        # clear color and depth masks (otherwise the program would draw until theres a mess)
+        # TODO find out what depth_buffer is
         gl.glClear(gl.GL_COLOR_BUFFER_BIT | gl.GL_DEPTH_BUFFER_BIT)
 
         # render the cube again
-        Cube()
+        cube()
+        someQuadsOnCube()
+
         # update the contents of the entire display
         pygame.display.flip()
 
-        # wait 16 ms between each frame is rendered - around 60 fps
+        # wait 16 ms between each before next frame is rendered - around 60 fps
         pygame.time.wait(16)
 
 
