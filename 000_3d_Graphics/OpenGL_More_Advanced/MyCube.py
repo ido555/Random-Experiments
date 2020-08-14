@@ -21,13 +21,18 @@ class Cube:
     # set location in relation to world origin
     def set_location(self, x, y, z):
         # get dimensions of a 2x2x2
-        for vertex in self.vertices:
-            old_x = Cube.vertices[vertex][0]
-            old_y = Cube.vertices[vertex][1]
-            old_z = Cube.vertices[vertex][2]
+        for i in range(len(self.vertices)):
+            old_x = Cube.vertices[i][0]
+            old_y = Cube.vertices[i][1]
+            old_z = Cube.vertices[i][2]
             old_vertex = Vertex(old_x, old_y, old_z)
             # move the whole cube without distorting its shape
-            self.newVertices.append(Vertex(old_vertex.x + x, old_vertex.y + y, old_vertex.z + z))
+            # OpenGL does not like vertices as objects... #FIXME
+            # self.newVertices.append(Vertex(old_vertex.x + x, old_vertex.y + y, old_vertex.z + z))
+
+            # temporary workaround
+            tuple = (old_vertex.x + x, old_vertex.y + y, old_vertex.z + z)
+            self.newVertices.append(tuple)
 
 
 class Vertex:

@@ -49,7 +49,6 @@ def main():
         if pressed[pygame.K_q]:
             glRotatef(1, 0, -0.2, 0)
 
-        # rotate view ( not the cube )
         # clear color and depth masks (otherwise the cube would smear)
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 
