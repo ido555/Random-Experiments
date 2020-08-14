@@ -1,7 +1,7 @@
 import pygame
 import random
 
-# movment with W A S D Q E
+# movement with W A S D Q E
 
 # OpenGL.GL, the core GL library and extensions to it
 
@@ -104,7 +104,7 @@ def cube():
     for edge in edges:
         # for each vertex in pair
         for vertex in edge:
-            # TODO need to understand glVertex3fv much better
+            # TODO need to understand glVertex3 much better
             gl.glVertex3fv(vertices[vertex])
 
     # Finish GL geometry-definition mode, re-enable automatic error checking
