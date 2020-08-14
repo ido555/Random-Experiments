@@ -50,19 +50,48 @@ def main():
             glRotatef(1, 0, -0.2, 0)
 
         # rotate view ( not the cube )
-        # gl.glRotatef(1, 3, 1, 1)
-
         # clear color and depth masks (otherwise the cube would smear)
-        # TODO find out what depth_buffer is
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
+
+        # note that because im using a double buffer (DOUBLEBUF) these matrices contain an OLD and NEW value
+        # for each value. - can be used to calculate collisions with "objects"
+        # ( OLD = current value ) ( NEW = future value (if my code doesn't change it))
+
+        # NOTE my understanding on these topics is not the best... couldn't find any sources to answer some of my
+        # questions and i have no one to ask so ¯\_(ツ)_/¯
+        # glGet - return the value or values of a selected parameter
+        # GL_PROJECTION - "camera" attributes - field of view, focal length, fish eye lens, etc
+        projMatrix = glGetDoublev(GL_PROJECTION_MATRIX)  # get  projection matrix
+
+        # ModelView - "camera" position and pointing direction
+        mvMatrix = glGetDoublev(GL_MODELVIEW_MATRIX)  # get model view matrix
+        cameraX = mvMatrix[3][0]
+        cameraY = mvMatrix[3][1]
+        cameraZ = mvMatrix[3][2]
+        cameraSomething = mvMatrix[3][3]
+        print(cameraX , cameraY , cameraZ, cameraSomething)
+
+        # a 3D vector is (x,y,z)
+        # a homogeneous 3D vector is (x,y,z,w)
+        # w = 1  = direction
+        # w = 0  = position
+        # examples:
+        # x = NEW(direction?) OLD(direction?) NEW(position) OLD(position)
+        # y = NEW OLD NEW OLD
+        # z = NEW OLD NEW OLD
+        # matrices used here are 4x4:
+        # 0.0 0.0 0.0 0.0
+        # 0.0 0.0 0.0 0.0
+        # 0.0 0.0 0.0 0.0
+        # 0.0 0.0 0.0 0.0
 
         # render the cube again
         cube()
         glTranslatef(-0.2, 0.0, 0)
         glRotatef(1, 0, -0.2, 0)
+
         # update the contents of the entire display
         pygame.display.flip()
-
         # wait 16 ms between each before next frame is rendered - around 60 fps
         pygame.time.wait(16)
 
