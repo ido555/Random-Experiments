@@ -8,6 +8,7 @@ import OpenGL_More_Advanced.MyCube as MyCube
 from cube_dimensions_tuples import edges, quads, colors
 
 display = (800, 600)
+# explicit floor division because true division is deprecated for ints ( idk why it was supported at all... )
 display_center = [display[i] // 2 for i in range(2)]
 aspect_ratio = display[0] / display[1]
 fov = 45
@@ -35,7 +36,7 @@ def render_cube(cube):
 
 
 def mouse_look():
-
+    None
     # mouse_speed = 0.002
     #
     # pygame.mouse.set_pos(int(window_center_x), int(window_center_y))
@@ -84,8 +85,8 @@ def main():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 quit()
+        # FIXME movement speed is bound to fps right now.... use delta time
         pressed = pygame.key.get_pressed()
-        # movement speed is bound to fps right now....
         if pressed[pygame.K_ESCAPE]:
             pygame.quit()
             quit()
@@ -102,8 +103,9 @@ def main():
         if pressed[pygame.K_q]:
             glRotatef(1, 0, -0.2, 0)
         if event.type == pygame.MOUSEMOTION:
-            mouseMove = [event.pos[i] - displayCenter[i] for i in range(2)]
-        pygame.mouse.set_pos(displayCenter)
+            mouseMove = [event.pos[i] - display_center[i] for i in range(2)]
+
+        pygame.mouse.set_pos(display_center)
 
         mouse_look()
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)

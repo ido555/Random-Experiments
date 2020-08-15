@@ -36,13 +36,13 @@ def render_cube(cube):
 
 
 def mouse_look():
-
-    pygame.mouse.set_pos(int(window_center_x), int(window_center_y))
-    mouse_speed = 0.005
-    mouse_x_change = pygame.mouse.get_pos()[0] * mouse_speed
-    mouse_y_change = pygame.mouse.get_pos()[1] * mouse_speed
-    glRotatef(1, mouse_x_change , mouse_y_change, 0)
-    pygame.mouse.set_visible(False)
+    None
+    # pygame.mouse.set_pos(int(window_center_x), int(window_center_y))
+    # mouse_speed = 0.005
+    # mouse_x_change = pygame.mouse.get_pos()[0] * mouse_speed
+    # mouse_y_change = pygame.mouse.get_pos()[1] * mouse_speed
+    # glRotatef(1, mouse_x_change , mouse_y_change, 0)
+    # pygame.mouse.set_visible(False)
 
 
 def main():
