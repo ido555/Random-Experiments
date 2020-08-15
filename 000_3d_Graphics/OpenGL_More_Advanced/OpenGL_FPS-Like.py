@@ -4,32 +4,35 @@ from OpenGL.GL import *
 from OpenGL.GLU import *
 import random
 import OpenGL_More_Advanced.MyCube as MyCube
+from cube_dimensions_tuples import edges, quads, colors
 
 
 def render_cube(cube):
     glBegin(GL_LINES)
-    for edge in cube.edges:
+    for edge in edges:
         for vertex in edge:
-            glVertex3fv(cube.newVertices[vertex])
+            glVertex3fv(cube.new_vertices[vertex])
     glEnd()
 
     glBegin(GL_QUADS)
-    for quad in cube.quads:
+    for quad in quads:
+        x = 0
         for vertex in quad:
-            glVertex3fv(cube.newVertices[vertex])
+            x += 1
+            glColor3fv(colors[x])
+            glVertex3fv(cube.new_vertices[vertex])
     glEnd()
 
 
 def main():
-    cubes = [MyCube.Cube(4, 3, 2)]
-    for i in range(14):
+    cubes = []
+    for i in range(18):
         cubes.append(MyCube.Cube(random.randrange(-20, 20), random.randrange(-20, 20), random.randrange(-20, 20)))
     pygame.init()
     display = (800, 600)
     pygame.display.set_mode(display, DOUBLEBUF | OPENGL)
     gluPerspective(45, (display[0] / display[1]), 0.1, 50.0)
     glTranslatef(0.0, 0.0, -12)
-    cube123 = MyCube.Cube(4, 3, 2)
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:

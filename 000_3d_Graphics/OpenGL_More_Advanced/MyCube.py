@@ -2,37 +2,27 @@
 # Width = 2 units
 # Height = 2 units
 # Volume = 8 units
-class Cube:
+from cube_dimensions_tuples import vertices
 
-    # class variables
-    vertices = ((1, -1, -1), (1, 1, -1), (-1, 1, -1), (-1, -1, -1),
-                (1, -1, 1), (1, 1, 1), (-1, -1, 1), (-1, 1, 1))
-    edges = ((0, 1), (0, 3), (0, 4), (2, 1),
-             (2, 3), (2, 7), (6, 3), (6, 4),
-             (6, 7), (5, 1), (5, 4), (5, 7))
-    quads = ((0, 1, 2, 3), (3, 2, 7, 6), (6, 7, 5, 4),
-             (4, 5, 1, 0), (1, 5, 7, 2), (4, 0, 3, 6))
+
+class Cube:
 
     # create instance and set initial location in relation to world origin
     def __init__(self, x, y, z):
-        self.newVertices = []
+        self.new_vertices = []
         self.set_location(x, y, z)
 
     # set location in relation to world origin
     def set_location(self, x, y, z):
         # get dimensions of a 2x2x2
-        for i in range(len(self.vertices)):
-            old_x = Cube.vertices[i][0]
-            old_y = Cube.vertices[i][1]
-            old_z = Cube.vertices[i][2]
-            old_vertex = Vertex(old_x, old_y, old_z)
-            # move the whole cube without distorting its shape
-            # OpenGL does not like vertices as objects... #FIXME
+        for i in range(len(vertices)):
+            old_x = vertices[i][0]
+            old_y = vertices[i][1]
+            old_z = vertices[i][2]
+            # OpenGL does not like vertices as objects...
             # self.newVertices.append(Vertex(old_vertex.x + x, old_vertex.y + y, old_vertex.z + z))
-
-            # temporary workaround
-            tuple = (old_vertex.x + x, old_vertex.y + y, old_vertex.z + z)
-            self.newVertices.append(tuple)
+            new_vert = (old_x + x, old_y + y, old_z + z)
+            self.new_vertices.append(new_vert)
 
 
 class Vertex:
