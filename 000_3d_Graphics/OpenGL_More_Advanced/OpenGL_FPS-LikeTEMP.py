@@ -8,8 +8,7 @@ import OpenGL_More_Advanced.MyCube as MyCube
 from cube_dimensions_tuples import edges, quads, colors
 
 display = (800, 600)
-window_center_x = float(display[0])/2
-window_center_y = float(display[1])/2
+display_center = [display[i] // 2 for i in range(2)]
 aspect_ratio = display[0] / display[1]
 fov = 45
 far_clip_plane = 50.0
@@ -36,12 +35,20 @@ def render_cube(cube):
 
 
 def mouse_look():
-    pygame.mouse.set_pos(int(window_center_x), int(window_center_y))
-    mouse_speed = 0.005
-    mouse_x_change = pygame.mouse.get_rel()[0] * mouse_speed
-    mouse_y_change = pygame.mouse.get_rel()[1] * mouse_speed
-    gluLookAt(mouse_x_change, mouse_y_change, 0, 0, 0, -15, 0.0, 1.0, 0.0)
-    pygame.mouse.set_visible(False)
+
+    # mouse_speed = 0.002
+    #
+    # pygame.mouse.set_pos(int(window_center_x), int(window_center_y))
+    # # FIXME this is a horrible way of doing this...
+    # mouse_x_change = (pygame.mouse.get_pos()[0] * mouse_speed) - 0.8
+    # mouse_y_change = (pygame.mouse.get_pos()[1] * mouse_speed) - 0.6
+    #
+    #
+    # print("\n\n", mouse_x_change)
+    # print("\n\n", mouse_y_change)
+    #
+    # gluLookAt(mouse_x_change, mouse_y_change, 0, 0, 0, -15, 0.0, 1.0, 0.0)
+    # pygame.mouse.set_visible(False)
 
 
 def main():
@@ -60,6 +67,7 @@ def main():
     # move backwards 20 units
     glTranslatef(0.0, 0.0, -20)
 
+    glMatrixMode(GL_PROJECTION)
     # let the GPU check if the camera is behind, or in front of a triangle(s) and check if the
     # camera will notice if some triangles are not rendered ( and skip them if so ) ( big optimization!)
     # ( must invert vertices if using 3d modeler for this to work )
@@ -70,10 +78,7 @@ def main():
     # glShadeModel(GL_SMOOTH)
     # glEnable(GL_COLOR_MATERIAL)
     # glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE)
-    #
-    # glEnable(GL_LIGHT0)
-    # glLightfv(GL_LIGHT0, GL_AMBIENT, [0.5, 0.5, 0.5, 1])
-    # glLightfv(GL_LIGHT0, GL_DIFFUSE, [1.0, 1.0, 1.0, 1])
+
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -96,6 +101,9 @@ def main():
             glRotatef(1, 0, 0.2, 0)
         if pressed[pygame.K_q]:
             glRotatef(1, 0, -0.2, 0)
+        if event.type == pygame.MOUSEMOTION:
+            mouseMove = [event.pos[i] - displayCenter[i] for i in range(2)]
+        pygame.mouse.set_pos(displayCenter)
 
         mouse_look()
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
