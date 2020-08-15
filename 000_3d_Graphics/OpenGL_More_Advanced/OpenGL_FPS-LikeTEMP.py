@@ -36,12 +36,11 @@ def render_cube(cube):
 
 
 def mouse_look():
-
     pygame.mouse.set_pos(int(window_center_x), int(window_center_y))
     mouse_speed = 0.005
-    mouse_x_change = pygame.mouse.get_pos()[0] * mouse_speed
-    mouse_y_change = pygame.mouse.get_pos()[1] * mouse_speed
-    glRotatef(1, mouse_x_change , mouse_y_change, 0)
+    mouse_x_change = pygame.mouse.get_rel()[0] * mouse_speed
+    mouse_y_change = pygame.mouse.get_rel()[1] * mouse_speed
+    gluLookAt(mouse_x_change, mouse_y_change, 0, 0, 0, -15, 0.0, 1.0, 0.0)
     pygame.mouse.set_visible(False)
 
 
@@ -65,16 +64,16 @@ def main():
     # camera will notice if some triangles are not rendered ( and skip them if so ) ( big optimization!)
     # ( must invert vertices if using 3d modeler for this to work )
     glEnable(GL_CULL_FACE)
-
-    glEnable(GL_DEPTH_TEST)
-    glEnable(GL_LIGHTING)
-    glShadeModel(GL_SMOOTH)
-    glEnable(GL_COLOR_MATERIAL)
-    glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE)
-
-    glEnable(GL_LIGHT0)
-    glLightfv(GL_LIGHT0, GL_AMBIENT, [0.5, 0.5, 0.5, 1])
-    glLightfv(GL_LIGHT0, GL_DIFFUSE, [1.0, 1.0, 1.0, 1])
+    #
+    # glEnable(GL_DEPTH_TEST)
+    # glEnable(GL_LIGHTING)
+    # glShadeModel(GL_SMOOTH)
+    # glEnable(GL_COLOR_MATERIAL)
+    # glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE)
+    #
+    # glEnable(GL_LIGHT0)
+    # glLightfv(GL_LIGHT0, GL_AMBIENT, [0.5, 0.5, 0.5, 1])
+    # glLightfv(GL_LIGHT0, GL_DIFFUSE, [1.0, 1.0, 1.0, 1])
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
