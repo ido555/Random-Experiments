@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // browsers first parse then run
+        // myFunc1 // wont run without () 
+        myFunc1()
+        console.log(myFunc2())
+        myFunc3(10, 5)
+        myFunc3(myFunc2() * 5, myFunc2()) // 500 / 100 = 5
+        myFunc3(10) // actually parsed as myFunc3(10, undefined)
+        testEquals()
+
+        function myFunc1(){
+            console.log("hello from myFunc1")
+        }
+        
+        function myFunc2(){
+            return 10*10
+        }
+
+        function myFunc3(x, y){
+            if(typeof(x) == "number" && typeof(y) == "number"){
+                console.log(x / y)
+            }
+            else{
+                console.log("missing / invalid parameters")
+            }
+        }
+
+        function testEquals(){
+            var n1 = 10
+            var n2 = "10" // javascript will do 10 === toNumber("10")
+            // === content AND type equals
+            // !== content AND type not equals
+            if(n1 === n2) // only check
+                console.log("Equals")
+            else   
+                console.log("Not equals")
+        }
+        
+        // let is used for scoping variables. var is a global variable
+        for (let i = 1; i <= 4; i++) {
+            console.log("i=" + i)
+        }
+        // console.log("i is now: " + i)
+
+        let x = 2; // temporary variable for the entire <script> tag
+        while(x > 0){
+            console.log("x=" + x)
+            x--
+        }
+
+        x = 30
+        switch(x){
+            case 3:
+            console.log("x is now 3")
+            break;
+
+            case 2:
+            console.log("x is now 2")
+            break;
+
+            case 1:
+            console.log("x is now 1")
+            break;
+
+            default:
+            console.log("some other value")
+            break;
+
+        }
+
+        var count = 0;
+    </script>
+</head>
+<body style="background-color: slategrey;">
+    <h1>Heading</h1>
+    <input type="button" value="click me" onclick="/*javascript here*/  alert('clicked. count is now ' + ++count)">
+</body>
+</html>

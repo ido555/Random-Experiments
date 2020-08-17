@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function test() {
+            // method 1
+            let person = new Object();
+            person.firstName = 'jeff'
+            person.lastName = 'jefferson'
+            person.property3 = 1234
+            // alert(person)
+            document.getElementById("result").innerHTML = person.firstName + " " + person.lastName + " " + person.property3
+
+            //method 2
+            let person2 = {
+                prop1: 'abc',
+                prop2: 'ker',
+                prop3: 88
+            }
+            // document.getElementById("result").innerHTML += "<br />" + person2.prop1 + " " + person2.prop2 + " " + person2.prop3
+            document.getElementById("result").innerHTML += "<br />" + JSON.stringify(person2) // helpful for devs
+
+        }
+    </script>
+</head>
+
+<body style="background-color: slategrey;" onload="test()">
+    <div id="result"></div>
+</body>
+
+</html>

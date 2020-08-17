@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>amazon but with better ui</title>
+    <script>
+        /*
+        webpage to buy products:
+        display a list of products --> create a Product class(id, title, price) and and array of products in js
+        add a button next to each product to buy it --> the item will be added to a Cart
+        the cart is not shown only saved in js but display the number of items in the cart somewhere on the page
+        */
+        var cart = new Array();
+        class Product {
+            constructor(id, title, price) {
+                if (typeof (id) == 'number' && typeof (title) == 'string' && typeof (price) == 'number') {
+                    this.id = id;
+                    this.title = title;
+                    this.price = price;
+                } else {
+                    console.log("incorrect arguments were given to the Product CTOR")
+                }
+            }
+            showProd = function () {
+                return JSON.stringify(this);
+            }
+        }
+
+        var products = [
+            new Product(0, 'productName1', 45.5),
+            new Product(1, 'productName2', 55.6),
+            new Product(2, 'productName3', 65.7),
+            new Product(3, 'productName4', 75.8),
+            new Product(4, 'productName5', 85.9)
+        ]
+
+        function addToCart(id) {
+            cart.push(products[id])
+            document.getElementById('cart').innerText = "you chose " + (cart.length) + " products"
+        }
+
+    </script>
+
+    <style>
+        div button {
+            display: block;
+        }
+    </style>
+</head>
+
+<body style="background-color: slategrey;">
+    <div id="cart"></div>
+    <div>
+        <button onclick="addToCart(0)">add product1 to cart</button> <br />
+        <button onclick="addToCart(1)">add product2 to cart</button> <br />
+        <button onclick="addToCart(2)">add product3 to cart</button> <br />
+        <button onclick="addToCart(3)">add product4 to cart</button> <br />
+        <button onclick="addToCart(4)">add product5 to cart</button> <br />
+    </div>
+</body>
+
+</html>

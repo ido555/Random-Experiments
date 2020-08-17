@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function makeCar(model, year, price) {
+            let car = {
+                model: model,
+                year: year,
+                price: price,
+                toString: function () {
+                    // format car and return as a string
+                }
+            }
+            console.log(JSON.stringify(car))
+        }
+        class Person {
+            constructor(fname, lname, age) {
+                this.firstName = fname
+                this.lastName = lname
+                this.age = age
+            }
+
+            display = function () {
+                console.log("displayed")
+            }
+        }
+        var person1 = new Person('jeff', 'lastname', 50)
+        console.log(person1)
+        person1.display()
+    </script>
+</head>
+
+<body style="background-color: slategray;">
+
+</body>
+
+</html>

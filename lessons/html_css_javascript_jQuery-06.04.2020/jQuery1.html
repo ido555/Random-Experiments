@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        "use strict";
+        // window.addEventListener("load", function(){})
+        $(function () {
+            // console.log("doc is loaded")
+
+            // js way
+            // document.getElementById("div1")
+            // jQuery way
+            $('#div1').html("jQuery was here")
+
+            // js way
+            // let divs = document.getElementsByTagName("div");
+            // for (let div of divs) {
+            //     if (div.id != 'div1')
+            //         div.innerText = "jQuery was here too"
+            // }
+            
+            // jQuery way
+            //:not(#div1) is a css pseudo-class that helps narrow the selection
+            $("div:not(#div1)").text("jQuery was here too")
+            // get all these 
+            $("div,p,a,img")
+            // get all p inside div
+            $("div p")
+
+        });
+    </script>
+</head>
+
+<body style="background-color: slategrey;">
+    <div id="div1">div1</div>
+    <div>div2</div>
+    <div>div3</div>
+    <div>div4</div>
+</body>
+
+</html>

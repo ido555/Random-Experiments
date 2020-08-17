@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function start() {
+            setInterval(red, 15)
+            setInterval(blue, 17)
+            setInterval(moveDiv, 17)
+            setInterval(addDist, 4)
+        }
+        function red() {
+            document.getElementById('div1').style.color = 'red'
+        }
+        function blue() {
+            document.getElementById('div1').style.color = 'blue'
+        }
+        var booli = false
+        var booli2 = false
+        function addDist() {
+
+            if (dist > 500/4) {
+                booli = true;
+                booli2 = true
+            }
+            if (dist <= 0) {
+                booli = false;
+                booli2 = false
+            }
+            if(booli2){
+                dist2+=4;
+            }
+
+            if (booli) {
+                dist-=2;
+            } else {
+                dist+=4
+            }
+        }
+        var dist = 0;
+        var dist2 = 0;
+        function moveDiv() {
+            document.getElementById('div1').style.paddingLeft = dist + '%';
+            document.getElementById('div1').style.paddingTop = dist + '%';
+            document.getElementById('div1').style.paddingTop = dist2/55 + '%';
+        }
+    </script>
+</head>
+<!-- onload="" -->
+
+<body onload="start()">
+    <!-- <button onclick="start()">GO!</button> <br> -->
+    <div id="div1" style="padding-left: 0%;"> some text</div>
+</body>
+
+</html>

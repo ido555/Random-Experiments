@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script>
+        $(function () {
+            $("#generate").click(function () {
+                for (let i = 0; i < 5; i++) {
+                    let num1 = parseInt((Math.random() * 999) + 1)
+                    let num2 = parseInt((Math.random() * 999) + 1)
+                    let num3 = parseInt((Math.random() * 999) + 1)
+                    $("#randomNumsTable").append(
+                        "<tr> <td>" + num1 + "</td> <td>" + num2 + "</td> <td>" + num3 + "</td> </tr>"
+                    )
+                }
+
+                $("tr:nth-child(even)").css("background-color", "red")
+                // $(selector).css(property,value)
+            })
+        })
+
+    </script>
+    <style>
+        .a {
+            color: burlywood;
+
+        }
+    </style>
+</head>
+
+<body style="background-color: slategrey;">
+    <button id="generate">generate random numbers</button>
+    <table id="randomNumsTable" border="1px">
+        <tr>
+            <th>random1</th>
+            <th>random2</th>
+            <th>random3</th>
+        </tr>
+    </table>
+</body>
+
+</html>
