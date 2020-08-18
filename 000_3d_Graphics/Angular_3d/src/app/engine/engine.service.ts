@@ -1,5 +1,8 @@
 import * as THREE from 'three';
 import { Injectable, ElementRef, OnDestroy, NgZone } from '@angular/core';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader';
+
 
 @Injectable({ providedIn: 'root' })
 export class EngineService implements OnDestroy {
@@ -13,7 +16,7 @@ export class EngineService implements OnDestroy {
 
   private frameId: number = null;
 
-  public constructor(private ngZone: NgZone) {}
+  public constructor(private ngZone: NgZone) { }
 
   public ngOnDestroy(): void {
     if (this.frameId != null) {
@@ -42,14 +45,53 @@ export class EngineService implements OnDestroy {
     this.scene.add(this.camera);
 
     // soft white light
-    this.light = new THREE.AmbientLight( 0x404040 );
+    this.light = new THREE.AmbientLight(0x404040);
     this.light.position.z = 10;
     this.scene.add(this.light);
 
-    const geometry = new THREE.BoxGeometry(1, 1, 1);
-    const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-    this.cube = new THREE.Mesh( geometry, material );
-    this.scene.add(this.cube);
+    // const geometry = new THREE.BoxGeometry(1, 1, 1);
+    // const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+    // this.cube = new THREE.Mesh( geometry, material );
+    // this.scene.add(this.cube);
+
+    
+    // Instantiate a loader
+    var loader = new GLTFLoader();
+
+    // Optional: Provide a DRACOLoader instance to decode compressed mesh data
+    var dracoLoader = new DRACOLoader();
+    dracoLoader.setDecoderPath('/examples/js/libs/draco/');
+    loader.setDRACOLoader(dracoLoader);
+
+    // Load a glTF resource
+    loader.load(
+      // resource URL
+      'models/gltf/duck/duck.gltf',
+      // called when the resource is loaded
+      function (gltf) {
+
+        this.scene.add(gltf.scene);
+
+        gltf.animations; // Array<THREE.AnimationClip>
+        gltf.scene; // THREE.Group
+        gltf.scenes; // Array<THREE.Group>
+        gltf.cameras; // Array<THREE.Camera>
+        gltf.asset; // Object
+
+      },
+      // called while loading is progressing
+      function (xhr) {
+
+        console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+
+      },
+      // called when loading has errors
+      function (error) {
+
+        console.log('An error happened');
+
+      }
+    );
 
   }
 
@@ -76,8 +118,8 @@ export class EngineService implements OnDestroy {
       this.render();
     });
 
-    this.cube.rotation.x += 0.01;
-    this.cube.rotation.y += 0.01;
+    this.cube.rotation.x += 0.002;
+    this.cube.rotation.y += 0.002;
     this.renderer.render(this.scene, this.camera);
   }
 
@@ -88,6 +130,6 @@ export class EngineService implements OnDestroy {
     this.camera.aspect = width / height;
     this.camera.updateProjectionMatrix();
 
-    this.renderer.setSize( width, height );
+    this.renderer.setSize(width, height);
   }
 }
