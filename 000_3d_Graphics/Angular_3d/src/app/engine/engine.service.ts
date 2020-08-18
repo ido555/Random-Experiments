@@ -1,22 +1,27 @@
 import * as THREE from 'three';
-import { Injectable, ElementRef, OnDestroy, NgZone } from '@angular/core';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader';
+import {ElementRef, Injectable, NgZone, OnDestroy, OnInit} from '@angular/core';
+import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
+import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
 
-
-@Injectable({ providedIn: 'root' })
-export class EngineService implements OnDestroy {
+@Injectable({providedIn: 'root'})
+export class EngineService implements OnDestroy , OnInit{
   private canvas: HTMLCanvasElement;
   private renderer: THREE.WebGLRenderer;
   private camera: THREE.PerspectiveCamera;
-  private scene: THREE.Scene;
+  private scene: THREE.Scene = new THREE.Scene();
   private light: THREE.AmbientLight;
 
-  // private cube: THREE.Mesh;
+  private loader = new GLTFLoader();
+
+  private cube: THREE.Mesh;
 
   private frameId: number = null;
 
-  public constructor(private ngZone: NgZone) { }
+  public constructor(private ngZone: NgZone) {
+  }
+
+  public ngOnInit(): void {
+  }
 
   public ngOnDestroy(): void {
     if (this.frameId != null) {
@@ -25,6 +30,7 @@ export class EngineService implements OnDestroy {
   }
 
   public createScene(canvas: ElementRef<HTMLCanvasElement>): void {
+
     // The first step is to get the reference of the canvas element from our HTML document
     this.canvas = canvas.nativeElement;
 
@@ -36,63 +42,33 @@ export class EngineService implements OnDestroy {
     this.renderer.setSize(window.innerWidth, window.innerHeight);
 
     // create the scene
-    this.scene = new THREE.Scene();
 
     this.camera = new THREE.PerspectiveCamera(
       75, window.innerWidth / window.innerHeight, 0.1, 1000
     );
-    this.camera.position.z = 5;
+    this.camera.position.z = 10;
     this.scene.add(this.camera);
+    const controls = new OrbitControls(this.camera, this.canvas);
+    controls.target.set(0, 0, 0);
+    controls.update();
+
+    this.loader.load("http://localhost:8080/waterbottle/glTF-Binary/WaterBottle.glb",
+      (object) => {
+      console.log(object)
+      console.log(this.scene)
+      this.scene.add(object.scene)
+      }, undefined , (err) => console.log(err))
+
 
     // soft white light
     this.light = new THREE.AmbientLight(0x404040);
     this.light.position.z = 10;
     this.scene.add(this.light);
 
-    // const geometry = new THREE.BoxGeometry(1, 1, 1);
-    // const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-    // this.cube = new THREE.Mesh( geometry, material );
-    // this.scene.add(this.cube);
-
-
-    // Instantiate a loader
-    var loader = new GLTFLoader();
-
-    // Optional: Provide a DRACOLoader instance to decode compressed mesh data
-    var dracoLoader = new DRACOLoader();
-    dracoLoader.setDecoderPath('/examples/js/libs/draco/');
-    loader.setDRACOLoader(dracoLoader);
-
-    // Load a glTF resource
-    loader.load(
-      // resource URL
-    
-      'http://localhost:8080/waterbottle/glTF/WaterBottle.gltf',
-      // called when the resource is loaded
-      function (gltf) {
-
-        this.scene.add(gltf.scene);
-
-        gltf.animations; // Array<THREE.AnimationClip>
-        gltf.scene; // THREE.Group
-        gltf.scenes; // Array<THREE.Group>
-        gltf.cameras; // Array<THREE.Camera>
-        gltf.asset; // Object
-
-      },
-      // called while loading is progressing
-      function (xhr) {
-
-        console.log((xhr.loaded / xhr.total * 100) + '% loaded');
-
-      },
-      // called when loading has errors
-      function (error) {
-
-        console.log('An error occurred');
-
-      }
-    );
+    const geometry = new THREE.BoxGeometry(1, 1, 1);
+    const material = new THREE.MeshBasicMaterial({color: 0x00ff00});
+    this.cube = new THREE.Mesh(geometry, material);
+    this.scene.add(this.cube);
 
   }
 
@@ -119,8 +95,8 @@ export class EngineService implements OnDestroy {
       this.render();
     });
 
-    // this.cube.rotation.x += 0.002;
-    // this.cube.rotation.y += 0.002;
+    this.cube.rotation.x += 0.01;
+    this.cube.rotation.y += 0.01;
     this.renderer.render(this.scene, this.camera);
   }
 
