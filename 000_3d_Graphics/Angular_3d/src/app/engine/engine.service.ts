@@ -12,7 +12,7 @@ export class EngineService implements OnDestroy {
   private scene: THREE.Scene;
   private light: THREE.AmbientLight;
 
-  private cube: THREE.Mesh;
+  // private cube: THREE.Mesh;
 
   private frameId: number = null;
 
@@ -54,7 +54,7 @@ export class EngineService implements OnDestroy {
     // this.cube = new THREE.Mesh( geometry, material );
     // this.scene.add(this.cube);
 
-    
+
     // Instantiate a loader
     var loader = new GLTFLoader();
 
@@ -66,7 +66,8 @@ export class EngineService implements OnDestroy {
     // Load a glTF resource
     loader.load(
       // resource URL
-      'models/gltf/duck/duck.gltf',
+    
+      'http://localhost:8080/waterbottle/glTF/WaterBottle.gltf',
       // called when the resource is loaded
       function (gltf) {
 
@@ -88,7 +89,7 @@ export class EngineService implements OnDestroy {
       // called when loading has errors
       function (error) {
 
-        console.log('An error happened');
+        console.log('An error occurred');
 
       }
     );
@@ -118,8 +119,8 @@ export class EngineService implements OnDestroy {
       this.render();
     });
 
-    this.cube.rotation.x += 0.002;
-    this.cube.rotation.y += 0.002;
+    // this.cube.rotation.x += 0.002;
+    // this.cube.rotation.y += 0.002;
     this.renderer.render(this.scene, this.camera);
   }
 
