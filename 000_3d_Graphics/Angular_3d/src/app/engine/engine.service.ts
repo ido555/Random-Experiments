@@ -12,6 +12,7 @@ export class EngineService implements OnDestroy , OnInit{
   private light: THREE.AmbientLight;
 
   private loader = new GLTFLoader();
+  private waterBottle = new GLTFLoader();
 
   private cube: THREE.Mesh;
 
@@ -21,6 +22,7 @@ export class EngineService implements OnDestroy , OnInit{
   }
 
   public ngOnInit(): void {
+
   }
 
   public ngOnDestroy(): void {
@@ -28,7 +30,21 @@ export class EngineService implements OnDestroy , OnInit{
       cancelAnimationFrame(this.frameId);
     }
   }
-
+  public test1(){
+    this.loader.load("http://localhost:8080/waterbottle/glTF-Binary/WaterBottle.glb",
+      (object) => {
+        let test = object.scene
+        console.log(this.scene)
+        this.scene.add(test)
+        console.log(this.scene)
+      }, undefined , (err) => console.log(err))
+  }
+  public test2(){
+    this.camera = new THREE.PerspectiveCamera(
+      75, window.innerWidth / window.innerHeight, 0.1, 1000
+    );
+    this.camera.position.z = 10;
+  }
   public createScene(canvas: ElementRef<HTMLCanvasElement>): void {
 
     // The first step is to get the reference of the canvas element from our HTML document
@@ -42,34 +58,34 @@ export class EngineService implements OnDestroy , OnInit{
     this.renderer.setSize(window.innerWidth, window.innerHeight);
 
     // create the scene
-
-    this.camera = new THREE.PerspectiveCamera(
-      75, window.innerWidth / window.innerHeight, 0.1, 1000
-    );
-    this.camera.position.z = 10;
+    this.test2()
     this.scene.add(this.camera);
+
     const controls = new OrbitControls(this.camera, this.canvas);
     controls.target.set(0, 0, 0);
     controls.update();
 
-    this.loader.load("http://localhost:8080/waterbottle/glTF-Binary/WaterBottle.glb",
-      (object) => {
-      console.log(object)
-      console.log(this.scene)
-      this.scene.add(object.scene)
-      }, undefined , (err) => console.log(err))
 
 
     // soft white light
-    this.light = new THREE.AmbientLight(0x404040);
+    this.light = new THREE.AmbientLight(0xFF0000);
     this.light.position.z = 10;
     this.scene.add(this.light);
 
+    var points = [];
+    var material2 = new THREE.LineBasicMaterial( { color: 0x0000ff } );
+    points.push( new THREE.Vector3( - 10, 0, 0 ) );
+    points.push( new THREE.Vector3( 0, 10, 0 ) );
+    points.push( new THREE.Vector3( 10, 0, 0 ) );
+    var geometry2 = new THREE.BufferGeometry().setFromPoints( points );
+    var line = new THREE.Line( geometry2, material2 );
+
+    this.scene.add(line)
     const geometry = new THREE.BoxGeometry(1, 1, 1);
     const material = new THREE.MeshBasicMaterial({color: 0x00ff00});
     this.cube = new THREE.Mesh(geometry, material);
     this.scene.add(this.cube);
-
+    this.test1()
   }
 
   public animate(): void {
