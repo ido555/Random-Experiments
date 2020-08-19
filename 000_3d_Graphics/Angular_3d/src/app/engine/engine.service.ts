@@ -4,18 +4,13 @@ import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
 
 @Injectable({providedIn: 'root'})
-export class EngineService implements OnDestroy , OnInit{
+export class EngineService implements OnDestroy, OnInit {
   private canvas: HTMLCanvasElement;
   private renderer: THREE.WebGLRenderer;
   private camera: THREE.PerspectiveCamera;
   private scene: THREE.Scene = new THREE.Scene();
-  private light: THREE.AmbientLight;
-
   private loader = new GLTFLoader();
-  private waterBottle = new GLTFLoader();
-
   private cube: THREE.Mesh;
-
   private frameId: number = null;
 
   public constructor(private ngZone: NgZone) {
@@ -30,26 +25,36 @@ export class EngineService implements OnDestroy , OnInit{
       cancelAnimationFrame(this.frameId);
     }
   }
-  public test1(){
+
+  public test1() {
     this.loader.load("http://localhost:8080/waterbottle/glTF-Binary/WaterBottle.glb",
       (object) => {
-        let test = object.scene
-        console.log(this.scene)
-        this.scene.add(test)
-        console.log(this.scene)
-      }, undefined , (err) => console.log(err))
+        this.scene.add(object.scene)
+      }, undefined, (err) => console.log(err));
+
+    var loader = new THREE.FontLoader();
+
+    loader.load( 'fonts/helvetiker_regular.typeface.json', (font) => {
+      var geometry = new THREE.TextGeometry( 'Hello three.js!', {
+        font: font,
+        size: 80,
+        height: 5,
+        curveSegments: 12,
+        bevelEnabled: true,
+        bevelThickness: 10,
+        bevelSize: 8,
+        bevelOffset: 0,
+        bevelSegments: 5
+      } );
+      var material = new THREE.MeshBasicMaterial({color : 0xffffff});
+      var textMesh = new THREE.Mesh(geometry, textMat);
+      this.scene.add(textMesh)
+    } );
   }
-  public test2(){
-    this.camera = new THREE.PerspectiveCamera(
-      75, window.innerWidth / window.innerHeight, 0.1, 1000
-    );
-    this.camera.position.z = 10;
-  }
+
   public createScene(canvas: ElementRef<HTMLCanvasElement>): void {
-
-    // The first step is to get the reference of the canvas element from our HTML document
+    // The first step is to get the reference of the canvas element from the HTML document
     this.canvas = canvas.nativeElement;
-
     this.renderer = new THREE.WebGLRenderer({
       canvas: this.canvas,
       alpha: true,    // transparent background
@@ -57,34 +62,42 @@ export class EngineService implements OnDestroy , OnInit{
     });
     this.renderer.setSize(window.innerWidth, window.innerHeight);
 
-    // create the scene
-    this.test2()
+    // configure camera, controls and lightning
+    this.camera = new THREE.PerspectiveCamera(
+      45, window.innerWidth / window.innerHeight, 0.02, 10000
+    );
+    // camera
+    this.camera.position.z = 10;
     this.scene.add(this.camera);
-
     const controls = new OrbitControls(this.camera, this.canvas);
     controls.target.set(0, 0, 0);
     controls.update();
+    // background stuff
+    this.scene.background = new THREE.Color( 0x000000 );
+    this.scene.fog = new THREE.Fog( 0x000000, 250, 1400 );
 
+    // lights
 
+    var dirLight = new THREE.DirectionalLight( 0xffffff, 0.125 );
+    dirLight.position.set( 0, 0, 1 ).normalize();
+    this.scene.add( dirLight );
 
-    // soft white light
-    this.light = new THREE.AmbientLight(0xFF0000);
-    this.light.position.z = 10;
-    this.scene.add(this.light);
+    var pointLight = new THREE.PointLight( 0xffffff, 1.5 );
+    pointLight.position.set( 0, 100, 90 );
+    this.scene.add( pointLight );
 
-    var points = [];
-    var material2 = new THREE.LineBasicMaterial( { color: 0x0000ff } );
-    points.push( new THREE.Vector3( - 10, 0, 0 ) );
-    points.push( new THREE.Vector3( 0, 10, 0 ) );
-    points.push( new THREE.Vector3( 10, 0, 0 ) );
-    var geometry2 = new THREE.BufferGeometry().setFromPoints( points );
-    var line = new THREE.Line( geometry2, material2 );
+    // objects
+    var axesHelper = new THREE.AxesHelper(1);
+    this.scene.add(axesHelper);
 
-    this.scene.add(line)
-    const geometry = new THREE.BoxGeometry(1, 1, 1);
+    const geometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
     const material = new THREE.MeshBasicMaterial({color: 0x00ff00});
     this.cube = new THREE.Mesh(geometry, material);
+    this.cube.position.set(2, 2, 3)
     this.scene.add(this.cube);
+    var loader = new THREE.FontLoader();
+
+    // for some reason the water bottle is tiny and near invisible...
     this.test1()
   }
 
