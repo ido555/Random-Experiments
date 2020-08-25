@@ -53,7 +53,13 @@ public class WebClientHelper {
         JsonObject dataset = (JsonObject) gson.fromJson(monoJson.block().getBody(), JsonObject.class)
                 .get("Time Series (Daily)");
 
-        Set<Entry<String, JsonElement>> set = dataset.entrySet();
+
+        Set<Entry<String, JsonElement>> set;
+        try {
+            set = dataset.entrySet();
+        } catch (NullPointerException e) {
+            return null;
+        }
 
         Double maxPrice = 0D, minPrice = Double.MAX_VALUE;
         List<StockDataPoint> dataPoints = new ArrayList<StockDataPoint>();
