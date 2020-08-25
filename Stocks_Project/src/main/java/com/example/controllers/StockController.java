@@ -1,5 +1,6 @@
 package com.example.controllers;
 
+import com.example.DatasetSize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,10 +18,11 @@ import com.google.gson.JsonObject;
 @CrossOrigin(origins = "http://localhost:4200")
 public class StockController {
 	@GetMapping("/getStock/{symbol}/{size}")
-	public String getStock(@PathVariable String symbol, @PathVariable String size){
+	// TODO replace String-y code for 'size' with Enum-y code
+	public String getStock(@PathVariable String symbol, @PathVariable DatasetSize size){
 		if (!(size.equals("full") || size.equals("compact"))) {
 			System.out.println("a valid size is either 'full' or 'compact'. set to compact ");
-			size = "compact";
+			size = DatasetSize.compact;
 		}
 		System.out.println("controller request");
 		WebClientHelper helper = new WebClientHelper();
