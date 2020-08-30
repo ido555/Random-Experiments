@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script>
+
+        $(function(){
+
+            $("#btnAdd").click(function(){
+                $("#todoList").append( $("<li>").html( $("#todoItem").val() ) );
+                //$("#myTable").append( $("<tr>").append( $("<td>").html("uuu") ) )
+            });
+
+            $("#btnShow").click(function(){
+                $("#todoList").slideDown(2500);
+            });
+
+            $("#btnHide").click(function(){
+                $("#todoList").slideUp(2000);
+            });
+
+            $("#btnToggle").click(function(){
+                $("#todoList").fadeToggle(2000);
+            });
+        });
+
+    </script>
+
+    <style>
+        ul{
+            width: 20%;
+            background-color: violet;
+        }
+    </style>
+</head>
+<body style="background-color: slategray;">
+    <input type="text" id="todoItem" /><br/>
+    <input type="button" id="btnAdd" value="Add"><br/>
+    <input type="button" value="hide" id="btnHide"/><input type="button" value="show" id="btnShow"/>
+    <input type="button" value="toggle" id="btnToggle" />
+    <ul id="todoList"></ul>
+</body>

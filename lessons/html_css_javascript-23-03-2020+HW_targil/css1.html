@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div{
+        width: 105px;
+        height: 80px;
+        background-color: lightgrey;
+        margin: 15px;
+            }
+    #div2{
+        /* visibility: hidden; hide element (but not box) */
+        display: none; /* hide element, its box, and all its children and thier boxes*/
+    } 
+    #div3{
+        display: inline; /* change element type to inline */
+    } 
+    #navbar1{
+        list-style-type: none;
+        margin: 0px;
+        padding: 0px;
+        width: 15%;
+    }
+
+    li a{
+        display: block;
+        padding: 3%;
+        text-decoration: line-through;
+        background-color: sandybrown;
+    }
+
+    li a:hover{
+        background-color: rgb(150, 108, 71);
+        color: tomato;
+    }
+
+</style>
+
+<body style="background-color: lightslategray;">
+    <h3>visibility / display</h3>
+    <div>1</div>
+    <div id="div2">2</div>
+    <div id="div3">3</div>
+    <span>this text is in a span</span>
+    <br>
+    <br>
+
+    <h3>navbar</h3>
+    <ul id="navbar1">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Gallery</a></li>
+        <li><a href="#">About us</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+</body>
+</html>
+
+<!-- theres 2 types of elements in html - inline and block -->
+<!-- block break at end of element (once or more) and take 100% width by default-->
+<!-- block elements examples - div, p, h1-h6, ul, li -->
+
+<!-- inline - width decided by content -  -->
+<!-- inline elements examples - span, a, img, input -->
+

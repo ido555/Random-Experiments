@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	
+    <script>
+		$(function(){
+			$("#btnAdd").click(function(){
+				$.ajax({
+					url:"calc/add?num1=" + $("#n1").val() + "&num2=" + $("#n2").val(),
+					type: "GET",
+					success: function(res){
+						$("#result").html("Result is: " + res);
+					}
+				}); // end of ajax
+			}); // end of btnAdd click
+			
+			$("#btnMult").click(function(){
+				$.ajax({
+					url:"calc/mult?num1=" + $("#n1").val() + "&num2=" + $("#n2").val(),
+					type: "GET",
+					success: function(res){
+						$("#result").html("Result is: " + res);
+					}
+				}); // end of ajax
+			}); // end of btnAdd click
+			
+		}) // end of doc ready
+    </script>
+</head>
+<body>
+	<a href="tasks.html">Tasks page</a>
+    <h1>Welcome to our calculator</h1>
+    
+    <input type="number" id="n1" placeholder="Number 1" /><br/>
+    <input type="number" id="n2" placeholder="Number 2" /><br/>
+    <input type="button" value="ADD" id="btnAdd" /><br/>
+    <input type="button" value="MULT" id="btnMult" /><br/>
+    <div id="result"></div>
+</body>
+</html>

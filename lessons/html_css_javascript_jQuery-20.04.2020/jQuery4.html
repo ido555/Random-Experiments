@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+    <script>
+        $(function () {
+
+            $("#div1").hover(function () { // mouse enter
+                $(this).css({ "color": "red", "background-color": "yellow" });
+            }, function () { // mouse leave
+                $(this).css("color", "black");
+            });
+            $("#myForm>input:not([type=button])").focus(function () {
+                $(this).css('background-color', "lightblue");
+            })
+
+            $("#myForm>input:not([type=button])").blur(function () {
+                $(this).css('background-color', "white");
+            })
+
+        }); // end of doc ready
+
+
+    </script>
+
+    <style>
+        #div1 {
+            background-color: tomato;
+        }
+    </style>
+</head>
+
+<body style="background-color: slategrey;">
+    <div id="div1">Div 1 is here</div>
+    <form id="myForm">
+        <input type="text" id="username" placeholder="Username" /><br />
+        <input type="number" id="age" placeholder="Age" /><br />
+        <input type="password" id="password" placeholder="Password" /><br />
+        <input type="button" value="Send">
+    </form>
+</body>
+
+</html>

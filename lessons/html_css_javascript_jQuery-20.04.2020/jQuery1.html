@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script>
+        // ways to execute code automatically on page load
+        // javascript way to run on page load
+        // window.addEventListener("load", function () { })
+
+        // jQuery short for $(document).ready(function(){})
+        $(function () {
+            // selectors are using css syntax
+            // get element by id
+            $("#div1").text("changed with jQuery")
+            // get all divs in page - then choose an element by index
+            $("div").eq([2]).text("also changed with jQuery")
+            // get all elements by class
+            $(".redBox")
+         })
+
+    </script>
+</head>
+
+<body style="background-color: slategrey;">
+    <div id="div1">div1</div>
+    <div>div2</div>
+    <div>div3</div>
+</body>
+
+</html>

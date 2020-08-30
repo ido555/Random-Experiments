@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	
+ 
+ 	<script>
+ 		$(function(){
+ 			$("#btnAllTasks").click(function(){
+ 				$.ajax({
+ 					url:"tasks",
+ 					type:"GET",
+ 					success: function(taskArray){
+ 						$("#tasksList").html("Tasks:<br/>")
+ 						for(let i=0; i<taskArray.length; i++){
+ 							$("#tasksList").append(taskArray[i].title + ", " + taskArray[i].dueDate + "<br/>")
+ 						}
+ 						
+ 					}
+ 				})
+ 			})
+ 			
+ 			$("#btnOneTask").click(function(){
+ 				$.ajax({
+ 					url:"tasks/one",
+ 					success: function(task){
+ 						alert(task.title);
+ 					}
+ 				
+ 				})
+ 			});
+ 			
+ 			$("#btnAddTask").click(function(){
+ 				let newTask = {
+ 					title: $("#title").val(),
+ 					dueDate: $("#date").val()
+ 				}
+ 				
+ 				$.ajax({
+ 					url: "tasks",
+ 					type: "POST",
+ 					data: JSON.stringify(newTask), // {"title" : "sss", "dueDate": "eeeee"}
+ 				    contentType: "application/json",
+ 					success: function(res){
+ 						$("#tasksList").html(res);
+ 					},
+ 					error: function(err){
+ 						console.log(err)
+ 						alert("Error! " + err.responseText);
+ 					}
+ 				})
+ 				
+ 			});
+ 		})
+ 	</script>
+</head>
+<body>
+	<h1>Tasks</h1>
+	<input type="button" id="btnAllTasks" value="Get Tasks" /><br/>
+	<input type="button" id="btnOneTask" value="Get One Task" /><br/>
+	<input type="text" id="title" placeholder="Task Title" /><br/>
+	<input type="date" id="date" placeholder="Task date" /><br/>
+	<input type="button" id="btnAddTask" value="Add Task" /><br/>
+	<div id="tasksList"></div>
+</body>
+</html>

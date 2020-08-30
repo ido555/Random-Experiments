@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.addEventListener("load", init)
+
+        function init() {
+            document.getElementById("btn1").addEventListener("click", doIt)
+            // using inline function
+            // document.getElementById("btn1").addEventListener("click", function () { do stuff })
+        }
+
+        function doIt() {
+            alert("aaa")
+        }
+    </script>
+
+    <style>
+        #btn1 {
+            color: darkred;
+        }
+    </style>
+</head>
+<!-- onload="init()" -->
+
+<body style="background-color: lightslategrey;">
+    <button id="btn1">click me</button>
+</body>
+
+</html>

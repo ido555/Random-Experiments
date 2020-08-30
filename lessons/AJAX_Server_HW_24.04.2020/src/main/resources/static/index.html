@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- no error checking anywhere -->
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script>
+        $(function () {
+            $("#btn1").click(function () {
+                $.ajax({
+                    type: "POST",
+                    url: "ajax/addOne",
+                    contentType: "application/json",
+                    data: $("#text").val(),
+                    success: function () {
+                        console.log("request complete successfully")
+                    }
+
+                })
+            })
+            $("#btn2").click(function () {
+                $.ajax({
+                    type: "GET",
+                    url: "ajax/getOne?i=" + $("#index").val(),
+                    success: function (text) {
+                        $("#result").html("Text:" + text)
+                    }
+                })
+            })
+
+            $("#btn3").click(function () {
+                $.ajax({
+                    type: "GET",
+                    url: "ajax/getAll",
+                    success: function (text) {
+                        $("#result").html("Texts: <br/>")
+                        for (let i = 0; i < text.length; i++) {
+                            $("#result").append(text[i] + "<br/>")
+                        }
+                    }
+
+                })
+            })
+        })
+    </script>
+</head>
+
+<body style="background-color: slategrey;">
+    <a href="drinks.html"><h4>drinks page</h4></a>
+    <br>
+    <br>
+    <div>
+        <input type="text" id="text">
+        <button id="btn1">add text</button>
+        <br />
+        <input type="number" id="index">
+        <button id="btn2">get text by index (starting from 0)</button>
+        <br />
+        <button id="btn3">get all texts</button>
+    </div>
+    <div id="result"></div>
+</body>
+
+</html>

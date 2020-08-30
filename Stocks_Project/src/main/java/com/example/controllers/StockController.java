@@ -1,5 +1,7 @@
 package com.example.controllers;
 
+import com.example.DatasetSize;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,17 +19,18 @@ import com.google.gson.JsonObject;
 @CrossOrigin(origins = "http://localhost:4200")
 public class StockController {
 	@GetMapping("/getStock/{symbol}/{size}")
-	public String getStock(@PathVariable String symbol, @PathVariable String size){
+	// TODO replace String-y code for 'size' with Enum-y code
+	public String getStock(@PathVariable String symbol, @PathVariable DatasetSize size){
 		if (!(size.equals("full") || size.equals("compact"))) {
 			System.out.println("a valid size is either 'full' or 'compact'. set to compact ");
-			size = "compact";
+			size = DatasetSize.compact;
 		}
 		System.out.println("controller request");
 		WebClientHelper helper = new WebClientHelper();
 		Stock stock = helper.getStock(symbol, size);
-//		if (stock == null) {
-//			return "5 requests per minute or 500 requests per day were exceeded for this api key";
-//		}
+		if (stock == null) {
+			return  "api limit exceeded. 5 requests per minute or 500 requests per day";
+		}
 		Gson gson = new Gson();
 		JsonArray jsonArray = new JsonArray();
 		JsonObject maxMinPrice = new JsonObject();
@@ -35,7 +38,6 @@ public class StockController {
 		maxMinPrice.addProperty("minPrice", stock.getMinPrice()*0.9);
 		jsonArray.add(maxMinPrice);
 		jsonArray.addAll(gson.toJsonTree(stock.getDataPoints()).getAsJsonArray());
-		
 		return  jsonArray.toString();
 	}
 

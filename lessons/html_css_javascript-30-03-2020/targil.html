@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.addEventListener("load", init)
+        var size = 13;
+        function init() {
+
+            document.getElementById("larger").addEventListener("click", function () { size+=15;document.getElementById("div1").style.fontSize = size + 'px' })
+            document.getElementById("smaller").addEventListener("click", function () { size-=15;document.getElementById("div1").style.fontSize = size + 'px' })
+        }
+    </script>
+</head>
+
+<body>
+    <button id="larger">larger</button>
+    <button id="smaller">smaller</button>
+    <div id="div1">text here</div>
+</body>
+
+</html>

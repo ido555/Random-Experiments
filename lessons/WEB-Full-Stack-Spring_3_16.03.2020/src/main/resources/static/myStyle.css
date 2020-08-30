@@ -1,0 +1,20 @@
+/* selectors*/
+p, h1, h2, h6 { /* p or h1 or h2 or h6*/
+	color: red;
+	text-align: center;
+}
+/*p a { /* <a> thats inside a <p>
+<p> <span> <a> <a/> <span/> <p/> 
+	color: darkorange;
+	background-color: aqua;
+}*/
+p>a { /* <p> <a> <a/> <p/>  only*/
+	color: darkorange;
+	background-color: aqua;
+}
+/*h1 {
+	text-align: center;
+	color: lightsalmon; 
+}*/
+
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- <link rel="stylesheet" href="styles/mystyles.css" /> -->
+
+<style>
+	p {
+		color: blue;
+	}
+	
+	h1, p{ /* h1 or p */
+		text-align: center;
+	}
+
+	p a{ /* a inside p */
+		background-color: red;
+	}
+	
+	p>a{ /* a DIRECTLY inside p */
+		background-color: red;
+	}
+	
+	img[src$='jpg']{
+		width: 400px;
+	}
+	
+	p:hover{
+		background: grey;
+	}
+	
+</style>
+
+</head>
+<body>
+	<h1>Page 2!!</h1>
+	<p style="color: green">Para1</p>
+	<p>
+		Para<span style="color:red">2</span> 
+		<span><a href="http://www.google.com">link in li</a></span><br/>
+		<a href="index.html">link here</a>
+	</p>
+	<p>Para3</p>
+	<p>Para4</p>
+</body>
+</html>

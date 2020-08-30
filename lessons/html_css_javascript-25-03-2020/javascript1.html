@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript</title>
+    <script>
+        /*
+        the window object represents the browser's window.
+        All global JavaScript objects, functions, and variables are members of the window object.
+        window. can be omitted
+        */
+        // document.getElementById("div1") body does not even exists until this point therfore div1 wont be found
+
+    </script>
+
+</head>
+
+<body style="background-color: slategrey;">
+    <div id="div1"> So long and thanks for all the fish </div>
+    <div id="div2"> So long and thanks for all the fish </div>
+    <div> So long and thanks for all the fish </div>
+
+    <!-- Chrome V8 parser runs so fast it gets to the script before the div texts are even displayed -->
+    <script>
+        // alert("too fast")
+        // document.getElementById("div1").innerHTML = "changed with <span style='color: darkred;'>js innerHTML</span>"
+        // document.getElementById("div2").innerText = "changed with <span style='color: red;'>js innerText</span>"
+        var divs = document.getElementsByTagName("div");
+        for (let i = 0; i < divs.length; i++) {
+            console.log(divs);
+            divs[i].innerHTML = "oops";
+            divs[i].style.fontSize = "40pt"
+        }
+
+    </script>
+</body>
+
+</html>

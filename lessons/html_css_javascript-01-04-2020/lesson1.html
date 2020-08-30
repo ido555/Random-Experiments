@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulation</title>
+    <!-- DOM - Document Object Model -->
+    <!-- The HTML DOM is a standard object model and programming interface for HTML. It defines:
+        The HTML elements as objects
+        The properties of all HTML elements
+        The methods to access all HTML elements
+        The events for all HTML elements -->
+    <!-- In other words: The HTML DOM is a standard for how to get, change, add, or delete HTML elements. -->
+    <!--  HTML DOM is an API for JavaScript-->
+
+    <script>
+        function addP(){
+            // method 1 less safe - faster 
+            document.getElementById("div1").innerHTML += '<p>new p method 1</p>' 
+            // method 2 safer - slower - easier to work with ajax
+            let newP = document.createElement("p");
+            newP.innerText = "new p method 2"
+            console.log("created " ,newP)
+            document.getElementById("div1").appendChild(newP);
+        }
+    </script>
+</head>
+
+<body onload="addP()">
+    <div id="div1">
+        <p id="p1">p1</p>
+        <p id="p2">p2</p>
+    </div>
+</body>
+
+</html>
