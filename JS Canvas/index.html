@@ -6,16 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Canvas</title>
 </head>
-<!--  -->
+<script>
+    function draw() {
+        var canvas = document.getElementById('mainCanvas');
+        if (canvas.getContext) { // idk why this check is performed. couldn't figure it out in 25 minutes. moving on.
+            var ctx = canvas.getContext('2d');
+        }
+        ctx.fillStyle = 'rgb(200, 0, 0)';
+        ctx.fillRect(80, 30, 20, 70);
 
-<body style="background-color: darkgrey;">
-    <canvas id="mainCanvas" height="300" width="600">
+        ctx.fillStyle = 'rgba(0, 0, 200, 0.5)';
+        ctx.fillRect(30, 45, 120, 40);
+    }
+</script>
+
+<body onload="draw()" style="background-color: darkgrey;">
+    <canvas id="mainCanvas" height="300" width="600" style="border: 1px solid black;">
     </canvas>
-
-    <script>
-        var ctx = canvas.getContext('2d');
-    </script>
-
     <!-- <button onclick="alert('test 123 hello')"> Say hello</button> -->
 </body>
 
