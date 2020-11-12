@@ -36,7 +36,6 @@ for neuronWeights, neuronBias in zip(weights, biases):
 
 print(layerOutputs)
 
-
 inputs = [1.0, 2.0, 3.0, 2.5]
 weights = [0.2, 0.8, -0.5, 1.0]
 bias = 2
@@ -45,8 +44,12 @@ bias = 2
 #                                      ^  !=   ^
 # calculating and displaying a neuron's output with numpy
 print(np.dot(inputs, weights) + bias)
-# example of what np.dot ( dot product / matrix product / ndarray product) does
+# example of what np.dot ( vector product / matrix product / ndarray product ) does
 # (1*0.2) + (2*0.8) + (3*-0.5) + (2.5*1) + 2 = 4.8
 
+weights = [[0.2, 0.8, -0.5, 1.0],
+           [0.5, -0.91, 0.26, -0.5],
+           [-0.26, -0.27, 0.17, 0.87]]
+
 # calculating and displaying a layer's output with numpy
-print(np.dot(inputs, weights) + bias)
+print(np.dot(weights, inputs) + biases)
