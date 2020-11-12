@@ -23,7 +23,15 @@ biases = [2.0, 3.0, 0.5]
 # (3,4) and (3,4) vs (3,4) and (4,)
 
 # print(weights)
-print(np.array(weights).T)
-print("\n\n")
+# print(np.array(weights).T)
+# print("\n\n")
 output = np.dot(inputs, np.array(weights).T) + biases
+# biases are added like in p3 - matrix + vector dot product
+# example
+# [1,2,3] +
+# [[3,4,5],
+#  [6,7,8]] =
+# [[3+1,4+2,3+3],
+#  [6+1,7+2,8+3]]
+
 print(output)
