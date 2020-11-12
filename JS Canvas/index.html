@@ -8,11 +8,10 @@
 </head>
 <script>
     function draw() {
-        var canvas = document.getElementById('mainCanvas');
-        if (canvas.getContext) { // idk why this check is performed. couldn't figure it out in 25 minutes. moving on.
+        if (document.getElementById('mainCanvas').getContext) { // idk why this check is performed. couldn't figure it out in 25 minutes. moving on.
             var ctx = canvas.getContext('2d');
         }
-        // made a cross thingy for fun
+        // made a cross thingy
 
         // red
         // x(position) , y(position) , x(width) , y(height)
