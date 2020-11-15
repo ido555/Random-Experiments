@@ -49,4 +49,5 @@ layer1.forward(X)
 activation1 = ActivationReLU()
 activation1.forward(layer1.output)
 
-print(activation1.output)
+# first 5 outputs
+print(activation1.output[:5])
