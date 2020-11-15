@@ -77,8 +77,8 @@ class ActivationSoftmax:
         # using inputs - np.max to get rid of the largest number in the input data
         # to help with numbers exploding in size and also with buffer overflow
         # due to the (awesome)magic of math which i dont fully understand this wont change the output
-        expValues = np.exp(inputs - np.max(inputs, axis=1, keepdims=True))
+        SMexpValues = np.exp(inputs - np.max(inputs, axis=1, keepdims=True))
 
         # Normalize them for each sample
-        probabilities = expValues / np.sum(expValues, axis=1, keepdims=True)
+        probabilities = SMexpValues / np.sum(SMexpValues, axis=1, keepdims=True)
         self.output = probabilities
