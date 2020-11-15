@@ -53,7 +53,7 @@ class Loss:
 
 
 # Cross-entropy loss TODO tons of research to better understand this
-class LossCategoricalCrossentropy(Loss):
+class LossCategoricalCrossEntropy(Loss):
     # Forward pass
     def forward(self, y_pred, y_true):
         # Number of samples in a batch
