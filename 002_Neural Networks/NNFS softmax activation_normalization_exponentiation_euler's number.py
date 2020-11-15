@@ -2,7 +2,7 @@ import numpy as np
 import math
 
 # example outputs
-layer_outputs = [4.8, 1.21, 2.385]
+layerOutputs = [4.8, 1.21, 2.385]
 
 # Exponentiation serves multiple purposes. To calculate probabilities, we need non-negative values
 # A negative probability (confidence) doesn't make sense
@@ -19,18 +19,40 @@ the difference between numbers than their magnitudes(distance from 0)
 # constants are uppercased by convention
 
 # For each value in a vector, calculate the exponential value
-expValues = []
-for output in layer_outputs:
-    expValues.append(math.e ** output)  # ** - power operator in Python
-
+# with numpy (calculated faster!!)
+expValues = np.exp(layerOutputs)
 print('exponentiated values:')
 print(expValues)
 
 # normalize values
-normSum = sum(expValues)
-normValues = []
-for val in expValues:
-    normValues.append(val / normSum)
+normValues = expValues / np.sum(expValues)
 print("normalized exponentiated values:")
 print(normValues)
-print('Sum of normalized values:', sum(normValues))
+print('Sum of normalized values:', np.sum(normValues))
+
+# to train in batches make numpy accept layer outputs in batches:
+# get unnormalized probabilities
+# expValues = np.exp(layerOutputs)
+
+# normalize for each sample
+# probabilities = expValues / np.sum(expValues, axis=1, keepdims=True)
+
+
+
+# without numpy
+# For each value in a vector, calculate the exponential value
+# expValues = []
+# for output in layerOutputs:
+#    expValues.append(math.e ** output)  # ** - power operator in Python
+
+# normalize values
+# normSum = sum(expValues)
+# normValues = []
+# for val in expValues:
+#     normValues.append(val / normSum)
+# print("normalized exponentiated values:")
+#
+# print(normValues)
+# print('Sum of normalized values:', sum(normValues))
+
+
