@@ -11,7 +11,7 @@ output = []
 
 # ReLU implementation
 for i in inputs:
-    output.append(max(0, i)) # always return number equal or higher than 0
+    output.append(max(0, i)) # always return number equal or higher than 0 and equal to i
     # if i > 0:
     #     output.append(i)
     # elif i <= 0:
