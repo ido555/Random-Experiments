@@ -1,0 +1,50 @@
+.btn-circle.btn-md {
+    width: 50px;
+    height: 50px;
+    padding: 7px 10px;
+    border-radius: 25px;
+    text-align: center;
+}
+
+.btn-circle.btn-xl {
+    width: 70px;
+    height: 70px;
+    padding: 10px 16px;
+    border-radius: 35px;
+    text-align: center;
+}
+
+.areaCode {
+    margin-left: 1fr;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid black;
+    width: 35px;
+}
+
+.phoneNumber {
+    margin-left: 1fr;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+#callPad {
+    display: none;
+}
+
+#PhoneAndAreaDiv{
+    width: fit-content;
+    margin: auto;
+}
+
+#callPad.button{
+    opacity: 0.3;
+}
+i{
+    font-size: 26px;
+}
+.spacer{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
