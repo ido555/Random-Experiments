@@ -54,7 +54,7 @@ function ajaxCallStart(phoneNumber) {
             url: 'http://localhost:8000/startCall.php',
             dataType: 'json',
             async: true,
-            data: '{"areaCode": "' + areaCode + '", "phoneNumber" : "' + phoneNumber + '"}',
+            data: '{"areaCode": "' + $("#areaCode").val() + '", "phoneNumber" : "' + phoneNumber + '"}',
             success: function () {
                 $("#numberPad").hide(400, "swing", function () {
                     $("#callPadPhoneNumber").text(phoneNumber);
@@ -62,7 +62,11 @@ function ajaxCallStart(phoneNumber) {
                 })
             },
             error: function(){
-                
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oh no',
+                    text: 'Something went wrong!',
+                })
             }
         })
 }

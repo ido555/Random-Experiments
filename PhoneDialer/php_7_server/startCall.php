@@ -1,4 +1,3 @@
-
 <?php
 require __DIR__ . '/vendor/autoload.php';
 use Twilio\Rest\Client;
@@ -15,15 +14,16 @@ if ($phoneNumber[0] == '0') {
     // remove first char from string if it is a zero
     $phoneNumber = substr($phoneNumber,1);
 }
+$internationalPhoneNumber = "+" . $areaCode . $phoneNumber;
 // Your Account SID and Auth Token from twilio.com/console
-$account_sid = 'ACbb6ddbba4867d908d4abb3fad712d634';
-$auth_token = '499fa819a08b3fb628bf8e9ea1c1b8f1';
+$account_sid = 'REDACTED';
+$auth_token = 'REDACTED';
 
 // A Twilio number you own with Voice capabilities
-// $twilio_number = "+12544556726";
+$twilio_number = "+12544556726";
 
 // Where to make a voice call (your cell phone?)
-// $to_number = "+" . $areaCode . $phoneNumber;
+$to_number = $internationalPhoneNumber;
 
 $client = new Client($account_sid, $auth_token);
 $client->account->calls->create(  
