@@ -76,7 +76,7 @@ class ActivationSoftmax:
         # Get unnormalized probabilities
         # using inputs - np.max to get rid of the largest number in the input data
         # to help with numbers exploding in size and also with buffer overflow
-        # due to the (awesome)magic of math which i dont fully understand this wont change the output
+        # due to the 'magic' of math which i dont fully understand, this wont change the output
         SMexpValues = np.exp(inputs - np.max(inputs, axis=1, keepdims=True))
 
         # Normalize them for each sample
