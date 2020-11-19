@@ -55,19 +55,21 @@ function ajaxCallStart(phoneNumber) {
             dataType: 'json',
             async: true,
             data: '{"areaCode": "' + $("#areaCode").val() + '", "phoneNumber" : "' + phoneNumber + '"}',
-            success: function () {
-                $("#numberPad").hide(400, "swing", function () {
-                    $("#callPadPhoneNumber").text(phoneNumber);
-                    $("#callPad").show(400, "linear", talkTime());
-                })
-            },
-            error: function(){
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oh no',
-                    text: 'Something went wrong!',
-                })
-            }
+            // spent too long trying to fix lines 58-68, decided to move on for now
+            // success: function () {
+            // },
+            // error: function(e){
+            //     // alert(e.name + ': ' + e.message)
+            //     Swal.fire({
+            //         icon: 'error',
+            //         title: 'Oh no',
+            //         text: 'Something went wrong!',
+            //     })
+            // }
+        })
+        $("#numberPad").hide(400, "swing", function () {
+            $("#callPadPhoneNumber").text(phoneNumber);
+            $("#callPad").show(400, "linear", talkTime());
         })
 }
 function talkTime() {
