@@ -1,7 +1,6 @@
 import numpy as np
-import matplotlib.pyplot as plt
 import nnfs
-import createData
+from NNFS import createData
 
 nnfs.init()  # helps sync code with video and prevent weird bugs
 

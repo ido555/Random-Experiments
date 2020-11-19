@@ -1,5 +1,4 @@
-import createData
-import classes
+from NNFS import classes, createData
 
 X, y = createData.spiral_data(100, 3)
 
@@ -7,8 +6,8 @@ activation1 = classes.ActivationReLU()
 activation2 = classes.ActivationSoftmax()
 
 # 2 inputs 3 neurons
-layer1 = classes.LayerDense(2,3)
-layer2 = classes.LayerDense(3,3)
+layer1 = classes.LayerDense(2, 3)
+layer2 = classes.LayerDense(3, 3)
 
 
 layer1.forward(X)

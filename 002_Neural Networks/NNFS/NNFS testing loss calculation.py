@@ -1,5 +1,4 @@
-import classes
-import createData
+from NNFS import classes, createData
 
 # Create dataset
 X, y = createData.spiral_data(samples=100, classes=3)
