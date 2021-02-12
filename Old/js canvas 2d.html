@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas</title>
+</head>
+<script>
+    function draw() {
+        if (document.getElementById('mainCanvas').getContext) {
+            var ctx = canvas.getContext('2d');
+        }
+        // made a cross thingy
+
+        // red
+        // x(position) , y(position) , x(width) , y(height)
+        // xp, yp, xs, ys
+        ctx.fillStyle = 'rgb(200, 0, 0)';
+        ctx.fillRect(80, 30, 20, 70);
+
+        // blue
+        ctx.fillStyle = 'rgba(0, 0, 200, 0.5)';
+        ctx.fillRect(30, 45, 120, 40);
+
+        // middle of cube offset by -2 on the x axis
+        // xp+(xs/2)-2
+        // xs = (80+(20/2))-2
+        ctx.clearRect(88, 30, 4, 70)
+
+        // middle of cube offset by -2 on the y axis
+        // yp+(ys/2)-2
+        // ys = 45+(40/2)-2
+        ctx.clearRect(30, 63, 120, 4)
+    }
+</script>
+
+<body onload="draw()" style="background-color: darkgrey;">
+    <canvas id="mainCanvas" height="300" width="600" style="border: 1px solid black;">
+    </canvas>
+    <!-- <button onclick="alert('test 123 hello')"> Say hello</button> -->
+</body>
+
+</html>
