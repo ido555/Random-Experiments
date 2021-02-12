@@ -1,7 +1,0 @@
-min_value=10
-max_value=30
-num_of_tries=5
-red_team_name=red team
-red_team_lives=5
-blue_team_name=blue team
-blue_team_lives=10
