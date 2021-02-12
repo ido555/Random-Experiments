@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\Shmoozel\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\Shmoozel\\.nuget\\packages"
+    ]
+  }
+}
