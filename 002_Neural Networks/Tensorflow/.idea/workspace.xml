@@ -65,7 +65,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9b18c87c-928a-4a23-884d-c27dedd6d102" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../NNFS/NNFS softmax activation_normalization_exponentiation_euler's number.py" beforeDir="false" afterPath="$PROJECT_DIR$/../NNFS/NNFS softmax activation_normalization_exponentiation_euler's number.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../../.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +86,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunManager">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
@@ -130,22 +132,17 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="341" y="150" key="SettingsEditor" timestamp="1605800735167">
-      <screen x="0" y="0" width="1680" height="1010" />
+    <state x="1940" y="181" key="SettingsEditor" timestamp="1607191698258">
+      <screen x="1680" y="35" width="1280" height="984" />
     </state>
     <state x="341" y="150" key="SettingsEditor/0.0.1680.1010/1680.35.1280.984@0.0.1680.1010" timestamp="1605800735167" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/main.py</url>
-          <line>8</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <state x="1940" y="181" key="SettingsEditor/0.0.1680.1010/1680.35.1280.984@1680.35.1280.984" timestamp="1607191698258" />
+    <state x="1983" y="246" width="672" height="678" key="search.everywhere.popup" timestamp="1607192040347">
+      <screen x="1680" y="35" width="1280" height="984" />
+    </state>
+    <state x="1983" y="246" width="672" height="678" key="search.everywhere.popup/0.0.1680.1010/1680.35.1280.984@1680.35.1280.984" timestamp="1607192040347" />
   </component>
 </project>
