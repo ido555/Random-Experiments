@@ -1,0 +1,16 @@
+B:\DotNet\cliApp\bin\Debug\net5.0\cliApp.exe
+B:\DotNet\cliApp\bin\Debug\net5.0\cliApp.deps.json
+B:\DotNet\cliApp\bin\Debug\net5.0\cliApp.runtimeconfig.json
+B:\DotNet\cliApp\bin\Debug\net5.0\cliApp.runtimeconfig.dev.json
+B:\DotNet\cliApp\bin\Debug\net5.0\cliApp.dll
+B:\DotNet\cliApp\bin\Debug\net5.0\ref\cliApp.dll
+B:\DotNet\cliApp\bin\Debug\net5.0\cliApp.pdb
+B:\DotNet\cliApp\obj\Debug\net5.0\cliApp.csprojAssemblyReference.cache
+B:\DotNet\cliApp\obj\Debug\net5.0\cliApp.GeneratedMSBuildEditorConfig.editorconfig
+B:\DotNet\cliApp\obj\Debug\net5.0\cliApp.AssemblyInfoInputs.cache
+B:\DotNet\cliApp\obj\Debug\net5.0\cliApp.AssemblyInfo.cs
+B:\DotNet\cliApp\obj\Debug\net5.0\cliApp.csproj.CoreCompileInputs.cache
+B:\DotNet\cliApp\obj\Debug\net5.0\cliApp.dll
+B:\DotNet\cliApp\obj\Debug\net5.0\ref\cliApp.dll
+B:\DotNet\cliApp\obj\Debug\net5.0\cliApp.pdb
+B:\DotNet\cliApp\obj\Debug\net5.0\cliApp.genruntimeconfig.cache
