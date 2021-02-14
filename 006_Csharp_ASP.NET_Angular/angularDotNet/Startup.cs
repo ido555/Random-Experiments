@@ -19,6 +19,7 @@ namespace angularDotNet
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSwaggerDocument();
             services.AddControllersWithViews();
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
@@ -32,6 +33,8 @@ namespace angularDotNet
         {
             if (env.IsDevelopment())
             {
+                app.UseOpenApi();
+                app.UseSwaggerUi3();
                 app.UseDeveloperExceptionPage();
             }
             else
